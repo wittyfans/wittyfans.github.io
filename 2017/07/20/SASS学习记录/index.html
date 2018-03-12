@@ -1,0 +1,855 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端,CSS,技术," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="SASS算是对CSS的优化，想想我们写CSS的经历，每次访问嵌套结构比较深的元素，都要写很多重复的代码，SASS对CSS增加了类似编程语言中的变量、函数混合宏、流程控制、继承等功能，让CSS的使用效率大大提升，让你的代码更容易复用，编写效率更高。">
+<meta name="keywords" content="前端,CSS,技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SASS学习记录(更新中)">
+<meta property="og:url" content="http://yoursite.com/2017/07/20/SASS学习记录/index.html">
+<meta property="og:site_name" content="wittyfans">
+<meta property="og:description" content="SASS算是对CSS的优化，想想我们写CSS的经历，每次访问嵌套结构比较深的元素，都要写很多重复的代码，SASS对CSS增加了类似编程语言中的变量、函数混合宏、流程控制、继承等功能，让CSS的使用效率大大提升，让你的代码更容易复用，编写效率更高。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-22T04:49:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SASS学习记录(更新中)">
+<meta name="twitter:description" content="SASS算是对CSS的优化，想想我们写CSS的经历，每次访问嵌套结构比较深的元素，都要写很多重复的代码，SASS对CSS增加了类似编程语言中的变量、函数混合宏、流程控制、继承等功能，让CSS的使用效率大大提升，让你的代码更容易复用，编写效率更高。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/20/SASS学习记录/"/>
+
+
+
+
+
+  <title> SASS学习记录(更新中) | wittyfans </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">wittyfans</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">学则不固,知则不惑</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/20/SASS学习记录/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="witty fans">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="wittyfans">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="wittyfans" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                SASS学习记录(更新中)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-20T15:24:05+08:00">
+                2017-07-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/07/20/SASS学习记录/" class="leancloud_visitors" data-flag-title="SASS学习记录(更新中)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>SASS算是对CSS的优化，想想我们写CSS的经历，每次访问嵌套结构比较深的元素，都要写很多重复的代码，SASS对CSS增加了类似编程语言中的变量、<strike>函数</strike>混合宏、流程控制、继承等功能，让CSS的使用效率大大提升，让你的代码更容易复用，编写效率更高。</p>
+<a id="more"></a>
+<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><p>我的系统是Mac OS，系统已经安装了Ruby（SASS依赖Ruby环境），如果你使用的是 Windows， 就需要先安装 Ruby。可以参考<a href="http://sass.bootcss.com/docs/sass-reference/#han-shu" target="_blank" rel="noopener">SASS中文网</a>。你可以检查一下自己的系统是否预装了Ruby，打开终端，输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -v</span><br></pre></td></tr></table></figure></p>
+<p>即可。之后，我们需要利用Ruby的包管理工具gem来下载SASS，使用之前，同样可以用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem -v</span><br></pre></td></tr></table></figure></p>
+<p>来检查是否拥有gem。如果检测都成功，会显示相应的version版本号。随后就很简单了，一段代码搞定<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install sass</span><br></pre></td></tr></table></figure></p>
+<h1 id="SASS代码转化成CSS"><a href="#SASS代码转化成CSS" class="headerlink" title="SASS代码转化成CSS"></a>SASS代码转化成CSS</h1><p>安装完成后，我们就可以编写SASS代码了，但编写SASS代码，最终还是要转化成CSS的，我们可以让系统自动监视（watch）我们的文件。一旦有改动，就马上转换成CSS文件，这样我们只要在html中正确引用了CSS文件，就可以实时看到效果。（实时的效果可能需要用到<a href="https://www.npmjs.com/package/live-server" target="_blank" rel="noopener">LiveServer</a>）<br>如何监视呢，一条代码就可以了，在终端进入你的项目css文件所在文件夹,创建后缀名为scss的文件，以你的scss文件名为style为例,终端中输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sass — —watch style.scss:style.css</span><br></pre></td></tr></table></figure></p>
+<p>style.scss为监视的对象，style.css为输出对象，html代码中需要引用css文件。监视成功后，SASS在当前文件夹中会创建一些必要的文件，以后每次改动，终端都会有记录。</p>
+<h1 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h1><p>SASS可以给CSS中的任何数值定义为变量，比如颜色、宽度、百分值等等。SASS使用$作为变量的前缀,以下定义了一个名为blue的颜色值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$blue:#708c87;</span><br></pre></td></tr></table></figure></p>
+<p>也可以这样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$cream:#F2EFEB;</span><br><span class="line">$pmargin:5%;</span><br><span class="line">$ppadding:20px;</span><br><span class="line">$hpadding:20px;</span><br></pre></td></tr></table></figure></p>
+<h1 id="嵌套处理"><a href="#嵌套处理" class="headerlink" title="嵌套处理"></a>嵌套处理</h1><p>CSS中，为了要取得一个元素，你需要这么写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">body a b c</span><br></pre></td></tr></table></figure></p>
+<p>如果你的子元素非常多，会让你的代码看起来毫无层级结构，如果是SASS代码，那么看起来会是这样子的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">    background-color: #262626; font-family: Arial, Helvetica, sans-serif;</span><br><span class="line">    </span><br><span class="line">h1 &#123;</span><br><span class="line">        </span><br><span class="line">        color:$cream;</span><br><span class="line">        text-align: center;</span><br><span class="line">        padding-top: $hpadding;</span><br><span class="line">    &#125;</span><br><span class="line">p &#123;</span><br><span class="line">        margin: 20px $pmargin ;</span><br><span class="line">        padding: $ppadding $ppadding $ppadding $ppadding;</span><br><span class="line">        background-color: $cream;</span><br><span class="line">        color:$blue;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>html中是什么样的层级结构，你就可以在SASS中用什么样的层级结构去写，是不是一部了然？</p>
+<h1 id="函数混合宏"><a href="#函数混合宏" class="headerlink" title="函数混合宏"></a><strike>函数</strike>混合宏</h1><p>如果你有一个固定的样式需要经常用到怎么办？在SASS中，你可以定义一个<strike>函数</strike>混合宏，然后在需要更改样式的地方，在相应的层级关系中插入这个<strike>函数</strike>混合宏就可以了，这样就可以做到一次定义，多次复用了，看如下的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@mixin border-radius($radius: 20px)&#123;</span><br><span class="line">    border:2px solid;</span><br><span class="line">    border-radius:$radius;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里定义了一个border-radius<strike>函数</strike>混合宏，@mixin是定义<strike>函数</strike>混合宏的关键字，相当于JS中的function,$radius:20px的意思是这个<strike>函数</strike>混合宏期待传入一个radius值，如果没有传入，它就会使用默认值20px.这个<strike>函数</strike>混合宏的意思是，让调用的环境拥有一个圆角效果。<br>好了，<strike>函数</strike>混合宏定义好了，如何使用呢？我们还是以上面的代码为例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">    background-color: #262626; font-family: Arial, Helvetica, sans-serif;</span><br><span class="line">    h1 &#123;    </span><br><span class="line">        color:$cream;</span><br><span class="line">        text-align: center;</span><br><span class="line">        padding-top: $hpadding;</span><br><span class="line">    &#125;</span><br><span class="line">    p &#123;</span><br><span class="line">        margin: 20px $pmargin ;</span><br><span class="line">        padding: $ppadding $ppadding $ppadding $ppadding;</span><br><span class="line">        background-color: $cream;</span><br><span class="line">        @include border-radius(10px);</span><br><span class="line">        color:$blue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strike>函数</strike>混合宏使用的时候，只需要在<strike>函数</strike>混合宏名之前使用关键字@include、把相应的值传入即可。</p>
+<h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><p>继承同样很简单，在需要被应用的元素中，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@extend element；</span><br></pre></td></tr></table></figure></p>
+<p>即可，element是要被应用的元素，继承后，该元素的样式会跟被继承的元素一样。继承的同时也可以给元素应用新的样式,在后面加入新的样式即可。</p>
+<h1 id="导入其他文件"><a href="#导入其他文件" class="headerlink" title="导入其他文件"></a>导入其他文件</h1><p>有时候为了让项目文件更有条理，我们会把一些CSS文件分离开，但有时候又需要用到，这时候可以用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import</span><br></pre></td></tr></table></figure></p>
+<p>导入其他的文件。所有引入的 SCSS 和 Sass 文件都会被<em>合并并输出一个单一的 CSS 文件**。 另外，被导入的文件中所定义的变量或 mixins 都可以在主文件中使用。</em>但是如果你有一个 SCSS 或 Sass 文件<strong>需要引入， 但是你又不希望它被编译</strong>为一个 CSS 文件， 这时，你就可以在文件名前面加一个下划线，就能避免被编译。 这将告诉 Sass 不要把它编译成 CSS 文件。 然后，你就可以像往常一样引入这个文件了，而且还可以省略掉文件名前面的下划线。</p>
+<p>*例如，你有一个文件叫做 _colors.scss。 这样就不会生成 _colors.css 文件了， 而且你还可以这样做<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import &quot;colors&quot;;</span><br></pre></td></tr></table></figure></p>
+<p>,来引入 _colors.scss 文件。</p>
+<h1 id="父级引用"><a href="#父级引用" class="headerlink" title="父级引用"></a>父级引用</h1><p>有时候在我们的语句中，需要引用当前的环境，比如当你在<a>标签当中，你想要设置它的hover效果，你可能没办法直接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hover&#123;…&#125;</span><br></pre></td></tr></table></figure></a></p>
+<p>这样设置，但你可以这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a &#123;</span><br><span class="line">  font-weight: bold;</span><br><span class="line">  text-decoration: none;</span><br><span class="line">  &amp;:hover &#123; text-decoration: underline; &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，&amp;即代表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a&gt;</span><br></pre></td></tr></table></figure></p>
+<p>&amp; 在编译时将被替换为父选择符，输出到 CSS 中。 也就是说，如果你有一个深层嵌套的规则，父选择符也会在 &amp; 被替换之前被完整的解析。</p>
+<h1 id="使用List和-each"><a href="#使用List和-each" class="headerlink" title="使用List和@each"></a>使用List和@each</h1><p>假设有这个一个情况，你需要在网页中显示一组社交网络的图片，比如微信、微博、QQ之类的，那么在SASS下，如何写会比较省事呢？其实就是一个for循环就搞定了，List相当于一个容器，each相当于for循环，看例子：</p>
+<p><strong>html代码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul class = &quot;social-links&quot;&gt;</span><br><span class="line">	&lt;li&gt;&lt;a class = &quot;weibo&quot; href=&quot;#&quot;&gt;weibo&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a class = &quot;wechat&quot; href=&quot;#&quot;&gt;wechat&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a class = &quot;qq&quot; href=&quot;#&quot;&gt;qq&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>SASS代码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//定义List</span><br><span class="line">$icons:&#123;weibo,wechat,qq&#125;;</span><br><span class="line"></span><br><span class="line">//循环赋值</span><br><span class="line">@each $social in $icons &#123;</span><br><span class="line">	.#&#123;$social&#125; &#123;background:url(&apos;../img/#&#123;soicial&#125;.png&apos;)no-repeat;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>$social 为新创建的对象，每次循环，它的值都会为icons这个List中的一个新值</li>
+<li>在CSS语句后面写变量，通常需要加{},例如.#{$social},这段后面的花括号则是设置CSS的背景图片</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-reward-image.png" alt="witty fans WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+            <a href="/tags/技术/" rel="tag"># 技术</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/13/Linux常用命令/" rel="next" title="Linux常用命令">
+                <i class="fa fa-chevron-left"></i> Linux常用命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/16/witty商城项目记录/" rel="prev" title="witty商城项目记录(更新中)">
+                witty商城项目记录(更新中) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="witty fans" />
+          <p class="site-author-name" itemprop="name">witty fans</p>
+          <p class="site-description motion-element" itemprop="description">wittyfans的个人博客</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">66</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/wittyfans" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wittyfans" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#环境搭建"><span class="nav-number">1.</span> <span class="nav-text">环境搭建</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SASS代码转化成CSS"><span class="nav-number">2.</span> <span class="nav-text">SASS代码转化成CSS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义变量"><span class="nav-number">3.</span> <span class="nav-text">定义变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#嵌套处理"><span class="nav-number">4.</span> <span class="nav-text">嵌套处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数混合宏"><span class="nav-number">5.</span> <span class="nav-text">函数混合宏</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#继承"><span class="nav-number">6.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#导入其他文件"><span class="nav-number">7.</span> <span class="nav-text">导入其他文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#父级引用"><span class="nav-number">8.</span> <span class="nav-text">父级引用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用List和-each"><span class="nav-number">9.</span> <span class="nav-text">使用List和@each</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">witty fans</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("jP4UpJQhUn7V27GR26GWUgwI-gzGzoHsz", "feEKhkNuf2GWieyJTBKiEvcd");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
