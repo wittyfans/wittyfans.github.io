@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  
+  <title>Screen指南 | wittyfans</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。">
+<meta name="keywords" content="前端,系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Screen指南">
+<meta property="og:url" content="http://yoursite.com/coding/Screen指南.html">
+<meta property="og:site_name" content="wittyfans">
+<meta property="og:description" content="简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-14T16:06:25.295Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Screen指南">
+<meta name="twitter:description" content="简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-Screen指南" class="article article-type-post" itemscope itemprop="blogPost">
+  <header id="header" class="header">
+  <nav id="main-nav" class="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/categories/coding/">Coding</a>
+    
+      <a class="main-nav-link" href="/categories/reading/">Reading</a>
+    
+      <a class="main-nav-link" href="/categories/writing/">Writing</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Screen指南
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry typo" itemprop="articleBody">
+      
+        <p>简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。<br><a id="more"></a></p>
+<h1 id="Screen指南"><a href="#Screen指南" class="headerlink" title="Screen指南"></a>Screen指南</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>在screen中创建一个新的窗口有这样几种方式：<br>1．直接在命令行键入screen命令<br>[root@tivf06 ~]# screen<br>Screen将创建一个执行shell的全屏窗口。你可以执行任意shell程序，就像在ssh窗口中那样。在该窗口中键入exit退出该窗口，如果这是该screen会话的唯一窗口，该screen会话退出，否则screen自动切换到前一个窗口。<br>2．Screen命令后跟你要执行的程序。<br>[root@tivf06 ~]# screen vi test.c<br>Screen创建一个执行vi test.c的单窗口会话，退出vi将退出该窗口/会话。<br>3．以上两种方式都创建新的screen会话。我们还可以在一个已有screen会话中创建新的窗口。在当前screen窗口中键入C-a c，即Ctrl键+a键，之后再按下c键，screen 在该会话内生成一个新的窗口并切换到该窗口。<br>screen还有更高级的功能。你可以不中断screen窗口中程序的运行而暂时断开（detach）screen会话，并在随后时间重新连接（attach）该会话，重新控制各窗口中运行的程序。例如，我们打开一个screen窗口编辑/tmp/abc文件：<br>[root@tivf06 ~]# screen vi /tmp/abc<br>之后我们想暂时退出做点别的事情，比如出去散散步，那么在screen窗口键入C-a d，Screen会给出detached提示：</p>
+<p>半个小时之后回来了，找到该screen会话：<br>[root@tivf06 ~]# screen -ls<br>There is a screen on:<br>        16582.pts-1.tivf06      (Detached)<br>1 Socket in /tmp/screens/S-root.<br>重新连接会话：<br>[root@tivf06 ~]# screen -r 16582<br>看看出现什么了，太棒了，一切都在。继续干吧。</p>
+<p>你可能注意到给screen发送命令使用了特殊的键组合C-a。这是因为我们在键盘上键入的信息是直接发送给当前screen窗口，必须用其他方式向screen窗口管理器发出命令，默认情况下，screen接收以C-a开始的命令。这种命令形式在screen中叫做键绑定（key binding），C-a叫做命令字符（command character）。<br>可以通过C-a ?来查看所有的键绑定，常用的键绑定有：</p>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul>
+<li>C-a ?    显示所有键绑定信息</li>
+<li>C-a w    显示所有窗口列表</li>
+<li>C-a C-a    切换到之前显示的窗口</li>
+<li>C-a c    创建一个新的运行shell的窗口并切换到该窗口</li>
+<li>C-a n    切换到下一个窗口</li>
+<li>C-a p    切换到前一个窗口(与C-a n相对)</li>
+<li>C-a 0..9    切换到窗口0..9</li>
+<li>C-a a    发送 C-a到当前窗口</li>
+<li>C-a d    暂时断开screen会话</li>
+<li>C-a k    杀掉当前窗口</li>
+<li>C-a [    进入拷贝/回滚模式</li>
+<li>其他常用的命令选项有：<br>-c file    使用配置文件file，而不使用默认的$HOME/.screenrc<br>-d|-D [pid.tty.host]    不开启新的screen会话，而是断开其他正在运行的screen会话<br>-h num    指定历史回滚缓冲区大小为num行<br>-list|-ls    列出现有screen会话，格式为pid.tty.host<br>-d -m    启动一个开始就处于断开模式的会话<br>-r sessionowner/ [pid.tty.host]    重新连接一个断开的会话。多用户模式下连接到其他用户screen会话需要指定sessionowner，需要setuid-root权限<br>-S sessionname    创建screen会话时为会话指定一个名字<br>-v    显示screen版本信息<br>-wipe [match]    同-list，但删掉那些无法连接的会话</li>
+</ul>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p><strong>在终端中</strong></p>
+<ul>
+<li>screen -S name :新建名字为name的screen窗口</li>
+<li>screen -ls : 查看所有后台窗口</li>
+<li>screen -r name -&gt; 回到name这个session<br><strong>Screen中</strong></li>
+<li>C-a k :杀掉当前screen</li>
+<li>C-a d :暂时断开screen的连接</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-screen/" target="_blank" rel="noopener">IBM</a></li>
+<li><a href="http://www.cnblogs.com/mchina/archive/2013/01/30/2880680.html" target="_blank" rel="noopener">David Camp - CNBlog</a></li>
+</ul>
+
+      
+      <div id="donate" class="donate">
+        <a id="github" href="https://github.com/geekplux" target="_blank" class="pos-f tr3" title="Github"></a>
+	      <div id="DonateText" class="tr3">Donate</div>
+	      <ul id="donateBox" class="list pos-f tr3">
+		      <li id="PayPal"><a href="https://www.paypal.me/geekplux" target="_blank">PayPal</a></li>
+		      <li id="BTC" data-footnote="Copy addres and show QRCode"><button id="BTCBn"  data-clipboard-target="#btc-key" alt="Copy to clipboard">Bitcoin</button></li>
+		      <li id="AliPay">AliPay</li>
+		      <li id="WeChat">WeChat</li>
+	      </ul>
+	      <div id="QRBox" class="pos-f left-100">
+		      <div id="BTCQR" class="MainBox" style="background-image: url(http://7b1evr.com1.z0.glb.clouddn.com/donate/bitcoin.png)"></div>
+		      <div id="AliPayQR" class="MainBox" style="background-image: url(http://7b1evr.com1.z0.glb.clouddn.com/donate/alipayQR.jpg)"></div>
+		      <div id="WeChatQR" class="MainBox" style="background-image: url(http://7b1evr.com1.z0.glb.clouddn.com/donate/wechatQR.jpg)"></div>
+	      </div>
+	      <!-- Bitcoin 账号 -->
+	      <input id="btc-key" type="text" value="1AVngxh56oLvAzXsEFnzccUohZdHswjC7j" readonly="readonly">
+      </div>
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/coding/Screen指南.html" class="article-date">
+  <time datetime="2017-07-13T12:18:32.000Z" itemprop="datePublished">2017-07-13</time>
+</a>
+
+        </li>
+        
+          <li>
+            <span class="label">Category:</span>
+            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/coding/">coding</a>
+  </div>
+
+
+          </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系统/">系统</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/coding/使用SCP命令在远程VPS和本地之间进行文件传输.html" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          使用SCP命令在远程VPS和本地之间进行文件传输
+        
+      </div>
+    </a>
+  
+  
+    <a href="/coding/主机名由localhost变成bogon的解决办法.html" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">主机名由localhost变成bogon的解决办法</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+        <ul class="footer-links">
+          
+            <li><a href="/archives/"><span class="fa fa-book"></span></a></li>
+          
+            <li><a href="https://github.com/geekplux/hexo-theme-typing"><span class="fa fa-globe"></span></a></li>
+          
+            <li><a href="https://twitter.com/"><span class="fa fa-twitter"></span></a></li>
+          
+            <li><a href="https://github.com/"><span class="fa fa-github-alt"></span></a></li>
+          
+            <li><a href="https://www.youtube.com/"><span class="fa fa-youtube-play"></span></a></li>
+          
+            <li><a href="https://stackoverflow.com/"><span class="fa fa-stack-overflow"></span></a></li>
+          
+            <li><a href="https://plus.google.com/"><span class="fa fa-google-plus"></span></a></li>
+          
+            <li><a href="/atom.xml"><span class="fa fa-rss"></span></a></li>
+          
+        </ul>
+	    
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        <p>ipsum dolor sit amet, <strong>consectetur adipiscing elit.</strong> Fusce eget urna vitae velit <em>eleifend interdum at ac nisi. In nec ligula lacus. Cum sociis natoque</em> penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed eu cursus erat, ut dapibus quam. Post</p>
+
+
+      </div>
+    </footer>
+
+      
+
+
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  
+  <title>玩转PowerShell | wittyfans</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Power shell 作为一门windows平台下的脚本语言，对于系统管理员来说，可以极大的减少我们的工作，作为一流的系统管理员（逃～），不可不学！">
+<meta name="keywords" content="Windows,HelpDesk,技术支持,PowerShell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="玩转PowerShell">
+<meta property="og:url" content="http://yoursite.com/coding/玩转PowerShell.html">
+<meta property="og:site_name" content="wittyfans">
+<meta property="og:description" content="Power shell 作为一门windows平台下的脚本语言，对于系统管理员来说，可以极大的减少我们的工作，作为一流的系统管理员（逃～），不可不学！">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-14T16:05:48.503Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="玩转PowerShell">
+<meta name="twitter:description" content="Power shell 作为一门windows平台下的脚本语言，对于系统管理员来说，可以极大的减少我们的工作，作为一流的系统管理员（逃～），不可不学！">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-玩转PowerShell" class="article article-type-post" itemscope itemprop="blogPost">
+  <header id="header" class="header">
+  <nav id="main-nav" class="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/categories/coding/">Coding</a>
+    
+      <a class="main-nav-link" href="/categories/reading/">Reading</a>
+    
+      <a class="main-nav-link" href="/categories/writing/">Writing</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      玩转PowerShell
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry typo" itemprop="articleBody">
+      
+        <p>Power shell 作为一门windows平台下的脚本语言，对于系统管理员来说，可以极大的减少我们的工作，作为一流的系统管理员（逃～），不可不学！<br><a id="more"></a> </p>
+<h1 id="Why-Power-Shell"><a href="#Why-Power-Shell" class="headerlink" title="Why Power Shell"></a>Why Power Shell</h1><ul>
+<li>Working in windows</li>
+<li>Support Object </li>
+<li>.NET Support</li>
+<li>Power ! ! ! </li>
+</ul>
+<h1 id="Over-View"><a href="#Over-View" class="headerlink" title="Over View"></a>Over View</h1><p>Power shell 作为一门windows平台下的脚本语言，可以极大的减少我们的工作，它的好处自然不用多说，用过的都知道，下面简单的看一下语法概览。</p>
+<ul>
+<li>查命令的使用：Get-Help</li>
+<li>查对象的方法和属性:Get-Member</li>
+<li><p>查命令历史记录:Get-History</p>
+<ul>
+<li>命令导出为ps1 : xxx | Foreach-Object {$_.CommandLine} &gt; C:\temp\script.ps1</li>
+</ul>
+</li>
+<li><p>查找命令:Get-Command</p>
+</li>
+<li>上一条命令是否成功:$lastExitCode</li>
+<li>一个命令要多久: Measure-Command{ scripts}</li>
+</ul>
+<h3 id="where-object"><a href="#where-object" class="headerlink" title="where-object"></a>where-object</h3><p>使用这个命令可以从列表或者输出中过滤信息，格式为where-object{  } ,where-object回遍历它之前的属性，在{}中，可以使用$_来代表当前遍历的元素，所以，在where-object中，可以进行大量的操作。</p>
+<h3 id="Foreach-Object"><a href="#Foreach-Object" class="headerlink" title="Foreach-Object"></a>Foreach-Object</h3><p>这个命令和where-object差不多，可以用来处理列表中的项，同样可以在其中使用$_命令</p>
+<h2 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h2><p>Get-Content 可以读取csv或者txt文件，读取完成之后可以通过数组的形式访问.</p>
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><ul>
+<li>使用重定向符和out-file命令的不同，重定向符&gt;&gt;可以达到强大的控制，out-file可以轻松处理内容的宽度和编码方式，而且重定向输出的文本是按照命令行窗口的宽度来定的。</li>
+</ul>
+<h1 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h1><h2 id="数据导出到CSV文件"><a href="#数据导出到CSV文件" class="headerlink" title="数据导出到CSV文件"></a>数据导出到CSV文件</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Output info to CSV file</span></span><br><span class="line"><span class="variable">$data</span> = @()</span><br><span class="line"><span class="variable">$row</span> = <span class="built_in">New-Object</span> PSObject</span><br><span class="line"><span class="variable">$row</span> | <span class="built_in">Add-Member</span> -MemberType NoteProperty -Name <span class="string">"Username"</span> -Value <span class="variable">$username</span></span><br><span class="line"><span class="variable">$row</span> | <span class="built_in">Add-Member</span> -MemberType NoteProperty -Name <span class="string">"ComputerName"</span> -Value <span class="variable">$ComputerName</span></span><br><span class="line"><span class="variable">$row</span> | <span class="built_in">Add-Member</span> -MemberType NoteProperty -Name <span class="string">"Domain"</span> -Value <span class="variable">$domainName</span></span><br><span class="line"><span class="variable">$row</span> | <span class="built_in">Add-Member</span> -MemberType NoteProperty -Name <span class="string">"monitorSN"</span> -Value <span class="variable">$monitorSN</span></span><br><span class="line"><span class="variable">$row</span> | <span class="built_in">Add-Member</span> -MemberType NoteProperty -Name <span class="string">"ComputerSN"</span> -Value <span class="variable">$info</span>.SerialNumber</span><br><span class="line"><span class="variable">$row</span> | <span class="built_in">Add-Member</span> -MemberType NoteProperty -Name <span class="string">"LastTimeLoginUser"</span> -Value <span class="variable">$loginInfo</span>.Name</span><br><span class="line"><span class="variable">$row</span> | <span class="built_in">Add-Member</span> -MemberType NoteProperty -Name <span class="string">"LoginCounts"</span> -Value <span class="variable">$loginInfo</span>.count</span><br><span class="line"></span><br><span class="line"><span class="variable">$data</span> += <span class="variable">$row</span></span><br><span class="line"><span class="variable">$data</span> | <span class="built_in">Export-CSV</span> \\<span class="number">10.65</span>.<span class="number">64.219</span>\soft\Information\infoList.csv -noTypeInformation -Append</span><br></pre></td></tr></table></figure>
+<h2 id="PowerShell与excel文件交互"><a href="#PowerShell与excel文件交互" class="headerlink" title="PowerShell与excel文件交互"></a>PowerShell与excel文件交互</h2><ul>
+<li><a href="http://www.lazywinadmin.com/2014/03/powershell-read-excel-file-using-com.html?m=1" target="_blank" rel="noopener">Read an Excel file using COM Interface</a></li>
+</ul>
+<h1 id="PowerSheel-学习资源"><a href="#PowerSheel-学习资源" class="headerlink" title="PowerSheel 学习资源"></a>PowerSheel 学习资源</h1><ul>
+<li><a href="http://www.pstips.net" target="_blank" rel="noopener">PSTips</a></li>
+<li><a href="https://docs.microsoft.com/zh-cn/powershell/scripting/powershell-scripting?view=powershell-5.1" target="_blank" rel="noopener">微软PowerSheel官方文档</a></li>
+</ul>
+<h1 id="相关数据"><a href="#相关数据" class="headerlink" title="相关数据"></a>相关数据</h1><ul>
+<li>《Windows PowerShell 应用手册》——Lee Holmes著</li>
+</ul>
+
+      
+      <div id="donate" class="donate">
+        <a id="github" href="https://github.com/geekplux" target="_blank" class="pos-f tr3" title="Github"></a>
+	      <div id="DonateText" class="tr3">Donate</div>
+	      <ul id="donateBox" class="list pos-f tr3">
+		      <li id="PayPal"><a href="https://www.paypal.me/geekplux" target="_blank">PayPal</a></li>
+		      <li id="BTC" data-footnote="Copy addres and show QRCode"><button id="BTCBn"  data-clipboard-target="#btc-key" alt="Copy to clipboard">Bitcoin</button></li>
+		      <li id="AliPay">AliPay</li>
+		      <li id="WeChat">WeChat</li>
+	      </ul>
+	      <div id="QRBox" class="pos-f left-100">
+		      <div id="BTCQR" class="MainBox" style="background-image: url(http://7b1evr.com1.z0.glb.clouddn.com/donate/bitcoin.png)"></div>
+		      <div id="AliPayQR" class="MainBox" style="background-image: url(http://7b1evr.com1.z0.glb.clouddn.com/donate/alipayQR.jpg)"></div>
+		      <div id="WeChatQR" class="MainBox" style="background-image: url(http://7b1evr.com1.z0.glb.clouddn.com/donate/wechatQR.jpg)"></div>
+	      </div>
+	      <!-- Bitcoin 账号 -->
+	      <input id="btc-key" type="text" value="1AVngxh56oLvAzXsEFnzccUohZdHswjC7j" readonly="readonly">
+      </div>
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/coding/玩转PowerShell.html" class="article-date">
+  <time datetime="2017-11-14T15:14:08.000Z" itemprop="datePublished">2017-11-14</time>
+</a>
+
+        </li>
+        
+          <li>
+            <span class="label">Category:</span>
+            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/coding/">coding</a>
+  </div>
+
+
+          </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HelpDesk/">HelpDesk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PowerShell/">PowerShell</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/">Windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术支持/">技术支持</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/reading/爱默生文集摘录一.html" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          爱默生文集摘录一
+        
+      </div>
+    </a>
+  
+  
+    <a href="/writing/翻译《你身边的人比你更能管束你自己》.html" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">翻译计划01《你身边的人比你更能约束你自己》——Medium精选</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+        <ul class="footer-links">
+          
+            <li><a href="/archives/"><span class="fa fa-book"></span></a></li>
+          
+            <li><a href="https://github.com/geekplux/hexo-theme-typing"><span class="fa fa-globe"></span></a></li>
+          
+            <li><a href="https://twitter.com/"><span class="fa fa-twitter"></span></a></li>
+          
+            <li><a href="https://github.com/"><span class="fa fa-github-alt"></span></a></li>
+          
+            <li><a href="https://www.youtube.com/"><span class="fa fa-youtube-play"></span></a></li>
+          
+            <li><a href="https://stackoverflow.com/"><span class="fa fa-stack-overflow"></span></a></li>
+          
+            <li><a href="https://plus.google.com/"><span class="fa fa-google-plus"></span></a></li>
+          
+            <li><a href="/atom.xml"><span class="fa fa-rss"></span></a></li>
+          
+        </ul>
+	    
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        <p>ipsum dolor sit amet, <strong>consectetur adipiscing elit.</strong> Fusce eget urna vitae velit <em>eleifend interdum at ac nisi. In nec ligula lacus. Cum sociis natoque</em> penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed eu cursus erat, ut dapibus quam. Post</p>
+
+
+      </div>
+    </footer>
+
+      
+
+
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

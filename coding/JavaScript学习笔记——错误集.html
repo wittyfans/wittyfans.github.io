@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaScript学习笔记——错误集 | wittyfans</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="个人JS学习的错题本">
+<meta name="keywords" content="编程,JS,前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript学习笔记——错误集">
+<meta property="og:url" content="http://yoursite.com/coding/JavaScript学习笔记——错误集.html">
+<meta property="og:site_name" content="wittyfans">
+<meta property="og:description" content="个人JS学习的错题本">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-14T16:06:04.303Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript学习笔记——错误集">
+<meta name="twitter:description" content="个人JS学习的错题本">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-JavaScript学习笔记——错误集" class="article article-type-post" itemscope itemprop="blogPost">
+  <header id="header" class="header">
+  <nav id="main-nav" class="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/categories/coding/">Coding</a>
+    
+      <a class="main-nav-link" href="/categories/reading/">Reading</a>
+    
+      <a class="main-nav-link" href="/categories/writing/">Writing</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript学习笔记——错误集
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry typo" itemprop="articleBody">
+      
+        <p>个人JS学习的错题本<br><a id="more"></a> </p>
+<h1 id="错误集-📈"><a href="#错误集-📈" class="headerlink" title="错误集 📈"></a>错误集 📈</h1><h2 id="如果for循环内都没有返回值，那么就在for循环外返回for循环没找到的情况下需要返回的值"><a href="#如果for循环内都没有返回值，那么就在for循环外返回for循环没找到的情况下需要返回的值" class="headerlink" title="如果for循环内都没有返回值，那么就在for循环外返回for循环没找到的情况下需要返回的值"></a>如果for循环内都没有返回值，那么就在for循环外返回for循环没找到的情况下需要返回的值</h2><h2 id="这行代码在做什么？"><a href="#这行代码在做什么？" class="headerlink" title="这行代码在做什么？"></a>这行代码在做什么？</h2><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Math.floor(Math.random() * (max - min + 1)) + min</span><br></pre></td></tr></table></figure>
+
+- **解释**
+    - 最大值减去最小值后 = a
+    - 最小值 + （1*a）= 最大值
+    - 把1换成ramdom函数，因为ramdom永远不会大于1
+    - 所以整个函数的值不会超过指定的范围
+    - **为什么要+1？**
+</code></pre><h2 id="这行代码是什么意思？"><a href="#这行代码是什么意思？" class="headerlink" title="这行代码是什么意思？"></a>这行代码是什么意思？</h2><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$($(&quot;.slot&quot;)[0]).html(slotOne);</span><br></pre></td></tr></table></figure>
+</code></pre><h2 id="闭包的常见错误"><a href="#闭包的常见错误" class="headerlink" title="闭包的常见错误"></a>闭包的常见错误</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//这个函数是一个总是返回V的函数</span><br><span class="line">function constfun(v)&#123; return function() &#123;return v;&#125;&#125;</span><br><span class="line">// 创建一个数组用来存储常数函数</span><br><span class="line">var funcs = [];</span><br><span class="line">for(var i = 0; i&lt; 10; i++) funcs[i] = constfunc(i);</span><br><span class="line">//在第五个位置的元素所表示的函数返回值为5</span><br><span class="line">funcs[5]() // =&gt;5</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>这段代码利用循环创建了很多个闭包，当写类似这样的代码的时候往往会犯一个错误，那就是试图将循环代码移入定义这个闭包的函数之内，看一下这段代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//返回一个函数组成的数组，它们的返回值是0-9</span><br><span class="line">function constfuncs() &#123;</span><br><span class="line">	</span><br><span class="line">	var funcs = [];</span><br><span class="line">	for (var i = i; i &lt; 10; i++)&#123;</span><br><span class="line">		funcs[i] = function()&#123;return i;&#125;;</span><br><span class="line">		return funcs;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">var funcs = constfuncs();</span><br><span class="line">funcs[5]() // 返回的是什么？</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>☑ 嵌套的函数不会讲作用域内的私有成员复制一份，也不会对绑定的变量生存静态快照</p>
+</li>
+</ul>
+<hr>
+<h2 id="数组访问错误"><a href="#数组访问错误" class="headerlink" title="数组访问错误"></a>数组访问错误</h2><ul>
+<li><p>arr[i].sort() ，错在哪里？<br>完整代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function largestOfFour(arr) &#123;</span><br><span class="line">  // You can do this!</span><br><span class="line">  var largest = 0;</span><br><span class="line">  for(var i = 0; i&lt;=arr.length; i++)&#123;</span><br><span class="line">    arr[i].sort();</span><br><span class="line">  &#125;</span><br><span class="line">  return arr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>把i&lt;=arr.length改成i&lt;arr.length后，问题解决</p>
+</li>
+</ul>
+<p><em>更新中 🚸</em></p>
+
+      
+      <div id="donate" class="donate">
+        <a id="github" href="https://github.com/geekplux" target="_blank" class="pos-f tr3" title="Github"></a>
+	      <div id="DonateText" class="tr3">Donate</div>
+	      <ul id="donateBox" class="list pos-f tr3">
+		      <li id="PayPal"><a href="https://www.paypal.me/geekplux" target="_blank">PayPal</a></li>
+		      <li id="BTC" data-footnote="Copy addres and show QRCode"><button id="BTCBn"  data-clipboard-target="#btc-key" alt="Copy to clipboard">Bitcoin</button></li>
+		      <li id="AliPay">AliPay</li>
+		      <li id="WeChat">WeChat</li>
+	      </ul>
+	      <div id="QRBox" class="pos-f left-100">
+		      <div id="BTCQR" class="MainBox" style="background-image: url(http://7b1evr.com1.z0.glb.clouddn.com/donate/bitcoin.png)"></div>
+		      <div id="AliPayQR" class="MainBox" style="background-image: url(http://7b1evr.com1.z0.glb.clouddn.com/donate/alipayQR.jpg)"></div>
+		      <div id="WeChatQR" class="MainBox" style="background-image: url(http://7b1evr.com1.z0.glb.clouddn.com/donate/wechatQR.jpg)"></div>
+	      </div>
+	      <!-- Bitcoin 账号 -->
+	      <input id="btc-key" type="text" value="1AVngxh56oLvAzXsEFnzccUohZdHswjC7j" readonly="readonly">
+      </div>
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/coding/JavaScript学习笔记——错误集.html" class="article-date">
+  <time datetime="2017-05-22T08:41:37.000Z" itemprop="datePublished">2017-05-22</time>
+</a>
+
+        </li>
+        
+          <li>
+            <span class="label">Category:</span>
+            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/coding/">coding</a>
+  </div>
+
+
+          </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/coding/JavaScript学习笔记——函数与对象.html" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JavaScript学习笔记——函数与对象
+        
+      </div>
+    </a>
+  
+  
+    <a href="/coding/JavaScript学习笔记——实战.html" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JavaScript学习笔记——实战</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+        <ul class="footer-links">
+          
+            <li><a href="/archives/"><span class="fa fa-book"></span></a></li>
+          
+            <li><a href="https://github.com/geekplux/hexo-theme-typing"><span class="fa fa-globe"></span></a></li>
+          
+            <li><a href="https://twitter.com/"><span class="fa fa-twitter"></span></a></li>
+          
+            <li><a href="https://github.com/"><span class="fa fa-github-alt"></span></a></li>
+          
+            <li><a href="https://www.youtube.com/"><span class="fa fa-youtube-play"></span></a></li>
+          
+            <li><a href="https://stackoverflow.com/"><span class="fa fa-stack-overflow"></span></a></li>
+          
+            <li><a href="https://plus.google.com/"><span class="fa fa-google-plus"></span></a></li>
+          
+            <li><a href="/atom.xml"><span class="fa fa-rss"></span></a></li>
+          
+        </ul>
+	    
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        <p>ipsum dolor sit amet, <strong>consectetur adipiscing elit.</strong> Fusce eget urna vitae velit <em>eleifend interdum at ac nisi. In nec ligula lacus. Cum sociis natoque</em> penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed eu cursus erat, ut dapibus quam. Post</p>
+
+
+      </div>
+    </footer>
+
+      
+
+
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

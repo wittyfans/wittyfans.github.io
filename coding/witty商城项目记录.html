@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  
+  <title>witty商城项目记录(更新中) | wittyfans</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一个前后端完全分离的商城，把系统分为逻辑层、数据层、工具层三大层级，具有不错的可扩展性和可维护性，同时进行模块化拆分，通过组件的拼装达到业务的实现，提高开发效率。">
+<meta name="keywords" content="编程,实战">
+<meta property="og:type" content="article">
+<meta property="og:title" content="witty商城项目记录(更新中)">
+<meta property="og:url" content="http://yoursite.com/coding/witty商城项目记录.html">
+<meta property="og:site_name" content="wittyfans">
+<meta property="og:description" content="一个前后端完全分离的商城，把系统分为逻辑层、数据层、工具层三大层级，具有不错的可扩展性和可维护性，同时进行模块化拆分，通过组件的拼装达到业务的实现，提高开发效率。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-14T16:06:29.567Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="witty商城项目记录(更新中)">
+<meta name="twitter:description" content="一个前后端完全分离的商城，把系统分为逻辑层、数据层、工具层三大层级，具有不错的可扩展性和可维护性，同时进行模块化拆分，通过组件的拼装达到业务的实现，提高开发效率。">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-witty商城项目记录" class="article article-type-post" itemscope itemprop="blogPost">
+  <header id="header" class="header">
+  <nav id="main-nav" class="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/categories/coding/">Coding</a>
+    
+      <a class="main-nav-link" href="/categories/reading/">Reading</a>
+    
+      <a class="main-nav-link" href="/categories/writing/">Writing</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      witty商城项目记录(更新中)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry typo" itemprop="articleBody">
+      
+        <p>一个前后端完全分离的商城，把系统分为逻辑层、数据层、工具层三大层级，具有不错的可扩展性和可维护性，同时进行模块化拆分，通过组件的拼装达到业务的实现，提高开发效率。<br><a id="more"></a> </p>
+<h1 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h1><ul>
+<li>NodeJS（4.4.7）</li>
+<li>Git</li>
+<li>npm</li>
+<li>Sublime</li>
+<li>Chrome</li>
+<li>Charles</li>
+</ul>
+<h1 id="Sublime技巧"><a href="#Sublime技巧" class="headerlink" title="Sublime技巧"></a>Sublime技巧</h1><h2 id="Sublime快捷键"><a href="#Sublime快捷键" class="headerlink" title="Sublime快捷键"></a>Sublime快捷键</h2><ul>
+<li>cmd+shift+d 复制行</li>
+<li>cmd+shift+k 删除行</li>
+<li>cmd+； 注释</li>
+<li>cmd+d 查找并选择</li>
+<li>Ctrl + J：把当前选中区域合并为一行</li>
+<li>Ctrl + M：在起始括号和结尾括号间切换</li>
+<li>Ctrl + Shift + M：快速选择括号间的内容</li>
+<li>Ctrl + Shift + J：快速选择同缩进的内容</li>
+<li>Ctrl + Shift + Space：快速选择当前作用域（Scope）的内容</li>
+</ul>
+<h2 id="Sublime插件"><a href="#Sublime插件" class="headerlink" title="Sublime插件"></a>Sublime插件</h2><p>command+shift+p sublime安装插件</p>
+<ul>
+<li>fileheader 文件头部添加时间，作者说明，快捷键comand+option+a</li>
+</ul>
+<h1 id="常用终端命令"><a href="#常用终端命令" class="headerlink" title="常用终端命令"></a>常用终端命令</h1><ul>
+<li>ls -al 查看所有文件</li>
+<li>rm -rf name 删除文件夹</li>
+</ul>
+<h1 id="Git配置"><a href="#Git配置" class="headerlink" title="Git配置"></a>Git配置</h1><h2 id="配置ssh-key"><a href="#配置ssh-key" class="headerlink" title="配置ssh key"></a>配置ssh key</h2><pre><code>- git config —global user.name “name” 
+- git config -global user.email “email”
+</code></pre><ul>
+<li>查看ssh:cd~/.ssh</li>
+<li>生成ssh key： ssh-keygen -t rsa -C “emakl”,回车</li>
+<li>名称：id_rsa 私钥、id_rsa.pub公钥</li>
+<li>复制id_rsa.pub,去git配置</li>
+</ul>
+<h2 id="本地目录关联远程目录"><a href="#本地目录关联远程目录" class="headerlink" title="本地目录关联远程目录"></a>本地目录关联远程目录</h2><ul>
+<li>初始化：git init </li>
+<li>对应当前文件夹与远程仓库:git remote add origin url</li>
+<li>pull代码：git pull origin master</li>
+<li>检查状态：git status</li>
+<li>添加到缓存区：git add.</li>
+<li>提交全部并添加注释:git commit -am “”</li>
+</ul>
+<h2 id="ignore配置"><a href="#ignore配置" class="headerlink" title="ignore配置"></a>ignore配置</h2><ul>
+<li>新建ignore文件： vim .ignore</li>
+<li>直接加入文件名，例如:.DS_Store、/node_modules/、/dist/</li>
+</ul>
+<h2 id="分之开发"><a href="#分之开发" class="headerlink" title="分之开发"></a>分之开发</h2><ul>
+<li>git checkout -b branch-name，新建并切换到branch-name分之</li>
+<li>git branch：查看现在的分支</li>
+</ul>
+<h2 id="克隆历史版本的git代码"><a href="#克隆历史版本的git代码" class="headerlink" title="克隆历史版本的git代码"></a>克隆历史版本的git代码</h2><p>在分之中，切换成历史分之即可</p>
+<h1 id="目录结构设计"><a href="#目录结构设计" class="headerlink" title="目录结构设计"></a>目录结构设计</h1><h2 id="src原始文件"><a href="#src原始文件" class="headerlink" title="src原始文件"></a>src原始文件</h2><ul>
+<li>逻辑层：page+view（页面，脚本与样式）</li>
+<li>数据层：service</li>
+<li>工具层：util</li>
+<li>图片：image</li>
+</ul>
+<h2 id="Dist打包文件"><a href="#Dist打包文件" class="headerlink" title="Dist打包文件"></a>Dist打包文件</h2><ul>
+<li>View</li>
+<li>JS</li>
+<li>Css</li>
+<li>resource</li>
+</ul>
+<h1 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h1><ul>
+<li>npm init：初始化</li>
+<li>npm install <a href="mailto:xxx@v.v.v" target="_blank" rel="noopener">xxx@v.v.v</a> 安装依赖包</li>
+<li>npm uninstall <a href="mailto:xxx@v.v.v" target="_blank" rel="noopener">xxx@v.v.v</a> 卸载依赖包</li>
+<li>-g ：全局安装</li>
+<li><ul>
+<li>-registry = <a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a> ：使用国内淘宝源</li>
+</ul>
+</li>
+</ul>
+<h1 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h1><h2 id="安装与参考"><a href="#安装与参考" class="headerlink" title="安装与参考"></a>安装与参考</h2><ul>
+<li>npm install webpack -g ：全局安装</li>
+<li>npm install <a href="mailto:webpack@v.v.v" target="_blank" rel="noopener">webpack@v.v.v</a> –save-dev ： 项目中安装<ul>
+<li>–save-dev，会把信息记录到packge.json中，不会打包到业务</li>
+<li>–save，会打包到业务代码中</li>
+</ul>
+</li>
+<li>webpack -v ：查看版本号</li>
+</ul>
+<h2 id="webpack-config-js-配置文件"><a href="#webpack-config-js-配置文件" class="headerlink" title="webpack.config.js 配置文件"></a>webpack.config.js 配置文件</h2><ul>
+<li>etry：入口文件，源文件中js的路径</li>
+<li>externals：外部依赖的声明，一些外部的内容可以用它来转化成commonJs和可引用的模块,比如jquery</li>
+<li>output：目标文件</li>
+<li>resolve：配置别名</li>
+<li>module：各种文件、各种loader</li>
+<li>plugins：加载webpack的插件</li>
+</ul>
+<h2 id="webpack-Loaders"><a href="#webpack-Loaders" class="headerlink" title="webpack Loaders"></a>webpack Loaders</h2><ul>
+<li>html：html-webpack-plugin/html-loader</li>
+<li>js:babel-loader+babel-preset-es2015</li>
+<li>css:stle-loader+css-loader</li>
+<li>image+font:url-loader</li>
+</ul>
+<h2 id="webpack对html模版的处理"><a href="#webpack对html模版的处理" class="headerlink" title="webpack对html模版的处理"></a>webpack对html模版的处理</h2><ol>
+<li>对引入的CSS文件，需要加上版本号</li>
+<li>html文件src文件中，并不在dist文件夹中如何处理？如果直接把html文件放到dist文件夹中，会面临dist删除的情况导致html文件丢失</li>
+<li>方案：src中的html打包到dist（html-webpack-plugin）</li>
+<li>每个页面的html都需要new一个plugin，这样很占用资源，可以定义一个函数来处理</li>
+</ol>
+<h2 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack-dev-server"></a>webpack-dev-server</h2><p>前端服务器，文件改变的时候，自动刷新浏览器</p>
+<ul>
+<li>安装：npm install webpack-dev-server –save-dev</li>
+<li>配置：wepack-dev-server/client?http//localhost:8088</li>
+<li>使用: wepack-dev-server —port 8088 –inline,inline 的意思是把server的client直接用脚本的方式插入页面</li>
+</ul>
+<h2 id="webpack常用命令"><a href="#webpack常用命令" class="headerlink" title="webpack常用命令"></a>webpack常用命令</h2><ul>
+<li>webpack A B 把A打包到B（单文件打包）</li>
+<li>webpack -p 最小化压缩的打包，发布的时候用</li>
+<li>webpack –watch 监听文件的改变自动编译</li>
+</ul>
+<h2 id="安装Loader"><a href="#安装Loader" class="headerlink" title="安装Loader"></a>安装Loader</h2><h2 id="使用Plugin"><a href="#使用Plugin" class="headerlink" title="使用Plugin"></a>使用Plugin</h2><h2 id="对脚本和样式的处理"><a href="#对脚本和样式的处理" class="headerlink" title="对脚本和样式的处理"></a>对脚本和样式的处理</h2><h3 id="处理JS"><a href="#处理JS" class="headerlink" title="处理JS"></a>处理JS</h3><ul>
+<li>JS用什么加载？ ：选用自带的js加载器</li>
+<li><p>entry只有一个js，多个js文件怎么办？：entry变成对象，键值对（’’：[‘’]）来指定不同的js文件，注意多个entry需要指定多个output</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">entry : &#123;</span><br><span class="line">	&apos;index&apos;:[&apos;./src/page/index/index.js&apos;],</span><br><span class="line">	&apos;login&apos;:[&apos;./src/page/login/login&apos;],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>output要分文件夹存放目标文件，怎么设置输出文件？：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">output : &#123;</span><br><span class="line">	path:&apos;./dist&apos;,</span><br><span class="line">	filename: [name].js</span><br><span class="line">&#125;</span><br><span class="line">//[name]会使用源文件的名字</span><br><span class="line">//filename支持路径，如果改成js/[name].js,会建立js文件夹</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>jquery引入方法？1.在页面中直接用脚本引入，<a href="http://www.bootcdn.cn" target="_blank" rel="noopener">特定版本</a>获取网址,2.模块化引入,在webpack config文件中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">externals : &#123;</span><br><span class="line">	&apos;jquery&apos; : &apos;window.jQuery&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>我想提取公共模块，怎么处理？使用<a href="">CommonsChunkPlugin</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//在plugins里new一个对象，在参数(对象)中配置如何提取公共模块</span><br><span class="line">var webpack = require(&apos;webpack&apos;)</span><br><span class="line">plugins : [</span><br><span class="line">	new webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">		name : &apos;common&apos;,</span><br><span class="line">		filename : &apos;js/base.js &apos;//</span><br><span class="line">	&#125;)	</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>输出name的名字,路径前缀为output中的path</li>
+<li>只有commons中的通用文件才会抽离到base.js中</li>
+<li>在entry中也定义一个common入口，当webpack.optimize.CommonsChunkPlugin中的name也为commom的时候，common.js中引用的js文件中的通用部分就会打包进base.js</li>
+</ul>
+</li>
+</ul>
+<h3 id="处理CSS"><a href="#处理CSS" class="headerlink" title="处理CSS"></a>处理CSS</h3><ul>
+<li>用什么loader加载？<br>style-loader!css-loader,执行顺序是由右往左，例如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">module : &#123;</span><br><span class="line">	loaders : [</span><br><span class="line">	&#123;test:/\.css$/,loader:&quot;style-loader!css-loader&quot;&#125;</span><br><span class="line">	//探测到以css结尾的文件，就使用style-loader!css-loader</span><br><span class="line">	]</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>使用之前，需要先安装：</p>
+<pre><code>- npm install style-loader css-loader --save-dev 
+</code></pre><ul>
+<li>webpack把样式打包成了js模块，但我需要单独的css文件，不想在js运行完了才开始加载？<br>需要用到webpack css单独打包的插件，即<a href="">extrct-text-webpack-plugin</a>，<br>然后在webpack的配置文件中：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var ExtractTextPlugin = require (&quot;extract-text-webpack-plugin&quot;)</span><br><span class="line">...</span><br><span class="line">//配置插件</span><br><span class="line">plugins: &#123;</span><br><span class="line">	new ExtractTextPlugin(&quot;css/[name].css&quot;)</span><br><span class="line">&#125;</span><br><span class="line">//注意Loader也需要配置</span><br><span class="line">module: &#123;</span><br><span class="line">	loaders: [</span><br><span class="line">	&#123; test:/\.css$/,loader:ExtractTextPlugin(&quot;css/[name].css&quot;) &#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="对HTML的处理"><a href="#对HTML的处理" class="headerlink" title="对HTML的处理"></a>对HTML的处理</h2><h3 id="html-wepack-plugin"><a href="#html-wepack-plugin" class="headerlink" title="html-wepack-plugin"></a>html-wepack-plugin</h3><p>使用的方式和CSS插件一致，例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var HtmlWebpackPlugin = require (&quot;html-webpack-plugin&quot;)</span><br><span class="line">...</span><br><span class="line">//配置HTML模版</span><br><span class="line">plugins: &#123;</span><br><span class="line">	new HtmlWebpackPlugin(&#123;</span><br><span class="line">				template: &apos;./src/view/&apos; + name + &apos;.html&apos;,</span><br><span class="line">        filename: &apos;view/&apos; + name + &apos;.html&apos;,</span><br><span class="line">        title: title,</span><br><span class="line">        inject: true,</span><br><span class="line">        hash: true,</span><br><span class="line">        chunks: [&apos;common&apos;, name]</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>template:html原始的页面模版</li>
+<li>filename：目标文件的位置，以output的path作为父目录</li>
+<li>inject：注入方式，自动注入js和css</li>
+<li>hash：会在引入的css、js文件加hash版本号</li>
+<li>chunks：需要打包的模块</li>
+</ul>
+<hr>
+<p>To be continued </p>
+
+      
+      <div id="donate" class="donate">
+        <a id="github" href="https://github.com/geekplux" target="_blank" class="pos-f tr3" title="Github"></a>
+	      <div id="DonateText" class="tr3">Donate</div>
+	      <ul id="donateBox" class="list pos-f tr3">
+		      <li id="PayPal"><a href="https://www.paypal.me/geekplux" target="_blank">PayPal</a></li>
+		      <li id="BTC" data-footnote="Copy addres and show QRCode"><button id="BTCBn"  data-clipboard-target="#btc-key" alt="Copy to clipboard">Bitcoin</button></li>
+		      <li id="AliPay">AliPay</li>
+		      <li id="WeChat">WeChat</li>
+	      </ul>
+	      <div id="QRBox" class="pos-f left-100">
+		      <div id="BTCQR" class="MainBox" style="background-image: url(http://7b1evr.com1.z0.glb.clouddn.com/donate/bitcoin.png)"></div>
+		      <div id="AliPayQR" class="MainBox" style="background-image: url(http://7b1evr.com1.z0.glb.clouddn.com/donate/alipayQR.jpg)"></div>
+		      <div id="WeChatQR" class="MainBox" style="background-image: url(http://7b1evr.com1.z0.glb.clouddn.com/donate/wechatQR.jpg)"></div>
+	      </div>
+	      <!-- Bitcoin 账号 -->
+	      <input id="btc-key" type="text" value="1AVngxh56oLvAzXsEFnzccUohZdHswjC7j" readonly="readonly">
+      </div>
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/coding/witty商城项目记录.html" class="article-date">
+  <time datetime="2017-08-16T12:09:31.000Z" itemprop="datePublished">2017-08-16</time>
+</a>
+
+        </li>
+        
+          <li>
+            <span class="label">Category:</span>
+            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/coding/">coding</a>
+  </div>
+
+
+          </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/实战/">实战</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/coding/Angualar-Note.html" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Angualar-Note
+        
+      </div>
+    </a>
+  
+  
+    <a href="/coding/SASS学习记录.html" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">SASS学习记录(更新中)</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+        <ul class="footer-links">
+          
+            <li><a href="/archives/"><span class="fa fa-book"></span></a></li>
+          
+            <li><a href="https://github.com/geekplux/hexo-theme-typing"><span class="fa fa-globe"></span></a></li>
+          
+            <li><a href="https://twitter.com/"><span class="fa fa-twitter"></span></a></li>
+          
+            <li><a href="https://github.com/"><span class="fa fa-github-alt"></span></a></li>
+          
+            <li><a href="https://www.youtube.com/"><span class="fa fa-youtube-play"></span></a></li>
+          
+            <li><a href="https://stackoverflow.com/"><span class="fa fa-stack-overflow"></span></a></li>
+          
+            <li><a href="https://plus.google.com/"><span class="fa fa-google-plus"></span></a></li>
+          
+            <li><a href="/atom.xml"><span class="fa fa-rss"></span></a></li>
+          
+        </ul>
+	    
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        <p>ipsum dolor sit amet, <strong>consectetur adipiscing elit.</strong> Fusce eget urna vitae velit <em>eleifend interdum at ac nisi. In nec ligula lacus. Cum sociis natoque</em> penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed eu cursus erat, ut dapibus quam. Post</p>
+
+
+      </div>
+    </footer>
+
+      
+
+
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>

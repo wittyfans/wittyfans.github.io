@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  
+  <title>SASS学习记录(更新中) | wittyfans</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="SASS算是对CSS的优化，想想我们写CSS的经历，每次访问嵌套结构比较深的元素，都要写很多重复的代码，SASS对CSS增加了类似编程语言中的变量、函数混合宏、流程控制、继承等功能，让CSS的使用效率大大提升，让你的代码更容易复用，编写效率更高。">
+<meta name="keywords" content="前端,CSS,技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SASS学习记录(更新中)">
+<meta property="og:url" content="http://yoursite.com/coding/SASS学习记录.html">
+<meta property="og:site_name" content="wittyfans">
+<meta property="og:description" content="SASS算是对CSS的优化，想想我们写CSS的经历，每次访问嵌套结构比较深的元素，都要写很多重复的代码，SASS对CSS增加了类似编程语言中的变量、函数混合宏、流程控制、继承等功能，让CSS的使用效率大大提升，让你的代码更容易复用，编写效率更高。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-14T16:06:22.365Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SASS学习记录(更新中)">
+<meta name="twitter:description" content="SASS算是对CSS的优化，想想我们写CSS的经历，每次访问嵌套结构比较深的元素，都要写很多重复的代码，SASS对CSS增加了类似编程语言中的变量、函数混合宏、流程控制、继承等功能，让CSS的使用效率大大提升，让你的代码更容易复用，编写效率更高。">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/typing.css">
+  <link rel="stylesheet" href="/css/donate.css">
+  
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  
+</head>
+
+  
+    
+      <body>
+    
+  
+      <div id="container" class="container">
+        <article id="post-SASS学习记录" class="article article-type-post" itemscope itemprop="blogPost">
+  <header id="header" class="header">
+  <nav id="main-nav" class="main-nav">
+    
+      <a class="main-nav-link" href="/">Home</a>
+    
+      <a class="main-nav-link" href="/categories/coding/">Coding</a>
+    
+      <a class="main-nav-link" href="/categories/reading/">Reading</a>
+    
+      <a class="main-nav-link" href="/categories/writing/">Writing</a>
+    
+      <a class="main-nav-link" href="/archives">Archives</a>
+    
+      <a class="main-nav-link" href="/about">About</a>
+    
+  </nav>
+</header>
+
+  <hr/>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SASS学习记录(更新中)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry typo" itemprop="articleBody">
+      
+        <p>SASS算是对CSS的优化，想想我们写CSS的经历，每次访问嵌套结构比较深的元素，都要写很多重复的代码，SASS对CSS增加了类似编程语言中的变量、<strike>函数</strike>混合宏、流程控制、继承等功能，让CSS的使用效率大大提升，让你的代码更容易复用，编写效率更高。</p>
+<a id="more"></a>
+<h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><p>我的系统是Mac OS，系统已经安装了Ruby（SASS依赖Ruby环境），如果你使用的是 Windows， 就需要先安装 Ruby。可以参考<a href="http://sass.bootcss.com/docs/sass-reference/#han-shu" target="_blank" rel="noopener">SASS中文网</a>。你可以检查一下自己的系统是否预装了Ruby，打开终端，输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -v</span><br></pre></td></tr></table></figure></p>
+<p>即可。之后，我们需要利用Ruby的包管理工具gem来下载SASS，使用之前，同样可以用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem -v</span><br></pre></td></tr></table></figure></p>
+<p>来检查是否拥有gem。如果检测都成功，会显示相应的version版本号。随后就很简单了，一段代码搞定<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install sass</span><br></pre></td></tr></table></figure></p>
+<h1 id="SASS代码转化成CSS"><a href="#SASS代码转化成CSS" class="headerlink" title="SASS代码转化成CSS"></a>SASS代码转化成CSS</h1><p>安装完成后，我们就可以编写SASS代码了，但编写SASS代码，最终还是要转化成CSS的，我们可以让系统自动监视（watch）我们的文件。一旦有改动，就马上转换成CSS文件，这样我们只要在html中正确引用了CSS文件，就可以实时看到效果。（实时的效果可能需要用到<a href="https://www.npmjs.com/package/live-server" target="_blank" rel="noopener">LiveServer</a>）<br>如何监视呢，一条代码就可以了，在终端进入你的项目css文件所在文件夹,创建后缀名为scss的文件，以你的scss文件名为style为例,终端中输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sass — —watch style.scss:style.css</span><br></pre></td></tr></table></figure></p>
+<p>style.scss为监视的对象，style.css为输出对象，html代码中需要引用css文件。监视成功后，SASS在当前文件夹中会创建一些必要的文件，以后每次改动，终端都会有记录。</p>
+<h1 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h1><p>SASS可以给CSS中的任何数值定义为变量，比如颜色、宽度、百分值等等。SASS使用$作为变量的前缀,以下定义了一个名为blue的颜色值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$blue:#708c87;</span><br></pre></td></tr></table></figure></p>
+<p>也可以这样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$cream:#F2EFEB;</span><br><span class="line">$pmargin:5%;</span><br><span class="line">$ppadding:20px;</span><br><span class="line">$hpadding:20px;</span><br></pre></td></tr></table></figure></p>
+<h1 id="嵌套处理"><a href="#嵌套处理" class="headerlink" title="嵌套处理"></a>嵌套处理</h1><p>CSS中，为了要取得一个元素，你需要这么写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">body a b c</span><br></pre></td></tr></table></figure></p>
+<p>如果你的子元素非常多，会让你的代码看起来毫无层级结构，如果是SASS代码，那么看起来会是这样子的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">    background-color: #262626; font-family: Arial, Helvetica, sans-serif;</span><br><span class="line">    </span><br><span class="line">h1 &#123;</span><br><span class="line">        </span><br><span class="line">        color:$cream;</span><br><span class="line">        text-align: center;</span><br><span class="line">        padding-top: $hpadding;</span><br><span class="line">    &#125;</span><br><span class="line">p &#123;</span><br><span class="line">        margin: 20px $pmargin ;</span><br><span class="line">        padding: $ppadding $ppadding $ppadding $ppadding;</span><br><span class="line">        background-color: $cream;</span><br><span class="line">        color:$blue;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>html中是什么样的层级结构，你就可以在SASS中用什么样的层级结构去写，是不是一部了然？</p>
+<h1 id="函数混合宏"><a href="#函数混合宏" class="headerlink" title="函数混合宏"></a><strike>函数</strike>混合宏</h1><p>如果你有一个固定的样式需要经常用到怎么办？在SASS中，你可以定义一个<strike>函数</strike>混合宏，然后在需要更改样式的地方，在相应的层级关系中插入这个<strike>函数</strike>混合宏就可以了，这样就可以做到一次定义，多次复用了，看如下的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@mixin border-radius($radius: 20px)&#123;</span><br><span class="line">    border:2px solid;</span><br><span class="line">    border-radius:$radius;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里定义了一个border-radius<strike>函数</strike>混合宏，@mixin是定义<strike>函数</strike>混合宏的关键字，相当于JS中的function,$radius:20px的意思是这个<strike>函数</strike>混合宏期待传入一个radius值，如果没有传入，它就会使用默认值20px.这个<strike>函数</strike>混合宏的意思是，让调用的环境拥有一个圆角效果。<br>好了，<strike>函数</strike>混合宏定义好了，如何使用呢？我们还是以上面的代码为例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line">    background-color: #262626; font-family: Arial, Helvetica, sans-serif;</span><br><span class="line">    h1 &#123;    </span><br><span class="line">        color:$cream;</span><br><span class="line">        text-align: center;</span><br><span class="line">        padding-top: $hpadding;</span><br><span class="line">    &#125;</span><br><span class="line">    p &#123;</span><br><span class="line">        margin: 20px $pmargin ;</span><br><span class="line">        padding: $ppadding $ppadding $ppadding $ppadding;</span><br><span class="line">        background-color: $cream;</span><br><span class="line">        @include border-radius(10px);</span><br><span class="line">        color:$blue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strike>函数</strike>混合宏使用的时候，只需要在<strike>函数</strike>混合宏名之前使用关键字@include、把相应的值传入即可。</p>
+<h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><p>继承同样很简单，在需要被应用的元素中，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@extend element；</span><br></pre></td></tr></table></figure></p>
+<p>即可，element是要被应用的元素，继承后，该元素的样式会跟被继承的元素一样。继承的同时也可以给元素应用新的样式,在后面加入新的样式即可。</p>
+<h1 id="导入其他文件"><a href="#导入其他文件" class="headerlink" title="导入其他文件"></a>导入其他文件</h1><p>有时候为了让项目文件更有条理，我们会把一些CSS文件分离开，但有时候又需要用到，这时候可以用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import</span><br></pre></td></tr></table></figure></p>
+<p>导入其他的文件。所有引入的 SCSS 和 Sass 文件都会被<em>合并并输出一个单一的 CSS 文件**。 另外，被导入的文件中所定义的变量或 mixins 都可以在主文件中使用。</em>但是如果你有一个 SCSS 或 Sass 文件<strong>需要引入， 但是你又不希望它被编译</strong>为一个 CSS 文件， 这时，你就可以在文件名前面加一个下划线，就能避免被编译。 这将告诉 Sass 不要把它编译成 CSS 文件。 然后，你就可以像往常一样引入这个文件了，而且还可以省略掉文件名前面的下划线。</p>
+<p>*例如，你有一个文件叫做 _colors.scss。 这样就不会生成 _colors.css 文件了， 而且你还可以这样做<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import &quot;colors&quot;;</span><br></pre></td></tr></table></figure></p>
+<p>,来引入 _colors.scss 文件。</p>
+<h1 id="父级引用"><a href="#父级引用" class="headerlink" title="父级引用"></a>父级引用</h1><p>有时候在我们的语句中，需要引用当前的环境，比如当你在<a>标签当中，你想要设置它的hover效果，你可能没办法直接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hover&#123;…&#125;</span><br></pre></td></tr></table></figure></a></p>
+<p>这样设置，但你可以这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a &#123;</span><br><span class="line">  font-weight: bold;</span><br><span class="line">  text-decoration: none;</span><br><span class="line">  &amp;:hover &#123; text-decoration: underline; &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，&amp;即代表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a&gt;</span><br></pre></td></tr></table></figure></p>
+<p>&amp; 在编译时将被替换为父选择符，输出到 CSS 中。 也就是说，如果你有一个深层嵌套的规则，父选择符也会在 &amp; 被替换之前被完整的解析。</p>
+<h1 id="使用List和-each"><a href="#使用List和-each" class="headerlink" title="使用List和@each"></a>使用List和@each</h1><p>假设有这个一个情况，你需要在网页中显示一组社交网络的图片，比如微信、微博、QQ之类的，那么在SASS下，如何写会比较省事呢？其实就是一个for循环就搞定了，List相当于一个容器，each相当于for循环，看例子：</p>
+<p><strong>html代码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul class = &quot;social-links&quot;&gt;</span><br><span class="line">	&lt;li&gt;&lt;a class = &quot;weibo&quot; href=&quot;#&quot;&gt;weibo&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a class = &quot;wechat&quot; href=&quot;#&quot;&gt;wechat&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a class = &quot;qq&quot; href=&quot;#&quot;&gt;qq&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>SASS代码</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//定义List</span><br><span class="line">$icons:&#123;weibo,wechat,qq&#125;;</span><br><span class="line"></span><br><span class="line">//循环赋值</span><br><span class="line">@each $social in $icons &#123;</span><br><span class="line">	.#&#123;$social&#125; &#123;background:url(&apos;../img/#&#123;soicial&#125;.png&apos;)no-repeat;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>$social 为新创建的对象，每次循环，它的值都会为icons这个List中的一个新值</li>
+<li>在CSS语句后面写变量，通常需要加{},例如.#{$social},这段后面的花括号则是设置CSS的背景图片</li>
+</ul>
+
+      
+      <div id="donate" class="donate">
+        <a id="github" href="https://github.com/geekplux" target="_blank" class="pos-f tr3" title="Github"></a>
+	      <div id="DonateText" class="tr3">Donate</div>
+	      <ul id="donateBox" class="list pos-f tr3">
+		      <li id="PayPal"><a href="https://www.paypal.me/geekplux" target="_blank">PayPal</a></li>
+		      <li id="BTC" data-footnote="Copy addres and show QRCode"><button id="BTCBn"  data-clipboard-target="#btc-key" alt="Copy to clipboard">Bitcoin</button></li>
+		      <li id="AliPay">AliPay</li>
+		      <li id="WeChat">WeChat</li>
+	      </ul>
+	      <div id="QRBox" class="pos-f left-100">
+		      <div id="BTCQR" class="MainBox" style="background-image: url(http://7b1evr.com1.z0.glb.clouddn.com/donate/bitcoin.png)"></div>
+		      <div id="AliPayQR" class="MainBox" style="background-image: url(http://7b1evr.com1.z0.glb.clouddn.com/donate/alipayQR.jpg)"></div>
+		      <div id="WeChatQR" class="MainBox" style="background-image: url(http://7b1evr.com1.z0.glb.clouddn.com/donate/wechatQR.jpg)"></div>
+	      </div>
+	      <!-- Bitcoin 账号 -->
+	      <input id="btc-key" type="text" value="1AVngxh56oLvAzXsEFnzccUohZdHswjC7j" readonly="readonly">
+      </div>
+    </div>
+    <footer class="article-footer">
+      <ul class="article-meta">
+        <li>
+          <span class="label">Published Date:</span>
+          <a href="/coding/SASS学习记录.html" class="article-date">
+  <time datetime="2017-07-20T07:24:05.000Z" itemprop="datePublished">2017-07-20</time>
+</a>
+
+        </li>
+        
+          <li>
+            <span class="label">Category:</span>
+            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/coding/">coding</a>
+  </div>
+
+
+          </li>
+        
+        
+          <li>
+            <span class="label">Tag:</span>
+            
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
+
+
+          </li>
+        
+        <hr/>
+      </ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/coding/witty商城项目记录.html" id="article-nav-newer" class="article-nav-link-wrap newer">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          witty商城项目记录(更新中)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/coding/Linux常用命令.html" id="article-nav-older" class="article-nav-link-wrap older">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Linux常用命令</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+
+
+
+
+
+      </div>
+      
+    <footer id="footer" class="post-footer footer">
+      
+        <ul class="footer-links">
+          
+            <li><a href="/archives/"><span class="fa fa-book"></span></a></li>
+          
+            <li><a href="https://github.com/geekplux/hexo-theme-typing"><span class="fa fa-globe"></span></a></li>
+          
+            <li><a href="https://twitter.com/"><span class="fa fa-twitter"></span></a></li>
+          
+            <li><a href="https://github.com/"><span class="fa fa-github-alt"></span></a></li>
+          
+            <li><a href="https://www.youtube.com/"><span class="fa fa-youtube-play"></span></a></li>
+          
+            <li><a href="https://stackoverflow.com/"><span class="fa fa-stack-overflow"></span></a></li>
+          
+            <li><a href="https://plus.google.com/"><span class="fa fa-google-plus"></span></a></li>
+          
+            <li><a href="/atom.xml"><span class="fa fa-rss"></span></a></li>
+          
+        </ul>
+	    
+      <hr/>
+      <div id="footerContent" class="footer-content">
+        <p>ipsum dolor sit amet, <strong>consectetur adipiscing elit.</strong> Fusce eget urna vitae velit <em>eleifend interdum at ac nisi. In nec ligula lacus. Cum sociis natoque</em> penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed eu cursus erat, ut dapibus quam. Post</p>
+
+
+      </div>
+    </footer>
+
+      
+
+
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/typing.js"></script>
+<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+
+
+
+
+
+
+
+    </div>
+  </body>
+</html>
