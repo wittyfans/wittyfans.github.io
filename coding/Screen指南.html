@@ -90,7 +90,7 @@
 <meta property="og:site_name" content="wittyfans">
 <meta property="og:description" content="简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-14T16:06:25.295Z">
+<meta property="og:updated_time" content="2018-03-15T14:45:44.289Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Screen指南">
 <meta name="twitter:description" content="简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。">
@@ -363,7 +363,10 @@
       
 
       
-        <p>简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。<br><a id="more"></a></p>
+        <blockquote>
+<p>简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。</p>
+</blockquote>
+<a id="more"></a>
 <h1 id="Screen指南"><a href="#Screen指南" class="headerlink" title="Screen指南"></a>Screen指南</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。</p>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>在screen中创建一个新的窗口有这样几种方式：<br>1．直接在命令行键入screen命令<br>[root@tivf06 ~]# screen<br>Screen将创建一个执行shell的全屏窗口。你可以执行任意shell程序，就像在ssh窗口中那样。在该窗口中键入exit退出该窗口，如果这是该screen会话的唯一窗口，该screen会话退出，否则screen自动切换到前一个窗口。<br>2．Screen命令后跟你要执行的程序。<br>[root@tivf06 ~]# screen vi test.c<br>Screen创建一个执行vi test.c的单窗口会话，退出vi将退出该窗口/会话。<br>3．以上两种方式都创建新的screen会话。我们还可以在一个已有screen会话中创建新的窗口。在当前screen窗口中键入C-a c，即Ctrl键+a键，之后再按下c键，screen 在该会话内生成一个新的窗口并切换到该窗口。<br>screen还有更高级的功能。你可以不中断screen窗口中程序的运行而暂时断开（detach）screen会话，并在随后时间重新连接（attach）该会话，重新控制各窗口中运行的程序。例如，我们打开一个screen窗口编辑/tmp/abc文件：<br>[root@tivf06 ~]# screen vi /tmp/abc<br>之后我们想暂时退出做点别的事情，比如出去散散步，那么在screen窗口键入C-a d，Screen会给出detached提示：</p>
 <p>半个小时之后回来了，找到该screen会话：<br>[root@tivf06 ~]# screen -ls<br>There is a screen on:<br>        16582.pts-1.tivf06      (Detached)<br>1 Socket in /tmp/screens/S-root.<br>重新连接会话：<br>[root@tivf06 ~]# screen -r 16582<br>看看出现什么了，太棒了，一切都在。继续干吧。</p>
@@ -454,8 +457,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/coding/使用SCP命令在远程VPS和本地之间进行文件传输.html" rel="prev" title="使用SCP命令在远程VPS和本地之间进行文件传输">
-                使用SCP命令在远程VPS和本地之间进行文件传输 <i class="fa fa-chevron-right"></i>
+              <a href="/coding/Linux之scp命令的使用.html" rel="prev" title="Linux之scp命令使用">
+                Linux之scp命令使用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -524,7 +527,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-count">41</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -532,7 +535,7 @@
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -540,10 +543,10 @@
 
           
             <div class="site-state-item site-state-tags">
-              
-                <span class="site-state-item-count">66</span>
+              <a href="/tags">
+                <span class="site-state-item-count">49</span>
                 <span class="site-state-item-name">标签</span>
-              
+              </a>
             </div>
           
 
