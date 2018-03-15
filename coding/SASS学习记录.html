@@ -1,153 +1,144 @@
 <!DOCTYPE html>
-<html>
-  <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-  <meta name="description" content="wittyfans 阅读 哲学 学习 Python BigData PowerShell">
-  <meta name="keyword" content="wittyfans, 读书笔记, PowerShell, Python, 大数据, 哲学, Hadoop, bigdata">
-  
-    <link rel="shortcut icon" type="image/ico" href="/favicon.jpg"/> 
-  
-  <title>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="SASS算是对CSS的优化，想想我们写CSS的经历，每次访问嵌套结构比较深的元素，都要写很多重复的代码，SASS对CSS增加了类似编程语言中的变量、函数混合宏、流程控制、继承等功能，让CSS的使用效率大大提升，让你的代码更容易复用，编写效率更高。">
+<meta name="keywords" content="前端,CSS,技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SASS学习记录(更新中)">
+<meta property="og:url" content="http://yoursite.com/coding/SASS学习记录.html">
+<meta property="og:site_name" content="wittyfans">
+<meta property="og:description" content="SASS算是对CSS的优化，想想我们写CSS的经历，每次访问嵌套结构比较深的元素，都要写很多重复的代码，SASS对CSS增加了类似编程语言中的变量、函数混合宏、流程控制、继承等功能，让CSS的使用效率大大提升，让你的代码更容易复用，编写效率更高。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-14T16:06:22.365Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SASS学习记录(更新中)">
+<meta name="twitter:description" content="SASS算是对CSS的优化，想想我们写CSS的经历，每次访问嵌套结构比较深的元素，都要写很多重复的代码，SASS对CSS增加了类似编程语言中的变量、函数混合宏、流程控制、继承等功能，让CSS的使用效率大大提升，让你的代码更容易复用，编写效率更高。">
     
-      SASS学习记录(更新中) | wittyfans
     
-  </title>
-  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/plugins/gitment.css">
-  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
-  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
-  <script src="/js/qrious.js"></script>
-<script src="/js/gitment.js"></script>
-  
-  
-    <!-- MathJax support START -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <!-- MathJax support END -->
-  
-
-
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>SASS学习记录(更新中)</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
 </head>
-<div class="wechat-share">
-  <img src="/css/images/logo.png" />
-</div>
 
-  <body>
-    <header class="header fixed-header">
-  <div class="header-container">
-    <a class="home-link" href="/">
-      <div class="logo"></div>
-      <span>wittyfans</span>
-    </a>
-    <ul class="right-list">
-      
-        <li class="list-item">
-          
-            <a href="/" class="item-link">Home</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/tags" class="item-link">Tags</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/project/" class="item-link">Projects</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/archives" class="item-link">Archives</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/about" class="item-link">About</a>
-          
-        </li>
-      
-    </ul>
-    <div class="menu">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </div>
-    <div class="menu-mask">
-      <ul class="menu-list">
-        
-          <li class="menu-item">
-            
-              <a href="/" class="menu-link">Home</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/tags" class="menu-link">Tags</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/project/" class="menu-link">Projects</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/archives" class="menu-link">Archives</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/about" class="menu-link">About</a>
-            
-          </li>
+<body class="max-width mx-auto px3">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="http://github.com/wittyfans">Projets</a></li>
         
       </ul>
-    </div>
-  </div>
-</header>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/coding/witty商城项目记录.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/coding/Linux常用命令.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Article précédent</span>
+      <span id="i-next" class="info" style="display:none;">Article suivant</span>
+      <span id="i-top" class="info" style="display:none;">Retour au début</span>
+      <span id="i-share" class="info" style="display:none;">Partager cette article</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/coding/SASS学习记录.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/coding/SASS学习记录.html&text=SASS学习记录(更新中)"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/coding/SASS学习记录.html&title=SASS学习记录(更新中)"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/coding/SASS学习记录.html&is_video=false&description=SASS学习记录(更新中)"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=SASS学习记录(更新中)&body=Check out this article: http://yoursite.com/coding/SASS学习记录.html"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/coding/SASS学习记录.html&title=SASS学习记录(更新中)"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/coding/SASS学习记录.html&title=SASS学习记录(更新中)"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/coding/SASS学习记录.html&title=SASS学习记录(更新中)"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/coding/SASS学习记录.html&title=SASS学习记录(更新中)"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/coding/SASS学习记录.html&name=SASS学习记录(更新中)&description=&lt;p&gt;SASS算是对CSS的优化，想想我们写CSS的经历，每次访问嵌套结构比较深的元素，都要写很多重复的代码，SASS对CSS增加了类似编程语言中的变量、&lt;strike&gt;函数&lt;/strike&gt;混合宏、流程控制、继承等功能，让CSS的使用效率大大提升，让你的代码更容易复用，编写效率更高。&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
 
-    <div id="article-banner">
-  <h2>SASS学习记录(更新中)</h2>
-  <p class="post-date">2017-07-20</p>
-  <div class="arrow-down">
-    <a href="javascript:;"></a>
-  </div>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#环境搭建"><span class="toc-number">1.</span> <span class="toc-text">环境搭建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SASS代码转化成CSS"><span class="toc-number">2.</span> <span class="toc-text">SASS代码转化成CSS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#定义变量"><span class="toc-number">3.</span> <span class="toc-text">定义变量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#嵌套处理"><span class="toc-number">4.</span> <span class="toc-text">嵌套处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数混合宏"><span class="toc-number">5.</span> <span class="toc-text">函数混合宏</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#继承"><span class="toc-number">6.</span> <span class="toc-text">继承</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#导入其他文件"><span class="toc-number">7.</span> <span class="toc-text">导入其他文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#父级引用"><span class="toc-number">8.</span> <span class="toc-text">父级引用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用List和-each"><span class="toc-number">9.</span> <span class="toc-text">使用List和@each</span></a></li></ol>
+    </div>
+  </span>
 </div>
-<main class="app-body flex-box">
-  <!-- Article START -->
-  <article class="post-article">
-    <section class="markdown-content"><p>SASS算是对CSS的优化，想想我们写CSS的经历，每次访问嵌套结构比较深的元素，都要写很多重复的代码，SASS对CSS增加了类似编程语言中的变量、<strike>函数</strike>混合宏、流程控制、继承等功能，让CSS的使用效率大大提升，让你的代码更容易复用，编写效率更高。</p>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        SASS学习记录(更新中)
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">wittyfans</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-07-20T07:24:05.000Z" itemprop="datePublished">2017-07-20</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/CSS/">CSS</a>, <a class="tag-link" href="/tags/前端/">前端</a>, <a class="tag-link" href="/tags/技术/">技术</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>SASS算是对CSS的优化，想想我们写CSS的经历，每次访问嵌套结构比较深的元素，都要写很多重复的代码，SASS对CSS增加了类似编程语言中的变量、<strike>函数</strike>混合宏、流程控制、继承等功能，让CSS的使用效率大大提升，让你的代码更容易复用，编写效率更高。</p>
 <a id="more"></a>
 <h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1><p>我的系统是Mac OS，系统已经安装了Ruby（SASS依赖Ruby环境），如果你使用的是 Windows， 就需要先安装 Ruby。可以参考<a href="http://sass.bootcss.com/docs/sass-reference/#han-shu" target="_blank" rel="noopener">SASS中文网</a>。你可以检查一下自己的系统是否预装了Ruby，打开终端，输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -v</span><br></pre></td></tr></table></figure></p>
 <p>即可。之后，我们需要利用Ruby的包管理工具gem来下载SASS，使用之前，同样可以用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem -v</span><br></pre></td></tr></table></figure></p>
@@ -182,230 +173,97 @@
 <li>$social 为新创建的对象，每次循环，它的值都会为icons这个List中的一个新值</li>
 <li>在CSS语句后面写变量，通常需要加{},例如.#{$social},这段后面的花括号则是设置CSS的背景图片</li>
 </ul>
-</section>
-    <!-- Tags START -->
-    
-      <div class="tags">
-        <span>Tags:</span>
-        
-  <a href="/tags#前端" >
-    <span class="tag-code">前端</span>
-  </a>
 
-  <a href="/tags#CSS" >
-    <span class="tag-code">CSS</span>
-  </a>
-
-  <a href="/tags#技术" >
-    <span class="tag-code">技术</span>
-  </a>
-
-      </div>
-    
-    <!-- Tags END -->
-    <!-- NAV START -->
-    
-  <div class="nav-container">
-    <!-- reverse left and right to put prev and next in a more logic postition -->
-    
-      <a class="nav-left" href="/coding/Linux常用命令.html">
-        <span class="nav-arrow">← </span>
-        
-          Linux常用命令
-        
-      </a>
-    
-    
-      <a class="nav-right" href="/coding/witty商城项目记录.html">
-        
-          witty商城项目记录(更新中)
-        
-        <span class="nav-arrow"> →</span>
-      </a>
-    
   </div>
+</article>
 
-    <!-- NAV END -->
-    <!-- 打赏 START -->
-    
-      <div class="money-like">
-        <div class="reward-btn">
-          赏
-          <span class="money-code">
-            <span class="alipay-code">
-              <div class="code-image"></div>
-              <b>使用支付宝打赏</b>
-            </span>
-            <span class="wechat-code">
-              <div class="code-image"></div>
-              <b>使用微信打赏</b>
-            </span>
-          </span>
-        </div>
-        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
-      </div>
-    
-    <!-- 打赏 END -->
-    <!-- 二维码 START -->
-    
-      <div class="qrcode">
-        <canvas id="share-qrcode"></canvas>
-        <p class="notice">扫描二维码，分享此文章</p>
-      </div>
-    
-    <!-- 二维码 END -->
-    
-      <!-- Gitment START -->
-      <div id="comments"></div>
-      <!-- Gitment END -->
-    
-  </article>
-  <!-- Article END -->
-  <!-- Catalog START -->
-  
-    <aside class="catalog-container">
-  <div class="toc-main">
-    <strong class="toc-title">Catalog</strong>
-    
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#环境搭建"><span class="toc-nav-text">环境搭建</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#SASS代码转化成CSS"><span class="toc-nav-text">SASS代码转化成CSS</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#定义变量"><span class="toc-nav-text">定义变量</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#嵌套处理"><span class="toc-nav-text">嵌套处理</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#函数混合宏"><span class="toc-nav-text">函数混合宏</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#继承"><span class="toc-nav-text">继承</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#导入其他文件"><span class="toc-nav-text">导入其他文件</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#父级引用"><span class="toc-nav-text">父级引用</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#使用List和-each"><span class="toc-nav-text">使用List和@each</span></a></li></ol>
-    
-  </div>
-</aside>
-  
-  <!-- Catalog END -->
-</main>
 
-<script>
-  (function () {
-    var url = 'http://yoursite.com/coding/SASS学习记录.html';
-    var banner = ''
-    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
-      $('#article-banner').css({
-        'background-image': 'url(' + banner + ')'
-      })
-    } else {
-      $('#article-banner').geopattern(url)
-    }
-    $('.header').removeClass('fixed-header')
 
-     // error image
-    $(".markdown-content img").on('error', function() {
-      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
-      $(this).css({
-        'cursor': 'default'
-      })
-    })
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
 
-    // zoom image
-    $(".markdown-content img").on('click', function() {
-      var src = $(this).attr('src')
-      if (src !== 'http://file.muyutech.com/error-img.png') {
-        var imageW = $(this).width()
-        var imageH = $(this).height()
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="http://github.com/wittyfans">Projets</a></li>
         
-        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
-        zoom = zoom < 1 ? 1 : zoom
-        zoom = zoom > 2 ? 2 : zoom
-        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+      </ul>
+    </div>
 
-        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
-        $('.image-view-wrap').addClass('wrap-active')
-        $('.image-view-wrap img').css({
-          'width': `${imageW}`,
-          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
-        })
-        $('html').css('overflow', 'hidden')
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#环境搭建"><span class="toc-number">1.</span> <span class="toc-text">环境搭建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SASS代码转化成CSS"><span class="toc-number">2.</span> <span class="toc-text">SASS代码转化成CSS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#定义变量"><span class="toc-number">3.</span> <span class="toc-text">定义变量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#嵌套处理"><span class="toc-number">4.</span> <span class="toc-text">嵌套处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#函数混合宏"><span class="toc-number">5.</span> <span class="toc-text">函数混合宏</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#继承"><span class="toc-number">6.</span> <span class="toc-text">继承</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#导入其他文件"><span class="toc-number">7.</span> <span class="toc-text">导入其他文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#父级引用"><span class="toc-number">8.</span> <span class="toc-text">父级引用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用List和-each"><span class="toc-number">9.</span> <span class="toc-text">使用List和@each</span></a></li></ol>
+    </div>
 
-        $('.image-view-wrap').on('click', function() {
-          $(this).remove()
-          $('html').attr('style', '')
-        })
-      }
-    })
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/coding/SASS学习记录.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/coding/SASS学习记录.html&text=SASS学习记录(更新中)"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/coding/SASS学习记录.html&title=SASS学习记录(更新中)"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/coding/SASS学习记录.html&is_video=false&description=SASS学习记录(更新中)"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=SASS学习记录(更新中)&body=Check out this article: http://yoursite.com/coding/SASS学习记录.html"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/coding/SASS学习记录.html&title=SASS学习记录(更新中)"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/coding/SASS学习记录.html&title=SASS学习记录(更新中)"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/coding/SASS学习记录.html&title=SASS学习记录(更新中)"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/coding/SASS学习记录.html&title=SASS学习记录(更新中)"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/coding/SASS学习记录.html&name=SASS学习记录(更新中)&description=&lt;p&gt;SASS算是对CSS的优化，想想我们写CSS的经历，每次访问嵌套结构比较深的元素，都要写很多重复的代码，SASS对CSS增加了类似编程语言中的变量、&lt;strike&gt;函数&lt;/strike&gt;混合宏、流程控制、继承等功能，让CSS的使用效率大大提升，让你的代码更容易复用，编写效率更高。&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
 
-    // qrcode
-    var qr = new QRious({
-      element: document.getElementById('share-qrcode'),
-      value: document.location.href
-    });
+    </div>
 
-    // gitment
-    var gitmentConfig = "wittyfans";
-    if (gitmentConfig !== 'undefined') {
-      var gitment = new Gitment({
-        id: "SASS学习记录(更新中)",
-        owner: "wittyfans",
-        repo: "wittyfans.github.io",
-        oauth: {
-          client_id: "fa8c091699aba6227fd0",
-          client_secret: "41251be2938c78d5b3b987e17dc8a9936baec5f5f"
-        },
-        theme: {
-          render(state, instance) {
-            const container = document.createElement('div')
-            container.lang = "en-US"
-            container.className = 'gitment-container gitment-root-container'
-            container.appendChild(instance.renderHeader(state, instance))
-            container.appendChild(instance.renderEditor(state, instance))
-            container.appendChild(instance.renderComments(state, instance))
-            container.appendChild(instance.renderFooter(state, instance))
-            return container;
-          }
-        }
-      })
-      gitment.render(document.getElementById('comments'))
-    }
-  })();
-</script>
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> Table des matière</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Partager</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Début</a>
+    </div>
 
-    <div class="scroll-top">
-  <span class="arrow-icon"></span>
+  </div>
 </div>
-    <footer class="app-footer">
-  <p class="copyright">
-    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
-    <br>
-    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
-  </p>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 wittyfans
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="http://github.com/wittyfans">Projets</a></li>
+        
+      </ul>
+    </nav>
+  </div>
 </footer>
 
-<script>
-  function async(u, c) {
-    var d = document, t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0];
-    o.src = u;
-    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-    s.parentNode.insertBefore(o, s);
-  }
-</script>
-<script>
-  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
-    FastClick.attach(document.body);
-  })
-</script>
-
-<script>
-  var hasLine = 'true';
-  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
-    $('figure pre').each(function(i, block) {
-      var figure = $(this).parents('figure');
-      if (hasLine === 'false') {
-        figure.find('.gutter').hide();
-      }
-      var lang = figure.attr('class').split(' ')[1] || 'code';
-      var codeHtml = $(this).html();
-      var codeTag = document.createElement('code');
-      codeTag.className = lang;
-      codeTag.innerHTML = codeHtml;
-      $(this).attr('class', '').empty().html(codeTag);
-      figure.attr('data-lang', lang.toUpperCase());
-      hljs.highlightBlock(block);
-    });
-  })
-</script>
-<!-- Baidu Tongji -->
-
-<script src="/js/script.js"></script>
-  </body>
+</body>
 </html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+

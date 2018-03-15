@@ -1,492 +1,151 @@
 <!DOCTYPE html>
-<html>
-  <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-  <meta name="description" content="wittyfans 阅读 哲学 学习 Python BigData PowerShell">
-  <meta name="keyword" content="wittyfans, 读书笔记, PowerShell, Python, 大数据, 哲学, Hadoop, bigdata">
-  
-    <link rel="shortcut icon" type="image/ico" href="/favicon.jpg"/> 
-  
-  <title>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="wittyfans 阅读 哲学 学习 Python BigData PowerShell">
+<meta property="og:type" content="website">
+<meta property="og:title" content="wittyfans">
+<meta property="og:url" content="http://yoursite.com/tags/小技巧/index.html">
+<meta property="og:site_name" content="wittyfans">
+<meta property="og:description" content="wittyfans 阅读 哲学 学习 Python BigData PowerShell">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="wittyfans">
+<meta name="twitter:description" content="wittyfans 阅读 哲学 学习 Python BigData PowerShell">
     
-      wittyfans
     
-  </title>
-  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/plugins/gitment.css">
-  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
-  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
-  <script src="/js/qrious.js"></script>
-<script src="/js/gitment.js"></script>
-  
-  
-    <!-- MathJax support START -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <!-- MathJax support END -->
-  
-
-
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>wittyfans</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
 </head>
-<div class="wechat-share">
-  <img src="/css/images/logo.png" />
-</div>
 
-  <body>
-    <header class="header fixed-header">
-  <div class="header-container">
-    <a class="home-link" href="/">
-      <div class="logo"></div>
-      <span>wittyfans</span>
-    </a>
-    <ul class="right-list">
-      
-        <li class="list-item">
-          
-            <a href="/" class="item-link">Home</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/tags" class="item-link">Tags</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/project/" class="item-link">Projects</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/archives" class="item-link">Archives</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/about" class="item-link">About</a>
-          
-        </li>
+<body class="max-width mx-auto px3">
+    
+    <div class="content index my4">
+        
+          <header id="header">
+  <a href="/">
+  
+    
+      <div id="logo" style="background-image: url(/images/logo.png);"></div>
+    
+  
+    <div id="title">
+      <h1>wittyfans</h1>
+    </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#"><i class="fas fa-bars fa-2x"></i></a>
+      </li>
+       
+        <li><a href="/">Home</a></li>
+       
+        <li><a href="/about/">About</a></li>
+       
+        <li><a href="/archives/">Articles</a></li>
+       
+        <li><a href="http://github.com/wittyfans">Projets</a></li>
       
     </ul>
-    <div class="menu">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </div>
-    <div class="menu-mask">
-      <ul class="menu-list">
-        
-          <li class="menu-item">
-            
-              <a href="/" class="menu-link">Home</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/tags" class="menu-link">Tags</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/project/" class="menu-link">Projects</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/archives" class="menu-link">Archives</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/about" class="menu-link">About</a>
-            
-          </li>
-        
-      </ul>
-    </div>
   </div>
 </header>
 
-    <div id="article-banner">
-  <h2>Archives</h2>
-  <p class="post-date">文章归档</p>
-</div>
-<main class="app-body" id="archives">
-  
-  
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2017
-  </h1>
-  <div class="section-list">
+        
+        <div id="archive">
+  <ul class="post-list">
     
     
-      <div class="section-list-item">
-        <a href="/reading/爱默生文集摘录一.html" class="archive-title">爱默生文集摘录一</a>
-        <p class="archive-date">11-18</p>
-      </div>
     
-      <div class="section-list-item">
-        <a href="/coding/玩转PowerShell.html" class="archive-title">玩转PowerShell</a>
-        <p class="archive-date">11-14</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/writing/翻译《你身边的人比你更能管束你自己》.html" class="archive-title">翻译计划01《你身边的人比你更能约束你自己》——Medium精选</a>
-        <p class="archive-date">11-14</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/uncategorized/POWER.html" class="archive-title">POWER</a>
-        <p class="archive-date">11-10</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/reading/爱默生谈读书.html" class="archive-title">爱默生谈读书</a>
-        <p class="archive-date">11-10</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/reading/爱默生谈财富.html" class="archive-title">爱默生谈财富</a>
-        <p class="archive-date">11-09</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/coding/Angualar-Note.html" class="archive-title">Angualar-Note</a>
-        <p class="archive-date">08-25</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/coding/witty商城项目记录.html" class="archive-title">witty商城项目记录(更新中)</a>
-        <p class="archive-date">08-16</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/coding/SASS学习记录.html" class="archive-title">SASS学习记录(更新中)</a>
-        <p class="archive-date">07-20</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/coding/Linux常用命令.html" class="archive-title">Linux常用命令</a>
-        <p class="archive-date">07-13</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/coding/使用SCP命令在远程VPS和本地之间进行文件传输.html" class="archive-title">使用SCP命令在远程VPS和本地之间进行文件传输</a>
-        <p class="archive-date">07-13</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/coding/Screen指南.html" class="archive-title">Screen指南</a>
-        <p class="archive-date">07-13</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/coding/主机名由localhost变成bogon的解决办法.html" class="archive-title">主机名由localhost变成bogon的解决办法</a>
-        <p class="archive-date">07-13</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/coding/正则表达式学习.html" class="archive-title">正则表达式学习</a>
-        <p class="archive-date">07-13</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/coding/个人整理2017前端学习路线与资料.html" class="archive-title">个人整理2017前端学习路线与资料</a>
-        <p class="archive-date">06-07</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/writing/每个人都应该具备的技能：讲故事.html" class="archive-title">每个人都应该具备的技能：讲故事</a>
-        <p class="archive-date">05-29</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/writing/Reading-《演讲改变了我的人生，也能改变你的》.html" class="archive-title">Reading:《演讲改变了我的人生，也能改变你的》</a>
-        <p class="archive-date">05-28</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/coding/产品经理的数字工具们.html" class="archive-title">产品经理的数字工具们 👨🏻‍💻</a>
-        <p class="archive-date">05-28</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/coding/产品经理的五种工具.html" class="archive-title">产品经理的五种工具 🔨</a>
-        <p class="archive-date">05-27</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/reading/《失控：机器、社会系统与经济世界的新生物学》读书笔记.html" class="archive-title">《失控：机器、社会系统与经济世界的新生物学》读书笔记（更新中）</a>
-        <p class="archive-date">05-24</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/coding/JavaScript学习笔记——函数与对象.html" class="archive-title">JavaScript学习笔记——函数与对象</a>
-        <p class="archive-date">05-22</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/coding/JavaScript学习笔记——错误集.html" class="archive-title">JavaScript学习笔记——错误集</a>
-        <p class="archive-date">05-22</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/coding/JavaScript学习笔记——实战.html" class="archive-title">JavaScript学习笔记——实战</a>
-        <p class="archive-date">05-22</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/coding/整理最全PS-photoshop菜单中英文对照表.html" class="archive-title">整理最全PS/photoshop菜单中英文对照表</a>
-        <p class="archive-date">05-22</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/writing/爱好.html" class="archive-title">爱与好</a>
-        <p class="archive-date">04-27</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/reading/傅雷家书-已完结.html" class="archive-title">傅雷家书(已完结）</a>
-        <p class="archive-date">04-24</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/coding/一步一步用WordPress建站-持续更新.html" class="archive-title">一步一步用WordPress建站(持续更新)</a>
-        <p class="archive-date">04-24</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/coding/JavaScript学习笔记.html" class="archive-title">JavaScript学习笔记——语法快速概览与数组</a>
-        <p class="archive-date">04-24</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/writing/《速度与激情8》影评.html" class="archive-title">《速度与激情8》影评</a>
-        <p class="archive-date">04-16</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/writing/手机正在吞噬整个世界.html" class="archive-title">手机正在吞噬整个世界</a>
-        <p class="archive-date">04-05</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/writing/昨日是非不可留，留之则根在复萌.html" class="archive-title">昨日是非不可留，留之则根在复萌</a>
-        <p class="archive-date">04-03</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/uncategorized/幸福、刺激意欲或是友善待人待物.html" class="archive-title">幸福、刺激意欲或是友善待人待物</a>
-        <p class="archive-date">04-02</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/为人/历烈火锻人品、履薄冰成事功.html" class="archive-title">历烈火锻人品、履薄冰成事功</a>
-        <p class="archive-date">03-29</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/写作/初见胡雪岩.html" class="archive-title">初见胡雪岩</a>
-        <p class="archive-date">03-22</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/coding/你想做产品经理吗？.html" class="archive-title">你想做产品经理吗？</a>
-        <p class="archive-date">02-28</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/writing/谈判的艺术.html" class="archive-title">谈判的艺术</a>
-        <p class="archive-date">02-10</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/uncategorized/Learning-Introduce-to-Public-speaking-Week4.html" class="archive-title">Learning Introduce to Public speaking(Week4)</a>
-        <p class="archive-date">02-08</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/writing/Work-Smarter-Not-Harder.html" class="archive-title">Work Smarter Not Harder</a>
-        <p class="archive-date">02-01</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/uncategorized/Communication-in-the-21st-Century-Workplace.html" class="archive-title">Communication in the 21st Century Workplace</a>
-        <p class="archive-date">02-01</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/writing/项目管理：成功的基础-Week1.html" class="archive-title">项目管理：成功的基础</a>
-        <p class="archive-date">02-01</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/演讲/Learning-Introduce-to-Public-speaking-week3.html" class="archive-title">Learning Introduce to Public speaking （week3）</a>
-        <p class="archive-date">01-28</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/演讲/Learning-Introduce-to-Public-speaking-Week2.html" class="archive-title">Learning Introduce to Public speaking(Week2)</a>
-        <p class="archive-date">01-25</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/writing/《赴汤蹈火》影评.html" class="archive-title">《赴汤蹈火》影评</a>
-        <p class="archive-date">01-13</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/演讲/Learning-Introduction-to-Public-Speaking-Week1.html" class="archive-title">Learning Introduction to Public Speaking (Week1)</a>
-        <p class="archive-date">01-12</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/writing/《信用卡的正确打开方式》.html" class="archive-title">信用卡的正确打开方式</a>
-        <p class="archive-date">01-11</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/writing/《7号房的礼物》影评.html" class="archive-title">《7号房的礼物》影评</a>
-        <p class="archive-date">01-08</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/reading/《曾国藩家书》箴言摘录.html" class="archive-title">《曾国藩家书》箴言摘录</a>
-        <p class="archive-date">01-07</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/writing/《一个叫欧维的男人决定去死》影评.html" class="archive-title">《一个叫欧维的男人决定去死》影评</a>
-        <p class="archive-date">01-06</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/影评/《完美陌生人》影评.html" class="archive-title">《完美陌生人》影评</a>
-        <p class="archive-date">01-04</p>
-      </div>
-    
-  </div>
-</section>
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2016
-  </h1>
-  <div class="section-list">
-    
-    
-      <div class="section-list-item">
-        <a href="/writing/怎么利用研究报告熟悉公司与市场.html" class="archive-title">怎么利用研究报告熟悉公司与市场</a>
-        <p class="archive-date">12-16</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/阅读/优秀的阅读习惯受益终身.html" class="archive-title">懂得阅读方法的人，文学品味都很高</a>
-        <p class="archive-date">12-15</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/uncategorized/About-wittyfans.html" class="archive-title">About wittyfans</a>
-        <p class="archive-date">12-14</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/uncategorized/建站相关资料.html" class="archive-title">建站相关资料</a>
-        <p class="archive-date">12-14</p>
-      </div>
-    
-  </div>
-</section>
-  
-</main>
+      
+      
+      
+      
+        <h2>2016</h2>
+      
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2016-12-16T15:44:49.000Z" itemprop="datePublished">2016-12-16</time>
+    </div>
 
-<script>
-  (function () {
-    var url = 'http://yoursite.com/tags/小技巧/index.html';
-    $('#article-banner').geopattern(url);
-    $('.header').removeClass('fixed-header');
-  })();
-</script>
-    <div class="scroll-top">
-  <span class="arrow-icon"></span>
+
+        <span>
+    
+        <a class="" href="/writing/怎么利用研究报告熟悉公司与市场.html">怎么利用研究报告熟悉公司与市场</a>
+    
+
+
+</span>
+      </li>
+    
+  </ul>
+  
+
 </div>
-    <footer class="app-footer">
-  <p class="copyright">
-    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
-    <br>
-    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
-  </p>
+
+    </div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 wittyfans
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="http://github.com/wittyfans">Projets</a></li>
+        
+      </ul>
+    </nav>
+  </div>
 </footer>
 
-<script>
-  function async(u, c) {
-    var d = document, t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0];
-    o.src = u;
-    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-    s.parentNode.insertBefore(o, s);
-  }
-</script>
-<script>
-  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
-    FastClick.attach(document.body);
-  })
-</script>
-
-<script>
-  var hasLine = 'true';
-  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
-    $('figure pre').each(function(i, block) {
-      var figure = $(this).parents('figure');
-      if (hasLine === 'false') {
-        figure.find('.gutter').hide();
-      }
-      var lang = figure.attr('class').split(' ')[1] || 'code';
-      var codeHtml = $(this).html();
-      var codeTag = document.createElement('code');
-      codeTag.className = lang;
-      codeTag.innerHTML = codeHtml;
-      $(this).attr('class', '').empty().html(codeTag);
-      figure.attr('data-lang', lang.toUpperCase());
-      hljs.highlightBlock(block);
-    });
-  })
-</script>
-<!-- Baidu Tongji -->
-
-<script src="/js/script.js"></script>
-  </body>
+</body>
 </html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+

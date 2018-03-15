@@ -1,153 +1,144 @@
 <!DOCTYPE html>
-<html>
-  <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-  <meta name="description" content="wittyfans 阅读 哲学 学习 Python BigData PowerShell">
-  <meta name="keyword" content="wittyfans, 读书笔记, PowerShell, Python, 大数据, 哲学, Hadoop, bigdata">
-  
-    <link rel="shortcut icon" type="image/ico" href="/favicon.jpg"/> 
-  
-  <title>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="包含了Linux常用的命令">
+<meta name="keywords" content="前端,系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux常用命令">
+<meta property="og:url" content="http://yoursite.com/coding/Linux常用命令.html">
+<meta property="og:site_name" content="wittyfans">
+<meta property="og:description" content="包含了Linux常用的命令">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-14T16:06:15.951Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux常用命令">
+<meta name="twitter:description" content="包含了Linux常用的命令">
     
-      Linux常用命令 | wittyfans
     
-  </title>
-  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/plugins/gitment.css">
-  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
-  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
-  <script src="/js/qrious.js"></script>
-<script src="/js/gitment.js"></script>
-  
-  
-    <!-- MathJax support START -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <!-- MathJax support END -->
-  
-
-
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Linux常用命令</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
 </head>
-<div class="wechat-share">
-  <img src="/css/images/logo.png" />
-</div>
 
-  <body>
-    <header class="header fixed-header">
-  <div class="header-container">
-    <a class="home-link" href="/">
-      <div class="logo"></div>
-      <span>wittyfans</span>
-    </a>
-    <ul class="right-list">
-      
-        <li class="list-item">
-          
-            <a href="/" class="item-link">Home</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/tags" class="item-link">Tags</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/project/" class="item-link">Projects</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/archives" class="item-link">Archives</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/about" class="item-link">About</a>
-          
-        </li>
-      
-    </ul>
-    <div class="menu">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </div>
-    <div class="menu-mask">
-      <ul class="menu-list">
-        
-          <li class="menu-item">
-            
-              <a href="/" class="menu-link">Home</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/tags" class="menu-link">Tags</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/project/" class="menu-link">Projects</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/archives" class="menu-link">Archives</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/about" class="menu-link">About</a>
-            
-          </li>
+<body class="max-width mx-auto px3">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="http://github.com/wittyfans">Projets</a></li>
         
       </ul>
-    </div>
-  </div>
-</header>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/coding/SASS学习记录.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/coding/使用SCP命令在远程VPS和本地之间进行文件传输.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Article précédent</span>
+      <span id="i-next" class="info" style="display:none;">Article suivant</span>
+      <span id="i-top" class="info" style="display:none;">Retour au début</span>
+      <span id="i-share" class="info" style="display:none;">Partager cette article</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/coding/Linux常用命令.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/coding/Linux常用命令.html&text=Linux常用命令"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/coding/Linux常用命令.html&title=Linux常用命令"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/coding/Linux常用命令.html&is_video=false&description=Linux常用命令"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Linux常用命令&body=Check out this article: http://yoursite.com/coding/Linux常用命令.html"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/coding/Linux常用命令.html&title=Linux常用命令"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/coding/Linux常用命令.html&title=Linux常用命令"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/coding/Linux常用命令.html&title=Linux常用命令"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/coding/Linux常用命令.html&title=Linux常用命令"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/coding/Linux常用命令.html&name=Linux常用命令&description=&lt;p&gt;包含了Linux常用的命令&lt;br&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
 
-    <div id="article-banner">
-  <h2>Linux常用命令</h2>
-  <p class="post-date">2017-07-13</p>
-  <div class="arrow-down">
-    <a href="javascript:;"></a>
-  </div>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#服务器连接与配置"><span class="toc-number">1.</span> <span class="toc-text">服务器连接与配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#修改alias（别名），简化命令操作"><span class="toc-number">1.1.</span> <span class="toc-text">修改alias（别名），简化命令操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改ssh配置，简化ssh命令"><span class="toc-number">1.2.</span> <span class="toc-text">修改ssh配置，简化ssh命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mac使用秘钥无密码登陆"><span class="toc-number">1.3.</span> <span class="toc-text">Mac使用秘钥无密码登陆</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#系统信息"><span class="toc-number">2.</span> <span class="toc-text">系统信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
+    </div>
+  </span>
 </div>
-<main class="app-body flex-box">
-  <!-- Article START -->
-  <article class="post-article">
-    <section class="markdown-content"><p>包含了Linux常用的命令<br><a id="more"></a></p>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Linux常用命令
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">wittyfans</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-07-13T12:24:21.000Z" itemprop="datePublished">2017-07-13</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/前端/">前端</a>, <a class="tag-link" href="/tags/系统/">系统</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>包含了Linux常用的命令<br><a id="more"></a></p>
 <h1 id="服务器连接与配置"><a href="#服务器连接与配置" class="headerlink" title="服务器连接与配置"></a>服务器连接与配置</h1><h2 id="修改alias（别名），简化命令操作"><a href="#修改alias（别名），简化命令操作" class="headerlink" title="修改alias（别名），简化命令操作"></a>修改alias（别名），简化命令操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.bash_profile</span><br><span class="line">alias testhost=&apos;ssh root@8.8.8.8 -p 22&apos;</span><br></pre></td></tr></table></figure>
 <h2 id="修改ssh配置，简化ssh命令"><a href="#修改ssh配置，简化ssh命令" class="headerlink" title="修改ssh配置，简化ssh命令"></a>修改ssh配置，简化ssh命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.ssh/config</span><br><span class="line">#输入：</span><br><span class="line"></span><br><span class="line">Host testhost</span><br><span class="line">  HostName 8.8.8.8</span><br><span class="line">  Port 2222</span><br><span class="line">  User foo</span><br><span class="line"></span><br><span class="line">#保存后，可使用 ssh testhost 登陆服务器</span><br></pre></td></tr></table></figure>
 <h2 id="Mac使用秘钥无密码登陆"><a href="#Mac使用秘钥无密码登陆" class="headerlink" title="Mac使用秘钥无密码登陆"></a>Mac使用秘钥无密码登陆</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#生成本地秘钥，一路回车即可</span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line">#上传生成的秘钥到服务器</span><br><span class="line">scp ~/.ssh/id_rsa.pub testhost:~/.ssh/</span><br><span class="line">#使用以下命令将 id_rsa.pub 更名为 authorized_keys</span><br><span class="line">mv id_rsa.pub authorized_keys</span><br><span class="line">#修改权限</span><br><span class="line">chmod 700 ~/.ssh/</span><br><span class="line">chmod 600 ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
@@ -163,226 +154,97 @@
 </ul>
 <hr>
 <p>持续更新</p>
-</section>
-    <!-- Tags START -->
-    
-      <div class="tags">
-        <span>Tags:</span>
-        
-  <a href="/tags#前端" >
-    <span class="tag-code">前端</span>
-  </a>
 
-  <a href="/tags#系统" >
-    <span class="tag-code">系统</span>
-  </a>
-
-      </div>
-    
-    <!-- Tags END -->
-    <!-- NAV START -->
-    
-  <div class="nav-container">
-    <!-- reverse left and right to put prev and next in a more logic postition -->
-    
-      <a class="nav-left" href="/coding/使用SCP命令在远程VPS和本地之间进行文件传输.html">
-        <span class="nav-arrow">← </span>
-        
-          使用SCP命令在远程VPS和本地之间进行文件传输
-        
-      </a>
-    
-    
-      <a class="nav-right" href="/coding/SASS学习记录.html">
-        
-          SASS学习记录(更新中)
-        
-        <span class="nav-arrow"> →</span>
-      </a>
-    
   </div>
+</article>
 
-    <!-- NAV END -->
-    <!-- 打赏 START -->
-    
-      <div class="money-like">
-        <div class="reward-btn">
-          赏
-          <span class="money-code">
-            <span class="alipay-code">
-              <div class="code-image"></div>
-              <b>使用支付宝打赏</b>
-            </span>
-            <span class="wechat-code">
-              <div class="code-image"></div>
-              <b>使用微信打赏</b>
-            </span>
-          </span>
-        </div>
-        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
-      </div>
-    
-    <!-- 打赏 END -->
-    <!-- 二维码 START -->
-    
-      <div class="qrcode">
-        <canvas id="share-qrcode"></canvas>
-        <p class="notice">扫描二维码，分享此文章</p>
-      </div>
-    
-    <!-- 二维码 END -->
-    
-      <!-- Gitment START -->
-      <div id="comments"></div>
-      <!-- Gitment END -->
-    
-  </article>
-  <!-- Article END -->
-  <!-- Catalog START -->
-  
-    <aside class="catalog-container">
-  <div class="toc-main">
-    <strong class="toc-title">Catalog</strong>
-    
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#服务器连接与配置"><span class="toc-nav-text">服务器连接与配置</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#修改alias（别名），简化命令操作"><span class="toc-nav-text">修改alias（别名），简化命令操作</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#修改ssh配置，简化ssh命令"><span class="toc-nav-text">修改ssh配置，简化ssh命令</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Mac使用秘钥无密码登陆"><span class="toc-nav-text">Mac使用秘钥无密码登陆</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#系统信息"><span class="toc-nav-text">系统信息</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#参考"><span class="toc-nav-text">参考</span></a></li></ol>
-    
-  </div>
-</aside>
-  
-  <!-- Catalog END -->
-</main>
 
-<script>
-  (function () {
-    var url = 'http://yoursite.com/coding/Linux常用命令.html';
-    var banner = ''
-    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
-      $('#article-banner').css({
-        'background-image': 'url(' + banner + ')'
-      })
-    } else {
-      $('#article-banner').geopattern(url)
-    }
-    $('.header').removeClass('fixed-header')
 
-     // error image
-    $(".markdown-content img").on('error', function() {
-      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
-      $(this).css({
-        'cursor': 'default'
-      })
-    })
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
 
-    // zoom image
-    $(".markdown-content img").on('click', function() {
-      var src = $(this).attr('src')
-      if (src !== 'http://file.muyutech.com/error-img.png') {
-        var imageW = $(this).width()
-        var imageH = $(this).height()
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="http://github.com/wittyfans">Projets</a></li>
         
-        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
-        zoom = zoom < 1 ? 1 : zoom
-        zoom = zoom > 2 ? 2 : zoom
-        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+      </ul>
+    </div>
 
-        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
-        $('.image-view-wrap').addClass('wrap-active')
-        $('.image-view-wrap img').css({
-          'width': `${imageW}`,
-          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
-        })
-        $('html').css('overflow', 'hidden')
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#服务器连接与配置"><span class="toc-number">1.</span> <span class="toc-text">服务器连接与配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#修改alias（别名），简化命令操作"><span class="toc-number">1.1.</span> <span class="toc-text">修改alias（别名），简化命令操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改ssh配置，简化ssh命令"><span class="toc-number">1.2.</span> <span class="toc-text">修改ssh配置，简化ssh命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mac使用秘钥无密码登陆"><span class="toc-number">1.3.</span> <span class="toc-text">Mac使用秘钥无密码登陆</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#系统信息"><span class="toc-number">2.</span> <span class="toc-text">系统信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">3.</span> <span class="toc-text">参考</span></a></li></ol>
+    </div>
 
-        $('.image-view-wrap').on('click', function() {
-          $(this).remove()
-          $('html').attr('style', '')
-        })
-      }
-    })
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/coding/Linux常用命令.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/coding/Linux常用命令.html&text=Linux常用命令"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/coding/Linux常用命令.html&title=Linux常用命令"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/coding/Linux常用命令.html&is_video=false&description=Linux常用命令"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Linux常用命令&body=Check out this article: http://yoursite.com/coding/Linux常用命令.html"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/coding/Linux常用命令.html&title=Linux常用命令"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/coding/Linux常用命令.html&title=Linux常用命令"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/coding/Linux常用命令.html&title=Linux常用命令"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/coding/Linux常用命令.html&title=Linux常用命令"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/coding/Linux常用命令.html&name=Linux常用命令&description=&lt;p&gt;包含了Linux常用的命令&lt;br&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
 
-    // qrcode
-    var qr = new QRious({
-      element: document.getElementById('share-qrcode'),
-      value: document.location.href
-    });
+    </div>
 
-    // gitment
-    var gitmentConfig = "wittyfans";
-    if (gitmentConfig !== 'undefined') {
-      var gitment = new Gitment({
-        id: "Linux常用命令",
-        owner: "wittyfans",
-        repo: "wittyfans.github.io",
-        oauth: {
-          client_id: "fa8c091699aba6227fd0",
-          client_secret: "41251be2938c78d5b3b987e17dc8a9936baec5f5f"
-        },
-        theme: {
-          render(state, instance) {
-            const container = document.createElement('div')
-            container.lang = "en-US"
-            container.className = 'gitment-container gitment-root-container'
-            container.appendChild(instance.renderHeader(state, instance))
-            container.appendChild(instance.renderEditor(state, instance))
-            container.appendChild(instance.renderComments(state, instance))
-            container.appendChild(instance.renderFooter(state, instance))
-            return container;
-          }
-        }
-      })
-      gitment.render(document.getElementById('comments'))
-    }
-  })();
-</script>
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> Table des matière</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Partager</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Début</a>
+    </div>
 
-    <div class="scroll-top">
-  <span class="arrow-icon"></span>
+  </div>
 </div>
-    <footer class="app-footer">
-  <p class="copyright">
-    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
-    <br>
-    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
-  </p>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 wittyfans
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="http://github.com/wittyfans">Projets</a></li>
+        
+      </ul>
+    </nav>
+  </div>
 </footer>
 
-<script>
-  function async(u, c) {
-    var d = document, t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0];
-    o.src = u;
-    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-    s.parentNode.insertBefore(o, s);
-  }
-</script>
-<script>
-  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
-    FastClick.attach(document.body);
-  })
-</script>
-
-<script>
-  var hasLine = 'true';
-  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
-    $('figure pre').each(function(i, block) {
-      var figure = $(this).parents('figure');
-      if (hasLine === 'false') {
-        figure.find('.gutter').hide();
-      }
-      var lang = figure.attr('class').split(' ')[1] || 'code';
-      var codeHtml = $(this).html();
-      var codeTag = document.createElement('code');
-      codeTag.className = lang;
-      codeTag.innerHTML = codeHtml;
-      $(this).attr('class', '').empty().html(codeTag);
-      figure.attr('data-lang', lang.toUpperCase());
-      hljs.highlightBlock(block);
-    });
-  })
-</script>
-<!-- Baidu Tongji -->
-
-<script src="/js/script.js"></script>
-  </body>
+</body>
 </html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+

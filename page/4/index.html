@@ -1,580 +1,507 @@
 <!DOCTYPE html>
-<html>
-  <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-  <meta name="description" content="wittyfans 阅读 哲学 学习 Python BigData PowerShell">
-  <meta name="keyword" content="wittyfans, 读书笔记, PowerShell, Python, 大数据, 哲学, Hadoop, bigdata">
-  
-    <link rel="shortcut icon" type="image/ico" href="/favicon.jpg"/> 
-  
-  <title>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="wittyfans 阅读 哲学 学习 Python BigData PowerShell">
+<meta property="og:type" content="website">
+<meta property="og:title" content="wittyfans">
+<meta property="og:url" content="http://yoursite.com/page/4/index.html">
+<meta property="og:site_name" content="wittyfans">
+<meta property="og:description" content="wittyfans 阅读 哲学 学习 Python BigData PowerShell">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="wittyfans">
+<meta name="twitter:description" content="wittyfans 阅读 哲学 学习 Python BigData PowerShell">
     
-      wittyfans
     
-  </title>
-  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/plugins/gitment.css">
-  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
-  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
-  <script src="/js/qrious.js"></script>
-<script src="/js/gitment.js"></script>
-  
-  
-    <!-- MathJax support START -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <!-- MathJax support END -->
-  
-
-
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>wittyfans</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
 </head>
-<div class="wechat-share">
-  <img src="/css/images/logo.png" />
-</div>
 
-  <body>
-    <header class="header fixed-header">
-  <div class="header-container">
-    <a class="home-link" href="/">
-      <div class="logo"></div>
-      <span>wittyfans</span>
-    </a>
-    <ul class="right-list">
-      
-        <li class="list-item">
-          
-            <a href="/" class="item-link active">Home</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/tags" class="item-link">Tags</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/project/" class="item-link">Projects</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/archives" class="item-link">Archives</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/about" class="item-link">About</a>
-          
-        </li>
+<body class="max-width mx-auto px3">
+    
+    <div class="content index my4">
+        
+          <header id="header">
+  <a href="/">
+  
+    
+      <div id="logo" style="background-image: url(/images/logo.png);"></div>
+    
+  
+    <div id="title">
+      <h1>wittyfans</h1>
+    </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#"><i class="fas fa-bars fa-2x"></i></a>
+      </li>
+       
+        <li><a href="/">Home</a></li>
+       
+        <li><a href="/about/">About</a></li>
+       
+        <li><a href="/archives/">Articles</a></li>
+       
+        <li><a href="http://github.com/wittyfans">Projets</a></li>
       
     </ul>
-    <div class="menu">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </div>
-    <div class="menu-mask">
-      <ul class="menu-list">
-        
-          <li class="menu-item">
-            
-              <a href="/" class="menu-link mobile-active">Home</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/tags" class="menu-link">Tags</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/project/" class="menu-link">Projects</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/archives" class="menu-link">Archives</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/about" class="menu-link">About</a>
-            
-          </li>
-        
-      </ul>
-    </div>
   </div>
 </header>
 
-    <main class="app-body">
+        
+        <section id="about">
   
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/writing/昨日是非不可留，留之则根在复萌.html">昨日是非不可留，留之则根在复萌</a>
-      </h2>
-      <p class="article-date">April 3, 2017</p>
-      
-        
-  <a href="/tags#人生" >
-    <span class="tag-code">人生</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          <p>人都会犯错，犯错不可避免，犯错的价值在于能从中学习到教训，所以也有很多人热衷于去寻找试错的机会，但如果不懂如何吸取教训，犯错也仅仅是犯错而已。<br>
-        
-      </div>
-      <a class="more" href="/writing/昨日是非不可留，留之则根在复萌.html">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/uncategorized/幸福、刺激意欲或是友善待人待物.html">幸福、刺激意欲或是友善待人待物</a>
-      </h2>
-      <p class="article-date">April 2, 2017</p>
-      
-        
-  <a href="/tags#人生" >
-    <span class="tag-code">人生</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          人生、幸福、爱情、意欲、爱好、待人待物（图）。
-
-
-        
-      </div>
-      <a class="more" href="/uncategorized/幸福、刺激意欲或是友善待人待物.html">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/为人/历烈火锻人品、履薄冰成事功.html">历烈火锻人品、履薄冰成事功</a>
-      </h2>
-      <p class="article-date">March 29, 2017</p>
-      
-        
-  <a href="/tags#为人" >
-    <span class="tag-code">为人</span>
-  </a>
-
-  <a href="/tags#成事" >
-    <span class="tag-code">成事</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          一个良好的人品的人，他乐于助人、对他人有用，对自己心平气和，不毛躁，有自我意识，有自尊，不欺负弱小。
-历烈火在生活中表现为，遇到事情都要求自己做的更多，会主动承担更多责任，在各种利益之间把握得住，当然这需要坚强的意志，但在这个过程中肯定会锻炼自己。做利于别人的事情，可以锻炼自己的意志，提升自 ...
-        
-      </div>
-      <a class="more" href="/为人/历烈火锻人品、履薄冰成事功.html">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/写作/初见胡雪岩.html">初见胡雪岩</a>
-      </h2>
-      <p class="article-date">March 22, 2017</p>
-      
-        
-  <a href="/tags#短评" >
-    <span class="tag-code">短评</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          胡雪岩说用人赚钱不如用人赚钱，事实如此，但待人接物，态度不能一样。为人的态度与对钱的态度，不可混淆；君子爱财，取之有道；君子为人，表里如一；
-待人接物，必有开始、或有结束；可热情，可冷淡；但不必怀疑动机，自己或别人；人类群居的生活，需要陪伴、需要结伴；只求做到力所能及；
-
-        
-      </div>
-      <a class="more" href="/写作/初见胡雪岩.html">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/coding/你想做产品经理吗？.html">你想做产品经理吗？</a>
-      </h2>
-      <p class="article-date">February 28, 2017</p>
-      
-        
-  <a href="/tags#个人提高" >
-    <span class="tag-code">个人提高</span>
-  </a>
-
-  <a href="/tags#互联网" >
-    <span class="tag-code">互联网</span>
-  </a>
-
-  <a href="/tags#知乎Live" >
-    <span class="tag-code">知乎Live</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          适合刚入门或想入门做产品经理的人。
-产品经理的核心工作确认需求跟现实生活中是差不多，但客户最真正需求需要定义出来，比如“更快的马”，比如多快？所以需求很难确定
-设计需求的实现方式从大量实现方式中选择一个符合时代，发展，和公司的方式
-跟进项目进度把自己的东西售卖给你的同事，让你的同事去实现，产 ...
-        
-      </div>
-      <a class="more" href="/coding/你想做产品经理吗？.html">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/writing/谈判的艺术.html">谈判的艺术</a>
-      </h2>
-      <p class="article-date">February 10, 2017</p>
-      
-        
-  <a href="/tags#个人提高" >
-    <span class="tag-code">个人提高</span>
-  </a>
-
-  <a href="/tags#谈判" >
-    <span class="tag-code">谈判</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          <p>谈判在日常生活中无处不在，当然，也许不一定有你所想象的那么正规，比如说这门mooc的教师，Siedel教授，他的学生中有运用谈判技巧拿下数百万美元的合同的，也有运用谈判技巧白蹭了一顿饭的。</p>
-<h1 id="WeeK-1-如何规划谈判策略"><a href="#WeeK-1-如何规划谈判策略" class="headerlink" title="WeeK 1 如何规划谈判策略"></a>WeeK 1 如何规划谈判策略</h1><h2 id="我需要谈判吗？"><a href="#我需要谈判吗？" class="headerlink" title="我需要谈判吗？"></a>我需要谈判吗？</h2><p>现在进入正题，首先第一个问题，也许是最重要的问题，我是否需要谈判呢？</p>
-<p>举个例子，假设你成功说服电器商把一台空调以便宜120元的折扣卖给你，而你为了这场讨价还价花费了整整半个礼拜，你是赚到了，还是亏了？这取决于时间对个人的价值（比如你的日薪就远远超过120了）。</p>
-<p>当然，在谈判之前，要考虑的不仅仅只是时间，另外还有谈判带来的收益和风险。</p>
-<h2 id="分割蛋糕-VS-做大蛋糕"><a href="#分割蛋糕-VS-做大蛋糕" class="headerlink" title="分割蛋糕 VS. 做大蛋糕"></a>分割蛋糕 VS. 做大蛋糕</h2><p>用分蛋糕来做比喻的话，position-based negotiation就是为了确认双方应分到的蛋糕比例，interest-based negotiation则是在分蛋糕的过程中，努力去找到能让自己更加满足的方案。</p>
-<p>举个例子，A喜欢蛋糕上带水果的部分，B喜欢带奶油的部分，那么简单的把蛋糕一分二对双方来说就不是最佳方案，双方互相确认对方的喜好，使两个人都能取走自己更有喜欢的那部分，这就是interest-based negotiation。</p>
-<p>正是因为这样，即使是在position-based的谈判中，也不要放弃interest-based的可能性。</p>
-<h2 id="谈判前的自我分析"><a href="#谈判前的自我分析" class="headerlink" title="谈判前的自我分析"></a>谈判前的自我分析</h2><ol>
-<li>自己的总体目标是？</li>
-<li>谈判中对自己来说最重要的事项是？</li>
-<li>我的最佳替代方案（BATNA）是什么？</li>
-<li>我的保留价格（能接受的最低收益）是什么？</li>
-<li>我的延伸目标是什么？</li>
-</ol>
-<h2 id="谈判时的注意事项"><a href="#谈判时的注意事项" class="headerlink" title="谈判时的注意事项"></a>谈判时的注意事项</h2><ul>
-<li><p>跨文化谈判：尊重对方的文化，但不要过度follow对方的文化习惯，很可能会画虎不成反类犬，让对方不适应。这里有一个  反面教材：一个美国人和一个日本人谈判，双方见面时礼节上都采用了对方的文化习惯，美国人90°鞠躬，而要拥抱老美的日本人则正好抱了个空……</p>
-</li>
-<li><p>法律因素：对不同的法律体系这点有所不一，需要多多注意的是在谈判过程中“欺诈”行为是绝对禁止的。“欺诈”行为的标准有三（满足三者才算欺诈）：</p>
-<ul>
-<li>在谈判的关键问题上</li>
-<li>作出和事实不符的表述</li>
-<li>这个“事实”对于对方的决策起关键作用</li>
-</ul>
-</li>
-<li><p>道德因素：真诚对待你的谈判对手会对谈判的顺利程度有帮助，这是经过统计确认的。</p>
-<ul>
-<li>我需要请代理人来为我谈判吗？</li>
-</ul>
-</li>
-</ul>
-<p>以下情况可以考虑<strong>请谈判代理人</strong></p>
-<ol>
-<li>代理人拥有更好的谈判技巧、专业知识或是相关经验</li>
-<li>自己时间不足</li>
-<li>自己和谈判对方有严重矛盾或冲突</li>
-<li>不希望泄露自己的名字</li>
-</ol>
-<p>需要注意的是，对方使用代理人的场合下，一定要直接向谈判的对方负责人确认其代理人是否有被授权和拥有多大的权限。（不然可能会遇上辛辛苦苦谈判半天终于签了合同，对方却不承认的悲剧）</p>
-<h2 id="谈判陷入僵局怎么办？"><a href="#谈判陷入僵局怎么办？" class="headerlink" title="谈判陷入僵局怎么办？"></a>谈判陷入僵局怎么办？</h2><p>提供所有可能改变对方看法和观点的信息<br>寻找所有可能的的最佳替代方案（BATNA：Best Alternative to a negotiated agreement）<br>对某些难以着手的谈判内容，可以尝试请第三方介入以协调双方矛盾</p>
-<hr>
-<h1 id="Week-2-特殊的谈判技巧"><a href="#Week-2-特殊的谈判技巧" class="headerlink" title="Week 2 特殊的谈判技巧"></a>Week 2 特殊的谈判技巧</h1><h2 id="交谈的智慧"><a href="#交谈的智慧" class="headerlink" title="交谈的智慧"></a>交谈的智慧</h2><p>对于谈判高手来说，谈判意味着通过提问来挖掘对方的对谈判本身的态度、利益和目的所在。与他人的对话和交谈中，需要注意的几点是：</p>
-<ol>
-<li>尽量不要扯到你最喜欢的话题上 （因为你很可能会收不住话夹子）</li>
-<li>多多提问 （人普遍喜欢谈论自己和讲述自己的故事，真的（不太确定中西方文化在这里有没有差别））</li>
-<li>仔细听 （这是获取信息的主要来源，也是谈判的基础）</li>
-</ol>
-<h2 id="谈判的“力量来源”——BATNA"><a href="#谈判的“力量来源”——BATNA" class="headerlink" title="谈判的“力量来源”——BATNA"></a>谈判的“力量来源”——BATNA</h2><p>举个例子，现在假设你是一家为通用汽车制造零部件的厂商，某天通用希望以更低的价格支付你的工厂制造的零部件的订单，这对你来说不是好事，因为你的利润会下降。这时候，如果：</p>
-<ul>
-<li>通用是你目前唯一的客户，你很可能会为未来双方的关系着想而同意，毕竟通用是业界大佬，有很多零部件厂商可供他选择。</li>
-<li>你的产品以高质量和稳定性闻名，除了通用外大众和丰田也希望从你的工厂买进零部件，你可能会这样回复通用：“你看，我一直在为你提供优质产品，你也许能从其他厂商得到更廉价的零部件，但是它们的质量无法和我的相提并论。”，或是更加直接的威胁，“拜拜，我要找丰田玩了。”<br>两种情况下，你的选择会大不相同，区别就在于你的BATNA，即最佳替代方案。情况1你的BATNA很弱小，甚至可能是0（失去唯一的客户）；而情况2你的BATNA则是丰田和大众的订单，和情况一天差地别。</li>
-</ul>
-<p>现在问题来了，你是否应该在谈判中向对方摊牌，亮出自己的BATNA呢？</p>
-<ul>
-<li>如果你的BATNA很弱，那么亮出来等于助涨对方的谈判“力量”</li>
-<li>如果你的BATNA很强，答案是YES，亮出你的BATNA让对方知道你随时可以离开去和他们的“替代品”合作</li>
-</ul>
-<h2 id="心理战术"><a href="#心理战术" class="headerlink" title="心理战术"></a>心理战术</h2><p>解释：利用心理学，在谈判中制造陷阱或获取优势……<br>不，我是认真的。巧妙的利用一些心理技巧，可以在一定程度上取得可观的效用…<br>当然，反过来说要多加注意的是，你也有可能陷入心理陷阱中（甚至不是由于对方的心理战术）。</p>
-<p>下面开始一一介绍<strong>”心理战术/陷阱“</strong>：</p>
-<p><strong>Mythical Fixed Pie Assumption</strong>： （真不知道怎么翻译这玩意儿，神话般的固定大饼臆断？）</p>
-<p><em>解释：我们通常会主观臆断，认为谈判对方的利益和我方的利益直接冲突。这导致了：</em></p>
-<ul>
-<li>难以察觉到真实的对方的所寻求的利益</li>
-<li>忽略双方的共同利益</li>
-<li>产生 反应性贬值 效应（reactive devaluation），即贬低某一让步或提案的价值只因让步与提案是对方提出的。</li>
-</ul>
-<h2 id="锚定效应-（Anchoring）"><a href="#锚定效应-（Anchoring）" class="headerlink" title="锚定效应 （Anchoring）"></a>锚定效应 （Anchoring）</h2><p><em>解释：在做决策的时候，会不自觉地给予最初获得的信息过多的重视</em></p>
-<p>有这么个实验，让一组外科医生（i.i.d 随机挑选）看一份心脏手术计划的资料，问他们</p>
-<ol>
-<li>这种手术的成功率是大于20%还是小于20%，</li>
-<li>之后再问他们认为手术的成功率是多少，回答的均值大概在25%左右</li>
-</ol>
-<p>神奇的是如果第一问换成“这种手术的成功率是大于50%还是小于50%”，另一组外科医生（i.i.d 随机挑选）的答案均值却是45%（不太确定是45%还是43% 有点忘了）</p>
-<p>很有趣，但这和谈判有什么关系呢？</p>
-<p>很好，现在问题来了：交易的谈判中，<strong>谁应该第一个抛出价格呢？</strong></p>
-<ul>
-<li>当你对价格本身不确定时：让对方先叫价，根据对方的叫价获取相关信息</li>
-<li>当你对价格本身很有自信：先叫价，以使最终谈妥的价格基本锚定在自己确信的价格上</li>
-</ul>
-<p>当你和对方都不太清楚价格时：</p>
-<ul>
-<li>双方互相提供一些和价格有关的信息慢慢摸索吧 美其名曰“Information Exchange”。</li>
-</ul>
-<h2 id="过度自信（Overconfidence）"><a href="#过度自信（Overconfidence）" class="headerlink" title="过度自信（Overconfidence）"></a>过度自信（Overconfidence）</h2><p><em>解释：我们通常会对于自己的判断很有自信 （这需要解释嘛？）</em></p>
-<p>换句话说就是：在做决策时请先三思。人在判断自己的决策时，倾向于去寻找可以证明对自己的判断是正确的证据，而非可以反驳的证据。试试看反其道而行之，看看其他可能性吧</p>
-<h2 id="框架效应（Framing-effects）"><a href="#框架效应（Framing-effects）" class="headerlink" title="框架效应（Framing effects）"></a>框架效应（Framing effects）</h2><p><em>解释：指一个问题两种在逻辑意义上相似的说法却导致了不同的决策判断。当决策者感觉到某项决策带来的是收益时，会倾向于风险规避，如果带来的是损失时，会倾向于风险追求。具体例子可以参考框架效应</em></p>
-<h2 id="易得性（Availability）"><a href="#易得性（Availability）" class="headerlink" title="易得性（Availability）"></a>易得性（Availability）</h2><p><em>解释：人们总是喜欢偏向于自己熟悉或者容易提取的信息来对某事进行决策。</em></p>
-<h2 id="升级（Escalation）"><a href="#升级（Escalation）" class="headerlink" title="升级（Escalation）"></a>升级（Escalation）</h2><p><em>解释：真不知道该怎么解释好 还是举个栗子吧</em></p>
-<p>现在拍卖20美刀，规则如下：</p>
-<p>夺标者支付拍卖方叫到的金额，然后获得20美刀<br>叫价第二的竞标者支付自己叫到的金额给拍卖方<br>现在的情况：A叫到了19，B叫到了20</p>
-<ul>
-<li><p>A：如果我叫21，我的收益是-1，如果pass，我的收益是-19，肯定要叫</p>
-</li>
-<li><p>B：如果我叫22，我的收益是-2，如果pass，我的收益是-20，肯定要叫</p>
-</li>
-</ul>
-<p><em>。。。</em></p>
-<ul>
-<li>A：如果我叫10000，我的收益是-9980，如果pass，我的收益是-10000，肯定要叫…</li>
-</ul>
-<p><strong>坑爹呐这是！</strong></p>
-<p>各位也应该看出来了：这是个不断升级的死循环陷阱。事实上，如果A站在B的角度考虑，就可以立即明白B不会放弃叫更高的价。在叫到自己无法支付的天价之前，想尽办法停下来才是正解。也许和B摊牌妥协，双方场外平分20美刀是不错的方案。</p>
-<h2 id="回报-（Reciprocation）"><a href="#回报-（Reciprocation）" class="headerlink" title="回报 （Reciprocation）"></a>回报 （Reciprocation）</h2><p><em>解释：简单的说就是当他人给予我们什么后，我们会 feel the need 去礼尚往来。</em></p>
-<p>谈判中可以在对自己不重要的事项上让步，以起到使对方在对自己重要的事项上回馈（做出让步）的作用。</p>
-<h2 id="对比原则（Contrast-Principle）"><a href="#对比原则（Contrast-Principle）" class="headerlink" title="对比原则（Contrast Principle）"></a>对比原则（Contrast Principle）</h2><p>解释：再举个栗子 服装店的橱窗里有三顶帽子（mooc中的例子是房子），样子材质大致相似，品牌相同，但是第三顶只有前两顶的一半价格（这就是帽子原来的定价）。</p>
-<p>你会对第三顶帽子心动而买下它，对吗？</p>
-<p>什么，你认为第三顶帽子肯定有问题，转而买下第一顶帽子？商家：</p>
-<p><strong>一切都如计划的那样</strong></p>
-<p>Anyway，把事物一起列出来可以起到不同效果就是了。</p>
-<h2 id="宏观视角-（Big-Picture-Perspective）"><a href="#宏观视角-（Big-Picture-Perspective）" class="headerlink" title="宏观视角 （Big Picture Perspective）"></a>宏观视角 （Big Picture Perspective）</h2><p><em>这是最后的最后，能坚持看到这里的你一定已经积累了不少特殊的谈判技巧了</em></p>
-<p>但是现在<strong>你需要注意的是——谈判中不要计划如何使用这些谈判技巧上花费过多的精力和时间，你需要的是回归原点，想想你谈判的目的是什么，千万不要迷失在一小片拼图中，记住你想要完成的是Big Picture是什么</strong></p>
-<p>附件：心理战术/陷阱的checklist</p>
-<p>psychological tool/trap checklist</p>
-<p>mythical fixed pie assumption</p>
-<p>anchoring</p>
-<p>overconfidence</p>
-<p>framing</p>
-<p>availability</p>
-<p>escalation</p>
-<p>reciprocation</p>
-<p>contrast principle</p>
-<p>big picture perspective</p>
-<hr>
-<h1 id="Week-3-关于合同的那些事"><a href="#Week-3-关于合同的那些事" class="headerlink" title="Week 3 关于合同的那些事"></a>Week 3 关于合同的那些事</h1>
-        
-      </div>
-      <a class="more" href="/writing/谈判的艺术.html">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/uncategorized/Learning-Introduce-to-Public-speaking-Week4.html">Learning Introduce to Public speaking(Week4)</a>
-      </h2>
-      <p class="article-date">February 8, 2017</p>
-      
-        
-  <a href="/tags#个人提高" >
-    <span class="tag-code">个人提高</span>
-  </a>
-
-  <a href="/tags#演讲" >
-    <span class="tag-code">演讲</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          Week 4Over ViewThis week, we explore the fear of public speaking, what it is , why it is and how you can cope with it. Then, We will learn stuff l ...
-        
-      </div>
-      <a class="more" href="/uncategorized/Learning-Introduce-to-Public-speaking-Week4.html">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/writing/Work-Smarter-Not-Harder.html">Work Smarter Not Harder</a>
-      </h2>
-      <p class="article-date">February 1, 2017</p>
-      
-        
-  <a href="/tags#个人提高" >
-    <span class="tag-code">个人提高</span>
-  </a>
-
-  <a href="/tags#时间管理" >
-    <span class="tag-code">时间管理</span>
-  </a>
-
-  <a href="/tags#GTD" >
-    <span class="tag-code">GTD</span>
-  </a>
-
-  <a href="/tags#工作" >
-    <span class="tag-code">工作</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          <p>You don’t build the life you want by saving time. You build the life you want, and then time saves itself. Week1/4<br>
-        
-      </div>
-      <a class="more" href="/writing/Work-Smarter-Not-Harder.html">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/uncategorized/Communication-in-the-21st-Century-Workplace.html">Communication in the 21st Century Workplace</a>
-      </h2>
-      <p class="article-date">February 1, 2017</p>
-      
-        
-  <a href="/tags#沟通" >
-    <span class="tag-code">沟通</span>
-  </a>
-
-  <a href="/tags#个人提高" >
-    <span class="tag-code">个人提高</span>
-  </a>
-
-  <a href="/tags#交流" >
-    <span class="tag-code">交流</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          <p>工作中有效的沟通让你的事半功倍！Week1/4<br>
-        
-      </div>
-      <a class="more" href="/uncategorized/Communication-in-the-21st-Century-Workplace.html">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/writing/项目管理：成功的基础-Week1.html">项目管理：成功的基础</a>
-      </h2>
-      <p class="article-date">February 1, 2017</p>
-      
-        
-  <a href="/tags#个人提高" >
-    <span class="tag-code">个人提高</span>
-  </a>
-
-  <a href="/tags#管理" >
-    <span class="tag-code">管理</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          <p>This course combines the essential elements of project management and team leadership into one course. 1/4Week</p>
-        
-      </div>
-      <a class="more" href="/writing/项目管理：成功的基础-Week1.html">Read more</a>
-    </article>
-  
+    <p>wittyfans 阅读 哲学 学习 Python BigData PowerShell</p>
 
   
-    <div class="guide-pager">
   
-    <a href="/page/3/"><span class="page-arrow">← </span>Prev</a>
+    <p>
+      Retrouve moi sur
+      
+      
+      
+        
+          <a class="icon" target="_blank" href="http://github.com/wittyfans">
+            <i class="fab fa-github"></i><!--
+      ---></a><!--
+    ---><!--
+    --->, 
+        
+      
+        
+          <a class="icon" target="_blank" href="https://twitter.com/wittyfan0">
+            <i class="fab fa-twitter"></i><!--
+      ---></a><!--
+    ---><!--
+    --->, 
+        
+      
+        
+          <a class="icon" target="_blank" href="/">
+            <i class="fab fa-facebook"></i><!--
+      ---></a><!--
+    ---><!--
+    --->, 
+        
+      
+        
+          <a class="icon" target="_blank" href="/">
+            <i class="fab fa-linkedin"></i><!--
+      ---></a><!--
+    ---><!--
+    ---> et 
+        
+      
+        
+          <a class="icon" target="_blank" href="mailto:wittyfans@gmail.com">
+            <i class="fas fa-envelope"></i><!--
+      ---></a><!--
+      ---><!--
+    --->.
+        
+      
+    </p>
   
-  
-    <a href="/page/5/">Next<span class="page-arrow"> →</span></a>
-  
-</div>
-  
-</main>
+</section>
+
+<section id="writing">
+  <span class="h1"><a href="/archives">Articles</a></span>
+  <ul class="post-list">
+    
+      
+    
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-11-18T14:16:10.000Z" itemprop="datePublished">2017-11-18</time>
+    </div>
 
 
-    <div class="scroll-top">
-  <span class="arrow-icon"></span>
-</div>
-    <footer class="app-footer">
-  <p class="copyright">
-    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
-    <br>
-    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
-  </p>
+        <span>
+    
+        <a class="" href="/reading/爱默生文集摘录一.html">爱默生文集摘录一</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-11-14T15:14:08.000Z" itemprop="datePublished">2017-11-14</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/coding/玩转PowerShell.html">玩转PowerShell</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-11-14T14:45:11.000Z" itemprop="datePublished">2017-11-14</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/writing/翻译《你身边的人比你更能管束你自己》.html">翻译计划01《你身边的人比你更能约束你自己》——Medium精选</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-11-10T14:38:32.000Z" itemprop="datePublished">2017-11-10</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/uncategorized/POWER.html">POWER</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-11-10T14:15:51.000Z" itemprop="datePublished">2017-11-10</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/reading/爱默生谈读书.html">爱默生谈读书</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-11-09T05:25:10.000Z" itemprop="datePublished">2017-11-09</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/reading/爱默生谈财富.html">爱默生谈财富</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-08-25T15:11:50.000Z" itemprop="datePublished">2017-08-25</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/coding/Angualar-Note.html">Angualar-Note</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-08-16T12:09:31.000Z" itemprop="datePublished">2017-08-16</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/coding/witty商城项目记录.html">witty商城项目记录(更新中)</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-07-20T07:24:05.000Z" itemprop="datePublished">2017-07-20</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/coding/SASS学习记录.html">SASS学习记录(更新中)</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-07-13T12:24:21.000Z" itemprop="datePublished">2017-07-13</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/coding/Linux常用命令.html">Linux常用命令</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-07-13T12:19:50.000Z" itemprop="datePublished">2017-07-13</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/coding/使用SCP命令在远程VPS和本地之间进行文件传输.html">使用SCP命令在远程VPS和本地之间进行文件传输</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-07-13T12:18:32.000Z" itemprop="datePublished">2017-07-13</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/coding/Screen指南.html">Screen指南</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-07-13T12:15:34.000Z" itemprop="datePublished">2017-07-13</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/coding/主机名由localhost变成bogon的解决办法.html">主机名由localhost变成bogon的解决办法</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-07-13T12:11:09.000Z" itemprop="datePublished">2017-07-13</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/coding/正则表达式学习.html">正则表达式学习</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-06-07T09:42:23.000Z" itemprop="datePublished">2017-06-07</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/coding/个人整理2017前端学习路线与资料.html">个人整理2017前端学习路线与资料</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-05-29T14:08:24.000Z" itemprop="datePublished">2017-05-29</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/writing/每个人都应该具备的技能：讲故事.html">每个人都应该具备的技能：讲故事</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-05-28T14:14:36.000Z" itemprop="datePublished">2017-05-28</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/writing/Reading-《演讲改变了我的人生，也能改变你的》.html">Reading:《演讲改变了我的人生，也能改变你的》</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-05-28T02:04:49.000Z" itemprop="datePublished">2017-05-28</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/coding/产品经理的数字工具们.html">产品经理的数字工具们 👨🏻‍💻</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-05-27T15:33:12.000Z" itemprop="datePublished">2017-05-27</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/coding/产品经理的五种工具.html">产品经理的五种工具 🔨</a>
+    
+
+
+</span>
+      </li>
+    
+      <li class="post-item">
+        
+    <div class="meta">
+        <time datetime="2017-05-24T10:07:04.000Z" itemprop="datePublished">2017-05-24</time>
+    </div>
+
+
+        <span>
+    
+        <a class="" href="/reading/《失控：机器、社会系统与经济世界的新生物学》读书笔记.html">《失控：机器、社会系统与经济世界的新生物学》读书笔记（更新中）</a>
+    
+
+
+</span>
+      </li>
+    
+  </ul>
+  
+</section>
+
+
+
+    </div>
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2018 wittyfans
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="http://github.com/wittyfans">Projets</a></li>
+        
+      </ul>
+    </nav>
+  </div>
 </footer>
 
-<script>
-  function async(u, c) {
-    var d = document, t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0];
-    o.src = u;
-    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-    s.parentNode.insertBefore(o, s);
-  }
-</script>
-<script>
-  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
-    FastClick.attach(document.body);
-  })
-</script>
-
-<script>
-  var hasLine = 'true';
-  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
-    $('figure pre').each(function(i, block) {
-      var figure = $(this).parents('figure');
-      if (hasLine === 'false') {
-        figure.find('.gutter').hide();
-      }
-      var lang = figure.attr('class').split(' ')[1] || 'code';
-      var codeHtml = $(this).html();
-      var codeTag = document.createElement('code');
-      codeTag.className = lang;
-      codeTag.innerHTML = codeHtml;
-      $(this).attr('class', '').empty().html(codeTag);
-      figure.attr('data-lang', lang.toUpperCase());
-      hljs.highlightBlock(block);
-    });
-  })
-</script>
-<!-- Baidu Tongji -->
-
-<script src="/js/script.js"></script>
-  </body>
+</body>
 </html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
