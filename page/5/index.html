@@ -1,131 +1,404 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
-<head>
-  <meta charset="utf-8">
-  
-  <title>wittyfans</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   <meta name="description" content="wittyfans 阅读 哲学 学习 Python BigData PowerShell">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wittyfans">
-<meta property="og:url" content="http://yoursite.com/page/5/index.html">
-<meta property="og:site_name" content="wittyfans">
-<meta property="og:description" content="wittyfans 阅读 哲学 学习 Python BigData PowerShell">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wittyfans">
-<meta name="twitter:description" content="wittyfans 阅读 哲学 学习 Python BigData PowerShell">
+  <meta name="keyword" content="wittyfans, 读书笔记, PowerShell, Python, 大数据, 哲学, Hadoop, bigdata">
+  
+    <link rel="shortcut icon" type="image/ico" href="/favicon.jpg"/> 
+  
+  <title>
+    
+      学则不固,知则不惑
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
   
   
-    <link rel="icon" href="/favicon.ico">
-  
-  <link rel="stylesheet" href="/css/typing.css">
-  <link rel="stylesheet" href="/css/donate.css">
-  
-  <link rel="stylesheet" href="/css/font-awesome.min.css">
-  
-</head>
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
 
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
   
-    
-    <body class="home-body">
-    
-  
-      <div id="container" class="container">
-        <div class="home">
-  <div class="content">
-    <div class="profile">
-      <h1 class="nickname">wittyfans</h1>
-      <div class="description">
-        <p><p>I’m coder from ChangSha, I use Python, JavaScript, and Powershell.</p>
-</p>
-      </div>
-    </div>
-    <hr/>
-  </div>
+
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
 </div>
-    <ul class="footer-links">
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>学则不固,知则不惑</span>
+    </a>
+    <ul class="right-list">
       
-        <li>
-	  
-            <a href="/archives/"><span class="fa fa-book"></span></a>
-	  
+        <li class="list-item">
+          
+            <a href="/" class="item-link active">Home</a>
+          
         </li>
       
-        <li>
-	  
-            <a href="https://github.com/geekplux/hexo-theme-typing"><span class="fa fa-globe"></span></a>
-	  
+        <li class="list-item">
+          
+            <a href="/tags" class="item-link">Tags</a>
+          
         </li>
       
-        <li>
-	  
-            <a href="https://twitter.com/"><span class="fa fa-twitter"></span></a>
-	  
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
         </li>
       
-        <li>
-	  
-            <a href="https://github.com/"><span class="fa fa-github-alt"></span></a>
-	  
+        <li class="list-item">
+          
+            <a href="/archives" class="item-link">Archives</a>
+          
         </li>
       
-        <li>
-	  
-            <a href="https://www.youtube.com/"><span class="fa fa-youtube-play"></span></a>
-	  
-        </li>
-      
-        <li>
-	  
-            <a href="https://stackoverflow.com/"><span class="fa fa-stack-overflow"></span></a>
-	  
-        </li>
-      
-        <li>
-	  
-            <a href="https://plus.google.com/"><span class="fa fa-google-plus"></span></a>
-	  
-        </li>
-      
-        <li>
-	  
-            <a href="/atom.xml"><span class="fa fa-rss"></span></a>
-	  
+        <li class="list-item">
+          
+            <a href="/about" class="item-link">About</a>
+          
         </li>
       
     </ul>
-
-      </div>
-      
-  <footer id="footer" class="home-footer footer">
-    <div id="copyright" class="copyright">
-      &copy; 2018 wittyfans  Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme &copy; <a href="https://github.com/geekplux" target="_blank">GeekPlux</a>
-
-      </div>
-    </footer>
-
-      
-
-
-
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/typing.js"></script>
-<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
-
-
-
-
-
-
-
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
     </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link mobile-active">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <main class="app-body">
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/演讲/Learning-Introduce-to-Public-speaking-week3.html">Learning Introduce to Public speaking （week3）</a>
+      </h2>
+      <p class="article-date">January 28, 2017</p>
+      
+        
+  <a href="/tags#演讲" >
+    <span class="tag-code">演讲</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>This basically is a summarize article when I take class named 《Introduction to Public Speaking》in coursera.org , I’ll be very happy if it  can help you!<br>
+        
+      </div>
+      <a class="more" href="/演讲/Learning-Introduce-to-Public-speaking-week3.html">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/演讲/Learning-Introduce-to-Public-speaking-Week2.html">Learning Introduce to Public speaking(Week2)</a>
+      </h2>
+      <p class="article-date">January 25, 2017</p>
+      
+        
+  <a href="/tags#演讲" >
+    <span class="tag-code">演讲</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>This basically is a summarize article when I take class named 《Introduction to Public Speaking》in coursera.org , I’ll be very happy if it  can help you!<br>
+        
+      </div>
+      <a class="more" href="/演讲/Learning-Introduce-to-Public-speaking-Week2.html">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/writing/《赴汤蹈火》影评.html">《赴汤蹈火》影评</a>
+      </h2>
+      <p class="article-date">January 13, 2017</p>
+      
+        
+  <a href="/tags#影评" >
+    <span class="tag-code">影评</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>“我们是听着乡村音乐的西部人，正开着皮卡在抢银行的路上～”<br>
+        
+      </div>
+      <a class="more" href="/writing/《赴汤蹈火》影评.html">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/演讲/Learning-Introduction-to-Public-Speaking-Week1.html">Learning Introduction to Public Speaking (Week1)</a>
+      </h2>
+      <p class="article-date">January 12, 2017</p>
+      
+        
+  <a href="/tags#演讲" >
+    <span class="tag-code">演讲</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>This basically is a summarize article when I take class named 《Introduction to Public Speaking》in coursera.org , I’ll be very happy if it  can help you!<br>
+        
+      </div>
+      <a class="more" href="/演讲/Learning-Introduction-to-Public-Speaking-Week1.html">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/writing/《信用卡的正确打开方式》.html">信用卡的正确打开方式</a>
+      </h2>
+      <p class="article-date">January 11, 2017</p>
+      
+        
+  <a href="/tags#金融" >
+    <span class="tag-code">金融</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>这篇文章是我参加知乎Live《还不上信用卡时，我这样应对》所记下来的心得，更多信息可以参见<a href="https://www.zhihu.com/lives/795716261194645504" target="_blank" rel="noopener">该Live</a><br>
+        
+      </div>
+      <a class="more" href="/writing/《信用卡的正确打开方式》.html">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/writing/《7号房的礼物》影评.html">《7号房的礼物》影评</a>
+      </h2>
+      <p class="article-date">January 8, 2017</p>
+      
+      <div class="article-summary">
+        
+          <p>感情色彩太过浓重，但理想、唯美的画面尤其适合女性的口味，不建议情侣一起看。(●’◡’●)<br>
+        
+      </div>
+      <a class="more" href="/writing/《7号房的礼物》影评.html">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/reading/《曾国藩家书》箴言摘录.html">《曾国藩家书》箴言摘录</a>
+      </h2>
+      <p class="article-date">January 7, 2017</p>
+      
+        
+  <a href="/tags#阅读" >
+    <span class="tag-code">阅读</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>应该时刻勤劳 ，就像农民种田 ，商人逐利 ，船工撑船上岸一样 ，早起做事 ，夜晚深思 ，以求有所成就<br>
+        
+      </div>
+      <a class="more" href="/reading/《曾国藩家书》箴言摘录.html">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/writing/《一个叫欧维的男人决定去死》影评.html">《一个叫欧维的男人决定去死》影评</a>
+      </h2>
+      <p class="article-date">January 6, 2017</p>
+      
+        
+  <a href="/tags#影评" >
+    <span class="tag-code">影评</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>幸福的获得，极大程度上是消除了对自我的过分关注。<br>
+        
+      </div>
+      <a class="more" href="/writing/《一个叫欧维的男人决定去死》影评.html">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/影评/《完美陌生人》影评.html">《完美陌生人》影评</a>
+      </h2>
+      <p class="article-date">January 4, 2017</p>
+      
+        
+  <a href="/tags#影评" >
+    <span class="tag-code">影评</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>小说经不起推敲，人性不值得考验。<br>
+        
+      </div>
+      <a class="more" href="/影评/《完美陌生人》影评.html">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/writing/怎么利用研究报告熟悉公司与市场.html">怎么利用研究报告熟悉公司与市场</a>
+      </h2>
+      <p class="article-date">December 16, 2016</p>
+      
+        
+  <a href="/tags#经济" >
+    <span class="tag-code">经济</span>
+  </a>
+
+  <a href="/tags#小技巧" >
+    <span class="tag-code">小技巧</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p><strong>当你想要投资某个公司，或者需要快速了解一些行业，这篇文章或许可以给你提供帮助。</strong><br>
+        
+      </div>
+      <a class="more" href="/writing/怎么利用研究报告熟悉公司与市场.html">Read more</a>
+    </article>
+  
+
+  
+    <div class="guide-pager">
+  
+    <a href="/page/4/"><span class="page-arrow">← </span>Prev</a>
+  
+  
+    <a href="/page/6/">Next<span class="page-arrow"> →</span></a>
+  
+</div>
+  
+</main>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
   </body>
 </html>

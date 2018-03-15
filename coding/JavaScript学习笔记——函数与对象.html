@@ -1,75 +1,153 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
-<head>
-  <meta charset="utf-8">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="wittyfans 阅读 哲学 学习 Python BigData PowerShell">
+  <meta name="keyword" content="wittyfans, 读书笔记, PowerShell, Python, 大数据, 哲学, Hadoop, bigdata">
   
-  <title>JavaScript学习笔记——函数与对象 | wittyfans</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JS的函数与对象。">
-<meta name="keywords" content="编程,JS,前端">
-<meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript学习笔记——函数与对象">
-<meta property="og:url" content="http://yoursite.com/coding/JavaScript学习笔记——函数与对象.html">
-<meta property="og:site_name" content="wittyfans">
-<meta property="og:description" content="JS的函数与对象。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-14T16:03:39.583Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript学习笔记——函数与对象">
-<meta name="twitter:description" content="JS的函数与对象。">
+    <link rel="shortcut icon" type="image/ico" href="/favicon.jpg"/> 
+  
+  <title>
+    
+      JavaScript学习笔记——函数与对象 | 学则不固,知则不惑
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
   
   
-    <link rel="icon" href="/favicon.ico">
-  
-  <link rel="stylesheet" href="/css/typing.css">
-  <link rel="stylesheet" href="/css/donate.css">
-  
-  <link rel="stylesheet" href="/css/font-awesome.min.css">
-  
-</head>
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
 
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
   
-    
-      <body>
-    
-  
-      <div id="container" class="container">
-        <article id="post-JavaScript学习笔记——函数与对象" class="article article-type-post" itemscope itemprop="blogPost">
-  <header id="header" class="header">
-  <nav id="main-nav" class="main-nav">
-    
-      <a class="main-nav-link" href="/">Home</a>
-    
-      <a class="main-nav-link" href="/categories/coding/">Coding</a>
-    
-      <a class="main-nav-link" href="/categories/reading/">Reading</a>
-    
-      <a class="main-nav-link" href="/categories/writing/">Writing</a>
-    
-      <a class="main-nav-link" href="/archives">Archives</a>
-    
-      <a class="main-nav-link" href="/about">About</a>
-    
-  </nav>
+
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>学则不固,知则不惑</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
 </header>
 
-  <hr/>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      JavaScript学习笔记——函数与对象
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry typo" itemprop="articleBody">
-      
-        <p>JS的函数与对象。<br><a id="more"></a></p>
+    <div id="article-banner">
+  <h2>JavaScript学习笔记——函数与对象</h2>
+  <p class="post-date">2017-05-22</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>JS的函数与对象。<br><a id="more"></a></p>
 <h1 id="函数-🔂"><a href="#函数-🔂" class="headerlink" title="函数 🔂"></a>函数 🔂</h1><p><strong>函数是带有名称(named)和参数的代码段,可以一次定义多次调用</strong></p>
 <ul>
 <li>如果函数挂载在一个对象上，作为对象的一个属性，就称它为对象的方法，当通过这个对象来调用函数时，该对象就是此次调用的上下文，也就是该函数的this值</li>
@@ -304,142 +382,230 @@
 </ul>
 <hr>
 <p>✅ ：Todo 的部分</p>
-
-      
-      <div id="donate" class="donate">
-        <a id="github" href="https://github.com/geekplux" target="_blank" class="pos-f tr3" title="Github"></a>
-	      <div id="DonateText" class="tr3">Donate</div>
-	      <ul id="donateBox" class="list pos-f tr3">
-		      <li id="PayPal"><a href="https://www.paypal.me/geekplux" target="_blank">PayPal</a></li>
-		      <li id="BTC" data-footnote="Copy addres and show QRCode"><button id="BTCBn"  data-clipboard-target="#btc-key" alt="Copy to clipboard">Bitcoin</button></li>
-		      <li id="AliPay">AliPay</li>
-		      <li id="WeChat">WeChat</li>
-	      </ul>
-	      <div id="QRBox" class="pos-f left-100">
-		      <div id="BTCQR" class="MainBox" style="background-image: url(http://7b1evr.com1.z0.glb.clouddn.com/donate/bitcoin.png)"></div>
-		      <div id="AliPayQR" class="MainBox" style="background-image: url(http://7b1evr.com1.z0.glb.clouddn.com/donate/alipayQR.jpg)"></div>
-		      <div id="WeChatQR" class="MainBox" style="background-image: url(http://7b1evr.com1.z0.glb.clouddn.com/donate/wechatQR.jpg)"></div>
-	      </div>
-	      <!-- Bitcoin 账号 -->
-	      <input id="btc-key" type="text" value="1AVngxh56oLvAzXsEFnzccUohZdHswjC7j" readonly="readonly">
-      </div>
-    </div>
-    <footer class="article-footer">
-      <ul class="article-meta">
-        <li>
-          <span class="label">Published Date:</span>
-          <a href="/coding/JavaScript学习笔记——函数与对象.html" class="article-date">
-  <time datetime="2017-05-22T08:45:54.000Z" itemprop="datePublished">2017-05-22</time>
-</a>
-
-        </li>
-        
-          <li>
-            <span class="label">Category:</span>
-            
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/coding/">coding</a>
-  </div>
-
-
-          </li>
-        
-        
-          <li>
-            <span class="label">Tag:</span>
-            
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
-
-
-          </li>
-        
-        <hr/>
-      </ul>
-    </footer>
-  </div>
-  
+</section>
+    <!-- Tags START -->
     
-<nav id="article-nav" class="article-nav">
-  
-    <a href="/reading/《失控：机器、社会系统与经济世界的新生物学》读书笔记.html" id="article-nav-newer" class="article-nav-link-wrap newer">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#编程" >
+    <span class="tag-code">编程</span>
+  </a>
+
+  <a href="/tags#JS" >
+    <span class="tag-code">JS</span>
+  </a>
+
+  <a href="/tags#前端" >
+    <span class="tag-code">前端</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/coding/JavaScript学习笔记——错误集.html">
+        <span class="nav-arrow">← </span>
+        
+          JavaScript学习笔记——错误集
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/reading/《失控：机器、社会系统与经济世界的新生物学》读书笔记.html">
         
           《失控：机器、社会系统与经济世界的新生物学》读书笔记（更新中）
         
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+      <div class="money-like">
+        <div class="reward-btn">
+          赏
+          <span class="money-code">
+            <span class="alipay-code">
+              <div class="code-image"></div>
+              <b>使用支付宝打赏</b>
+            </span>
+            <span class="wechat-code">
+              <div class="code-image"></div>
+              <b>使用微信打赏</b>
+            </span>
+          </span>
+        </div>
+        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
       </div>
-    </a>
-  
-  
-    <a href="/coding/JavaScript学习笔记——错误集.html" id="article-nav-older" class="article-nav-link-wrap older">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">JavaScript学习笔记——错误集</div>
-    </a>
-  
-</nav>
-
-
-  
-</article>
-
-
-
-
-
-
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
       </div>
-      
-    <footer id="footer" class="post-footer footer">
-      
-        <ul class="footer-links">
-          
-            <li><a href="/archives/"><span class="fa fa-book"></span></a></li>
-          
-            <li><a href="https://github.com/geekplux/hexo-theme-typing"><span class="fa fa-globe"></span></a></li>
-          
-            <li><a href="https://twitter.com/"><span class="fa fa-twitter"></span></a></li>
-          
-            <li><a href="https://github.com/"><span class="fa fa-github-alt"></span></a></li>
-          
-            <li><a href="https://www.youtube.com/"><span class="fa fa-youtube-play"></span></a></li>
-          
-            <li><a href="https://stackoverflow.com/"><span class="fa fa-stack-overflow"></span></a></li>
-          
-            <li><a href="https://plus.google.com/"><span class="fa fa-google-plus"></span></a></li>
-          
-            <li><a href="/atom.xml"><span class="fa fa-rss"></span></a></li>
-          
-        </ul>
-	    
-      <hr/>
-      <div id="footerContent" class="footer-content">
-        <p>ipsum dolor sit amet, <strong>consectetur adipiscing elit.</strong> Fusce eget urna vitae velit <em>eleifend interdum at ac nisi. In nec ligula lacus. Cum sociis natoque</em> penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed eu cursus erat, ut dapibus quam. Post</p>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Gitment START -->
+      <div id="comments"></div>
+      <!-- Gitment END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#函数-🔂"><span class="toc-nav-text">函数 🔂</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#方法链"><span class="toc-nav-text">方法链</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#构造函数调用"><span class="toc-nav-text">构造函数调用</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#间接调用"><span class="toc-nav-text">间接调用</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#实参与形参"><span class="toc-nav-text">实参与形参</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#实参对象（ES5中被移除）"><span class="toc-nav-text">实参对象（ES5中被移除）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#类型转换"><span class="toc-nav-text">类型转换</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#作为值的函数"><span class="toc-nav-text">作为值的函数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#自定义函数属性"><span class="toc-nav-text">自定义函数属性</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#作为命名空间的函数"><span class="toc-nav-text">作为命名空间的函数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#闭包"><span class="toc-nav-text">闭包</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#函数属性、方法和构造函数"><span class="toc-nav-text">函数属性、方法和构造函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#length属性"><span class="toc-nav-text">length属性</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#prototype属性"><span class="toc-nav-text">prototype属性</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#✅-call-方法和apply-方法"><span class="toc-nav-text">✅ call()方法和apply()方法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#✅-bind-方法"><span class="toc-nav-text">✅ bind()方法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#toString-方法"><span class="toc-nav-text">toString()方法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Function-构造函数"><span class="toc-nav-text">Function()构造函数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#✅-可调用对象"><span class="toc-nav-text">✅ 可调用对象</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#函数式编程"><span class="toc-nav-text">函数式编程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#使用函数处理数组"><span class="toc-nav-text">使用函数处理数组</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#✅-高阶函数"><span class="toc-nav-text">✅ 高阶函数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#✅-不完全函数"><span class="toc-nav-text">✅ 不完全函数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#✅-记忆"><span class="toc-nav-text">✅ 记忆</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#对象📦"><span class="toc-nav-text">对象📦</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#三个属性"><span class="toc-nav-text">三个属性</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#对象的序列化"><span class="toc-nav-text">对象的序列化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#创建对象"><span class="toc-nav-text">创建对象</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#属性的使用与设置"><span class="toc-nav-text">属性的使用与设置</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#属性的继承"><span class="toc-nav-text">属性的继承</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#属性访问出错了"><span class="toc-nav-text">属性访问出错了</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#删除属性"><span class="toc-nav-text">删除属性</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#检测属性"><span class="toc-nav-text">检测属性</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
 
+<script>
+  (function () {
+    var url = 'http://yoursite.com/coding/JavaScript学习笔记——函数与对象.html';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
 
-      </div>
-    </footer>
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
 
-      
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
 
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
 
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
 
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
 
+    // gitment
+    var gitmentConfig = "wittyfans";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "JavaScript学习笔记——函数与对象",
+        owner: "wittyfans",
+        repo: "wittyfans.github.io",
+        oauth: {
+          client_id: "fa8c091699aba6227fd0",
+          client_secret: "41251be2938c78d5b3b987e17dc8a9936baec5f5f"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
 
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
 
-<script src="/js/typing.js"></script>
-<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
 
-
-
-
-
-
-
-    </div>
+<script src="/js/script.js"></script>
   </body>
 </html>

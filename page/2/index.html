@@ -1,131 +1,465 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
-<head>
-  <meta charset="utf-8">
-  
-  <title>wittyfans</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   <meta name="description" content="wittyfans 阅读 哲学 学习 Python BigData PowerShell">
-<meta property="og:type" content="website">
-<meta property="og:title" content="wittyfans">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="wittyfans">
-<meta property="og:description" content="wittyfans 阅读 哲学 学习 Python BigData PowerShell">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wittyfans">
-<meta name="twitter:description" content="wittyfans 阅读 哲学 学习 Python BigData PowerShell">
+  <meta name="keyword" content="wittyfans, 读书笔记, PowerShell, Python, 大数据, 哲学, Hadoop, bigdata">
+  
+    <link rel="shortcut icon" type="image/ico" href="/favicon.jpg"/> 
+  
+  <title>
+    
+      学则不固,知则不惑
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
   
   
-    <link rel="icon" href="/favicon.ico">
-  
-  <link rel="stylesheet" href="/css/typing.css">
-  <link rel="stylesheet" href="/css/donate.css">
-  
-  <link rel="stylesheet" href="/css/font-awesome.min.css">
-  
-</head>
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
 
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
   
-    
-    <body class="home-body">
-    
-  
-      <div id="container" class="container">
-        <div class="home">
-  <div class="content">
-    <div class="profile">
-      <h1 class="nickname">wittyfans</h1>
-      <div class="description">
-        <p><p>I’m coder from ChangSha, I use Python, JavaScript, and Powershell.</p>
-</p>
-      </div>
-    </div>
-    <hr/>
-  </div>
+
+
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
 </div>
-    <ul class="footer-links">
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>学则不固,知则不惑</span>
+    </a>
+    <ul class="right-list">
       
-        <li>
-	  
-            <a href="/archives/"><span class="fa fa-book"></span></a>
-	  
+        <li class="list-item">
+          
+            <a href="/" class="item-link active">Home</a>
+          
         </li>
       
-        <li>
-	  
-            <a href="https://github.com/geekplux/hexo-theme-typing"><span class="fa fa-globe"></span></a>
-	  
+        <li class="list-item">
+          
+            <a href="/tags" class="item-link">Tags</a>
+          
         </li>
       
-        <li>
-	  
-            <a href="https://twitter.com/"><span class="fa fa-twitter"></span></a>
-	  
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
         </li>
       
-        <li>
-	  
-            <a href="https://github.com/"><span class="fa fa-github-alt"></span></a>
-	  
+        <li class="list-item">
+          
+            <a href="/archives" class="item-link">Archives</a>
+          
         </li>
       
-        <li>
-	  
-            <a href="https://www.youtube.com/"><span class="fa fa-youtube-play"></span></a>
-	  
-        </li>
-      
-        <li>
-	  
-            <a href="https://stackoverflow.com/"><span class="fa fa-stack-overflow"></span></a>
-	  
-        </li>
-      
-        <li>
-	  
-            <a href="https://plus.google.com/"><span class="fa fa-google-plus"></span></a>
-	  
-        </li>
-      
-        <li>
-	  
-            <a href="/atom.xml"><span class="fa fa-rss"></span></a>
-	  
+        <li class="list-item">
+          
+            <a href="/about" class="item-link">About</a>
+          
         </li>
       
     </ul>
-
-      </div>
-      
-  <footer id="footer" class="home-footer footer">
-    <div id="copyright" class="copyright">
-      &copy; 2018 wittyfans  Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme &copy; <a href="https://github.com/geekplux" target="_blank">GeekPlux</a>
-
-      </div>
-    </footer>
-
-      
-
-
-
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.10/clipboard.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/typing.js"></script>
-<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
-
-
-
-
-
-
-
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
     </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link mobile-active">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <main class="app-body">
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/coding/使用SCP命令在远程VPS和本地之间进行文件传输.html">使用SCP命令在远程VPS和本地之间进行文件传输</a>
+      </h2>
+      <p class="article-date">July 13, 2017</p>
+      
+      <div class="article-summary">
+        
+          <p>假设你的VPS的功能很单纯，没有Nginx或者Web Server，那么要如何在VPS和本地之间、或者两台VPS之间进行文件传输呢？答案就是scp命令。<br>
+        
+      </div>
+      <a class="more" href="/coding/使用SCP命令在远程VPS和本地之间进行文件传输.html">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/coding/Screen指南.html">Screen指南</a>
+      </h2>
+      <p class="article-date">July 13, 2017</p>
+      
+        
+  <a href="/tags#前端" >
+    <span class="tag-code">前端</span>
+  </a>
+
+  <a href="/tags#系统" >
+    <span class="tag-code">系统</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。<br>
+        
+      </div>
+      <a class="more" href="/coding/Screen指南.html">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/coding/主机名由localhost变成bogon的解决办法.html">主机名由localhost变成bogon的解决办法</a>
+      </h2>
+      <p class="article-date">July 13, 2017</p>
+      
+        
+  <a href="/tags#系统" >
+    <span class="tag-code">系统</span>
+  </a>
+
+  <a href="/tags#Mac" >
+    <span class="tag-code">Mac</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+           
+主机名由localhost变成bogon的解决办法
+修改你的 DNS 为公共 DNS，例如 114.114.114.114 或者谷歌的 8.8.8.8（我切换DNS便解决了问题）
+编辑主机名字12345sudo hostname your-desired-host-namesudo sc ...
+        
+      </div>
+      <a class="more" href="/coding/主机名由localhost变成bogon的解决办法.html">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/coding/正则表达式学习.html">正则表达式学习</a>
+      </h2>
+      <p class="article-date">July 13, 2017</p>
+      
+        
+  <a href="/tags#技术" >
+    <span class="tag-code">技术</span>
+  </a>
+
+  <a href="/tags#正则" >
+    <span class="tag-code">正则</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>正则表达式学习与快速参考<br>
+        
+      </div>
+      <a class="more" href="/coding/正则表达式学习.html">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/coding/个人整理2017前端学习路线与资料.html">个人整理2017前端学习路线与资料</a>
+      </h2>
+      <p class="article-date">June 7, 2017</p>
+      
+        
+  <a href="/tags#前端" >
+    <span class="tag-code">前端</span>
+  </a>
+
+  <a href="/tags#个人提高" >
+    <span class="tag-code">个人提高</span>
+  </a>
+
+  <a href="/tags#技术" >
+    <span class="tag-code">技术</span>
+  </a>
+
+  <a href="/tags#学习" >
+    <span class="tag-code">学习</span>
+  </a>
+
+  <a href="/tags#Web" >
+    <span class="tag-code">Web</span>
+  </a>
+
+  <a href="/tags#Learning" >
+    <span class="tag-code">Learning</span>
+  </a>
+
+  <a href="/tags#Improve yourself" >
+    <span class="tag-code">Improve yourself</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>资料来源于网络，本人仅做整理。<br>This content come from internet,I just put it together.</p>
+        
+      </div>
+      <a class="more" href="/coding/个人整理2017前端学习路线与资料.html">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/writing/每个人都应该具备的技能：讲故事.html">每个人都应该具备的技能：讲故事</a>
+      </h2>
+      <p class="article-date">May 29, 2017</p>
+      
+        
+  <a href="/tags#个人提高" >
+    <span class="tag-code">个人提高</span>
+  </a>
+
+  <a href="/tags#表达" >
+    <span class="tag-code">表达</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          我觉得讲故事的能力是人类拥有的最神奇的能力之一，在我们社交生活中，讲故事几乎是太熟悉不过了。一个好的故事能我们帮我们交流想法、促进沟通，感同深受。
+应花更多的时间、注意力去学习讲更好的故事，许多人至今在生活、工作中没有这样的能力，这是因为大部分人都没有花心思在这一点上。
+很多年以前人类就是依 ...
+        
+      </div>
+      <a class="more" href="/writing/每个人都应该具备的技能：讲故事.html">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/writing/Reading-《演讲改变了我的人生，也能改变你的》.html">Reading:《演讲改变了我的人生，也能改变你的》</a>
+      </h2>
+      <p class="article-date">May 28, 2017</p>
+      
+        
+  <a href="/tags#个人提高" >
+    <span class="tag-code">个人提高</span>
+  </a>
+
+  <a href="/tags#演讲" >
+    <span class="tag-code">演讲</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>我在酒吧写下了这篇文章，就像享受这酒水一样，我同时也享受今天的演讲。以前我讨厌在公众场合说话，现在却因演讲改变了我的人生轨迹，我想邀请你同我一起。<a href="https://medium.freecodecamp.com/public-speaking-transformed-my-life-and-can-change-yours-too-ca8acdbcc188?source=linkShare-99c7c410ab83-1495985477" target="_blank" rel="noopener">原文</a><br>
+        
+      </div>
+      <a class="more" href="/writing/Reading-《演讲改变了我的人生，也能改变你的》.html">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/coding/产品经理的数字工具们.html">产品经理的数字工具们 👨🏻‍💻</a>
+      </h2>
+      <p class="article-date">May 28, 2017</p>
+      
+        
+  <a href="/tags#个人提高" >
+    <span class="tag-code">个人提高</span>
+  </a>
+
+  <a href="/tags#互联网" >
+    <span class="tag-code">互联网</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>大部分都是数字工具。<br>
+        
+      </div>
+      <a class="more" href="/coding/产品经理的数字工具们.html">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/coding/产品经理的五种工具.html">产品经理的五种工具 🔨</a>
+      </h2>
+      <p class="article-date">May 27, 2017</p>
+      
+        
+  <a href="/tags#个人提高" >
+    <span class="tag-code">个人提高</span>
+  </a>
+
+  <a href="/tags#互联网" >
+    <span class="tag-code">互联网</span>
+  </a>
+
+  <a href="/tags#产品" >
+    <span class="tag-code">产品</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>知乎Live《产品汪的五种武器：记录、实现、架构、数据、整理》记录。<br>
+        
+      </div>
+      <a class="more" href="/coding/产品经理的五种工具.html">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/reading/《失控：机器、社会系统与经济世界的新生物学》读书笔记.html">《失控：机器、社会系统与经济世界的新生物学》读书笔记（更新中）</a>
+      </h2>
+      <p class="article-date">May 24, 2017</p>
+      
+        
+  <a href="/tags#阅读" >
+    <span class="tag-code">阅读</span>
+  </a>
+
+  <a href="/tags#互联网" >
+    <span class="tag-code">互联网</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>人与自然，多么美妙！<br>
+        
+      </div>
+      <a class="more" href="/reading/《失控：机器、社会系统与经济世界的新生物学》读书笔记.html">Read more</a>
+    </article>
+  
+
+  
+    <div class="guide-pager">
+  
+    <a href="/"><span class="page-arrow">← </span>Prev</a>
+  
+  
+    <a href="/page/3/">Next<span class="page-arrow"> →</span></a>
+  
+</div>
+  
+</main>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
   </body>
 </html>
