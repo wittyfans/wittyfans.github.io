@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wittyfans.com/"/>
-  <updated>2018-05-28T14:20:34.519Z</updated>
+  <updated>2018-05-28T15:11:57.327Z</updated>
   <id>http://wittyfans.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>PowerShell批量改密码</title>
+    <link href="http://wittyfans.com/coding/PowerShell%E6%89%B9%E9%87%8F%E6%94%B9%E5%AF%86%E7%A0%81.html"/>
+    <id>http://wittyfans.com/coding/PowerShell批量改密码.html</id>
+    <published>2018-05-28T15:05:49.000Z</published>
+    <updated>2018-05-28T15:11:57.327Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>最近接了个活，公司有1200多个人的域账号密码需要更改，遂自己写了个批量的脚本实现，效率美滋滋。</p></blockquote><a id="more"></a><p>首先是要去拿到用户的信息，然后改一个随机的密码，再捞出用户的手机号码，把密码发送出去。</p><p>用户的账号我已经有了，那就把他们放到文本文件里面，直接就可以把里面的信息取出来，</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$users = Get-Content $userListPath</span><br></pre></td></tr></table></figure><p>但发现每次写死路径很不方便，改来改去的，那就直接调用系统选择文件对话框嘛，</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Add-Type -AssemblyName System.Web</span><br><span class="line"></span><br><span class="line">Function Get-FileName($initialDirectory)</span><br><span class="line">&#123;</span><br><span class="line">    [System.Reflection.Assembly]::LoadWithPartialName(&quot;System.windows.forms&quot;) | Out-Null</span><br><span class="line">    </span><br><span class="line">    $OpenFileDialog = New-Object System.Windows.Forms.OpenFileDialog</span><br><span class="line">    $OpenFileDialog.initialDirectory = $initialDirectory</span><br><span class="line">    $OpenFileDialog.filter = &quot;TXT (*.txt)| *.txt&quot;</span><br><span class="line">    $OpenFileDialog.ShowDialog() | Out-Null</span><br><span class="line">   return $OpenFileDialog.FileName</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>用这个函数，调用一次就会出现选择文件对话框。通过$OpenFileDialog.filter来控制，可以自定义要过滤的文件类型，选择完了之后，默认会输出成功与失败的提示。我不想看到这个提示，就直接在后面加个管道out-null了，选择好文件，该函数就会返回该文件的路径，拿到这个路径，就可以用get-content拿到其中的名字了。</p><p>拿到名字得先处理一下，因为在域里面名字中间有空格容易出错，得先把它们的空格替换成.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$UserName = $rawUserName -replace &quot; &quot;,&quot;.&quot;</span><br></pre></td></tr></table></figure><p>拿到名字了，继续捞其他信息, 首先是名字</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$aduser = get-aduser -server yourdomain.com $UserName</span><br></pre></td></tr></table></figure><p>然后是手机</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$aduserPhone = (Get-ADUser -Server server.com $UserName -Properties mobile | select mobile).mobile</span><br></pre></td></tr></table></figure><p>接下先创建凭证，这样才能改密码，因为脚本还要给同事用嘛，把密码直接写进去还是不太好，所以得加密。</p><p>我写了个小脚本，把输入密码进去，就会把生成好的加密字符串复制到剪贴板，很方便，下面是代码，复制保存为ps1后缀的文件就可以用啦。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Add-Type -AssemblyName System.Windows.Forms</span><br><span class="line"></span><br><span class="line">function Read-MessageBoxDialog</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    param ([string]$Message,</span><br><span class="line"></span><br><span class="line">        [string]$WindowTitle,</span><br><span class="line"></span><br><span class="line">        [System.Windows.Forms.MessageBoxButtons]$Buttons = [System.Windows.Forms.MessageBoxButtons]::OK,</span><br><span class="line"></span><br><span class="line">        [System.Windows.Forms.MessageBoxIcon]$Icon = [System.Windows.Forms.MessageBoxIcon]::None)</span><br><span class="line"></span><br><span class="line">    Add-Type -AssemblyName System.Windows.Forms</span><br><span class="line"></span><br><span class="line">    return [System.Windows.Forms.MessageBox]::Show($Message, $WindowTitle, $Buttons, $Icon)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">write-host &quot;请输入原始密码：↓↓↓↓&quot;</span><br><span class="line">$inputPWD = Read-Host | ConvertTo-SecureString -AsPlainText -Force</span><br><span class="line">$encryptedPWD = $inputPWD | ConvertFrom-SecureString</span><br><span class="line">[Windows.Forms.Clipboard]::SetText($encryptedPWD)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Read-MessageBoxDialog -Message &quot;已拷贝到剪贴板&quot; -WindowTitle &quot;安全密码制作工具&quot; -Buttons OK -Icon Information</span><br></pre></td></tr></table></figure><p>拿到密码之后，就可以制作自己的凭证了。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$User = &quot;yourAccount&quot;</span><br><span class="line">$Pwd = &quot;加密密码&quot; | ConvertTo-SecureString</span><br><span class="line">$Credential = New-Object -TypeName &quot;System.Management.Automation.PSCredential&quot; -ArgumentList $User, $Pwd</span><br></pre></td></tr></table></figure><p>需要注意的是，本机制作的凭证，只可以在自己的机器上用，如果要在别的机器用，需要解锁，这个有点复杂，挖个坑以后再研究。</p><p>接下来就可以改密码了，我们先把随机密码准备好</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$PasswordLength = 16</span><br><span class="line">$SpecialCharCount = 8</span><br><span class="line">$Password =[System.Web.Security.Membership]::GeneratePassword($PasswordLength, $SpecialCharCount)</span><br></pre></td></tr></table></figure><p>直接一个for循环遍历所有名单，更改密码</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Get-ADUser -Server wittyfans.com -Identity $UserName | Set-ADAccountPassword -NewPassword $SecPaswd -Server wittyfans.com -Credential $Credential </span><br><span class="line">        </span><br><span class="line">Set-ADUser -Identity $UserName -ChangePasswordAtLogon $false -Server wittyfans.com -Credential $Credential |Unlock-ADAccount -Verbose -Server wittyfans.com -Credential $Credential</span><br></pre></td></tr></table></figure><p>这个语句会直接给用户设一个新密码，并解锁他的账户。需要把其中的wittyfans.com变成你们自己的配置，其中有一个步骤需要注意的是，如果你去拿用户的信息，但这个名字错了，拿不到的话，会直接报错造成程序中断，这个时候得用try-catch语句处理，然后设置一个标记，通过这个标记去判断域中是否有这个用户。</p><p>最后就是输出数据啦，直接把所有数据保存起来，用out-file语句就可以保存成文本文件了，加上-Append，这样才不会把数据重写哦。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Out-File -FilePath .\Desktop\ResetedPassWord.txt -Append</span><br></pre></td></tr></table></figure><p>完工！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;最近接了个活，公司有1200多个人的域账号密码需要更改，遂自己写了个批量的脚本实现，效率美滋滋。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
+    
+    
+      <category term="PowerShell" scheme="http://wittyfans.com/tags/PowerShell/"/>
+    
+      <category term="HelpDesk" scheme="http://wittyfans.com/tags/HelpDesk/"/>
+    
+      <category term="AD" scheme="http://wittyfans.com/tags/AD/"/>
+    
+  </entry>
   
   <entry>
     <title>Zookeeper安装、配置、启动</title>
@@ -335,13 +363,13 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="Windows" scheme="http://wittyfans.com/tags/Windows/"/>
+      <category term="PowerShell" scheme="http://wittyfans.com/tags/PowerShell/"/>
     
       <category term="HelpDesk" scheme="http://wittyfans.com/tags/HelpDesk/"/>
     
-      <category term="技术支持" scheme="http://wittyfans.com/tags/%E6%8A%80%E6%9C%AF%E6%94%AF%E6%8C%81/"/>
+      <category term="Windows" scheme="http://wittyfans.com/tags/Windows/"/>
     
-      <category term="PowerShell" scheme="http://wittyfans.com/tags/PowerShell/"/>
+      <category term="技术支持" scheme="http://wittyfans.com/tags/%E6%8A%80%E6%9C%AF%E6%94%AF%E6%8C%81/"/>
     
   </entry>
   
@@ -526,32 +554,6 @@
     
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Screen指南</title>
-    <link href="http://wittyfans.com/coding/Screen%E6%8C%87%E5%8D%97.html"/>
-    <id>http://wittyfans.com/coding/Screen指南.html</id>
-    <published>2017-07-13T12:18:32.000Z</published>
-    <updated>2018-03-15T14:45:44.289Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。</p></blockquote><a id="more"></a><h1 id="Screen指南"><a href="#Screen指南" class="headerlink" title="Screen指南"></a>Screen指南</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。</p><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>在screen中创建一个新的窗口有这样几种方式：<br>1．直接在命令行键入screen命令<br>[root@tivf06 ~]# screen<br>Screen将创建一个执行shell的全屏窗口。你可以执行任意shell程序，就像在ssh窗口中那样。在该窗口中键入exit退出该窗口，如果这是该screen会话的唯一窗口，该screen会话退出，否则screen自动切换到前一个窗口。<br>2．Screen命令后跟你要执行的程序。<br>[root@tivf06 ~]# screen vi test.c<br>Screen创建一个执行vi test.c的单窗口会话，退出vi将退出该窗口/会话。<br>3．以上两种方式都创建新的screen会话。我们还可以在一个已有screen会话中创建新的窗口。在当前screen窗口中键入C-a c，即Ctrl键+a键，之后再按下c键，screen 在该会话内生成一个新的窗口并切换到该窗口。<br>screen还有更高级的功能。你可以不中断screen窗口中程序的运行而暂时断开（detach）screen会话，并在随后时间重新连接（attach）该会话，重新控制各窗口中运行的程序。例如，我们打开一个screen窗口编辑/tmp/abc文件：<br>[root@tivf06 ~]# screen vi /tmp/abc<br>之后我们想暂时退出做点别的事情，比如出去散散步，那么在screen窗口键入C-a d，Screen会给出detached提示：</p><p>半个小时之后回来了，找到该screen会话：<br>[root@tivf06 ~]# screen -ls<br>There is a screen on:<br>        16582.pts-1.tivf06      (Detached)<br>1 Socket in /tmp/screens/S-root.<br>重新连接会话：<br>[root@tivf06 ~]# screen -r 16582<br>看看出现什么了，太棒了，一切都在。继续干吧。</p><p>你可能注意到给screen发送命令使用了特殊的键组合C-a。这是因为我们在键盘上键入的信息是直接发送给当前screen窗口，必须用其他方式向screen窗口管理器发出命令，默认情况下，screen接收以C-a开始的命令。这种命令形式在screen中叫做键绑定（key binding），C-a叫做命令字符（command character）。<br>可以通过C-a ?来查看所有的键绑定，常用的键绑定有：</p><h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul><li>C-a ?    显示所有键绑定信息</li><li>C-a w    显示所有窗口列表</li><li>C-a C-a    切换到之前显示的窗口</li><li>C-a c    创建一个新的运行shell的窗口并切换到该窗口</li><li>C-a n    切换到下一个窗口</li><li>C-a p    切换到前一个窗口(与C-a n相对)</li><li>C-a 0..9    切换到窗口0..9</li><li>C-a a    发送 C-a到当前窗口</li><li>C-a d    暂时断开screen会话</li><li>C-a k    杀掉当前窗口</li><li>C-a [    进入拷贝/回滚模式</li><li>其他常用的命令选项有：<br>-c file    使用配置文件file，而不使用默认的$HOME/.screenrc<br>-d|-D [pid.tty.host]    不开启新的screen会话，而是断开其他正在运行的screen会话<br>-h num    指定历史回滚缓冲区大小为num行<br>-list|-ls    列出现有screen会话，格式为pid.tty.host<br>-d -m    启动一个开始就处于断开模式的会话<br>-r sessionowner/ [pid.tty.host]    重新连接一个断开的会话。多用户模式下连接到其他用户screen会话需要指定sessionowner，需要setuid-root权限<br>-S sessionname    创建screen会话时为会话指定一个名字<br>-v    显示screen版本信息<br>-wipe [match]    同-list，但删掉那些无法连接的会话</li></ul><h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p><strong>在终端中</strong></p><ul><li>screen -S name :新建名字为name的screen窗口</li><li>screen -ls : 查看所有后台窗口</li><li>screen -r name -&gt; 回到name这个session<br><strong>Screen中</strong></li><li>C-a k :杀掉当前screen</li><li>C-a d :暂时断开screen的连接</li></ul><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-screen/" target="_blank" rel="noopener">IBM</a></li><li><a href="http://www.cnblogs.com/mchina/archive/2013/01/30/2880680.html" target="_blank" rel="noopener">David Camp - CNBlog</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;简单来说，Screen是一个可以在多个进程之间多路复用一个物理终端的窗口管理器。Screen中有会话的概念，用户可以在一个screen会话中创建多个screen窗口，在每一个screen窗口中就像操作一个真实的telnet/SSH连接窗口那样。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
-    
-    
-      <category term="前端" scheme="http://wittyfans.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="系统" scheme="http://wittyfans.com/tags/%E7%B3%BB%E7%BB%9F/"/>
     
   </entry>
   
