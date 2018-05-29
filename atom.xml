@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wittyfans.com/"/>
-  <updated>2018-05-28T15:11:57.327Z</updated>
+  <updated>2018-05-29T14:58:13.529Z</updated>
   <id>http://wittyfans.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hadoop2.x HA架构学习与配置</title>
+    <link href="http://wittyfans.com/coding/Hadoop2-x-HA%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E4%B8%8E%E9%85%8D%E7%BD%AE.html"/>
+    <id>http://wittyfans.com/coding/Hadoop2-x-HA架构学习与配置.html</id>
+    <published>2018-05-29T14:57:17.000Z</published>
+    <updated>2018-05-29T14:58:13.529Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>HA，即一套宕机解决方案，用来实现分布式系统中的自动故障转移。</p></blockquote><a id="more"></a><h1 id="HA是什么？"><a href="#HA是什么？" class="headerlink" title="HA是什么？"></a>HA是什么？</h1><blockquote><p>我们说DataNode存储数据, NameNode是目录，而yarn中,ResourceManager, 相当于是任务的总指挥，项目管理，那么这个HDFS中的NameNode和Yarn中的ResourceManager其实是非常重要的，如果一台挂了，那么整个集群都会没法提供服务，HA就是为这种故障提供一套解决方案。</p></blockquote><h1 id="HA原理"><a href="#HA原理" class="headerlink" title="HA原理"></a>HA原理</h1><p>在NameNode的目录更新的时候，会在本地的edits和fsImage中保存更新记录，所以我们可以设置多个NameNode，然后设置一个中间节点去保存这个edits和fsImage文件，这样每个NameNode有更新，这个中间节点就会记录，确保一台NameNode宕机的时候能及时的把数据转移到其他Node上去。</p><p>这个中间节点就叫做JournalNode，它也有副本，即多份Namenode的日志。</p><h1 id="HDFS-HA配置"><a href="#HDFS-HA配置" class="headerlink" title="HDFS HA配置"></a>HDFS HA配置</h1><h2 id="规划"><a href="#规划" class="headerlink" title="规划"></a>规划</h2><p>先看一下之前的配置:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NameNode</span><br><span class="line">DataNode1 DataNode2 DataNode3</span><br></pre></td></tr></table></figure><p>规划了HA的</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NameNode  NameNode</span><br><span class="line">DataNode1 DataNode2 DataNode3</span><br><span class="line">Journalnode Journalnode Journalnode</span><br></pre></td></tr></table></figure><h2 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h2><p>备份原来的配置 </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp -r hadoop/ dist-hadoop</span><br><span class="line">mv tmp/ dist-tmp</span><br></pre></td></tr></table></figure><p>再在原来的目录中重新创建tmp文件夹。</p><h2 id="配置hdfs-site-xml"><a href="#配置hdfs-site-xml" class="headerlink" title="配置hdfs-site.xml"></a>配置hdfs-site.xml</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1. dfs.nameservice -&gt; 取个名字</span><br><span class="line">2. dfs.ha.namenodes.上面的名字 -&gt;nn1,nn2</span><br><span class="line">3. rpc.address.ns.nn1 -&gt; hostname:8020</span><br><span class="line">4. rpc.address.ns.nn2 -&gt; hostname:8020</span><br><span class="line">5. http-address.ns.nn1 -&gt; hostname:50070</span><br><span class="line">6. http-address.ns.nn2 -&gt; hostname:50070</span><br><span class="line">7. Shared.edits.dir -&gt; qjournal://master:8485;node1:8485;node2:8485;</span><br><span class="line">8. dfs.journalnode.edits.dir -&gt; /opt/modules/hadoop/data/jn</span><br><span class="line">9. failover.proxy.provider.mycluster -&gt; : 设置成默认值即可</span><br><span class="line">10. Fecing.methods -&gt; sshfence : 隔离机制</span><br><span class="line">11. Private-key-files -&gt; hadoop : 用户名</span><br></pre></td></tr></table></figure><h2 id="配置core-site-xml"><a href="#配置core-site-xml" class="headerlink" title="配置core-site.xml"></a>配置core-site.xml</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. fs.defaultFS -&gt; hdfs://ns</span><br></pre></td></tr></table></figure><h2 id="配置其他机器"><a href="#配置其他机器" class="headerlink" title="配置其他机器"></a>配置其他机器</h2><p>目录与配置都与第一台一样。</p><h1 id="HDFS中HA启动与测试"><a href="#HDFS中HA启动与测试" class="headerlink" title="HDFS中HA启动与测试"></a>HDFS中HA启动与测试</h1><h2 id="启动HA"><a href="#启动HA" class="headerlink" title="启动HA"></a>启动HA</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. 启动1,2,3机器 -&gt; sbin/hadoop-daemon.sh start journalnode</span><br><span class="line">2. 格式化 -&gt; bxn/hdfs namenode -format</span><br><span class="line">3. 重启NameNode</span><br><span class="line">4. 在nn2上，同步nn1的原数据信息 -&gt; bin/hdfs namenode -bootstrpStandby</span><br><span class="line">5. 启动nn2</span><br><span class="line">6. 将nn1的状态改为active -&gt; bin/hdfs haadmin -transitionToActive nn1</span><br><span class="line">7. 启动测试 -&gt;</span><br></pre></td></tr></table></figure><h2 id="测试人工故障转移"><a href="#测试人工故障转移" class="headerlink" title="测试人工故障转移"></a>测试人工故障转移</h2><p>测试的原理是，先上传一个文件到DataNode，然后这个时候把NN1干掉，再去取数据，观察其是否会自动切换NameNode.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. 创建目录 -&gt; bin/hdfs dfs -mkdir -p /path/</span><br><span class="line">2. 上传目录 -&gt; bin/hdfs dfs -put /path/</span><br><span class="line">3. 尝试读取文件 -&gt; hdfs dfs -text /user/kfk/data/filename</span><br><span class="line">4. 干掉nn1观察 -&gt; jps:21319 -&gt; kill -8 21317</span><br><span class="line">5. Nn2改成active -&gt; hdfs haadmin -transitionToActive nn2</span><br><span class="line">--forceactive</span><br><span class="line">6. 再从nn1尝试读取文件观察是否成功 -&gt; hdfs dfs -text /user/kfk/data/filename</span><br></pre></td></tr></table></figure><p>以上的切换的过程，是人工手动切换的方式，但如果借助Zookeeper，就可以实现自动故障转移了。</p><h2 id="自动故障转移"><a href="#自动故障转移" class="headerlink" title="自动故障转移"></a>自动故障转移</h2><p>首先需要配置hdfs-site文件</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. dfs.ha.automic-failover.enabled.youmaster -&gt; true</span><br><span class="line">2. ha.zookeeper.quorum -&gt; master:2181,node1:2181,node:2181</span><br></pre></td></tr></table></figure><p>停掉所有服务，然后启动集群的zookeeper.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. zkserver.sh start</span><br><span class="line">2. 初始化HA再Zookeeper中状态bin/hdfs zkfc -formatZK</span><br><span class="line">3. start-dfs.sh</span><br><span class="line">4. 各个机器上启动 -&gt; Hadooop-daemon.sh start zkfc</span><br></pre></td></tr></table></figure><p>配置完成之后，启动集群后，如果有多个nanonode，系统会自动帮我们选一个active。</p><p>如果ZKFC没有启动起来，可以去log里面找 <em>zkfc-bigdata-pro02.master.logs</em> 日志。</p><p>配置完成之后，HDFS中的HA分布如下</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">namenode    namenode</span><br><span class="line">datanode    datanode    datanode</span><br><span class="line">journalnode journalnode journalnode</span><br><span class="line">zkfc        zkfc</span><br></pre></td></tr></table></figure><h1 id="Yarn中HA"><a href="#Yarn中HA" class="headerlink" title="Yarn中HA"></a>Yarn中HA</h1><h2 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a>原理介绍</h2><p>对于Yarn来说，ResourceManager是最重要的，所以需要多台ResourceManager，实现一台RM宕机后，可以自动切换到另一台RM.</p><p>同样，Yarn中实现HA，也是借助于Zookeeper。</p><p>先来看一下规划:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RM RM</span><br><span class="line">NM NM NM</span><br></pre></td></tr></table></figure><h2 id="Yarn-site配置"><a href="#Yarn-site配置" class="headerlink" title="Yarn-site配置"></a>Yarn-site配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1. 删除yarn.resourcemanager.hostname项，因为多台rm之后就不需要再指定rm了</span><br><span class="line">2. yarn.resourcemanager.ha.enabled -&gt; true</span><br><span class="line">3. cluster-id -&gt; rs</span><br><span class="line">4. ha.rm-ids -&gt; rm1,rm2</span><br><span class="line">5. hostname.rm1 -&gt; yourhostname</span><br><span class="line">6. hostname.rm2 -&gt; yourhostname</span><br><span class="line">7. zk.address -&gt;master:2181;node1:2181;node2:2181</span><br><span class="line">8. recovery.enabled -&gt; true</span><br><span class="line">9. 配置数据恢复为zookeeper: *.store.class -&gt; default_config</span><br></pre></td></tr></table></figure><p>按照这个顺序配置，再分发到其他的节点，然后就可以测试了。</p><h2 id="Yarn-HA-启动与测试"><a href="#Yarn-HA-启动与测试" class="headerlink" title="Yarn HA 启动与测试"></a>Yarn HA 启动与测试</h2><ol><li>启动RM两个</li><li>启动NM三个</li><li>测试 <em>MapReduce WordCount</em> 程序</li></ol><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. yarn-daemon.sh start resourcemanager (in nn1 and nn2)</span><br><span class="line">2. yarn-daemon.sh start nodemanager(in master nd1 nd2)</span><br></pre></td></tr></table></figure><p>测试 <em>MapReduce</em> 就不赘述啦，至此 <em>HA</em> 在 <em>Hadoop</em> 中的配置结束。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;HA，即一套宕机解决方案，用来实现分布式系统中的自动故障转移。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
+    
+    
+      <category term="bigdata" scheme="http://wittyfans.com/tags/bigdata/"/>
+    
+      <category term="hadoop" scheme="http://wittyfans.com/tags/hadoop/"/>
+    
+      <category term="HA" scheme="http://wittyfans.com/tags/HA/"/>
+    
+  </entry>
   
   <entry>
     <title>PowerShell批量改密码</title>
@@ -36,9 +64,9 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="PowerShell" scheme="http://wittyfans.com/tags/PowerShell/"/>
-    
       <category term="HelpDesk" scheme="http://wittyfans.com/tags/HelpDesk/"/>
+    
+      <category term="PowerShell" scheme="http://wittyfans.com/tags/PowerShell/"/>
     
       <category term="AD" scheme="http://wittyfans.com/tags/AD/"/>
     
@@ -90,9 +118,9 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="hadoop" scheme="http://wittyfans.com/tags/hadoop/"/>
-    
       <category term="bigdata" scheme="http://wittyfans.com/tags/bigdata/"/>
+    
+      <category term="hadoop" scheme="http://wittyfans.com/tags/hadoop/"/>
     
       <category term="yarn" scheme="http://wittyfans.com/tags/yarn/"/>
     
@@ -148,9 +176,9 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="big data" scheme="http://wittyfans.com/tags/big-data/"/>
-    
       <category term="hadoop" scheme="http://wittyfans.com/tags/hadoop/"/>
+    
+      <category term="big data" scheme="http://wittyfans.com/tags/big-data/"/>
     
       <category term="hive" scheme="http://wittyfans.com/tags/hive/"/>
     
@@ -363,13 +391,13 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="PowerShell" scheme="http://wittyfans.com/tags/PowerShell/"/>
+      <category term="Windows" scheme="http://wittyfans.com/tags/Windows/"/>
     
       <category term="HelpDesk" scheme="http://wittyfans.com/tags/HelpDesk/"/>
     
-      <category term="Windows" scheme="http://wittyfans.com/tags/Windows/"/>
-    
       <category term="技术支持" scheme="http://wittyfans.com/tags/%E6%8A%80%E6%9C%AF%E6%94%AF%E6%8C%81/"/>
+    
+      <category term="PowerShell" scheme="http://wittyfans.com/tags/PowerShell/"/>
     
   </entry>
   
@@ -532,28 +560,6 @@
       <category term="前端" scheme="http://wittyfans.com/tags/%E5%89%8D%E7%AB%AF/"/>
     
       <category term="系统" scheme="http://wittyfans.com/tags/%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux之scp命令使用</title>
-    <link href="http://wittyfans.com/coding/Linux%E4%B9%8Bscp%E5%91%BD%E4%BB%A4%E7%9A%84%E4%BD%BF%E7%94%A8.html"/>
-    <id>http://wittyfans.com/coding/Linux之scp命令的使用.html</id>
-    <published>2017-07-13T12:19:50.000Z</published>
-    <updated>2018-03-15T14:35:35.504Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>假设你的VPS的功能很单纯，没有Nginx或者Web Server，那么要如何在VPS和本地之间、或者两台VPS之间进行文件传输呢？答案就是scp命令。</p></blockquote><a id="more"></a><h1 id="使用SCP命令在远程VPS和本地之间进行文件传输"><a href="#使用SCP命令在远程VPS和本地之间进行文件传输" class="headerlink" title="使用SCP命令在远程VPS和本地之间进行文件传输"></a>使用SCP命令在远程VPS和本地之间进行文件传输</h1><p>假设你的VPS的功能很单纯，没有Nginx或者Web Server，那么要如何在VPS和本地之间、或者两台VPS之间进行文件传输呢？答案就是scp命令。</p><h2 id="1-什么是scp"><a href="#1-什么是scp" class="headerlink" title="1 什么是scp"></a>1 什么是scp</h2><p>scp就是secure copy，是用来进行远程文件拷贝的。数据传输使用 ssh，并且和ssh 使用相同的认证方式，提供相同的安全保证。scp在需要进行验证时会要求你输入密码或口令。</p><h2 id="2-实际操作"><a href="#2-实际操作" class="headerlink" title="2 实际操作"></a>2 实际操作</h2><p>2.1 下载VPS的文件(目录)到本地</p><p>假设需要将VPS上的一个文件下载到本地，文件路径是/root/test.log，VPS的IP地址是12.34.56.78，VPS的账户名是root，SSH端口是6666，我们将这个文件下载到本地的/Users/admin/root/test.log，那么我们需要执行的scp命令是</p><p>scp －P 6666 <a href="mailto:root@12.34.56.78" target="_blank" rel="noopener">root@12.34.56.78</a>:/root/test.log /Users/admin/root/test.log<br>scp支持对整个目录进行操作，例如将上述root目录下载到本地</p><p>scp －P 6666 <a href="mailto:root@12.34.56.78" target="_blank" rel="noopener">root@12.34.56.78</a>:/root /Users/admin/root<br>执行scp命令后需要输入VPS上对应账户的密码</p><p>2.2 上传本地的文件(目录)到VPS</p><p>假设需要将本地的一个文件上传到VPS，本地文件的路径是/Users/admin/root/test.log，VPS的IP地址是12.34.56.78，VPS的账户名是root，SSH端口是6666，我们将这个文件上传到VPS的/root/test.log，那么我们需要执行的scp命令是</p><p>scp -r －P 6666 /Users/admin/root/test.log <a href="mailto:root@12.34.56.78" target="_blank" rel="noopener">root@12.34.56.78</a>:/root/test.log<br>同理，也能上传整个目录</p><p>scp -r －P 6666 /Users/admin/root <a href="mailto:root@12.34.56.78" target="_blank" rel="noopener">root@12.34.56.78</a>:/root</p><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul><li><a href="http://celerysoft.github.io/2016-07-07.html" target="_blank" rel="noopener">月下之光 - 攸溟</a></li></ul><hr>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;假设你的VPS的功能很单纯，没有Nginx或者Web Server，那么要如何在VPS和本地之间、或者两台VPS之间进行文件传输呢？答案就是scp命令。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
-    
     
   </entry>
   

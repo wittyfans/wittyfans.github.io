@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Windows,HelpDesk,技术支持,PowerShell," />
+  <meta name="keywords" content="bigdata,hadoop,HA," />
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="Power shell 作为一门windows平台下的脚本语言，对于系统管理员来说，可以极大的减少我们的工作，作为一流的系统管理员（逃～），不可不学！">
-<meta name="keywords" content="Windows,HelpDesk,技术支持,PowerShell">
+<meta name="description" content="HA，即一套宕机解决方案，用来实现分布式系统中的自动故障转移。">
+<meta name="keywords" content="bigdata,hadoop,HA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PowerShell常用命令">
-<meta property="og:url" content="http://wittyfans.com/coding/Powershell常用命令.html">
+<meta property="og:title" content="Hadoop2.x HA架构学习与配置">
+<meta property="og:url" content="http://wittyfans.com/coding/Hadoop2-x-HA架构学习与配置.html">
 <meta property="og:site_name" content="wittyfans">
-<meta property="og:description" content="Power shell 作为一门windows平台下的脚本语言，对于系统管理员来说，可以极大的减少我们的工作，作为一流的系统管理员（逃～），不可不学！">
+<meta property="og:description" content="HA，即一套宕机解决方案，用来实现分布式系统中的自动故障转移。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-18T13:53:16.769Z">
+<meta property="og:updated_time" content="2018-05-29T14:58:13.529Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PowerShell常用命令">
-<meta name="twitter:description" content="Power shell 作为一门windows平台下的脚本语言，对于系统管理员来说，可以极大的减少我们的工作，作为一流的系统管理员（逃～），不可不学！">
+<meta name="twitter:title" content="Hadoop2.x HA架构学习与配置">
+<meta name="twitter:description" content="HA，即一套宕机解决方案，用来实现分布式系统中的自动故障转移。">
 
 
 
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://wittyfans.com/coding/Powershell常用命令.html"/>
+  <link rel="canonical" href="http://wittyfans.com/coding/Hadoop2-x-HA架构学习与配置.html"/>
 
 
 
 
 
-  <title> PowerShell常用命令 | wittyfans </title>
+  <title> Hadoop2.x HA架构学习与配置 | wittyfans </title>
   <script type="text/javascript" src="/js/src/love.js"></script>
 </head>
 
@@ -263,7 +263,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/Powershell常用命令.html">
+  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/Hadoop2-x-HA架构学习与配置.html">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="wittyfans">
@@ -287,7 +287,7 @@
             
             
               
-                PowerShell常用命令
+                Hadoop2.x HA架构学习与配置
               
             
           </h1>
@@ -300,8 +300,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-14T23:14:08+08:00">
-                2017-11-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-29T22:57:17+08:00">
+                2018-05-29
               </time>
             
 
@@ -338,7 +338,7 @@
 
           
           
-             <span id="/coding/Powershell常用命令.html" class="leancloud_visitors" data-flag-title="PowerShell常用命令">
+             <span id="/coding/Hadoop2-x-HA架构学习与配置.html" class="leancloud_visitors" data-flag-title="Hadoop2.x HA架构学习与配置">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -370,66 +370,49 @@
 
       
         <blockquote>
-<p>Power shell 作为一门windows平台下的脚本语言，对于系统管理员来说，可以极大的减少我们的工作，作为一流的系统管理员（逃～），不可不学！</p>
+<p>HA，即一套宕机解决方案，用来实现分布式系统中的自动故障转移。</p>
 </blockquote>
-<a id="more"></a> 
-<h1 id="Why-Power-Shell"><a href="#Why-Power-Shell" class="headerlink" title="Why Power Shell"></a>Why Power Shell</h1><ul>
-<li>Working in windows</li>
-<li>Support Object </li>
-<li>.NET Support</li>
-<li>Power ! ! ! </li>
-</ul>
-<h1 id="Over-View"><a href="#Over-View" class="headerlink" title="Over View"></a>Over View</h1><p>Power shell 作为一门windows平台下的脚本语言，可以极大的减少我们的工作，它的好处自然不用多说，用过的都知道，下面简单的看一下语法概览。</p>
-<ul>
-<li>查命令的使用：Get-Help</li>
-<li>查对象的方法和属性:Get-Member</li>
-<li><p>查命令历史记录:Get-History</p>
-<ul>
-<li>命令导出为ps1 : xxx | Foreach-Object {$_.CommandLine} &gt; C:\temp\script.ps1</li>
-</ul>
-</li>
-<li><p>查找命令:Get-Command</p>
-</li>
-<li>上一条命令是否成功:$lastExitCode</li>
-<li>一个命令要多久: Measure-Command{ scripts}</li>
-</ul>
-<h1 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h1><h2 id="where-object"><a href="#where-object" class="headerlink" title="where-object"></a>where-object</h2><p>使用这个命令可以从列表或者输出中过滤信息，格式为where-object{  } ,where-object回遍历它之前的属性，在{}中，可以使用$_来代表当前遍历的元素，所以，在where-object中，可以进行大量的操作。</p>
-<h2 id="Foreach-Object"><a href="#Foreach-Object" class="headerlink" title="Foreach-Object"></a>Foreach-Object</h2><p>这个命令和where-object差不多，可以用来处理列表中的项，同样可以在其中使用$_命令</p>
-<h1 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h1><p>Get-Content 可以读取csv或者txt文件，读取完成之后可以通过数组的形式访问.</p>
-<h1 id="数据导出到CSV文件"><a href="#数据导出到CSV文件" class="headerlink" title="数据导出到CSV文件"></a>数据导出到CSV文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Powershell Output info to CSV file</span><br><span class="line">$data = @()</span><br><span class="line">$row = New-Object PSObject</span><br><span class="line">$row | Add-Member -MemberType NoteProperty -Name &quot;Username&quot; -Value $username</span><br><span class="line">$row | Add-Member -MemberType NoteProperty -Name &quot;ComputerName&quot; -Value $ComputerName</span><br><span class="line">$row | Add-Member -MemberType NoteProperty -Name &quot;Domain&quot; -Value $domainName</span><br><span class="line">$row | Add-Member -MemberType NoteProperty -Name &quot;monitorSN&quot; -Value $monitorSN</span><br><span class="line">$row | Add-Member -MemberType NoteProperty -Name &quot;ComputerSN&quot; -Value $info.SerialNumber</span><br><span class="line">$row | Add-Member -MemberType NoteProperty -Name &quot;LastTimeLoginUser&quot; -Value $loginInfo.Name</span><br><span class="line">$row | Add-Member -MemberType NoteProperty -Name &quot;LoginCounts&quot; -Value $loginInfo.count</span><br><span class="line"></span><br><span class="line">$data += $row</span><br><span class="line">$data | Export-CSV \\10.65.64.219\soft\Information\infoList.csv -noTypeInformation -Append</span><br></pre></td></tr></table></figure>
-<h2 id="PowerShell与excel文件交互"><a href="#PowerShell与excel文件交互" class="headerlink" title="PowerShell与excel文件交互"></a>PowerShell与excel文件交互</h2><ul>
-<li><a href="http://www.lazywinadmin.com/2014/03/powershell-read-excel-file-using-com.html?m=1" target="_blank" rel="noopener">Read an Excel file using COM Interface</a></li>
-</ul>
-<h1 id="获取登录名"><a href="#获取登录名" class="headerlink" title="获取登录名"></a>获取登录名</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$name=Get-WmiObject -Class Win32_UserAccount -Filter &quot;Name=&apos;$env:username&apos; and Domain=&apos;$env:userdomain&apos;&quot;</span><br></pre></td></tr></table></figure>
-<h1 id="控制csv的语法"><a href="#控制csv的语法" class="headerlink" title="控制csv的语法"></a>控制csv的语法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># CSV:</span><br><span class="line"># a,b,c</span><br><span class="line"># 1,2,3</span><br><span class="line"># 4,5,6</span><br><span class="line"># 7,8,</span><br><span class="line"></span><br><span class="line">$csv = Import-Csv C:\test.txt</span><br><span class="line">$user = &quot;4&quot;</span><br><span class="line">foreach ($row in $csv) &#123;</span><br><span class="line">    if ($row.a -eq $user) &#123; $row.c = &quot;updated&quot; &#125;</span><br><span class="line">&#125;</span><br><span class="line">$csv | Export-Csv C:\test.txt</span><br><span class="line"></span><br><span class="line">#Output:</span><br><span class="line">#TYPE System.Management.Automation.PSCustomObject</span><br><span class="line">#&quot;a&quot;,&quot;b&quot;,&quot;c&quot;</span><br><span class="line">#&quot;1&quot;,&quot;2&quot;,&quot;3&quot;</span><br><span class="line">#&quot;4&quot;,&quot;5&quot;,&quot;updated&quot;</span><br><span class="line">#&quot;7&quot;,&quot;8&quot;,&quot;9&quot;</span><br></pre></td></tr></table></figure>
-<h1 id="查看登陆到物理机的用户"><a href="#查看登陆到物理机的用户" class="headerlink" title="查看登陆到物理机的用户"></a>查看登陆到物理机的用户</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Get-WmiObject -Class Win32_ComputerSystem |Select-object -ExpandProperty UserName</span><br><span class="line">``` </span><br><span class="line"> </span><br><span class="line"># 从bat运行powershell</span><br></pre></td></tr></table></figure>
-<p>@echo off</p>
-<p>powershell set-executionpolicy unrestricted<br>powershell -file D:\soft\Scripts\GetUsersPhoneNumber\getUserPhone.ps1</p>
-<p>exit</p>
-<p>CSV-EXCEL <a href="http://www.pstips.net/converting-csv-to-excel-file.html" target="_blank" rel="noopener">http://www.pstips.net/converting-csv-to-excel-file.html</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 判断操作系统位数</span><br></pre></td></tr></table></figure></p>
-<p>(Get-WmiObject Win32_OperatingSystem).osarchitecture<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 隐藏明文密码</span><br></pre></td></tr></table></figure></p>
-<p>Write-host “text for pwd”<br>$plainText = Read-Host | ConvertTo-SecureString -AsPlainText -Force<br>$encryptedText = $plainText | convertFrom-Securesting<br>Write-host $encryptedText<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 查看域OU信息</span><br></pre></td></tr></table></figure></p>
-<p>Get-ADOrganizationalUnit -Filter ‘Name -like “*”‘<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 参数的定义</span><br></pre></td></tr></table></figure></p>
-<p>function Test-Function<br>{<br>    param($ 参数名 1=’默认参数值 1’, $ 参数名 2=’默认参数值 2’)<br>    Write-Host “参数 1=$ 参数名 1，参数 2=$ 参数名 2”;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 多线程</span><br><span class="line">- [Part1](https://blogs.technet.microsoft.com/heyscriptingguy/2015/11/26/beginning-use-of-powershell-runspaces-part-1/)</span><br><span class="line">- [Part2](https://blogs.technet.microsoft.com/heyscriptingguy/2015/11/27/beginning-use-of-powershell-runspaces-part-2/)</span><br><span class="line">- [Part3](https://blogs.technet.microsoft.com/heyscriptingguy/2015/11/28/beginning-use-of-powershell-runspaces-part-3/)</span><br><span class="line">- [多线程并发](http://blog.51cto.com/beanxyz/1760880)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 通用参数</span><br></pre></td></tr></table></figure></p>
-<p>-Verbose[:{$true | $false}]</p>
-<p>显示有关由该命令执行的操作的详细信息。此信息类似于跟踪或事务日志中的信息。此参数仅在命令生成详细消息时才起作用。例如，此参数在命令中包含 Write-Verbose cmdlet 时起作用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"># 运行网上下载的ps1文件</span><br></pre></td></tr></table></figure></p>
-<p>Unblock-File -Path “C:\Users\Fan.ZhangFZ\soft\Scripts\Invoke-Parallel-master\Invoke-Parallel\Invoke-Parallel.ps1”<br>. “C:\Users\Fan.ZhangFZ\soft\Scripts\Invoke-Parallel-master\Invoke-Parallel\Invoke-Parallel.ps1”<br><code>`</code></p>
-<h1 id="远程建立ssion，处理powershell命令"><a href="#远程建立ssion，处理powershell命令" class="headerlink" title="远程建立ssion，处理powershell命令"></a>远程建立ssion，处理powershell命令</h1><ul>
-<li><a href="http://www.cnblogs.com/sparkdev/p/7200004.html" target="_blank" rel="noopener">参考地址</a></li>
-</ul>
-<h1 id="关于-cmdletbinding"><a href="#关于-cmdletbinding" class="headerlink" title="关于[cmdletbinding()]"></a>关于[cmdletbinding()]</h1><ul>
-<li><a href="http://blog.51cto.com/shadingyu/1965313" target="_blank" rel="noopener">参考1</a></li>
-</ul>
-<h1 id="Powershell渗透参考"><a href="#Powershell渗透参考" class="headerlink" title="Powershell渗透参考"></a>Powershell渗透参考</h1><ul>
-<li><a href="http://b404.xyz/2017/12/30/exploit-domain/" target="_blank" rel="noopener">exploitDomain</a></li>
-</ul>
-<h1 id="PowerSheel-学习资源"><a href="#PowerSheel-学习资源" class="headerlink" title="PowerSheel 学习资源"></a>PowerSheel 学习资源</h1><ul>
-<li><a href="http://www.pstips.net" target="_blank" rel="noopener">PSTips</a></li>
-<li><a href="https://docs.microsoft.com/zh-cn/powershell/scripting/powershell-scripting?view=powershell-5.1" target="_blank" rel="noopener">微软PowerSheel官方文档</a></li>
-</ul>
-<h1 id="相关书籍"><a href="#相关书籍" class="headerlink" title="相关书籍"></a>相关书籍</h1><ul>
-<li>《Windows PowerShell 应用手册》——Lee Holmes著</li>
-</ul>
+<a id="more"></a>
+<h1 id="HA是什么？"><a href="#HA是什么？" class="headerlink" title="HA是什么？"></a>HA是什么？</h1><blockquote>
+<p>我们说DataNode存储数据, NameNode是目录，而yarn中,ResourceManager, 相当于是任务的总指挥，项目管理，那么这个HDFS中的NameNode和Yarn中的ResourceManager其实是非常重要的，如果一台挂了，那么整个集群都会没法提供服务，HA就是为这种故障提供一套解决方案。</p>
+</blockquote>
+<h1 id="HA原理"><a href="#HA原理" class="headerlink" title="HA原理"></a>HA原理</h1><p>在NameNode的目录更新的时候，会在本地的edits和fsImage中保存更新记录，所以我们可以设置多个NameNode，然后设置一个中间节点去保存这个edits和fsImage文件，这样每个NameNode有更新，这个中间节点就会记录，确保一台NameNode宕机的时候能及时的把数据转移到其他Node上去。</p>
+<p>这个中间节点就叫做JournalNode，它也有副本，即多份Namenode的日志。</p>
+<h1 id="HDFS-HA配置"><a href="#HDFS-HA配置" class="headerlink" title="HDFS HA配置"></a>HDFS HA配置</h1><h2 id="规划"><a href="#规划" class="headerlink" title="规划"></a>规划</h2><p>先看一下之前的配置:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NameNode</span><br><span class="line">DataNode1 DataNode2 DataNode3</span><br></pre></td></tr></table></figure>
+<p>规划了HA的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NameNode  NameNode</span><br><span class="line">DataNode1 DataNode2 DataNode3</span><br><span class="line">Journalnode Journalnode Journalnode</span><br></pre></td></tr></table></figure>
+<h2 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h2><p>备份原来的配置 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp -r hadoop/ dist-hadoop</span><br><span class="line">mv tmp/ dist-tmp</span><br></pre></td></tr></table></figure>
+<p>再在原来的目录中重新创建tmp文件夹。</p>
+<h2 id="配置hdfs-site-xml"><a href="#配置hdfs-site-xml" class="headerlink" title="配置hdfs-site.xml"></a>配置hdfs-site.xml</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1. dfs.nameservice -&gt; 取个名字</span><br><span class="line">2. dfs.ha.namenodes.上面的名字 -&gt;nn1,nn2</span><br><span class="line">3. rpc.address.ns.nn1 -&gt; hostname:8020</span><br><span class="line">4. rpc.address.ns.nn2 -&gt; hostname:8020</span><br><span class="line">5. http-address.ns.nn1 -&gt; hostname:50070</span><br><span class="line">6. http-address.ns.nn2 -&gt; hostname:50070</span><br><span class="line">7. Shared.edits.dir -&gt; qjournal://master:8485;node1:8485;node2:8485;</span><br><span class="line">8. dfs.journalnode.edits.dir -&gt; /opt/modules/hadoop/data/jn</span><br><span class="line">9. failover.proxy.provider.mycluster -&gt; : 设置成默认值即可</span><br><span class="line">10. Fecing.methods -&gt; sshfence : 隔离机制</span><br><span class="line">11. Private-key-files -&gt; hadoop : 用户名</span><br></pre></td></tr></table></figure>
+<h2 id="配置core-site-xml"><a href="#配置core-site-xml" class="headerlink" title="配置core-site.xml"></a>配置core-site.xml</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. fs.defaultFS -&gt; hdfs://ns</span><br></pre></td></tr></table></figure>
+<h2 id="配置其他机器"><a href="#配置其他机器" class="headerlink" title="配置其他机器"></a>配置其他机器</h2><p>目录与配置都与第一台一样。</p>
+<h1 id="HDFS中HA启动与测试"><a href="#HDFS中HA启动与测试" class="headerlink" title="HDFS中HA启动与测试"></a>HDFS中HA启动与测试</h1><h2 id="启动HA"><a href="#启动HA" class="headerlink" title="启动HA"></a>启动HA</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. 启动1,2,3机器 -&gt; sbin/hadoop-daemon.sh start journalnode</span><br><span class="line">2. 格式化 -&gt; bxn/hdfs namenode -format</span><br><span class="line">3. 重启NameNode</span><br><span class="line">4. 在nn2上，同步nn1的原数据信息 -&gt; bin/hdfs namenode -bootstrpStandby</span><br><span class="line">5. 启动nn2</span><br><span class="line">6. 将nn1的状态改为active -&gt; bin/hdfs haadmin -transitionToActive nn1</span><br><span class="line">7. 启动测试 -&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="测试人工故障转移"><a href="#测试人工故障转移" class="headerlink" title="测试人工故障转移"></a>测试人工故障转移</h2><p>测试的原理是，先上传一个文件到DataNode，然后这个时候把NN1干掉，再去取数据，观察其是否会自动切换NameNode.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. 创建目录 -&gt; bin/hdfs dfs -mkdir -p /path/</span><br><span class="line">2. 上传目录 -&gt; bin/hdfs dfs -put /path/</span><br><span class="line">3. 尝试读取文件 -&gt; hdfs dfs -text /user/kfk/data/filename</span><br><span class="line">4. 干掉nn1观察 -&gt; jps:21319 -&gt; kill -8 21317</span><br><span class="line">5. Nn2改成active -&gt; hdfs haadmin -transitionToActive nn2</span><br><span class="line">--forceactive</span><br><span class="line">6. 再从nn1尝试读取文件观察是否成功 -&gt; hdfs dfs -text /user/kfk/data/filename</span><br></pre></td></tr></table></figure>
+<p>以上的切换的过程，是人工手动切换的方式，但如果借助Zookeeper，就可以实现自动故障转移了。</p>
+<h2 id="自动故障转移"><a href="#自动故障转移" class="headerlink" title="自动故障转移"></a>自动故障转移</h2><p>首先需要配置hdfs-site文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. dfs.ha.automic-failover.enabled.youmaster -&gt; true</span><br><span class="line">2. ha.zookeeper.quorum -&gt; master:2181,node1:2181,node:2181</span><br></pre></td></tr></table></figure>
+<p>停掉所有服务，然后启动集群的zookeeper.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. zkserver.sh start</span><br><span class="line">2. 初始化HA再Zookeeper中状态bin/hdfs zkfc -formatZK</span><br><span class="line">3. start-dfs.sh</span><br><span class="line">4. 各个机器上启动 -&gt; Hadooop-daemon.sh start zkfc</span><br></pre></td></tr></table></figure>
+<p>配置完成之后，启动集群后，如果有多个nanonode，系统会自动帮我们选一个active。</p>
+<p>如果ZKFC没有启动起来，可以去log里面找 <em>zkfc-bigdata-pro02.master.logs</em> 日志。</p>
+<p>配置完成之后，HDFS中的HA分布如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">namenode    namenode</span><br><span class="line">datanode    datanode    datanode</span><br><span class="line">journalnode journalnode journalnode</span><br><span class="line">zkfc        zkfc</span><br></pre></td></tr></table></figure>
+<h1 id="Yarn中HA"><a href="#Yarn中HA" class="headerlink" title="Yarn中HA"></a>Yarn中HA</h1><h2 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a>原理介绍</h2><p>对于Yarn来说，ResourceManager是最重要的，所以需要多台ResourceManager，实现一台RM宕机后，可以自动切换到另一台RM.</p>
+<p>同样，Yarn中实现HA，也是借助于Zookeeper。</p>
+<p>先来看一下规划:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RM RM</span><br><span class="line">NM NM NM</span><br></pre></td></tr></table></figure>
+<h2 id="Yarn-site配置"><a href="#Yarn-site配置" class="headerlink" title="Yarn-site配置"></a>Yarn-site配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1. 删除yarn.resourcemanager.hostname项，因为多台rm之后就不需要再指定rm了</span><br><span class="line">2. yarn.resourcemanager.ha.enabled -&gt; true</span><br><span class="line">3. cluster-id -&gt; rs</span><br><span class="line">4. ha.rm-ids -&gt; rm1,rm2</span><br><span class="line">5. hostname.rm1 -&gt; yourhostname</span><br><span class="line">6. hostname.rm2 -&gt; yourhostname</span><br><span class="line">7. zk.address -&gt;master:2181;node1:2181;node2:2181</span><br><span class="line">8. recovery.enabled -&gt; true</span><br><span class="line">9. 配置数据恢复为zookeeper: *.store.class -&gt; default_config</span><br></pre></td></tr></table></figure>
+<p>按照这个顺序配置，再分发到其他的节点，然后就可以测试了。</p>
+<h2 id="Yarn-HA-启动与测试"><a href="#Yarn-HA-启动与测试" class="headerlink" title="Yarn HA 启动与测试"></a>Yarn HA 启动与测试</h2><ol>
+<li>启动RM两个</li>
+<li>启动NM三个</li>
+<li>测试 <em>MapReduce WordCount</em> 程序</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. yarn-daemon.sh start resourcemanager (in nn1 and nn2)</span><br><span class="line">2. yarn-daemon.sh start nodemanager(in master nd1 nd2)</span><br></pre></td></tr></table></figure>
+<p>测试 <em>MapReduce</em> 就不赘述啦，至此 <em>HA</em> 在 <em>Hadoop</em> 中的配置结束。</p>
 
       
     </div>
@@ -469,13 +452,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Windows/" rel="tag"># Windows</a>
+            <a href="/tags/bigdata/" rel="tag"># bigdata</a>
           
-            <a href="/tags/HelpDesk/" rel="tag"># HelpDesk</a>
+            <a href="/tags/hadoop/" rel="tag"># hadoop</a>
           
-            <a href="/tags/技术支持/" rel="tag"># 技术支持</a>
-          
-            <a href="/tags/PowerShell/" rel="tag"># PowerShell</a>
+            <a href="/tags/HA/" rel="tag"># HA</a>
           
         </div>
       
@@ -484,8 +465,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/reading/爱默生谈读书.html" rel="next" title="爱默生谈读书">
-                <i class="fa fa-chevron-left"></i> 爱默生谈读书
+              <a href="/coding/PowerShell批量改密码.html" rel="next" title="PowerShell批量改密码">
+                <i class="fa fa-chevron-left"></i> PowerShell批量改密码
               </a>
             
           </div>
@@ -493,10 +474,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/reading/爱默生文集摘录一.html" rel="prev" title="爱默生文集摘录">
-                爱默生文集摘录 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -661,7 +638,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Why-Power-Shell"><span class="nav-number">1.</span> <span class="nav-text">Why Power Shell</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Over-View"><span class="nav-number">2.</span> <span class="nav-text">Over View</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础命令"><span class="nav-number">3.</span> <span class="nav-text">基础命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#where-object"><span class="nav-number">3.1.</span> <span class="nav-text">where-object</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Foreach-Object"><span class="nav-number">3.2.</span> <span class="nav-text">Foreach-Object</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#读取数据"><span class="nav-number">4.</span> <span class="nav-text">读取数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据导出到CSV文件"><span class="nav-number">5.</span> <span class="nav-text">数据导出到CSV文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PowerShell与excel文件交互"><span class="nav-number">5.1.</span> <span class="nav-text">PowerShell与excel文件交互</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获取登录名"><span class="nav-number">6.</span> <span class="nav-text">获取登录名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#控制csv的语法"><span class="nav-number">7.</span> <span class="nav-text">控制csv的语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看登陆到物理机的用户"><span class="nav-number">8.</span> <span class="nav-text">查看登陆到物理机的用户</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#远程建立ssion，处理powershell命令"><span class="nav-number">9.</span> <span class="nav-text">远程建立ssion，处理powershell命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于-cmdletbinding"><span class="nav-number">10.</span> <span class="nav-text">关于[cmdletbinding()]</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Powershell渗透参考"><span class="nav-number">11.</span> <span class="nav-text">Powershell渗透参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PowerSheel-学习资源"><span class="nav-number">12.</span> <span class="nav-text">PowerSheel 学习资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相关书籍"><span class="nav-number">13.</span> <span class="nav-text">相关书籍</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HA是什么？"><span class="nav-number">1.</span> <span class="nav-text">HA是什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HA原理"><span class="nav-number">2.</span> <span class="nav-text">HA原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HDFS-HA配置"><span class="nav-number">3.</span> <span class="nav-text">HDFS HA配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#规划"><span class="nav-number">3.1.</span> <span class="nav-text">规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备环境"><span class="nav-number">3.2.</span> <span class="nav-text">准备环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置hdfs-site-xml"><span class="nav-number">3.3.</span> <span class="nav-text">配置hdfs-site.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置core-site-xml"><span class="nav-number">3.4.</span> <span class="nav-text">配置core-site.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置其他机器"><span class="nav-number">3.5.</span> <span class="nav-text">配置其他机器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HDFS中HA启动与测试"><span class="nav-number">4.</span> <span class="nav-text">HDFS中HA启动与测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#启动HA"><span class="nav-number">4.1.</span> <span class="nav-text">启动HA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试人工故障转移"><span class="nav-number">4.2.</span> <span class="nav-text">测试人工故障转移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动故障转移"><span class="nav-number">4.3.</span> <span class="nav-text">自动故障转移</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Yarn中HA"><span class="nav-number">5.</span> <span class="nav-text">Yarn中HA</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理介绍"><span class="nav-number">5.1.</span> <span class="nav-text">原理介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Yarn-site配置"><span class="nav-number">5.2.</span> <span class="nav-text">Yarn-site配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Yarn-HA-启动与测试"><span class="nav-number">5.3.</span> <span class="nav-text">Yarn HA 启动与测试</span></a></li></ol></li></ol></div>
             
 
           </div>
