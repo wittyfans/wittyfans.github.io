@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wittyfans.com/"/>
-  <updated>2018-06-03T08:44:18.776Z</updated>
+  <updated>2018-06-05T05:38:19.168Z</updated>
   <id>http://wittyfans.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>iOS 12更新Beta开发版配置文件</title>
+    <link href="http://wittyfans.com/coding/iOS-12%E6%9B%B4%E6%96%B0Beta%E5%BC%80%E5%8F%91%E7%89%88%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.html"/>
+    <id>http://wittyfans.com/coding/iOS-12更新Beta开发版配置文件.html</id>
+    <published>2018-06-05T05:35:52.000Z</published>
+    <updated>2018-06-05T05:38:19.168Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>昨晚苹果发布了iOS 12，相信各位小伙伴已经等不及要更新了吧？让我来教你怎么尝鲜最新的iOS 12</p></blockquote><a id="more"></a><p>iOS Beta 开发版配置文件更新指南</p><p>我很早就加入了苹果的 <em>Apple Beta Software Program</em>，早上第一时间去苹果的 <em>Beta</em> <a href="https://beta.apple.com/sp/betaprogram/redemption#iosdownload" target="_blank" rel="noopener">网址</a>下载，安装描述文件，按照提示：</p><blockquote><p>will automatically receive the latest public beta software over the air.</p></blockquote><p>说很快就会有空中升级推送，但等了很久没反应，于是立马去Google了其他的办法。</p><h1 id="首先备份"><a href="#首先备份" class="headerlink" title="首先备份"></a>首先备份</h1><p>Beta版的系统，会有很多的Bug，只适合尝鲜，建议先进行备份，可以在手机上云备份或者备份到电脑。</p><h1 id="下载描述文件"><a href="#下载描述文件" class="headerlink" title="下载描述文件"></a>下载描述文件</h1><p>这个官网的描述文件半天不起作用，我在网上找了一个，进入下面这个网址</p><ul><li><a href="https://beta.thuthuatios.com/en/" target="_blank" rel="noopener">苹果 Beta 软件更新下载地址</a></li></ul><p>这个网页里面，有iOS、手表、Mac的系统，这个描述文件会不定期更新，应该是不可以直接复制下载地址去分享的。</p><p>选择相应的系统，点击DownLoad就可以了，然后安装这个描述文件，如果之前安装过，记得先卸载之前的。</p><p>重启你的iPhone，进入设置-&gt;通用-&gt;软件更新-&gt;</p><p>就可以看到iOS12的更新了，然后点击更新就可以啦。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;昨晚苹果发布了iOS 12，相信各位小伙伴已经等不及要更新了吧？让我来教你怎么尝鲜最新的iOS 12&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
+    
+    
+      <category term="iOS" scheme="http://wittyfans.com/tags/iOS/"/>
+    
+  </entry>
   
   <entry>
     <title>Windows自动化AutoIT动手玩</title>
@@ -92,9 +116,9 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="hadoop" scheme="http://wittyfans.com/tags/hadoop/"/>
-    
       <category term="bigdata" scheme="http://wittyfans.com/tags/bigdata/"/>
+    
+      <category term="hadoop" scheme="http://wittyfans.com/tags/hadoop/"/>
     
       <category term="HA" scheme="http://wittyfans.com/tags/HA/"/>
     
@@ -120,9 +144,9 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="PowerShell" scheme="http://wittyfans.com/tags/PowerShell/"/>
-    
       <category term="HelpDesk" scheme="http://wittyfans.com/tags/HelpDesk/"/>
+    
+      <category term="PowerShell" scheme="http://wittyfans.com/tags/PowerShell/"/>
     
       <category term="AD" scheme="http://wittyfans.com/tags/AD/"/>
     
@@ -174,9 +198,9 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="hadoop" scheme="http://wittyfans.com/tags/hadoop/"/>
-    
       <category term="bigdata" scheme="http://wittyfans.com/tags/bigdata/"/>
+    
+      <category term="hadoop" scheme="http://wittyfans.com/tags/hadoop/"/>
     
       <category term="yarn" scheme="http://wittyfans.com/tags/yarn/"/>
     
@@ -232,9 +256,9 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="big data" scheme="http://wittyfans.com/tags/big-data/"/>
-    
       <category term="hadoop" scheme="http://wittyfans.com/tags/hadoop/"/>
+    
+      <category term="big data" scheme="http://wittyfans.com/tags/big-data/"/>
     
       <category term="hive" scheme="http://wittyfans.com/tags/hive/"/>
     
@@ -432,7 +456,7 @@
     <link href="http://wittyfans.com/coding/Powershell%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.html"/>
     <id>http://wittyfans.com/coding/Powershell常用命令.html</id>
     <published>2017-11-14T15:14:08.000Z</published>
-    <updated>2018-03-18T13:53:16.769Z</updated>
+    <updated>2018-03-18T13:53:16.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>Power shell 作为一门windows平台下的脚本语言，对于系统管理员来说，可以极大的减少我们的工作，作为一流的系统管理员（逃～），不可不学！</p></blockquote><a id="more"></a> <h1 id="Why-Power-Shell"><a href="#Why-Power-Shell" class="headerlink" title="Why Power Shell"></a>Why Power Shell</h1><ul><li>Working in windows</li><li>Support Object </li><li>.NET Support</li><li>Power ! ! ! </li></ul><h1 id="Over-View"><a href="#Over-View" class="headerlink" title="Over View"></a>Over View</h1><p>Power shell 作为一门windows平台下的脚本语言，可以极大的减少我们的工作，它的好处自然不用多说，用过的都知道，下面简单的看一下语法概览。</p><ul><li>查命令的使用：Get-Help</li><li>查对象的方法和属性:Get-Member</li><li><p>查命令历史记录:Get-History</p><ul><li>命令导出为ps1 : xxx | Foreach-Object {$_.CommandLine} &gt; C:\temp\script.ps1</li></ul></li><li><p>查找命令:Get-Command</p></li><li>上一条命令是否成功:$lastExitCode</li><li>一个命令要多久: Measure-Command{ scripts}</li></ul><h1 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h1><h2 id="where-object"><a href="#where-object" class="headerlink" title="where-object"></a>where-object</h2><p>使用这个命令可以从列表或者输出中过滤信息，格式为where-object{  } ,where-object回遍历它之前的属性，在{}中，可以使用$_来代表当前遍历的元素，所以，在where-object中，可以进行大量的操作。</p><h2 id="Foreach-Object"><a href="#Foreach-Object" class="headerlink" title="Foreach-Object"></a>Foreach-Object</h2><p>这个命令和where-object差不多，可以用来处理列表中的项，同样可以在其中使用$_命令</p><h1 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h1><p>Get-Content 可以读取csv或者txt文件，读取完成之后可以通过数组的形式访问.</p><h1 id="数据导出到CSV文件"><a href="#数据导出到CSV文件" class="headerlink" title="数据导出到CSV文件"></a>数据导出到CSV文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Powershell Output info to CSV file</span><br><span class="line">$data = @()</span><br><span class="line">$row = New-Object PSObject</span><br><span class="line">$row | Add-Member -MemberType NoteProperty -Name &quot;Username&quot; -Value $username</span><br><span class="line">$row | Add-Member -MemberType NoteProperty -Name &quot;ComputerName&quot; -Value $ComputerName</span><br><span class="line">$row | Add-Member -MemberType NoteProperty -Name &quot;Domain&quot; -Value $domainName</span><br><span class="line">$row | Add-Member -MemberType NoteProperty -Name &quot;monitorSN&quot; -Value $monitorSN</span><br><span class="line">$row | Add-Member -MemberType NoteProperty -Name &quot;ComputerSN&quot; -Value $info.SerialNumber</span><br><span class="line">$row | Add-Member -MemberType NoteProperty -Name &quot;LastTimeLoginUser&quot; -Value $loginInfo.Name</span><br><span class="line">$row | Add-Member -MemberType NoteProperty -Name &quot;LoginCounts&quot; -Value $loginInfo.count</span><br><span class="line"></span><br><span class="line">$data += $row</span><br><span class="line">$data | Export-CSV \\10.65.64.219\soft\Information\infoList.csv -noTypeInformation -Append</span><br></pre></td></tr></table></figure><h2 id="PowerShell与excel文件交互"><a href="#PowerShell与excel文件交互" class="headerlink" title="PowerShell与excel文件交互"></a>PowerShell与excel文件交互</h2><ul><li><a href="http://www.lazywinadmin.com/2014/03/powershell-read-excel-file-using-com.html?m=1" target="_blank" rel="noopener">Read an Excel file using COM Interface</a></li></ul><h1 id="获取登录名"><a href="#获取登录名" class="headerlink" title="获取登录名"></a>获取登录名</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$name=Get-WmiObject -Class Win32_UserAccount -Filter &quot;Name=&apos;$env:username&apos; and Domain=&apos;$env:userdomain&apos;&quot;</span><br></pre></td></tr></table></figure><h1 id="控制csv的语法"><a href="#控制csv的语法" class="headerlink" title="控制csv的语法"></a>控制csv的语法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># CSV:</span><br><span class="line"># a,b,c</span><br><span class="line"># 1,2,3</span><br><span class="line"># 4,5,6</span><br><span class="line"># 7,8,</span><br><span class="line"></span><br><span class="line">$csv = Import-Csv C:\test.txt</span><br><span class="line">$user = &quot;4&quot;</span><br><span class="line">foreach ($row in $csv) &#123;</span><br><span class="line">    if ($row.a -eq $user) &#123; $row.c = &quot;updated&quot; &#125;</span><br><span class="line">&#125;</span><br><span class="line">$csv | Export-Csv C:\test.txt</span><br><span class="line"></span><br><span class="line">#Output:</span><br><span class="line">#TYPE System.Management.Automation.PSCustomObject</span><br><span class="line">#&quot;a&quot;,&quot;b&quot;,&quot;c&quot;</span><br><span class="line">#&quot;1&quot;,&quot;2&quot;,&quot;3&quot;</span><br><span class="line">#&quot;4&quot;,&quot;5&quot;,&quot;updated&quot;</span><br><span class="line">#&quot;7&quot;,&quot;8&quot;,&quot;9&quot;</span><br></pre></td></tr></table></figure><h1 id="查看登陆到物理机的用户"><a href="#查看登陆到物理机的用户" class="headerlink" title="查看登陆到物理机的用户"></a>查看登陆到物理机的用户</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Get-WmiObject -Class Win32_ComputerSystem |Select-object -ExpandProperty UserName</span><br><span class="line">``` </span><br><span class="line"> </span><br><span class="line"># 从bat运行powershell</span><br></pre></td></tr></table></figure><p>@echo off</p><p>powershell set-executionpolicy unrestricted<br>powershell -file D:\soft\Scripts\GetUsersPhoneNumber\getUserPhone.ps1</p><p>exit</p><p>CSV-EXCEL <a href="http://www.pstips.net/converting-csv-to-excel-file.html" target="_blank" rel="noopener">http://www.pstips.net/converting-csv-to-excel-file.html</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 判断操作系统位数</span><br></pre></td></tr></table></figure></p><p>(Get-WmiObject Win32_OperatingSystem).osarchitecture<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 隐藏明文密码</span><br></pre></td></tr></table></figure></p><p>Write-host “text for pwd”<br>$plainText = Read-Host | ConvertTo-SecureString -AsPlainText -Force<br>$encryptedText = $plainText | convertFrom-Securesting<br>Write-host $encryptedText<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 查看域OU信息</span><br></pre></td></tr></table></figure></p><p>Get-ADOrganizationalUnit -Filter ‘Name -like “*”‘<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 参数的定义</span><br></pre></td></tr></table></figure></p><p>function Test-Function<br>{<br>    param($ 参数名 1=’默认参数值 1’, $ 参数名 2=’默认参数值 2’)<br>    Write-Host “参数 1=$ 参数名 1，参数 2=$ 参数名 2”;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 多线程</span><br><span class="line">- [Part1](https://blogs.technet.microsoft.com/heyscriptingguy/2015/11/26/beginning-use-of-powershell-runspaces-part-1/)</span><br><span class="line">- [Part2](https://blogs.technet.microsoft.com/heyscriptingguy/2015/11/27/beginning-use-of-powershell-runspaces-part-2/)</span><br><span class="line">- [Part3](https://blogs.technet.microsoft.com/heyscriptingguy/2015/11/28/beginning-use-of-powershell-runspaces-part-3/)</span><br><span class="line">- [多线程并发](http://blog.51cto.com/beanxyz/1760880)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 通用参数</span><br></pre></td></tr></table></figure></p><p>-Verbose[:{$true | $false}]</p><p>显示有关由该命令执行的操作的详细信息。此信息类似于跟踪或事务日志中的信息。此参数仅在命令生成详细消息时才起作用。例如，此参数在命令中包含 Write-Verbose cmdlet 时起作用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"># 运行网上下载的ps1文件</span><br></pre></td></tr></table></figure></p><p>Unblock-File -Path “C:\Users\Fan.ZhangFZ\soft\Scripts\Invoke-Parallel-master\Invoke-Parallel\Invoke-Parallel.ps1”<br>. “C:\Users\Fan.ZhangFZ\soft\Scripts\Invoke-Parallel-master\Invoke-Parallel\Invoke-Parallel.ps1”<br><code>`</code></p><h1 id="远程建立ssion，处理powershell命令"><a href="#远程建立ssion，处理powershell命令" class="headerlink" title="远程建立ssion，处理powershell命令"></a>远程建立ssion，处理powershell命令</h1><ul><li><a href="http://www.cnblogs.com/sparkdev/p/7200004.html" target="_blank" rel="noopener">参考地址</a></li></ul><h1 id="关于-cmdletbinding"><a href="#关于-cmdletbinding" class="headerlink" title="关于[cmdletbinding()]"></a>关于[cmdletbinding()]</h1><ul><li><a href="http://blog.51cto.com/shadingyu/1965313" target="_blank" rel="noopener">参考1</a></li></ul><h1 id="Powershell渗透参考"><a href="#Powershell渗透参考" class="headerlink" title="Powershell渗透参考"></a>Powershell渗透参考</h1><ul><li><a href="http://b404.xyz/2017/12/30/exploit-domain/" target="_blank" rel="noopener">exploitDomain</a></li></ul><h1 id="PowerSheel-学习资源"><a href="#PowerSheel-学习资源" class="headerlink" title="PowerSheel 学习资源"></a>PowerSheel 学习资源</h1><ul><li><a href="http://www.pstips.net" target="_blank" rel="noopener">PSTips</a></li><li><a href="https://docs.microsoft.com/zh-cn/powershell/scripting/powershell-scripting?view=powershell-5.1" target="_blank" rel="noopener">微软PowerSheel官方文档</a></li></ul><h1 id="相关书籍"><a href="#相关书籍" class="headerlink" title="相关书籍"></a>相关书籍</h1><ul><li>《Windows PowerShell 应用手册》——Lee Holmes著</li></ul>]]></content>
     
@@ -447,13 +471,13 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="PowerShell" scheme="http://wittyfans.com/tags/PowerShell/"/>
+      <category term="Windows" scheme="http://wittyfans.com/tags/Windows/"/>
     
       <category term="HelpDesk" scheme="http://wittyfans.com/tags/HelpDesk/"/>
     
-      <category term="Windows" scheme="http://wittyfans.com/tags/Windows/"/>
-    
       <category term="技术支持" scheme="http://wittyfans.com/tags/%E6%8A%80%E6%9C%AF%E6%94%AF%E6%8C%81/"/>
+    
+      <category term="PowerShell" scheme="http://wittyfans.com/tags/PowerShell/"/>
     
   </entry>
   
@@ -479,9 +503,9 @@
     
       <category term="学习" scheme="http://wittyfans.com/tags/%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="爱默生" scheme="http://wittyfans.com/tags/%E7%88%B1%E9%BB%98%E7%94%9F/"/>
-    
       <category term="读书" scheme="http://wittyfans.com/tags/%E8%AF%BB%E4%B9%A6/"/>
+    
+      <category term="爱默生" scheme="http://wittyfans.com/tags/%E7%88%B1%E9%BB%98%E7%94%9F/"/>
     
   </entry>
   
@@ -536,32 +560,6 @@
     
     
       <category term="web" scheme="http://wittyfans.com/tags/web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前后端分离商城开发记录</title>
-    <link href="http://wittyfans.com/coding/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E5%95%86%E5%9F%8E%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95.html"/>
-    <id>http://wittyfans.com/coding/前后端分离商城开发记录.html</id>
-    <published>2017-08-16T12:09:31.000Z</published>
-    <updated>2018-03-15T14:44:23.763Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>一个前后端完全分离的商城，把系统分为逻辑层、数据层、工具层三大层级，具有不错的可扩展性和可维护性，同时进行模块化拆分，通过组件的拼装达到业务的实现，提高开发效率。</p></blockquote><a id="more"></a> <h1 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h1><ul><li>NodeJS（4.4.7）</li><li>Git</li><li>npm</li><li>Sublime</li><li>Chrome</li><li>Charles</li></ul><h1 id="Sublime技巧"><a href="#Sublime技巧" class="headerlink" title="Sublime技巧"></a>Sublime技巧</h1><h2 id="Sublime快捷键"><a href="#Sublime快捷键" class="headerlink" title="Sublime快捷键"></a>Sublime快捷键</h2><ul><li>cmd+shift+d 复制行</li><li>cmd+shift+k 删除行</li><li>cmd+； 注释</li><li>cmd+d 查找并选择</li><li>Ctrl + J：把当前选中区域合并为一行</li><li>Ctrl + M：在起始括号和结尾括号间切换</li><li>Ctrl + Shift + M：快速选择括号间的内容</li><li>Ctrl + Shift + J：快速选择同缩进的内容</li><li>Ctrl + Shift + Space：快速选择当前作用域（Scope）的内容</li></ul><h2 id="Sublime插件"><a href="#Sublime插件" class="headerlink" title="Sublime插件"></a>Sublime插件</h2><p>command+shift+p sublime安装插件</p><ul><li>fileheader 文件头部添加时间，作者说明，快捷键comand+option+a</li></ul><h1 id="常用终端命令"><a href="#常用终端命令" class="headerlink" title="常用终端命令"></a>常用终端命令</h1><ul><li>ls -al 查看所有文件</li><li>rm -rf name 删除文件夹</li></ul><h1 id="Git配置"><a href="#Git配置" class="headerlink" title="Git配置"></a>Git配置</h1><h2 id="配置ssh-key"><a href="#配置ssh-key" class="headerlink" title="配置ssh key"></a>配置ssh key</h2><pre><code>- git config —global user.name “name” - git config -global user.email “email”</code></pre><ul><li>查看ssh:cd~/.ssh</li><li>生成ssh key： ssh-keygen -t rsa -C “emakl”,回车</li><li>名称：id_rsa 私钥、id_rsa.pub公钥</li><li>复制id_rsa.pub,去git配置</li></ul><h2 id="本地目录关联远程目录"><a href="#本地目录关联远程目录" class="headerlink" title="本地目录关联远程目录"></a>本地目录关联远程目录</h2><ul><li>初始化：git init </li><li>对应当前文件夹与远程仓库:git remote add origin url</li><li>pull代码：git pull origin master</li><li>检查状态：git status</li><li>添加到缓存区：git add.</li><li>提交全部并添加注释:git commit -am “”</li></ul><h2 id="ignore配置"><a href="#ignore配置" class="headerlink" title="ignore配置"></a>ignore配置</h2><ul><li>新建ignore文件： vim .ignore</li><li>直接加入文件名，例如:.DS_Store、/node_modules/、/dist/</li></ul><h2 id="分之开发"><a href="#分之开发" class="headerlink" title="分之开发"></a>分之开发</h2><ul><li>git checkout -b branch-name，新建并切换到branch-name分之</li><li>git branch：查看现在的分支</li></ul><h2 id="克隆历史版本的git代码"><a href="#克隆历史版本的git代码" class="headerlink" title="克隆历史版本的git代码"></a>克隆历史版本的git代码</h2><p>在分之中，切换成历史分之即可</p><h1 id="目录结构设计"><a href="#目录结构设计" class="headerlink" title="目录结构设计"></a>目录结构设计</h1><h2 id="src原始文件"><a href="#src原始文件" class="headerlink" title="src原始文件"></a>src原始文件</h2><ul><li>逻辑层：page+view（页面，脚本与样式）</li><li>数据层：service</li><li>工具层：util</li><li>图片：image</li></ul><h2 id="Dist打包文件"><a href="#Dist打包文件" class="headerlink" title="Dist打包文件"></a>Dist打包文件</h2><ul><li>View</li><li>JS</li><li>Css</li><li>resource</li></ul><h1 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h1><ul><li>npm init：初始化</li><li>npm install <a href="mailto:xxx@v.v.v" target="_blank" rel="noopener">xxx@v.v.v</a> 安装依赖包</li><li>npm uninstall <a href="mailto:xxx@v.v.v" target="_blank" rel="noopener">xxx@v.v.v</a> 卸载依赖包</li><li>-g ：全局安装</li><li><ul><li>-registry = <a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a> ：使用国内淘宝源</li></ul></li></ul><h1 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h1><h2 id="安装与参考"><a href="#安装与参考" class="headerlink" title="安装与参考"></a>安装与参考</h2><ul><li>npm install webpack -g ：全局安装</li><li>npm install <a href="mailto:webpack@v.v.v" target="_blank" rel="noopener">webpack@v.v.v</a> –save-dev ： 项目中安装<ul><li>–save-dev，会把信息记录到packge.json中，不会打包到业务</li><li>–save，会打包到业务代码中</li></ul></li><li>webpack -v ：查看版本号</li></ul><h2 id="webpack-config-js-配置文件"><a href="#webpack-config-js-配置文件" class="headerlink" title="webpack.config.js 配置文件"></a>webpack.config.js 配置文件</h2><ul><li>etry：入口文件，源文件中js的路径</li><li>externals：外部依赖的声明，一些外部的内容可以用它来转化成commonJs和可引用的模块,比如jquery</li><li>output：目标文件</li><li>resolve：配置别名</li><li>module：各种文件、各种loader</li><li>plugins：加载webpack的插件</li></ul><h2 id="webpack-Loaders"><a href="#webpack-Loaders" class="headerlink" title="webpack Loaders"></a>webpack Loaders</h2><ul><li>html：html-webpack-plugin/html-loader</li><li>js:babel-loader+babel-preset-es2015</li><li>css:stle-loader+css-loader</li><li>image+font:url-loader</li></ul><h2 id="webpack对html模版的处理"><a href="#webpack对html模版的处理" class="headerlink" title="webpack对html模版的处理"></a>webpack对html模版的处理</h2><ol><li>对引入的CSS文件，需要加上版本号</li><li>html文件src文件中，并不在dist文件夹中如何处理？如果直接把html文件放到dist文件夹中，会面临dist删除的情况导致html文件丢失</li><li>方案：src中的html打包到dist（html-webpack-plugin）</li><li>每个页面的html都需要new一个plugin，这样很占用资源，可以定义一个函数来处理</li></ol><h2 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack-dev-server"></a>webpack-dev-server</h2><p>前端服务器，文件改变的时候，自动刷新浏览器</p><ul><li>安装：npm install webpack-dev-server –save-dev</li><li>配置：wepack-dev-server/client?http//localhost:8088</li><li>使用: wepack-dev-server —port 8088 –inline,inline 的意思是把server的client直接用脚本的方式插入页面</li></ul><h2 id="webpack常用命令"><a href="#webpack常用命令" class="headerlink" title="webpack常用命令"></a>webpack常用命令</h2><ul><li>webpack A B 把A打包到B（单文件打包）</li><li>webpack -p 最小化压缩的打包，发布的时候用</li><li>webpack –watch 监听文件的改变自动编译</li></ul><h2 id="安装Loader"><a href="#安装Loader" class="headerlink" title="安装Loader"></a>安装Loader</h2><h2 id="使用Plugin"><a href="#使用Plugin" class="headerlink" title="使用Plugin"></a>使用Plugin</h2><h2 id="对脚本和样式的处理"><a href="#对脚本和样式的处理" class="headerlink" title="对脚本和样式的处理"></a>对脚本和样式的处理</h2><h3 id="处理JS"><a href="#处理JS" class="headerlink" title="处理JS"></a>处理JS</h3><ul><li>JS用什么加载？ ：选用自带的js加载器</li><li><p>entry只有一个js，多个js文件怎么办？：entry变成对象，键值对（’’：[‘’]）来指定不同的js文件，注意多个entry需要指定多个output</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">entry : &#123;</span><br><span class="line">&apos;index&apos;:[&apos;./src/page/index/index.js&apos;],</span><br><span class="line">&apos;login&apos;:[&apos;./src/page/login/login&apos;],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>output要分文件夹存放目标文件，怎么设置输出文件？：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">output : &#123;</span><br><span class="line">path:&apos;./dist&apos;,</span><br><span class="line">filename: [name].js</span><br><span class="line">&#125;</span><br><span class="line">//[name]会使用源文件的名字</span><br><span class="line">//filename支持路径，如果改成js/[name].js,会建立js文件夹</span><br></pre></td></tr></table></figure></li><li><p>jquery引入方法？1.在页面中直接用脚本引入，<a href="http://www.bootcdn.cn" target="_blank" rel="noopener">特定版本</a>获取网址,2.模块化引入,在webpack config文件中</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">externals : &#123;</span><br><span class="line">&apos;jquery&apos; : &apos;window.jQuery&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>我想提取公共模块，怎么处理？使用<a href="">CommonsChunkPlugin</a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//在plugins里new一个对象，在参数(对象)中配置如何提取公共模块</span><br><span class="line">var webpack = require(&apos;webpack&apos;)</span><br><span class="line">plugins : [</span><br><span class="line">new webpack.optimize.CommonsChunkPlugin(&#123;</span><br><span class="line">name : &apos;common&apos;,</span><br><span class="line">filename : &apos;js/base.js &apos;//</span><br><span class="line">&#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure><ul><li>输出name的名字,路径前缀为output中的path</li><li>只有commons中的通用文件才会抽离到base.js中</li><li>在entry中也定义一个common入口，当webpack.optimize.CommonsChunkPlugin中的name也为commom的时候，common.js中引用的js文件中的通用部分就会打包进base.js</li></ul></li></ul><h3 id="处理CSS"><a href="#处理CSS" class="headerlink" title="处理CSS"></a>处理CSS</h3><ul><li>用什么loader加载？<br>style-loader!css-loader,执行顺序是由右往左，例如<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">module : &#123;</span><br><span class="line">loaders : [</span><br><span class="line">&#123;test:/\.css$/,loader:&quot;style-loader!css-loader&quot;&#125;</span><br><span class="line">//探测到以css结尾的文件，就使用style-loader!css-loader</span><br><span class="line">]</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li></ul><p>使用之前，需要先安装：</p><pre><code>- npm install style-loader css-loader --save-dev </code></pre><ul><li>webpack把样式打包成了js模块，但我需要单独的css文件，不想在js运行完了才开始加载？<br>需要用到webpack css单独打包的插件，即<a href="">extrct-text-webpack-plugin</a>，<br>然后在webpack的配置文件中：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var ExtractTextPlugin = require (&quot;extract-text-webpack-plugin&quot;)</span><br><span class="line">...</span><br><span class="line">//配置插件</span><br><span class="line">plugins: &#123;</span><br><span class="line">new ExtractTextPlugin(&quot;css/[name].css&quot;)</span><br><span class="line">&#125;</span><br><span class="line">//注意Loader也需要配置</span><br><span class="line">module: &#123;</span><br><span class="line">loaders: [</span><br><span class="line">&#123; test:/\.css$/,loader:ExtractTextPlugin(&quot;css/[name].css&quot;) &#125;</span><br><span class="line">]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul><h2 id="对HTML的处理"><a href="#对HTML的处理" class="headerlink" title="对HTML的处理"></a>对HTML的处理</h2><h3 id="html-wepack-plugin"><a href="#html-wepack-plugin" class="headerlink" title="html-wepack-plugin"></a>html-wepack-plugin</h3><p>使用的方式和CSS插件一致，例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var HtmlWebpackPlugin = require (&quot;html-webpack-plugin&quot;)</span><br><span class="line">...</span><br><span class="line">//配置HTML模版</span><br><span class="line">plugins: &#123;</span><br><span class="line">new HtmlWebpackPlugin(&#123;</span><br><span class="line">template: &apos;./src/view/&apos; + name + &apos;.html&apos;,</span><br><span class="line">        filename: &apos;view/&apos; + name + &apos;.html&apos;,</span><br><span class="line">        title: title,</span><br><span class="line">        inject: true,</span><br><span class="line">        hash: true,</span><br><span class="line">        chunks: [&apos;common&apos;, name]</span><br><span class="line">&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><ul><li>template:html原始的页面模版</li><li>filename：目标文件的位置，以output的path作为父目录</li><li>inject：注入方式，自动注入js和css</li><li>hash：会在引入的css、js文件加hash版本号</li><li>chunks：需要打包的模块</li></ul><hr><p>To be continued </p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;一个前后端完全分离的商城，把系统分为逻辑层、数据层、工具层三大层级，具有不错的可扩展性和可维护性，同时进行模块化拆分，通过组件的拼装达到业务的实现，提高开发效率。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
-    
-    
-      <category term="编程" scheme="http://wittyfans.com/tags/%E7%BC%96%E7%A8%8B/"/>
-    
-      <category term="实战" scheme="http://wittyfans.com/tags/%E5%AE%9E%E6%88%98/"/>
     
   </entry>
   
