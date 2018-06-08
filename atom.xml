@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wittyfans.com/"/>
-  <updated>2018-06-05T05:38:19.168Z</updated>
+  <updated>2018-06-08T03:17:50.893Z</updated>
   <id>http://wittyfans.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>kafka分布式集群部署</title>
+    <link href="http://wittyfans.com/coding/kafka%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2.html"/>
+    <id>http://wittyfans.com/coding/kafka分布式集群部署.html</id>
+    <published>2018-06-08T03:13:19.000Z</published>
+    <updated>2018-06-08T03:17:50.893Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>一个高吞吐量的消息队列系统，可以达到高效的流处理，借助zookeeper确保了证数据的安全。</p></blockquote><a id="more"></a><h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">下载官网 kafka.2.10-0.8.2.1.tgz 版本</span><br></pre></td></tr></table></figure><h1 id="kafka集群配置"><a href="#kafka集群配置" class="headerlink" title="kafka集群配置"></a>kafka集群配置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 传输数据到集群 -&gt; scp -r ***.tgz opt/software/</span><br><span class="line"># 解压 -&gt; /opt/modules</span><br><span class="line"># 配置</span><br><span class="line"></span><br><span class="line">1. Server.propertis文件</span><br><span class="line">-&gt; broker.id -&gt; 1或则2，nod1 -&gt; 1,node2 -&gt; 2</span><br><span class="line">-&gt; port=9092</span><br><span class="line">-&gt; host.name -&gt; userhostname</span><br><span class="line">-&gt; 修改日志路径 -&gt; log.dirs = /tmp/kafka-logs</span><br><span class="line">-&gt; zookeeper.connect=master,node1,node2;</span><br><span class="line">2. 分发到其他机器</span><br><span class="line"></span><br><span class="line">3. 修改其他机器上的server.properties文件</span><br></pre></td></tr></table></figure><h1 id="启动并测试"><a href="#启动并测试" class="headerlink" title="启动并测试"></a>启动并测试</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. bin/zookeeper-server-start.sh config/zookeeper.properties</span><br><span class="line">2. bin/kafka-server-start.sh config/server.properties</span><br><span class="line">3. 创建 Topic -&gt; &gt; bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test</span><br><span class="line">4. 创建生产端和消费端</span><br><span class="line">-&gt; bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test</span><br><span class="line">-&gt; bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning</span><br></pre></td></tr></table></figure><p>创建好了的topic可以在zookeeper的目录下的brokers/topics里面去查看。</p><h1 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h1><ul><li>host.name要改成跟本机对应的hostname,才能在第二、三台机器上启动server</li></ul><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul><li><a href="http://kafka.apache.org/quickstart" target="_blank" rel="noopener">Kafka QuickStart</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;一个高吞吐量的消息队列系统，可以达到高效的流处理，借助zookeeper确保了证数据的安全。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
+    
+    
+      <category term="BigData" scheme="http://wittyfans.com/tags/BigData/"/>
+    
+      <category term="Kafka" scheme="http://wittyfans.com/tags/Kafka/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS 12更新Beta开发版配置文件</title>
@@ -116,9 +142,9 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="bigdata" scheme="http://wittyfans.com/tags/bigdata/"/>
-    
       <category term="hadoop" scheme="http://wittyfans.com/tags/hadoop/"/>
+    
+      <category term="bigdata" scheme="http://wittyfans.com/tags/bigdata/"/>
     
       <category term="HA" scheme="http://wittyfans.com/tags/HA/"/>
     
@@ -144,9 +170,9 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="HelpDesk" scheme="http://wittyfans.com/tags/HelpDesk/"/>
-    
       <category term="PowerShell" scheme="http://wittyfans.com/tags/PowerShell/"/>
+    
+      <category term="HelpDesk" scheme="http://wittyfans.com/tags/HelpDesk/"/>
     
       <category term="AD" scheme="http://wittyfans.com/tags/AD/"/>
     
@@ -198,9 +224,9 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="bigdata" scheme="http://wittyfans.com/tags/bigdata/"/>
-    
       <category term="hadoop" scheme="http://wittyfans.com/tags/hadoop/"/>
+    
+      <category term="bigdata" scheme="http://wittyfans.com/tags/bigdata/"/>
     
       <category term="yarn" scheme="http://wittyfans.com/tags/yarn/"/>
     
@@ -256,9 +282,9 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="hadoop" scheme="http://wittyfans.com/tags/hadoop/"/>
-    
       <category term="big data" scheme="http://wittyfans.com/tags/big-data/"/>
+    
+      <category term="hadoop" scheme="http://wittyfans.com/tags/hadoop/"/>
     
       <category term="hive" scheme="http://wittyfans.com/tags/hive/"/>
     
@@ -471,13 +497,13 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="Windows" scheme="http://wittyfans.com/tags/Windows/"/>
+      <category term="PowerShell" scheme="http://wittyfans.com/tags/PowerShell/"/>
     
       <category term="HelpDesk" scheme="http://wittyfans.com/tags/HelpDesk/"/>
     
-      <category term="技术支持" scheme="http://wittyfans.com/tags/%E6%8A%80%E6%9C%AF%E6%94%AF%E6%8C%81/"/>
+      <category term="Windows" scheme="http://wittyfans.com/tags/Windows/"/>
     
-      <category term="PowerShell" scheme="http://wittyfans.com/tags/PowerShell/"/>
+      <category term="技术支持" scheme="http://wittyfans.com/tags/%E6%8A%80%E6%9C%AF%E6%94%AF%E6%8C%81/"/>
     
   </entry>
   
@@ -503,9 +529,9 @@
     
       <category term="学习" scheme="http://wittyfans.com/tags/%E5%AD%A6%E4%B9%A0/"/>
     
-      <category term="读书" scheme="http://wittyfans.com/tags/%E8%AF%BB%E4%B9%A6/"/>
-    
       <category term="爱默生" scheme="http://wittyfans.com/tags/%E7%88%B1%E9%BB%98%E7%94%9F/"/>
+    
+      <category term="读书" scheme="http://wittyfans.com/tags/%E8%AF%BB%E4%B9%A6/"/>
     
   </entry>
   
@@ -536,30 +562,6 @@
       <category term="理财" scheme="http://wittyfans.com/tags/%E7%90%86%E8%B4%A2/"/>
     
       <category term="财富" scheme="http://wittyfans.com/tags/%E8%B4%A2%E5%AF%8C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Angualar使用笔记</title>
-    <link href="http://wittyfans.com/coding/Angualar%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0.html"/>
-    <id>http://wittyfans.com/coding/Angualar使用笔记.html</id>
-    <published>2017-08-25T15:11:50.000Z</published>
-    <updated>2018-03-15T14:45:54.426Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>一套框架，多种平台</p></blockquote><a id="more"></a> <p>Angular学习笔记</p><h1 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h1><h2 id="我们需要什么样的开发环境？"><a href="#我们需要什么样的开发环境？" class="headerlink" title="我们需要什么样的开发环境？"></a>我们需要什么样的开发环境？</h2><ul><li>代码编辑</li><li>断点调试</li><li>版本管理</li><li>代码合并和混淆</li><li>依赖管理</li><li>单元测试</li><li>集成测试</li></ul><h2 id="常用工具介绍"><a href="#常用工具介绍" class="headerlink" title="常用工具介绍"></a>常用工具介绍</h2><ul><li>代码编辑<ul><li>Sublime</li><li>Webstom</li></ul></li><li>断点调试<ul><li>Chrom+Batarang浏览器插件</li></ul></li><li>版本管理<ul><li>Git</li><li>Tortoisegit</li></ul></li><li>代码合并和混淆<ul><li>Node.js+npm</li><li>Grunt</li></ul></li><li>依赖管理<ul><li>Bower(少用)</li><li>Http-server<ul><li>模拟测试数据</li></ul></li></ul></li><li>单元测试<ul><li>Karma（仅仅是容器）</li><li>Jasmine（编写测试用例工具）</li><li>Protractor（专为angularJS定制）</li></ul></li></ul><h1 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h1><p>MVC只是手段，终极目标是模块化和复用<br>Angular 的MVS全部借助于$scope实现，即利用作用域实现</p><h2 id="前端MVC的困难"><a href="#前端MVC的困难" class="headerlink" title="前端MVC的困难"></a>前端MVC的困难</h2><ul><li>操作DOM必须等待整个页面加载完成</li><li>多个js文件如果互相依赖，必须程序员自己解决</li><li>jd的原型继承也给前端编程带来很多困难</li></ul><h2 id="AngularJS中的Controller"><a href="#AngularJS中的Controller" class="headerlink" title="AngularJS中的Controller"></a>AngularJS中的Controller</h2><h3 id="Controller的实现方式"><a href="#Controller的实现方式" class="headerlink" title="Controller的实现方式"></a>Controller的实现方式</h3><ul><li>同一个数据模型，一个控制器控制多个视图<ul><li>如果多个视图之间没有关系，控制器的角色就很尴尬</li><li>控制器变成大杂烩</li><li>适合小项目</li></ul></li><li>同一个数据模型，每个视图对应一个视图<ul><li>两个控制器里的方法一样怎么办？利用继承通用控制器的方法可以解决但是这样不推荐（</li><li>利用Servers</li></ul></li></ul><h3 id="HTML中的代码"><a href="#HTML中的代码" class="headerlink" title="HTML中的代码"></a>HTML中的代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div ng-controller = &quot;HelloAngular&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;&#123;% raw %&#125;&#123;&#123; greeting.text &#125;&#125; &#123;% endraw %&#125;,Angular&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">//通过指令ng-controller= 实现控制器</span><br></pre></td></tr></table></figure><h3 id="Controller使用注意点"><a href="#Controller使用注意点" class="headerlink" title="Controller使用注意点"></a>Controller使用注意点</h3><ul><li>不要试图去复用Controller，一个控制器只负责一个小视图</li><li>不要再Controlller操作Dom，这不是控制器的职责</li><li>不要在Controller中做数据格式化，ng有很好的表单控件</li><li>不要再controller中做数据过滤操作，ng有$filter服务</li><li>controller是不需要互相调用的，一般会通过事件</li></ul><h2 id="AngularJS中的Model"><a href="#AngularJS中的Model" class="headerlink" title="AngularJS中的Model"></a>AngularJS中的Model</h2><p>Model大致运行过程</p><ul><li>AngularJS代码加载，完成后去寻找ng-app</li><li>ng-app所在标签内部的所有内容就归它所管</li><li>寻找所有属于ng的指令，进行编译操作</li><li>找到ng-model后生成数据模型，并给它取名为””中的值,挂载在Root Scope上，给所有子标签使用</li></ul><h3 id="模型特点"><a href="#模型特点" class="headerlink" title="模型特点"></a>模型特点</h3><ul><li>不需要手动创建model</li><li>使用的时候利用$scope取值就好</li></ul><h2 id="AngularJS中的View"><a href="#AngularJS中的View" class="headerlink" title="AngularJS中的View"></a>AngularJS中的View</h2><h3 id="AngularJS和MVC都基于-Scope"><a href="#AngularJS和MVC都基于-Scope" class="headerlink" title="AngularJS和MVC都基于$Scope"></a>AngularJS和MVC都基于$Scope</h3><ul><li>$Scope是一个Polo</li><li>$Scope提供了一些工具方法</li><li>$Scope是表达式的执行环境</li><li>$Scope是一个树形结构，与DOM标签平行</li><li>$Scope对象会继承父$Scope上的属性和方法</li><li>每一个Angular应用只有一个根$Scope对象，一般位于ng-app</li><li>$Scope可以传播事件，类似DOM事件，可以向上也可以向下</li><li>$Scope不仅是MVC的基础，也是后面实现双向数据绑定的基础</li><li>可以用Angular.element($0).scope()进行调试</li></ul><h3 id="Scope的生命周期"><a href="#Scope的生命周期" class="headerlink" title="$Scope的生命周期"></a>$Scope的生命周期</h3><p>Creation（创建）-&gt;Watcher registration（观察监测）-&gt;Model mutation(模型变化)-&gt;Mutation observation（模型脏了？）-&gt;Scope destruction(销毁)</p><h3 id="模块化与依赖注入"><a href="#模块化与依赖注入" class="headerlink" title="模块化与依赖注入"></a>模块化与依赖注入</h3><p>AngularJS的模块化实现<br>把一个函数定义到全局空间，会污染全局空间,最好的方式是利用angular.module定义modle,再在model中定义控制器。模块是什么？模块是集合，集合了控制器，视图，过滤器，等等</p><h3 id="一个完整的项目结构是什么样的"><a href="#一个完整的项目结构是什么样的" class="headerlink" title="一个完整的项目结构是什么样的"></a>一个完整的项目结构是什么样的</h3><ul><li>app</li><li>css</li><li>JS</li><li>app.js <ul><li>controllers.js</li><li>drictives.js</li><li>filters.js</li><li>services.js</li></ul></li><li>Imgs</li><li>tpls（模版）<ul><li>index.html</li></ul></li><li>node-modules</li><li>framework（bootstrap等UI控件）</li><li>package.json</li></ul><h3 id="使用ngRoute进行视图之间的路由"><a href="#使用ngRoute进行视图之间的路由" class="headerlink" title="使用ngRoute进行视图之间的路由"></a>使用ngRoute进行视图之间的路由</h3><pre><code>应用规模很大，不可能只有一个View，这些View需要切换，AngularJS是根据URL来切换的，它有一个工具叫routeProvider。一切都是从模块开始的。如果控制器太多，需要把控制器分类成不同功能的模块，分给不同的开发者开发，利用grunt进行代码合并</code></pre><p>模块之间的依应该怎么做？–依赖注入，app.js作为入口，肯定需要依赖其他的模块,例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var book = angular.module(&apos;module1&apos;,&apos;module2&apos;)</span><br></pre></td></tr></table></figure></p><h1 id="双向数据绑定"><a href="#双向数据绑定" class="headerlink" title="双向数据绑定"></a>双向数据绑定</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&#123;% raw %&#125;&#123;&#123; greeting.text &#125;&#125; &#123;% endraw %&#125; ,Angular&lt;/p&gt;</span><br></pre></td></tr></table></figure>{{  }} ,数据绑定，分单双向 ,问题：会因为刷新、网络的问题，在网页中显示代码<br><br>## 取值表达式与ng-bind指令<br>解决方案：使用ng-bind，即<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&lt;span ng-bind=&quot;greeting.text&quot;&gt;&lt;/span&gt;,Angular&lt;/p&gt;</span><br></pre></td></tr></table></figure><h3 id="双向数据绑定典型场景——表单"><a href="#双向数据绑定典型场景——表单" class="headerlink" title="双向数据绑定典型场景——表单"></a>双向数据绑定典型场景——表单</h3><p>建立、html中、应用场景之更改css文件</p><h3 id="动态切换标签样式"><a href="#动态切换标签样式" class="headerlink" title="动态切换标签样式"></a>动态切换标签样式</h3><p>ng-show和ng-hide、ng-class，ng-clas可以接受表达式，例如在修改CSS样式的例子中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div ng-class = &apos;&#123;error:isError, warning:isWarning&#125;&apos;&gt;&#123;% raw %&#125;&#123;&#123; messageText &#125;&#125; &#123;% endraw %&#125; &lt;/div&gt;</span><br></pre></td></tr></table></figure></p><p>意思是，如果isError的值为True，则会用eror的样式ngAnimate</p><h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h1><h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><p>指令的运行机制。</p><ol><li>加载、加载angular.js，找到ng-app，确定应用边界</li><li>编译、遍历DOM，找到所有指令、根据指令代码中的template、replace、transclue转换dom结构、如果存在compile函数则调用</li><li>链接、对每一条指令运行link函数、link函数一般用来操作dom、绑定事件监听器</li></ol><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol><li>指令的形式，指令的外部为<name></name>,即它的使用形式</li><li>声明与定义，指令声明于控制器当中，控制器存在于模块当中，控制器需要在<div>中声明，在js文件中定义，指令也一样</div></li><li>指令的定义方式为，在定义控制器之后，使用控制器的directive方法定义,形式如下：</li></ol><p>1). 定义模块:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var module = angular.module(&quot;module&quot;,[]);</span><br></pre></td></tr></table></figure></p><p>2). 定义控制器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">module.controller(&apos;myctrl&apos;,[&apos;$scope&apos;,function($scope)&#123;</span><br><span class="line">$scope.loadData = function()&#123;</span><br><span class="line">//code</span><br><span class="line">&#125;</span><br><span class="line">&#125;]);</span><br></pre></td></tr></table></figure></p><p>3). 定义指令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">module.directive(&apos;name&apos;,function()&#123;</span><br><span class="line">return&#123;</span><br><span class="line">restrict:&apos;AE&apos;</span><br><span class="line">link:function(scope,element,attr,*)&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p><h2 id="使用与绑定事件"><a href="#使用与绑定事件" class="headerlink" title="使用与绑定事件"></a>使用与绑定事件</h2><p>link可用来绑定该指令的鼠标事件，该函数共有4个参数</p><ul><li>scope</li><li>element</li><li>attr</li><li>*(后面再介绍)</li></ul><h3 id="如何绑定鼠标事件？在link中"><a href="#如何绑定鼠标事件？在link中" class="headerlink" title="如何绑定鼠标事件？在link中"></a>如何绑定鼠标事件？在link中</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">element.bind(&apos;event&apos;,function()&#123;</span><br><span class="line">scope.loadData();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>或</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scope.$apply(&quot;loadData()&quot;);</span><br></pre></td></tr></table></figure><h3 id="指令要在另一个控制器中使用呢"><a href="#指令要在另一个控制器中使用呢" class="headerlink" title="指令要在另一个控制器中使用呢"></a>指令要在另一个控制器中使用呢</h3><p>定义另一个控制器,给指令定义属性，比如加载指令loader定义howtoload属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">module.directive(&apos;name&apos;,function()&#123;</span><br><span class="line">return&#123;</span><br><span class="line">restrict:&apos;AE&apos;</span><br><span class="line">link:function(scope,element,attr,*)&#123;</span><br><span class="line"></span><br><span class="line">scope.$apply(attr.howtoload());//必须小写</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p><h3 id="指令内部的分工"><a href="#指令内部的分工" class="headerlink" title="指令内部的分工"></a>指令内部的分工</h3><p>link中处理指令内部事件，绑定数据.etc,如果想要指令暴露出一些方法给外部用，那就写在控制器中require,表示依赖关系，.</p><h3 id="独立scope"><a href="#独立scope" class="headerlink" title="独立scope"></a>独立scope</h3><p> 效果：让数据与视图的数据独立<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> module.directive(&apos;name&apos;,function()&#123;</span><br><span class="line">return&#123;</span><br><span class="line">restrict:&apos;AE&apos;,</span><br><span class="line">scope:&#123;&#125;,</span><br><span class="line">link:function(scope,element,attr,*)&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p><h3 id="scope绑定策略"><a href="#scope绑定策略" class="headerlink" title="scope绑定策略"></a>scope绑定策略</h3><ul><li>@，以字符串的形式绑定</li><li>=，与父scope中的属性进行双向绑定</li><li>&amp;，传递一个来自父scope的函数，稍后调用</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;一套框架，多种平台&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
-    
-    
-      <category term="web" scheme="http://wittyfans.com/tags/web/"/>
     
   </entry>
   

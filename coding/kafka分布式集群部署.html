@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, My friend." />
+  <meta name="keywords" content="BigData,Kafka," />
 
 
 
@@ -86,13 +86,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="wittyfans">
-<meta property="og:url" content="http://wittyfans.com/categories/coding/page/2/index.html">
+<meta name="description" content="一个高吞吐量的消息队列系统，可以达到高效的流处理，借助zookeeper确保了证数据的安全。">
+<meta name="keywords" content="BigData,Kafka">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kafka分布式集群部署">
+<meta property="og:url" content="http://wittyfans.com/coding/kafka分布式集群部署.html">
 <meta property="og:site_name" content="wittyfans">
+<meta property="og:description" content="一个高吞吐量的消息队列系统，可以达到高效的流处理，借助zookeeper确保了证数据的安全。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-08T03:17:50.893Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wittyfans">
+<meta name="twitter:title" content="kafka分布式集群部署">
+<meta name="twitter:description" content="一个高吞吐量的消息队列系统，可以达到高效的流处理，借助zookeeper确保了证数据的安全。">
 
 
 
@@ -120,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://wittyfans.com/categories/coding/page/2/"/>
+  <link rel="canonical" href="http://wittyfans.com/coding/kafka分布式集群部署.html"/>
 
 
 
 
 
-  <title> 分类: coding | wittyfans </title>
+  <title> kafka分布式集群部署 | wittyfans </title>
   <script type="text/javascript" src="/js/src/love.js"></script>
 </head>
 
@@ -148,7 +153,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right  ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -248,415 +253,211 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        coding
-        <small>分类</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/coding/Linux之scp命令的使用.html" itemprop="url">
-              
-                <span itemprop="name">Linux之scp命令使用</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-13T20:19:50+08:00"
-              content="2017-07-13" >
-          07-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/coding/Screen指南.html" itemprop="url">
-              
-                <span itemprop="name">Screen指南</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-13T20:18:32+08:00"
-              content="2017-07-13" >
-          07-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/coding/主机名由localhost变成bogon的解决办法.html" itemprop="url">
-              
-                <span itemprop="name">主机名由localhost变成bogon的解决办法</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-13T20:15:34+08:00"
-              content="2017-07-13" >
-          07-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/coding/正则表达式学习.html" itemprop="url">
-              
-                <span itemprop="name">正则表达式学习</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-13T20:11:09+08:00"
-              content="2017-07-13" >
-          07-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/coding/个人整理2017前端学习路线与资料.html" itemprop="url">
-              
-                <span itemprop="name">2017前端学习路线与资料</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-07T17:42:23+08:00"
-              content="2017-06-07" >
-          06-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/coding/产品经理的数字工具们.html" itemprop="url">
-              
-                <span itemprop="name">产品经理的数字工具们 👨🏻‍💻</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-28T10:04:49+08:00"
-              content="2017-05-28" >
-          05-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/coding/产品经理的五种工具.html" itemprop="url">
-              
-                <span itemprop="name">产品经理的五种工具 🔨</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-27T23:33:12+08:00"
-              content="2017-05-27" >
-          05-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/coding/JavaScript学习笔记——函数与对象.html" itemprop="url">
-              
-                <span itemprop="name">JavaScript学习笔记——函数与对象</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-22T16:45:54+08:00"
-              content="2017-05-22" >
-          05-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/coding/JavaScript学习笔记——错误集.html" itemprop="url">
-              
-                <span itemprop="name">JavaScript学习笔记——错误集</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-22T16:41:37+08:00"
-              content="2017-05-22" >
-          05-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/coding/JavaScript学习笔记——实战.html" itemprop="url">
-              
-                <span itemprop="name">JavaScript学习笔记——实战</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-22T16:41:21+08:00"
-              content="2017-05-22" >
-          05-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/coding/整理最全PS-photoshop菜单中英文对照表.html" itemprop="url">
-              
-                <span itemprop="name">PS菜单中英文对照表</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-22T10:58:23+08:00"
-              content="2017-05-22" >
-          05-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/coding/一步一步用WordPress建站-持续更新.html" itemprop="url">
-              
-                <span itemprop="name">一步一步用WordPress建站(持续更新)</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-24T10:35:44+08:00"
-              content="2017-04-24" >
-          04-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/coding/JavaScript学习笔记.html" itemprop="url">
-              
-                <span itemprop="name">JavaScript学习笔记——语法快速概览与数组</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-24T10:23:22+08:00"
-              content="2017-04-24" >
-          04-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/coding/你想做产品经理吗？.html" itemprop="url">
-              
-                <span itemprop="name">你想做产品经理吗？</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-02-28T23:41:39+08:00"
-              content="2017-02-28" >
-          02-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </section>
 
   
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/categories/coding/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/categories/coding/">1</a><span class="page-number current">2</span>
-  </nav>
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/kafka分布式集群部署.html">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="wittyfans">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="wittyfans">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="wittyfans" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                kafka分布式集群部署
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-08T11:13:19+08:00">
+                2018-06-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/coding/" itemprop="url" rel="index">
+                    <span itemprop="name">coding</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/coding/kafka分布式集群部署.html" class="leancloud_visitors" data-flag-title="kafka分布式集群部署">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+               <span>℃</span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
 
 
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>一个高吞吐量的消息队列系统，可以达到高效的流处理，借助zookeeper确保了证数据的安全。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">下载官网 kafka.2.10-0.8.2.1.tgz 版本</span><br></pre></td></tr></table></figure>
+<h1 id="kafka集群配置"><a href="#kafka集群配置" class="headerlink" title="kafka集群配置"></a>kafka集群配置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 传输数据到集群 -&gt; scp -r ***.tgz opt/software/</span><br><span class="line"># 解压 -&gt; /opt/modules</span><br><span class="line"># 配置</span><br><span class="line"></span><br><span class="line">1. Server.propertis文件</span><br><span class="line">-&gt; broker.id -&gt; 1或则2，nod1 -&gt; 1,node2 -&gt; 2</span><br><span class="line">-&gt; port=9092</span><br><span class="line">-&gt; host.name -&gt; userhostname</span><br><span class="line">-&gt; 修改日志路径 -&gt; log.dirs = /tmp/kafka-logs</span><br><span class="line">-&gt; zookeeper.connect=master,node1,node2;</span><br><span class="line">2. 分发到其他机器</span><br><span class="line"></span><br><span class="line">3. 修改其他机器上的server.properties文件</span><br></pre></td></tr></table></figure>
+<h1 id="启动并测试"><a href="#启动并测试" class="headerlink" title="启动并测试"></a>启动并测试</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. bin/zookeeper-server-start.sh config/zookeeper.properties</span><br><span class="line">2. bin/kafka-server-start.sh config/server.properties</span><br><span class="line">3. 创建 Topic -&gt; &gt; bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test</span><br><span class="line">4. 创建生产端和消费端</span><br><span class="line">-&gt; bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test</span><br><span class="line">-&gt; bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning</span><br></pre></td></tr></table></figure>
+<p>创建好了的topic可以在zookeeper的目录下的brokers/topics里面去查看。</p>
+<h1 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h1><ul>
+<li>host.name要改成跟本机对应的hostname,才能在第二、三台机器上启动server</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="http://kafka.apache.org/quickstart" target="_blank" rel="noopener">Kafka QuickStart</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-reward-image.png" alt="wittyfans WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/BigData/" rel="tag"># BigData</a>
+          
+            <a href="/tags/Kafka/" rel="tag"># Kafka</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/coding/iOS-12更新Beta开发版配置文件.html" rel="next" title="iOS 12更新Beta开发版配置文件">
+                <i class="fa fa-chevron-left"></i> iOS 12更新Beta开发版配置文件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -664,6 +465,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -683,8 +488,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -782,6 +596,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#下载"><span class="nav-number">1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kafka集群配置"><span class="nav-number">2.</span> <span class="nav-text">kafka集群配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动并测试"><span class="nav-number">3.</span> <span class="nav-text">启动并测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tips"><span class="nav-number">4.</span> <span class="nav-text">Tips</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
@@ -896,6 +726,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
