@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wittyfans.com/"/>
-  <updated>2018-10-08T09:53:00.398Z</updated>
+  <updated>2018-10-12T04:05:36.431Z</updated>
   <id>http://wittyfans.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记一次倒车事故</title>
+    <link href="http://wittyfans.com/writing/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%80%92%E8%BD%A6%E4%BA%8B%E6%95%85.html"/>
+    <id>http://wittyfans.com/writing/记一次倒车事故.html</id>
+    <published>2018-10-12T03:59:40.000Z</published>
+    <updated>2018-10-12T04:05:36.431Z</updated>
+    
+    <content type="html"><![CDATA[<p>一次车祸，对方索要八百惊吓费，协商无果，一直僵持不下。</p><p>我习惯性的拖延，一直没有明确表态，我知道这意味着不需要承担犯错的后果。<br>这后果有两方面：</p><ol><li>承担所有损失，意味着我自己很亏，我自己会觉得自己犯了不该这么软弱的错。</li><li>拒绝损失，意味着可能带来的纠纷，即与对方发生冲突，尤其是对方三个女生，而我的女朋友还在现场</li></ol><p>从别人的视角来说，我因为不愿意付钱，弄的我似乎很没责任感，又不敢明确拒绝对方的无理要求，显的有些软弱被欺负，一是拿不出钱，而是拿不出拒绝对方的勇气。</p><p>生活当中，有许多的场景，比如B的前景更好，但不愿放弃A这边的利益，在其中纠结，害怕犯错，因为不管选择哪一方，都会有损失，而人都不想损失，想鱼和熊掌兼得，想走”中庸之道”。</p><p>聪明的人，能一眼识别出其中的利害关系，做出明智的决定，显然我还差得远。<br>抱着一种随便的态度，但别人不会如此，当对方跟你算账的时候，你只会手忙脚乱。</p><p>再遇到这种突发事件，首先避免鲁莽，冷静三分钟时间（不能太久）分析利害关系</p><p>允许自己去犯错，承担后果，然后果断的直面冲突与错误，事后再反思，总结。</p><p>如果不能有所改变，只会一次次承担更大的损失。这是我的教训，希望对大家有所帮助，能从别人的教训中吸取经验的人，都是会干大事的, 一起成长～ 💪💪💪</p><blockquote><p>PS: 虽然我能理解别人所处的形势，但这并不代表我赞同对方的所作所为。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;一次车祸，对方索要八百惊吓费，协商无果，一直僵持不下。&lt;/p&gt;
+&lt;p&gt;我习惯性的拖延，一直没有明确表态，我知道这意味着不需要承担犯错的后果。&lt;br&gt;这后果有两方面：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;承担所有损失，意味着我自己很亏，我自己会觉得自己犯了不该这么软弱的错。&lt;/li&gt;
+
+      
+    
+    </summary>
+    
+      <category term="writing" scheme="http://wittyfans.com/categories/writing/"/>
+    
+    
+      <category term="life" scheme="http://wittyfans.com/tags/life/"/>
+    
+  </entry>
   
   <entry>
     <title>社会契约论手稿</title>
@@ -60,9 +89,9 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="shell" scheme="http://wittyfans.com/tags/shell/"/>
-    
       <category term="cmd" scheme="http://wittyfans.com/tags/cmd/"/>
+    
+      <category term="shell" scheme="http://wittyfans.com/tags/shell/"/>
     
       <category term="windows" scheme="http://wittyfans.com/tags/windows/"/>
     
@@ -101,7 +130,7 @@
     <link href="http://wittyfans.com/coding/PowerShell-Encrypting-Credentials-Generator.html"/>
     <id>http://wittyfans.com/coding/PowerShell-Encrypting-Credentials-Generator.html</id>
     <published>2018-10-05T14:11:51.000Z</published>
-    <updated>2018-10-05T14:13:58.950Z</updated>
+    <updated>2018-10-08T15:02:58.950Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>使用PowerShell运行，输入密码，生存的String会自动复制到剪贴板，直接去需要的地方粘贴即可。</p></blockquote><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Add-Type -AssemblyName System.Windows.Forms</span><br><span class="line"></span><br><span class="line">function Read-MessageBoxDialog</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    param ([string]$Message,</span><br><span class="line"></span><br><span class="line">        [string]$WindowTitle,</span><br><span class="line"></span><br><span class="line">        [System.Windows.Forms.MessageBoxButtons]$Buttons = [System.Windows.Forms.MessageBoxButtons]::OK,</span><br><span class="line"></span><br><span class="line">        [System.Windows.Forms.MessageBoxIcon]$Icon = [System.Windows.Forms.MessageBoxIcon]::None)</span><br><span class="line"></span><br><span class="line">    Add-Type -AssemblyName System.Windows.Forms</span><br><span class="line"></span><br><span class="line">    return [System.Windows.Forms.MessageBox]::Show($Message, $WindowTitle, $Buttons, $Icon)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">write-host &quot;请输入原始密码：↓↓↓↓&quot;</span><br><span class="line">$inputPWD = Read-Host | ConvertTo-SecureString -AsPlainText -Force</span><br><span class="line">$encryptedPWD = $inputPWD | ConvertFrom-SecureString</span><br><span class="line">[Windows.Forms.Clipboard]::SetText($encryptedPWD)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Read-MessageBoxDialog -Message &quot;已拷贝到剪贴板&quot; -WindowTitle &quot;安全密码制作工具&quot; -Buttons OK -Icon Information</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -520,36 +549,6 @@
       <category term="为人处事" scheme="http://wittyfans.com/tags/%E4%B8%BA%E4%BA%BA%E5%A4%84%E4%BA%8B/"/>
     
       <category term="名人名言" scheme="http://wittyfans.com/tags/%E5%90%8D%E4%BA%BA%E5%90%8D%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>OmniGraffle使用记录</title>
-    <link href="http://wittyfans.com/writing/OmniGraffle%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95.html"/>
-    <id>http://wittyfans.com/writing/OmniGraffle使用记录.html</id>
-    <published>2018-03-18T13:54:47.000Z</published>
-    <updated>2018-03-18T13:58:35.025Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>OmniGraffle是一款运行在Mac OS X 和iPad平台之上的设计软件。它曾获得2002年的苹果设计奖。 可以用来绘制图表， 流程图，组织结构图以及插图，也可以用来来组织头脑中思考的信息，组织头脑风暴的结果，绘制心智图，作为样式管理器，或设计网页或PDF文档的原型。</p></blockquote><a id="more"></a><h1 id="工具栏和检查器"><a href="#工具栏和检查器" class="headerlink" title="工具栏和检查器"></a>工具栏和检查器</h1><p><img src="https://cdn.sspai.com/2017/11/22/6e57ab13fbc4f6d43ce1366a981354b8.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt=""></p><ul><li>不同的工具，单机、双击、长按快捷键对应不同的操作模式，分别是单次使用、保持状态、临时调用。</li><li>所有工具，使用一次后会自动回到选择工具。</li><li>按一次和按两次数字键与用鼠标点击一次或双击效果一样，决定是使用一次后返回「选择」，还是一直处于激活状态；</li></ul><p><img src="https://cdn.sspai.com/2017/11/22/e528997c9c6278bfa4729cdfa47e9da0.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt=""></p><ul><li>⌘1-⌘6 快捷键快速切换对应的检查器面板。</li><li>按住 Option 键可以把一个对象的属性吸取保存下来，再点击就可以直接复制或应用属性到其他对象</li><li>格式刷可以「吸取」的格式非常多，而且可以自定义。</li><li>对象的外观（⌘1）、字体标签设置（⌘2）、连接磁化点（⌘3）、页面属性和图表布局（⌘4）、页边距和文档属性（⌘5）以及模具面板（⌘6）。</li></ul><h1 id="版面、目录、检查器"><a href="#版面、目录、检查器" class="headerlink" title="版面、目录、检查器"></a>版面、目录、检查器</h1><p><img src="https://cdn.sspai.com/2017/11/22/b1784c84b490e467caffdf9c03adeb0e.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt=""></p><h2 id="图层"><a href="#图层" class="headerlink" title="图层"></a>图层</h2><ul><li>锁定图层，可以避免误操作</li><li>「眼睛」图标隐藏或显示图层</li><li>「打印机」图标决定打印输出时是否包含这个图层。</li><li>激活「共享图层」图标（呈黄色显示），可以将共享图层的内容显示在其他页面，从而实现特定内容的共用</li><li>图层和页一样，通过拖移可以调整顺序，按住Option可以复制，按住Command可以选择多个页面或图层</li></ul><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p>「目录」面板中提供了三种显示对象的方式：对象列表、大纲层级、近似对象：</p><ul><li>「对象列表」视图按扁平方式列出所有的对象、群组及其层叠顺序，便于快速找到某个具体的对象，通过拖动或点击底部的箭头可以调整对象的层叠顺序，针对复杂的组合形状从列表视图中选择会更方便；</li><li>「大纲层级」按对象之间隶属关系来显示，大纲视窗中不包含线条，只包含形状或图片等元素。大纲视图中输入对象包含的文字内容会很方便，例如，创建组织结构图或者思维导图时直接在大纲视图中输入内容，最后选择自动排版，马上就能获得一个漂亮的结果；</li><li>「近似对象」中更可以一次选中所有相似的对象，对于批量的修改和调整非常有帮助。</li></ul><h1 id="对象控制和样式托盘"><a href="#对象控制和样式托盘" class="headerlink" title="对象控制和样式托盘"></a>对象控制和样式托盘</h1><p><img src="https://cdn.sspai.com/2017/11/22/90656b48f4a6a7f6962c256c5e92955f.png?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt=""></p><h2 id="控制对象"><a href="#控制对象" class="headerlink" title="控制对象"></a>控制对象</h2><p>这里有一些建议记下来的快捷键：</p><ul><li>前移对象「⌥⌘F」</li><li>后移对象「⌥⌘B」</li><li>移到最前「⇧⌘F」</li><li>置于最后「⇧⌘B」</li></ul><blockquote><p>F 和 B 取的是英文单词的 Front和 Back 的首字母</p></blockquote><h2 id="样式托盘"><a href="#样式托盘" class="headerlink" title="样式托盘"></a>样式托盘</h2><p>检查器底栏的「样式托盘」是 OmniGraffle 中一个非常值得称道的设计，当你选中对象时，「样式托盘」中会分解出当前对象采用的各种格式，和工具栏中的「格式刷」作用一样，不过操作交互上，「样式托盘」更直观和方便，你可以按住托盘中的某一个格式拖拽到其他对象，也可以按住第一个图标拖拽将当前对象的所有格式应用到其他对象。</p><p>按住 command 键，你可以在「样式托盘」中选择多个格式然后拖拽到其他对象，被选中的格式项背景会显示为浅灰色。</p><h1 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h1><h2 id="选择对象"><a href="#选择对象" class="headerlink" title="选择对象"></a>选择对象</h2><p>单击选择对象，按住 Shift 键或 Command 键可以将对象添加到选择或者从选择集合去掉。</p><h2 id="圈选对象"><a href="#圈选对象" class="headerlink" title="圈选对象"></a>圈选对象</h2><p>直接拖一个范围，按住Option键则只有完全选中的才会选择进来。</p><h2 id="对象旋转"><a href="#对象旋转" class="headerlink" title="对象旋转"></a>对象旋转</h2><p>按住Command键，再拖动旋转指针，再按住shift会吸附在特定的角度。</p><h2 id="缩放"><a href="#缩放" class="headerlink" title="缩放"></a>缩放</h2><p>按住Command，双指滑动。<br>按住 option 控制句柄    基于中心缩放</p><h2 id="划线"><a href="#划线" class="headerlink" title="划线"></a>划线</h2><ul><li>选择线条工具，单击开始绘制，再次单机添加中间点，双击完成绘制。</li><li>线条分四种类型：直线（Straight）、曲线（Curved）、折线（Orthogonal）和贝塞曲线（Bezier），通过工具栏的「收藏夹」图标可以固定默认的绘制类型。</li><li>针对绘制中遇到的线条交叉情况，面板中提供了多种「穿越模式」的样式供选择，默认情况下是「Do nothing」。</li><li>选中线条并在线条上双击可以添加「中间点」，按住 Option 键双击则是添加文本标签。</li></ul><hr><p><em>To be continued</em></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;OmniGraffle是一款运行在Mac OS X 和iPad平台之上的设计软件。它曾获得2002年的苹果设计奖。 可以用来绘制图表， 流程图，组织结构图以及插图，也可以用来来组织头脑中思考的信息，组织头脑风暴的结果，绘制心智图，作为样式管理器，或设计网页或PDF文档的原型。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="writing" scheme="http://wittyfans.com/categories/writing/"/>
-    
-    
-      <category term="设计" scheme="http://wittyfans.com/tags/%E8%AE%BE%E8%AE%A1/"/>
-    
-      <category term="画图" scheme="http://wittyfans.com/tags/%E7%94%BB%E5%9B%BE/"/>
-    
-      <category term="原型图" scheme="http://wittyfans.com/tags/%E5%8E%9F%E5%9E%8B%E5%9B%BE/"/>
-    
-      <category term="App" scheme="http://wittyfans.com/tags/App/"/>
     
   </entry>
   
