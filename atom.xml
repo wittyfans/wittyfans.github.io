@@ -138,11 +138,11 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="windows" scheme="http://wittyfans.com/tags/windows/"/>
-    
       <category term="cmd" scheme="http://wittyfans.com/tags/cmd/"/>
     
       <category term="shell" scheme="http://wittyfans.com/tags/shell/"/>
+    
+      <category term="windows" scheme="http://wittyfans.com/tags/windows/"/>
     
   </entry>
   
@@ -166,9 +166,9 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="HelpDesk" scheme="http://wittyfans.com/tags/HelpDesk/"/>
-    
       <category term="jira" scheme="http://wittyfans.com/tags/jira/"/>
+    
+      <category term="HelpDesk" scheme="http://wittyfans.com/tags/HelpDesk/"/>
     
       <category term="python" scheme="http://wittyfans.com/tags/python/"/>
     
@@ -220,11 +220,11 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
+      <category term="HelpDesk" scheme="http://wittyfans.com/tags/HelpDesk/"/>
+    
       <category term="Jira" scheme="http://wittyfans.com/tags/Jira/"/>
     
       <category term="Groovy" scheme="http://wittyfans.com/tags/Groovy/"/>
-    
-      <category term="HelpDesk" scheme="http://wittyfans.com/tags/HelpDesk/"/>
     
   </entry>
   
