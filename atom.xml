@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wittyfans.com/"/>
-  <updated>2018-10-14T15:45:51.321Z</updated>
+  <updated>2018-10-16T23:53:29.613Z</updated>
   <id>http://wittyfans.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>为什么不应该追求爱情</title>
+    <link href="http://wittyfans.com/writing/%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%BA%94%E8%AF%A5%E8%BF%BD%E6%B1%82%E7%88%B1%E6%83%85.html"/>
+    <id>http://wittyfans.com/writing/为什么不应该追求爱情.html</id>
+    <published>2018-10-16T23:40:40.000Z</published>
+    <updated>2018-10-16T23:53:29.613Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="http://pg9xe296o.bkt.clouddn.com/Love.jpg" alt=""></p><blockquote><p>爱情的追求本来就有问题，我们需要有一种方式去超越追求。</p></blockquote><a id="more"></a><p><strong>追求的定义：</strong></p><ol><li>我喜欢一个人，但对方对我毫无兴趣</li><li>因为对方无兴趣，所以我努力做某些事，试图引起注意</li></ol><p>如果对方也很感兴趣，那就没有了这个追求的过程。但追求这两个字，害惨了很多人。</p><h2 id="求"><a href="#求" class="headerlink" title="求"></a>求</h2><p>举个例子，观察一下那些商家如苹果、小米，他们会去求消费者购买他们的商品吗？没有</p><p>如果某天出现一个人在你面前，求你说给他一个机会，让他好好表现，也许某一天你会爱上他。这时候你心里会有一个想法，那就是：“这个人是不值得的”，你会想：“如果你真的这么好，为什么需要苦苦哀求？”</p><p>当我们试着把自己的姿态放低，对方就会产生怀疑，也就没办法产生尊重，爱情也就没办法自然产生，换句话说，我们越是求、越是拜托，我们反而把爱情推的离我们越远。</p><p>被拒绝，我们去求，很难给我们一个好的结果，只会让对方怀疑你的价值。</p><h2 id="追"><a href="#追" class="headerlink" title="追"></a>追</h2><p>我们在女神男神面前，做一些事情吸引对方注意力，想让对方看到我们。</p><p>有的人送花，上下班接送，送礼物，或吃大餐买奢饰品，各种对对方好。</p><p>可是，做这些事情，会产生一个问题。</p><p>这些事情都是一些外部因素。</p><p>对方可能看到了这些事情，但没有看到真正的你，而且这些事情会让你走进一个死胡同：</p><ol><li>对方开始躲你更远（拿人手短，对方无法同等回馈于你）</li><li>把你当提款机</li><li>你得到的只是不确定性的交往（长久的关系靠的是人的本身）</li></ol><p>那如何发展持续的人际关系或爱情呢？</p><ul><li>短期内，就像钓鱼，如果鱼儿一直对抗，那么要尝试松鱼线，不要硬拉，不然这样会把鱼线拉断，导致失去控制，当你松了之后，鱼儿也许会更听话，也有可能会往岸边游，感情也是一样，你只需要建立好自己的品牌，找机会产生连接，你一定会吸引到属于你的那一位，而不是去靠求、靠追。<strong>失去平衡的恋爱，我们永远会患得患失，永远会担心对方跑掉，担心对方遇到更好的，那是永远都担心不完的。</strong></li><li>中期，你喜欢的东西、应该让别人都知道，share你的信念，你们会因为共同的东西在一起</li><li>长期来看，建立自己的品牌价值（如苹果的品质服务，谷歌的自由开放）。我们喜欢与我们相同的人，包括喜好、价值观、想想一句话被别人介绍，别人会怎么提起你呢？你想要别人对你是一个怎样的看法？手机店里有的手机0元购都没人要，iPhone上万都有人抢，所以你要花时间去建立自己的个人价值，然后你就会吸引认可你这个品牌价值的人，这就实现了强有力的人际连接。</li></ul><p>共勉～</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://pg9xe296o.bkt.clouddn.com/Love.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;爱情的追求本来就有问题，我们需要有一种方式去超越追求。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="writing" scheme="http://wittyfans.com/categories/writing/"/>
+    
+    
+      <category term="writing" scheme="http://wittyfans.com/tags/writing/"/>
+    
+      <category term="love" scheme="http://wittyfans.com/tags/love/"/>
+    
+  </entry>
   
   <entry>
     <title>分享几篇Ted 演讲</title>
@@ -138,9 +165,9 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="cmd" scheme="http://wittyfans.com/tags/cmd/"/>
-    
       <category term="shell" scheme="http://wittyfans.com/tags/shell/"/>
+    
+      <category term="cmd" scheme="http://wittyfans.com/tags/cmd/"/>
     
       <category term="windows" scheme="http://wittyfans.com/tags/windows/"/>
     
@@ -525,32 +552,6 @@
       <category term="hive" scheme="http://wittyfans.com/tags/hive/"/>
     
       <category term="大数据" scheme="http://wittyfans.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《颜氏家训》读书笔记</title>
-    <link href="http://wittyfans.com/reading/%E3%80%8A%E9%A2%9C%E6%B0%8F%E5%AE%B6%E8%AE%AD%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0.html"/>
-    <id>http://wittyfans.com/reading/《颜氏家训》读书笔记.html</id>
-    <published>2018-03-19T15:22:01.000Z</published>
-    <updated>2018-03-19T15:24:50.836Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>颜氏家训在中国广为人知，所谓古今家训，以次为祖。<br>上周在书店看到此书，随便翻阅了一下便买了下来，一是因为书便宜，才22块，二是我购得这本为精简版，即根据王利器的书作为底本，重新编排的，适合作为一本入门书。</p></blockquote><a id="more"></a><h1 id="颜氏家训"><a href="#颜氏家训" class="headerlink" title="颜氏家训"></a>颜氏家训</h1><h1 id="序致"><a href="#序致" class="headerlink" title="序致"></a>序致</h1><ul><li>兄弟关系不同于旁人，相互期望过高就容易产生不满，而彼此关系亲密，不满也容易消除。</li><li>兄弟不和睦，子侄就不会相互爱护，子侄不爱护，整个家族子弟的关系都会疏远，感情淡薄。</li><li>妯娌之间，非常容易产生误会，之所以这样，是因为处理大家庭中的事物大家都各怀私心，肩负责任时，又挂念着个人恩怨，与其让她们住在一起，还不如让她们分开。</li><li>继母残虐孤遗，离间骨肉之事常有，再娶之事，慎之慎之！</li><li>按照一般人的秉性，后夫大都宠爱前夫的孩子，后妻则必定会虐待前妻的子女；这不是因为妇人天生嫉妒性情强，男子本身容易成迷诱惑。前夫的子女，不敢与自己的子女争夺家产，在这种情况下，后夫会从小照顾扶养他，日子一长自然会产生爱心。前妻的孩子，年龄地位一般都在自己的子女之上，无论做官，读书，还是娶妻，出嫁，没有一样不要提防的，所以后母大都会虐待他们。父母宠爱异姓孩子招致自己的孩子怨恨，继母虐待前妻孩子则会使兄弟之间反目成仇，凡是家里存在这种问题的，都是家庭的灾祸啊。</li></ul><h1 id="治家"><a href="#治家" class="headerlink" title="治家"></a>治家</h1><ul><li>风化教育都是由上而下推行的，父亲不慈爱则子女不孝顺，兄长不友爱则弟弟不恭敬，丈夫不情义则妻子不温顺。假如父亲次爱有加而子女忤逆不孝，兄长友爱备至而弟妹倨傲不恭，丈夫情谊深厚而妻子盛气凌人，那这些人就是天生的凶恶之徒，只能用暴力去威慑他们，不是教育感化所能改变的（曾国藩则强调对待家人，言语不可过激，如果家人执意而为，那就旁听侧记的提醒）。</li><li>妇人的秉性，大多宠爱女婿而虐待儿媳，宠爱女婿则儿子的不满就会产生，虐待儿媳，则女儿的谗言就随之而至。这是家庭中常出现的弊端，不能不戒。</li><li>借别人的书籍，应该爱护，如果借来时就有损坏，就替别人修补好。</li></ul><h1 id="慕贤"><a href="#慕贤" class="headerlink" title="慕贤"></a>慕贤</h1><ul><li>世间的人大多见识不明，对传闻的人和事很看重，对亲眼所见的东西则很轻视；对远方的事物很感兴趣，对近处的事物则不放在心上；从小长大的人，如果谁成了贤达之士，人们也往往对他轻慢侮弄，缺乏应有的礼貌和敬重。而处在他乡异县的人，凭着那么点名声，就能让大家伸着脖子，踮起脚跟，如饥似渴地盼望一见。其实远处的还不如近处的。</li></ul><h1 id="勉学"><a href="#勉学" class="headerlink" title="勉学"></a>勉学</h1><ul><li>人生在世，那些圣明帝王尚且需要勤奋学习，何况普通百姓呢？</li><li>不能以有学问的贫贱，去和没学问的人的富贵相比。</li><li>人们看到乡邻亲戚中有优秀的人物，就让自己的子弟铁慕他们，向他们学习，却不知道让自己的子弟向古人学习，这是多么糊涂啊？世人只知骑胺马，披错甲，手持长 矛强弓，就认为自己能当将军，却不知道了解天时，洞悉地理，栓衡形势优劣，审察把握兴盛衰亡的种种奥妙。一般人只知道当宰相的裏承旨意，统领百官，为国积财储粮，就说自己也能当宰相；却不知道侍奉鬼神，移风易俗，调节阴阳，荐贤举能的种种周密的工作。只知道地方官不能聚敛私财，公事尽快办理，就说自己能治理百姓；却不知道诚心待人，为人楷模，御民有术，止风灭火，变恶为善的种种方法。只知道依照法令条律，判刑宜早，赦免宜迟，就说自己能秉公办案；却不知道同績观罪、分剑追财，用假言诱使奸诈者暴露，不用反复审问而弄清案情。推而广之，甚至那些农夫、商贾、工匠，厮役、僮仆，渔民、屠 夫，喂牛的、放羊的，他们中间都有杰出之士，可以作为学习的榜样。</li><li>尚书说：“喜欢提问则知识充足”，礼经又说：“独自学习而没有朋友共同商讨，就会孤陋寡闻”，看来学习要共同切磋，互相启发，才能更加明白。</li></ul><h1 id="名实"><a href="#名实" class="headerlink" title="名实"></a>名实</h1><ul><li>人的双脚所踩的范围，不过几寸，但是走在尺多宽的小路上，常常会失足掉下悬崖，这是为什么呢？因为这些地方两边都没有空余的地方。君子立世也是这个样子，最真诚的话，人们一定不会相信。最高洁的行为，反倒会招致某些人的怀疑，这些都是因为人的一言一行，声望名誉有余地的缘故。</li></ul><h1 id="止足"><a href="#止足" class="headerlink" title="止足"></a>止足</h1><ul><li>欲望不可以放纵，志向不可以满足，宇宙还可以达到边缘，人的本性则没有尽头，只有减少欲望，知道满足而止，给自己立个限度。</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;颜氏家训在中国广为人知，所谓古今家训，以次为祖。&lt;br&gt;上周在书店看到此书，随便翻阅了一下便买了下来，一是因为书便宜，才22块，二是我购得这本为精简版，即根据王利器的书作为底本，重新编排的，适合作为一本入门书。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="reading" scheme="http://wittyfans.com/categories/reading/"/>
-    
-    
-      <category term="家书" scheme="http://wittyfans.com/tags/%E5%AE%B6%E4%B9%A6/"/>
-    
-      <category term="国学" scheme="http://wittyfans.com/tags/%E5%9B%BD%E5%AD%A6/"/>
     
   </entry>
   
