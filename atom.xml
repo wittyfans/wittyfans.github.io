@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wittyfans.com/"/>
-  <updated>2018-10-16T23:53:29.613Z</updated>
+  <updated>2018-10-20T09:58:22.892Z</updated>
   <id>http://wittyfans.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>V2ray Quick Start</title>
+    <link href="http://wittyfans.com/coding/V2ray-Quick-Start.html"/>
+    <id>http://wittyfans.com/coding/V2ray-Quick-Start.html</id>
+    <published>2018-10-20T09:47:39.000Z</published>
+    <updated>2018-10-20T09:58:22.892Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>Deploy v2ray is so simple, but speed is not fast in my server.</p></blockquote><h1 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h1><p>In Debian , Just input the command in below:</p><blockquote><p>bash &lt;(curl -L -s <a href="https://install.direct/go.sh" target="_blank" rel="noopener">https://install.direct/go.sh</a>)</p></blockquote><p>And you just need to wait, all things will get done automatically.</p><h1 id="Config"><a href="#Config" class="headerlink" title="Config"></a>Config</h1><p>First, Find the config file’s location:</p><blockquote><p>vi /etc/v2ray/config.json</p></blockquote><p>you will see this:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;inbound&quot;: &#123;</span><br><span class="line">    &quot;port&quot;: you_port_nums,</span><br><span class="line">    &quot;protocol&quot;: &quot;vmess&quot;,</span><br><span class="line">    &quot;settings&quot;: &#123;</span><br><span class="line">      &quot;clients&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">          &quot;id&quot;: &quot;the_id_that_generate_for_you&quot;,</span><br><span class="line">          &quot;level&quot;: 1,</span><br><span class="line">          &quot;alterId&quot;: 64</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  and more code</span><br></pre></td></tr></table></figure><p>Change the port if you need, copy the id in clients.</p><p>It’s time to start the v2ray, just type:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service v2ray start</span><br></pre></td></tr></table></figure><p>to start the v2ray. Alse you can type:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service v2ray start|stop|status|reload|restart|force-reload</span><br></pre></td></tr></table></figure><p>to get more control of the  v2ray service.</p><p>Untill now, It’s ok In server side, Let’s go to the client side.</p><h1 id="Use"><a href="#Use" class="headerlink" title="Use"></a>Use</h1><p>In your application, Click add button, input the port and id that I requires you to copy. Save and you can connect to the server now. </p><p>Enjoy it.</p><h1 id="More"><a href="#More" class="headerlink" title="More"></a>More</h1><p>The script installs the following files.</p><ul><li>/usr/bin/v2ray/v2ray: V2Ray executable</li><li>/usr/bin/v2ray/v2ctl: Utility</li><li>/etc/v2ray/config.json: Config file</li><li>/usr/bin/v2ray/geoip.dat: IP data file</li><li>/usr/bin/v2ray/geosite.dat: domain data file</li></ul><p>go.sh supports the following parameters.</p><ul><li>-p or –proxy: Use a proxy to download V2Ray packages. Same as curl format, such as “socks5://127.0.0.1:1080” or “<a href="http://127.0.0.1:3128&quot;" target="_blank" rel="noopener">http://127.0.0.1:3128&quot;</a>.</li><li>-f or –force: Force installation. The script will assume V2Ray was not installed at all.</li><li>–version: The version to be installed, such as “v1.13”. Default value is the latest stable release.</li><li>–local: Use a local package for installation.</li></ul><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul><li><a href="https://www.v2ray.com/index.html" target="_blank" rel="noopener">Official site</a></li><li><a href="https://toutyrater.github.io/" target="_blank" rel="noopener">Easy version of official tutorial</a></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;Deploy v2ray is so simple, but speed is not fast in my server.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;Install&quot;&gt;&lt;a href=&quot;#Install&quot; class=&quot;
+      
+    
+    </summary>
+    
+      <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
+    
+    
+      <category term="linux" scheme="http://wittyfans.com/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>为什么不应该追求爱情</title>
@@ -522,36 +550,6 @@
       <category term="sql" scheme="http://wittyfans.com/tags/sql/"/>
     
       <category term="mysql" scheme="http://wittyfans.com/tags/mysql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hadoop The Effective Guide 笔记</title>
-    <link href="http://wittyfans.com/coding/Hadoop%20The%20Effective%20Guide%20%E7%AC%94%E8%AE%B0.html"/>
-    <id>http://wittyfans.com/coding/Hadoop The Effective Guide 笔记.html</id>
-    <published>2018-04-16T08:49:29.000Z</published>
-    <updated>2018-04-17T03:58:43.949Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>Big data is here, Let’s learn how to store and analyze it.</p></blockquote><a id="more"></a> <h1 id="Hadoop-The-Effective-Guide-Notes"><a href="#Hadoop-The-Effective-Guide-Notes" class="headerlink" title="Hadoop The Effective Guide Notes"></a><em>Hadoop The Effective Guide</em> Notes</h1><h1 id="Meet-Hadoop"><a href="#Meet-Hadoop" class="headerlink" title="Meet Hadoop"></a>Meet Hadoop</h1><ul><li>作者主要说明，大数据的时代已经到来，而且时时刻刻影响着我们的生活，对于这么庞大的数据。</li><li>The good news is that big data is here. The bad news is that we are struggling to store and analyze it.</li><li>A common way of avoiding data loss is through replication</li></ul><h1 id="What’s-in-this-book"><a href="#What’s-in-this-book" class="headerlink" title="What’s in this book?"></a>What’s in this book?</h1><ul><li>Chapter 1 a high-level introduction to Hadoop</li><li>Chapter 2 provides an introduction to MapReduce. </li><li>Chapter 3 looks at Hadoop filesystems, and in particular HDFS, in depth. </li><li>Chapter 4 discusses YARN, Hadoop’s cluster resource management system.</li><li>Chapter 5 covers the I/O building blocks in Hadoop: data integrity, compression, serialization, and file-based data structures.</li></ul><h2 id="关于HBase"><a href="#关于HBase" class="headerlink" title="关于HBase"></a>关于HBase</h2><ul><li>A component to provide online access was HBase, a key-value store that uses HDFS for its underlying storage</li><li>Provides both online read/write access of individual rows and batch operations for reading and writing data in bulk, making it a good solution for building applications on</li></ul><h2 id="关于YARN"><a href="#关于YARN" class="headerlink" title="关于YARN"></a>关于YARN</h2><p>即，Yet Another Resource Negotiator，YARN is a cluster resource management system, which allows any distributed program (not just MapRe‐duce) to run on data in a Hadoop cluster.</p><h2 id="对比其他的系统"><a href="#对比其他的系统" class="headerlink" title="对比其他的系统"></a>对比其他的系统</h2><p>下面介绍一下Hadoop特有的特性</p><ol><li>关系型数据库管理系统<br>对于数据，我们要知道，seek time is improving more slowly than transfer rate.关于影响数据检索效率的因素可以看<a href="https://segmentfault.com/a/1190000002884077" target="_blank" rel="noopener">这篇文章</a></li><li>Grid Computing</li><li>Volunteer Computing</li></ol><h2 id="Hadoop简介"><a href="#Hadoop简介" class="headerlink" title="Hadoop简介"></a>Hadoop简介</h2><h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><ol><li><p>bin：Hadoop最基本的管理脚本和使用脚本的目录，这些脚本是sbin目录下管理脚本的基础实现，用户可以直接使用这些脚本管理和使用Hadoop。</p></li><li><p>sbin：Hadoop管理脚本所在的目录，主要包含HDFS和YARN中各类服务的启动/关闭脚本。</p></li><li><p>etc：Hadoop配置文件所在的目录，包括core-site.xml、hdfs-site.xml、mapred-site.xml等从Hadoop1.0继承而来的配置文件和yarn-site.xml等Hadoop2.0新增的配置文件。</p></li><li><p>本地平台相关库（include、lib、libexec），include：对外提供的编程库头文件（具体动态库和静态库在lib目录中），这些头文件均是用C++定义的，通常用于C++程序访问HDFS或者编写MapReduce程序。lib：该目录包含了Hadoop对外提供的编程动态库和静态库，与include目录中的头文件结合使用。libexec：各个服务对用的shell配置文件所在的目录，可用于配置日志输出、启动参数（比如JVM参数）等基本信息。</p></li><li><p>share：Hadoop各个模块编译后的jar包所在的目录。</p></li></ol><h1 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h1><p>什么是一个MapReduce的作业呢？一个完整的作业包括了输入数据、MapReduce程序和配置信息。Hadoop会把作业分为若干个小作业，其中包含两类任务：map任务和reduce任务。</p><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>查看java的jdk路径：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/libexec/java_home</span><br></pre></td></tr></table></figure><p>编辑别名</p><ol><li>vim ~/.bash_profile</li><li>再运行 source ~/.bash_profile</li><li>source 或小数点 （.） 可以将配置文件的内容读进来目前的 shell 环境中,不需要登出。</li></ol><p>参考：</p><ul><li><a href="http://hanslen.me/2018/01/19/How-to-install-Hadoop-on-macOS-High-Sierra/" target="_blank" rel="noopener">Install Hadoop</a></li></ul><h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">alias hstart=&quot;/usr/local/Cellar/hadoop/2.8.2/sbin/start-all.sh&quot;</span><br><span class="line"></span><br><span class="line">alias hstop=&quot;/usr/local/Cellar/hadoop/2.8.2/sbin/stop-all.sh&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">JobTracker:http://localhost:8088</span><br><span class="line"></span><br><span class="line">Specific Node Information:http://localhost:8042, you will see</span><br></pre></td></tr></table></figure><h1 id="Hadoop节点"><a href="#Hadoop节点" class="headerlink" title="Hadoop节点"></a>Hadoop节点</h1><p>用户的数据进来，会把数据分成一份一份的block</p><ul><li><a href="https://yuerblog.cc/2017/01/22/understand-bridge-and-dhcp/" target="_blank" rel="noopener">关于桥接与NAT的介绍不错的文章</a></li></ul><h1 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h1><h2 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h2><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">CentOS7 已经废除了ipconfig命令</span><br><span class="line"># 查看网卡信息</span><br><span class="line">1. 网卡细节，输入ip addr</span><br><span class="line">2. 查看网络接口统计数据,输入ip link或ip -s link</span><br><span class="line"></span><br><span class="line"># 如果你不知道在哪里可以找到ifconfig命令，请按照以下简单的步骤来找到它。首先，让我们找出哪个包提供了ifconfig命令：</span><br><span class="line">yum provides ifconfig</span><br><span class="line"></span><br><span class="line"># 安装ipconfig</span><br><span class="line">yum install net-tools</span><br></pre></td></tr></table></figure><h2 id="配置Hadoop"><a href="#配置Hadoop" class="headerlink" title="配置Hadoop"></a>配置Hadoop</h2><p>主要有三个文件用来配置，这些配置文件都在conf子目录中：</p><ul><li>core-site.xml，指定默认文件系统和工作空间，类似tmp目录需要最创建</li><li>hdfs-site.xml，配置HDFS属性</li><li>mapred-site.xml，配置mapReduce属性</li><li>workers,写上slaves的host（这个问题困扰我好几天，我看的教程是2.几的）</li></ul><h3 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">entos从7开始默认用的是firewalld，这个是基于iptables的，虽然有iptables的核心，但是iptables的服务是没安装的。所以你只要停止firewalld服务即可：</span><br><span class="line">sudo systemctl stop firewalld.service &amp;&amp; sudo systemctl disable firewalld.service</span><br><span class="line"></span><br><span class="line">如果你要改用iptables的话，需要安装iptables服务：</span><br><span class="line">yum install iptables-services</span><br><span class="line">sudo systemctl enable iptables &amp;&amp; sudo systemctl enable ip6tables</span><br><span class="line">sudo systemctl start iptables &amp;&amp; sudo systemctl start ip6tables</span><br></pre></td></tr></table></figure><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul><li><a href="https://www.zybuluo.com/Emptyset/note/220230" target="_blank" rel="noopener">Hadoop完全分布式集群搭建手记</a></li><li><a href="https://zhangchenchen.github.io/2018/01/30/record-for-hdfs/" target="_blank" rel="noopener">Hadoop学习之HDFS</a></li><li><a href="https://www.jianshu.com/p/7e1460c931d0" target="_blank" rel="noopener">Hadoop搭建与概念介绍</a></li><li><a href="https://www.jianshu.com/p/ea0ffb832161" target="_blank" rel="noopener">HDFS的shell操作及基本工作机制</a></li></ul><h2 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h2><ul><li>cluster：集群</li><li>estimate:估计</li><li>forecasting:预测</li><li>tenfold：十倍</li><li>avd：热衷于</li><li>growing apace：增长迅速</li><li>notoriously challenging：众所周知的挑战</li><li>In a nutshell：简而言之</li><li>evolved：进化</li><li>ad hoc analysis</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Big data is here, Let’s learn how to store and analyze it.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
-    
-    
-      <category term="big data" scheme="http://wittyfans.com/tags/big-data/"/>
-    
-      <category term="hadoop" scheme="http://wittyfans.com/tags/hadoop/"/>
-    
-      <category term="hive" scheme="http://wittyfans.com/tags/hive/"/>
-    
-      <category term="大数据" scheme="http://wittyfans.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
