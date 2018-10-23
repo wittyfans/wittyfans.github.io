@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wittyfans.com/"/>
-  <updated>2018-10-22T14:38:04.232Z</updated>
+  <updated>2018-10-23T13:28:38.188Z</updated>
   <id>http://wittyfans.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2018/10/23-English</title>
+    <link href="http://wittyfans.com/learning/2018-10-23-English.html"/>
+    <id>http://wittyfans.com/learning/2018-10-23-English.html</id>
+    <published>2018-10-23T13:27:41.000Z</published>
+    <updated>2018-10-23T13:28:38.188Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>最近看的都是政治新闻，😄</p></blockquote><ul><li>告诫：cautioned</li><li>预防：against </li><li>并不令人意外的是：It is no surprise xxx</li><li>某一种看法，在哪个地区，尤其的被发表，某中看法在哪里尤为突出：is particularly pronounced</li><li>某一种看法转移到别的身上：the dislike is translating into feelings about somebody<br>什么跟什么更有区别的：have been more separate.<br>现在相信这一点的人越来越少：Far fewer still believe that to be true today.</li><li>不平等的加剧：rising inequality</li><li>国土：soil</li><li>对美国抱着正面看法：regard the US positively </li><li>地区霸主：regional hegemon</li><li>Despite this， 尽管如此</li><li>转折点：tipping point</li><li>不到半数：Less than half</li><li>可以预料的：to be expected</li><li>然而：Yet</li><li>多极的：polarised</li><li>takes longer to shift （view），看法需要很长的时间去改变</li><li>将关注：will be watching to</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;最近看的都是政治新闻，😄&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;告诫：cautioned&lt;/li&gt;
+&lt;li&gt;预防：against &lt;/li&gt;
+&lt;li&gt;并不令人意外的是：It is no surprise xxx&lt;/li&gt;
+&lt;li&gt;
+      
+    
+    </summary>
+    
+      <category term="learning" scheme="http://wittyfans.com/categories/learning/"/>
+    
+    
+      <category term="english" scheme="http://wittyfans.com/tags/english/"/>
+    
+  </entry>
   
   <entry>
     <title>2018/10/22-English</title>
@@ -253,11 +285,11 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
+      <category term="cmd" scheme="http://wittyfans.com/tags/cmd/"/>
+    
       <category term="shell" scheme="http://wittyfans.com/tags/shell/"/>
     
       <category term="windows" scheme="http://wittyfans.com/tags/windows/"/>
-    
-      <category term="cmd" scheme="http://wittyfans.com/tags/cmd/"/>
     
   </entry>
   
@@ -281,9 +313,9 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="HelpDesk" scheme="http://wittyfans.com/tags/HelpDesk/"/>
-    
       <category term="jira" scheme="http://wittyfans.com/tags/jira/"/>
+    
+      <category term="HelpDesk" scheme="http://wittyfans.com/tags/HelpDesk/"/>
     
       <category term="python" scheme="http://wittyfans.com/tags/python/"/>
     
@@ -335,11 +367,11 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
+      <category term="HelpDesk" scheme="http://wittyfans.com/tags/HelpDesk/"/>
+    
       <category term="Jira" scheme="http://wittyfans.com/tags/Jira/"/>
     
       <category term="Groovy" scheme="http://wittyfans.com/tags/Groovy/"/>
-    
-      <category term="HelpDesk" scheme="http://wittyfans.com/tags/HelpDesk/"/>
     
   </entry>
   
@@ -526,32 +558,6 @@
       <category term="PowerShell" scheme="http://wittyfans.com/tags/PowerShell/"/>
     
       <category term="AD" scheme="http://wittyfans.com/tags/AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Zookeeper安装、配置、启动</title>
-    <link href="http://wittyfans.com/coding/Zookeeper%E5%AE%89%E8%A3%85%E3%80%81%E9%85%8D%E7%BD%AE%E3%80%81%E5%90%AF%E5%8A%A8.html"/>
-    <id>http://wittyfans.com/coding/Zookeeper安装、配置、启动.html</id>
-    <published>2018-05-28T14:18:59.000Z</published>
-    <updated>2018-05-28T14:20:34.519Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>An effort to develop and maintain an open-source server which enables highly reliable distributed coordination.</p></blockquote><a id="more"></a><h1 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h1><p>要找特定的版本，可以去这个两个链接 </p><ul><li>官方归档<a href="http://archive.apache.org/dist/" target="_blank" rel="noopener"> 🔗</a> </li><li>CDN <a href="http://archive.cloudera.com/cdh5/cdh/5/" target="_blank" rel="noopener">🔗</a></li></ul><p>CDN版本更多的考虑了兼容性的问题，建议尽可能用CDN的版本，下载后，scp到opt/softwares/,然后解压，如果发现显示是红色的，可以使用命令</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Chmod u+x filename</span><br></pre></td></tr></table></figure><p>来使它具备可执行的权限，然后解压 <em>tar -zxf zookeeper -C /path/</em> 到modules文件夹中去。</p><p>然后进入，主要有几个目录，bin, sbin, 等，跟hadoop是差不多的。</p><h1 id="配置参数"><a href="#配置参数" class="headerlink" title="配置参数"></a>配置参数</h1><p>配置一般都是在conf目录下面，里面有三个文件:</p><ul><li>configuration.xsl</li><li>log4j.properties (日志)</li><li>zoo_sample.cfg (主要需要配置的)</li></ul><p>首先把zoo_sample.cfg改名成zoo.cfg, 进去配置</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tickTime #心跳时间</span><br><span class="line">initLimit #初始化时间最久能忍多久，心跳时间为单位</span><br><span class="line">syneLimit #平时发消息延迟能忍多久 </span><br><span class="line">dataDir #保存数据的目录</span><br><span class="line">clientPort #客户端链接zookeeper服务器的端口，zookeeper会监听这个端口接受客户端请求</span><br><span class="line"># 把三个节点的信息添加进来：</span><br><span class="line">server.1=host1name:2888:3888</span><br><span class="line">server.2=host2name:2888:3888</span><br><span class="line">server.3=host3name:2888:3888</span><br></pre></td></tr></table></figure><p>创建一个文件夹，路径为 <em>opt/modules/zookeeper/zkData</em>，然后在zkData文件夹中，创建一个名为 <em>myid</em> 的文件，并在其中标示为对应的id，master为1，然后分发到其他机器，再修改相应的 <em>myid</em> 文件，node1为2，node2为3.</p><p>这样，zookeeper就配置完成了。</p><h1 id="启动测试"><a href="#启动测试" class="headerlink" title="启动测试"></a>启动测试</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 启动</span><br><span class="line">zkserver.sh start</span><br><span class="line"></span><br><span class="line"># 链接（需要把全部节点启动方可链接成功）</span><br><span class="line">zkcli.sh</span><br></pre></td></tr></table></figure><p>启动完成之后，集群会自动选举出一位老大作为tl，如果只有1台机器，会连接失败，因为集群中，可损坏的机器为N，它要满足一个算法： <em>2N+1</em> ，也就是说最少要有三台机器，如果只有一台启动，那集群会以为其他两台机器损坏了。</p><h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><p>链接成功后，就进入到了zookeeper终端界面，可以创建目录</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 创建 Create /foldername</span><br><span class="line"># 查看 get /foldername </span><br><span class="line"># 查看tl和flow zkserver.sh status</span><br></pre></td></tr></table></figure><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul><li>官方归档<a href="http://archive.apache.org/dist/" target="_blank" rel="noopener"> 🔗</a> </li><li>CDN <a href="http://archive.cloudera.com/cdh5/cdh/5/" target="_blank" rel="noopener">🔗</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;An effort to develop and maintain an open-source server which enables highly reliable distributed coordination.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
-    
-    
-      <category term="bigdata" scheme="http://wittyfans.com/tags/bigdata/"/>
-    
-      <category term="zookeeper" scheme="http://wittyfans.com/tags/zookeeper/"/>
     
   </entry>
   
