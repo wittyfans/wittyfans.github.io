@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Windows,HelpDesk,技术支持,PowerShell," />
+  <meta name="keywords" content="dicts,slice," />
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="Power shell 作为一门windows平台下的脚本语言，对于系统管理员来说，可以极大的减少我们的工作，作为一流的系统管理员（逃～），不可不学！">
-<meta name="keywords" content="Windows,HelpDesk,技术支持,PowerShell">
+<meta name="keywords" content="dicts,slice">
 <meta property="og:type" content="article">
-<meta property="og:title" content="玩转PowerShell">
-<meta property="og:url" content="http://wittyfans.com/coding/玩转PowerShell.html">
+<meta property="og:title" content="Python Notes">
+<meta property="og:url" content="http://wittyfans.com/coding/Python-Notes.html">
 <meta property="og:site_name" content="wittyfans">
-<meta property="og:description" content="Power shell 作为一门windows平台下的脚本语言，对于系统管理员来说，可以极大的减少我们的工作，作为一流的系统管理员（逃～），不可不学！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-15T14:39:30.967Z">
+<meta property="og:image" content="http://pg9xe296o.bkt.clouddn.com/python-hashtable.jpg">
+<meta property="og:image" content="http://pg9xe296o.bkt.clouddn.com/python-%E5%AD%97%E5%85%B8%E6%8E%A8%E5%AF%BC.jpg">
+<meta property="og:updated_time" content="2018-10-27T04:29:17.717Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="玩转PowerShell">
-<meta name="twitter:description" content="Power shell 作为一门windows平台下的脚本语言，对于系统管理员来说，可以极大的减少我们的工作，作为一流的系统管理员（逃～），不可不学！">
+<meta name="twitter:title" content="Python Notes">
+<meta name="twitter:image" content="http://pg9xe296o.bkt.clouddn.com/python-hashtable.jpg">
 
 
 
@@ -110,7 +110,7 @@
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: '0',
+      userId: 'undefined',
       author: '博主'
     },
     algolia: {
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://wittyfans.com/coding/玩转PowerShell.html"/>
+  <link rel="canonical" href="http://wittyfans.com/coding/Python-Notes.html"/>
 
 
 
 
 
-  <title> 玩转PowerShell | wittyfans </title>
+  <title> Python Notes | wittyfans </title>
   <script type="text/javascript" src="/js/src/love.js"></script>
 </head>
 
@@ -263,7 +263,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/玩转PowerShell.html">
+  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/Python-Notes.html">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="wittyfans">
@@ -287,7 +287,7 @@
             
             
               
-                玩转PowerShell
+                Python Notes
               
             
           </h1>
@@ -300,8 +300,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-14T23:14:08+08:00">
-                2017-11-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-27T12:24:22+08:00">
+                2018-10-27
               </time>
             
 
@@ -338,7 +338,7 @@
 
           
           
-             <span id="/coding/玩转PowerShell.html" class="leancloud_visitors" data-flag-title="玩转PowerShell">
+             <span id="/coding/Python-Notes.html" class="leancloud_visitors" data-flag-title="Python Notes">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -369,47 +369,7 @@
       
 
       
-        <blockquote>
-<p>Power shell 作为一门windows平台下的脚本语言，对于系统管理员来说，可以极大的减少我们的工作，作为一流的系统管理员（逃～），不可不学！</p>
-</blockquote>
-<a id="more"></a> 
-<h1 id="Why-Power-Shell"><a href="#Why-Power-Shell" class="headerlink" title="Why Power Shell"></a>Why Power Shell</h1><ul>
-<li>Working in windows</li>
-<li>Support Object </li>
-<li>.NET Support</li>
-<li>Power ! ! ! </li>
-</ul>
-<h1 id="Over-View"><a href="#Over-View" class="headerlink" title="Over View"></a>Over View</h1><p>Power shell 作为一门windows平台下的脚本语言，可以极大的减少我们的工作，它的好处自然不用多说，用过的都知道，下面简单的看一下语法概览。</p>
-<ul>
-<li>查命令的使用：Get-Help</li>
-<li>查对象的方法和属性:Get-Member</li>
-<li><p>查命令历史记录:Get-History</p>
-<ul>
-<li>命令导出为ps1 : xxx | Foreach-Object {$_.CommandLine} &gt; C:\temp\script.ps1</li>
-</ul>
-</li>
-<li><p>查找命令:Get-Command</p>
-</li>
-<li>上一条命令是否成功:$lastExitCode</li>
-<li>一个命令要多久: Measure-Command{ scripts}</li>
-</ul>
-<h3 id="where-object"><a href="#where-object" class="headerlink" title="where-object"></a>where-object</h3><p>使用这个命令可以从列表或者输出中过滤信息，格式为where-object{  } ,where-object回遍历它之前的属性，在{}中，可以使用$_来代表当前遍历的元素，所以，在where-object中，可以进行大量的操作。</p>
-<h3 id="Foreach-Object"><a href="#Foreach-Object" class="headerlink" title="Foreach-Object"></a>Foreach-Object</h3><p>这个命令和where-object差不多，可以用来处理列表中的项，同样可以在其中使用$_命令</p>
-<h2 id="读取数据"><a href="#读取数据" class="headerlink" title="读取数据"></a>读取数据</h2><p>Get-Content 可以读取csv或者txt文件，读取完成之后可以通过数组的形式访问.</p>
-<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><ul>
-<li>使用重定向符和out-file命令的不同，重定向符&gt;&gt;可以达到强大的控制，out-file可以轻松处理内容的宽度和编码方式，而且重定向输出的文本是按照命令行窗口的宽度来定的。</li>
-</ul>
-<h1 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h1><h2 id="数据导出到CSV文件"><a href="#数据导出到CSV文件" class="headerlink" title="数据导出到CSV文件"></a>数据导出到CSV文件</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Output info to CSV file</span></span><br><span class="line"><span class="variable">$data</span> = @()</span><br><span class="line"><span class="variable">$row</span> = <span class="built_in">New-Object</span> PSObject</span><br><span class="line"><span class="variable">$row</span> | <span class="built_in">Add-Member</span> -MemberType NoteProperty -Name <span class="string">"Username"</span> -Value <span class="variable">$username</span></span><br><span class="line"><span class="variable">$row</span> | <span class="built_in">Add-Member</span> -MemberType NoteProperty -Name <span class="string">"ComputerName"</span> -Value <span class="variable">$ComputerName</span></span><br><span class="line"><span class="variable">$row</span> | <span class="built_in">Add-Member</span> -MemberType NoteProperty -Name <span class="string">"Domain"</span> -Value <span class="variable">$domainName</span></span><br><span class="line"><span class="variable">$row</span> | <span class="built_in">Add-Member</span> -MemberType NoteProperty -Name <span class="string">"monitorSN"</span> -Value <span class="variable">$monitorSN</span></span><br><span class="line"><span class="variable">$row</span> | <span class="built_in">Add-Member</span> -MemberType NoteProperty -Name <span class="string">"ComputerSN"</span> -Value <span class="variable">$info</span>.SerialNumber</span><br><span class="line"><span class="variable">$row</span> | <span class="built_in">Add-Member</span> -MemberType NoteProperty -Name <span class="string">"LastTimeLoginUser"</span> -Value <span class="variable">$loginInfo</span>.Name</span><br><span class="line"><span class="variable">$row</span> | <span class="built_in">Add-Member</span> -MemberType NoteProperty -Name <span class="string">"LoginCounts"</span> -Value <span class="variable">$loginInfo</span>.count</span><br><span class="line"></span><br><span class="line"><span class="variable">$data</span> += <span class="variable">$row</span></span><br><span class="line"><span class="variable">$data</span> | <span class="built_in">Export-CSV</span> \\<span class="number">10.65</span>.<span class="number">64.219</span>\soft\Information\infoList.csv -noTypeInformation -Append</span><br></pre></td></tr></table></figure>
-<h2 id="PowerShell与excel文件交互"><a href="#PowerShell与excel文件交互" class="headerlink" title="PowerShell与excel文件交互"></a>PowerShell与excel文件交互</h2><ul>
-<li><a href="http://www.lazywinadmin.com/2014/03/powershell-read-excel-file-using-com.html?m=1" target="_blank" rel="noopener">Read an Excel file using COM Interface</a></li>
-</ul>
-<h1 id="PowerSheel-学习资源"><a href="#PowerSheel-学习资源" class="headerlink" title="PowerSheel 学习资源"></a>PowerSheel 学习资源</h1><ul>
-<li><a href="http://www.pstips.net" target="_blank" rel="noopener">PSTips</a></li>
-<li><a href="https://docs.microsoft.com/zh-cn/powershell/scripting/powershell-scripting?view=powershell-5.1" target="_blank" rel="noopener">微软PowerSheel官方文档</a></li>
-</ul>
-<h1 id="相关数据"><a href="#相关数据" class="headerlink" title="相关数据"></a>相关数据</h1><ul>
-<li>《Windows PowerShell 应用手册》——Lee Holmes著</li>
-</ul>
+        <p><img src="http://pg9xe296o.bkt.clouddn.com/python-hashtable.jpg" alt="Slices"><br><img src="http://pg9xe296o.bkt.clouddn.com/python-%E5%AD%97%E5%85%B8%E6%8E%A8%E5%AF%BC.jpg" alt="Dict"></p>
 
       
     </div>
@@ -449,13 +409,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Windows/" rel="tag"># Windows</a>
+            <a href="/tags/dicts/" rel="tag"># dicts</a>
           
-            <a href="/tags/HelpDesk/" rel="tag"># HelpDesk</a>
-          
-            <a href="/tags/技术支持/" rel="tag"># 技术支持</a>
-          
-            <a href="/tags/PowerShell/" rel="tag"># PowerShell</a>
+            <a href="/tags/slice/" rel="tag"># slice</a>
           
         </div>
       
@@ -464,8 +420,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/reading/爱默生谈读书.html" rel="next" title="爱默生谈读书">
-                <i class="fa fa-chevron-left"></i> 爱默生谈读书
+              <a href="/learning/2018-10-23-English.html" rel="next" title="2018/10/23-English">
+                <i class="fa fa-chevron-left"></i> 2018/10/23-English
               </a>
             
           </div>
@@ -473,10 +429,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/reading/爱默生文集摘录一.html" rel="prev" title="爱默生文集摘录">
-                爱默生文集摘录 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -523,17 +475,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -544,7 +487,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">72</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -552,7 +495,7 @@
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -561,7 +504,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-count">97</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -631,22 +574,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Why-Power-Shell"><span class="nav-number">1.</span> <span class="nav-text">Why Power Shell</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Over-View"><span class="nav-number">2.</span> <span class="nav-text">Over View</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#where-object"><span class="nav-number">2.0.1.</span> <span class="nav-text">where-object</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Foreach-Object"><span class="nav-number">2.0.2.</span> <span class="nav-text">Foreach-Object</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取数据"><span class="nav-number">2.1.</span> <span class="nav-text">读取数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tips"><span class="nav-number">2.2.</span> <span class="nav-text">Tips</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Example"><span class="nav-number">3.</span> <span class="nav-text">Example</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据导出到CSV文件"><span class="nav-number">3.1.</span> <span class="nav-text">数据导出到CSV文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PowerShell与excel文件交互"><span class="nav-number">3.2.</span> <span class="nav-text">PowerShell与excel文件交互</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PowerSheel-学习资源"><span class="nav-number">4.</span> <span class="nav-text">PowerSheel 学习资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相关数据"><span class="nav-number">5.</span> <span class="nav-text">相关数据</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>
@@ -796,7 +723,7 @@
 
   
   <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
-  <script>AV.initialize("jP4UpJQhUn7V27GR26GWUgwI-gzGzoHsz", "feEKhkNuf2GWieyJTBKiEvcd");</script>
+  <script>AV.initialize("7sScl0n1AlEtVDaUHuXzxPqc-gzGzoHsz", "qKXpoqGbK1sdFYMiik7Evuan");</script>
   <script>
     function showTime(Counter) {
       var query = new AV.Query(Counter);
