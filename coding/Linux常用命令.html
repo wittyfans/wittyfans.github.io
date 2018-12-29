@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="前端,系统," />
+  <meta name="keywords" content="系统,Linux," />
 
 
 
@@ -87,14 +87,14 @@
 
 
 <meta name="description" content="Linux常用参考手册，定期更新～">
-<meta name="keywords" content="前端,系统">
+<meta name="keywords" content="系统,Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux常用命令">
 <meta property="og:url" content="http://wittyfans.com/coding/Linux常用命令.html">
 <meta property="og:site_name" content="wittyfans">
 <meta property="og:description" content="Linux常用参考手册，定期更新～">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-15T14:45:19.001Z">
+<meta property="og:updated_time" content="2018-12-29T03:40:21.298Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux常用命令">
 <meta name="twitter:description" content="Linux常用参考手册，定期更新～">
@@ -375,7 +375,7 @@
 <a id="more"></a>
 <h1 id="服务器连接与配置"><a href="#服务器连接与配置" class="headerlink" title="服务器连接与配置"></a>服务器连接与配置</h1><h2 id="修改alias（别名），简化命令操作"><a href="#修改alias（别名），简化命令操作" class="headerlink" title="修改alias（别名），简化命令操作"></a>修改alias（别名），简化命令操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.bash_profile</span><br><span class="line">alias testhost=&apos;ssh root@8.8.8.8 -p 22&apos;</span><br></pre></td></tr></table></figure>
 <h2 id="修改ssh配置，简化ssh命令"><a href="#修改ssh配置，简化ssh命令" class="headerlink" title="修改ssh配置，简化ssh命令"></a>修改ssh配置，简化ssh命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.ssh/config</span><br><span class="line">#输入：</span><br><span class="line"></span><br><span class="line">Host testhost</span><br><span class="line">  HostName 8.8.8.8</span><br><span class="line">  Port 2222</span><br><span class="line">  User foo</span><br><span class="line"></span><br><span class="line">#保存后，可使用 ssh testhost 登陆服务器</span><br></pre></td></tr></table></figure>
-<h2 id="Mac使用秘钥无密码登陆"><a href="#Mac使用秘钥无密码登陆" class="headerlink" title="Mac使用秘钥无密码登陆"></a>Mac使用秘钥无密码登陆</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#生成本地秘钥，一路回车即可</span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line">#上传生成的秘钥到服务器</span><br><span class="line">scp ~/.ssh/id_rsa.pub testhost:~/.ssh/</span><br><span class="line">#使用以下命令将 id_rsa.pub 更名为 authorized_keys</span><br><span class="line">mv id_rsa.pub authorized_keys</span><br><span class="line">#修改权限</span><br><span class="line">chmod 700 ~/.ssh/</span><br><span class="line">chmod 600 ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+<h2 id="Mac使用秘钥无密码登陆"><a href="#Mac使用秘钥无密码登陆" class="headerlink" title="Mac使用秘钥无密码登陆"></a>Mac使用秘钥无密码登陆</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 生成本地秘钥，一路回车即可</span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line"># 上传生成的秘钥到服务器</span><br><span class="line">scp ~/.ssh/id_rsa.pub testhost:~/.ssh/</span><br><span class="line"># 使用以下命令将 id_rsa.pub 更名为 authorized_keys</span><br><span class="line">mv id_rsa.pub authorized_keys</span><br><span class="line"># 修改权限</span><br><span class="line">chmod 700 ~/.ssh/</span><br><span class="line">chmod 600 ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
 <h1 id="系统信息"><a href="#系统信息" class="headerlink" title="系统信息"></a>系统信息</h1><ul>
 <li>df -hl ：查看硬盘使用情况，以M显示</li>
 <li>free -m :查看内存使用情况</li>
@@ -427,9 +427,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/前端/" rel="tag"># 前端</a>
-          
             <a href="/tags/系统/" rel="tag"># 系统</a>
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
           
         </div>
       
@@ -518,7 +518,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-count">32</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -535,7 +535,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">46</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
