@@ -260,7 +260,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/writing/利用Pandas分析美国交警开放的搜查数据.html">
+  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/利用Pandas分析美国交警开放的搜查数据.html">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="wittyfans">
@@ -285,8 +285,8 @@
             
               
                 
-                <a class="post-title-link" href="/writing/利用Pandas分析美国交警开放的搜查数据.html" itemprop="url">
-                  未命名
+                <a class="post-title-link" href="/coding/利用Pandas分析美国交警开放的搜查数据.html" itemprop="url">
+                  利用Pandas分析美国交警开放的搜查数据
                 </a>
               
             
@@ -311,6 +311,24 @@
           </span>
 
           
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/coding/" itemprop="url" rel="index">
+                    <span itemprop="name">coding</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -320,7 +338,7 @@
 
           
           
-             <span id="/writing/利用Pandas分析美国交警开放的搜查数据.html" class="leancloud_visitors" data-flag-title="">
+             <span id="/coding/利用Pandas分析美国交警开放的搜查数据.html" class="leancloud_visitors" data-flag-title="利用Pandas分析美国交警开放的搜查数据">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -347,322 +365,16 @@
 
       
         
-          
-            <h1 id="Pandas-best-practices"><a href="#Pandas-best-practices" class="headerlink" title="Pandas best practices"></a>Pandas best practices</h1><p>一次偶然的机会看到<a href="">王树义</a>老师的推荐YouTube上的这个pandas视频教程，于是花了点时间学习了一下，也就有了这篇笔记，因为课程是英文的，也没有提供<br>中文字幕，所以我的笔记也就懒得再用中文写了。</p>
-<h2 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h2><p>The tutorial will not cover pandas basics. If you are new to pandas or just need a refresher, I recommend watching some videos from my <a href="http://www.dataschool.io/easier-data-analysis-with-pandas/" target="_blank" rel="noopener">free pandas course</a>. Alternatively, you can review all of the code from my pandas course in this Jupyter notebook.</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://github.com/justmarkham/pycon-2018-tutorial" target="_blank" rel="noopener">Using pandas for Better (and Worse) Data Science</a></li>
-<li><a href="https://www.youtube.com/watch?v=hl-TGI4550M&amp;list=PL5-da3qGB5IBITZj_dYSFqnd_15JgqwA6&amp;index=1" target="_blank" rel="noopener">Pandas best practices - Youtube link</a></li>
-</ul>
-<h1 id="Begin"><a href="#Begin" class="headerlink" title="Begin"></a>Begin</h1><h2 id="DownLoad-the-data"><a href="#DownLoad-the-data" class="headerlink" title="DownLoad the data"></a>DownLoad the data</h2><h3 id="Raw-data"><a href="#Raw-data" class="headerlink" title="Raw data"></a>Raw data</h3><ul>
-<li><a href="https://openpolicing.stanford.edu/data/" target="_blank" rel="noopener">Link</a></li>
-<li><a href="https://github.com/5harad/openpolicing/blob/master/DATA-README.md" target="_blank" rel="noopener">How to use the date</a></li>
-</ul>
-<h3 id="Cleared-Data-use-this"><a href="#Cleared-Data-use-this" class="headerlink" title="Cleared Data(use this)"></a>Cleared Data(use this)</h3><ul>
-<li><a href="https://github.com/justmarkham/pycon-2018-tutorial/blob/master/police.csv" target="_blank" rel="noopener">police</a></li>
-</ul>
-<h2 id="About-the-data"><a href="#About-the-data" class="headerlink" title="About the data"></a>About the data</h2><ul>
-<li>For each state in the dataset, They provide data in three formats(We use csv format)</li>
-<li>If a column cannot be computed using the data a state has provided, it is set to NA.</li>
-<li>For several fields (e.g., driver_race) we include a “raw” column which records the original data values from which we infer standardized values</li>
-</ul>
-<p>We include the raw columns because our data processing pipeline is extensive, requiring judgment calls and subjective decisions.</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Column name</td>
-<td>Column meaning</td>
-<td>Example value</td>
-</tr>
-<tr>
-<td>id</td>
-<td>The unique ID we assign to each stop. Contains the state and year.</td>
-<td>VT-2011-00012</td>
-</tr>
-<tr>
-<td>state（州）</td>
-<td>The two-letter code for the state in which the stop occurred.</td>
-<td>VT</td>
-</tr>
-<tr>
-<td>stop_date（被搜查的日期）</td>
-<td>The date of the stop, in YYYY-MM-DD format. Some states do not provide the exact stop date: for example, they only provide the year or quarter in which the stop occurred. For these states, stop_date is set to the date at the beginning of the period: for example, January 1 if only year is provided.</td>
-<td>2011-11-27</td>
-</tr>
-<tr>
-<td>stop_time(被警察搜查时的时间)</td>
-<td>The 24-hour time of the stop, in HH:MM format.</td>
-<td>20:15</td>
-</tr>
-<tr>
-<td>location_raw</td>
-<td>The original data value from which we compute the county (or comparably granular location) in which the stop occurred. Not in a standardized format across states.</td>
-<td>Winooski</td>
-</tr>
-<tr>
-<td>county_name</td>
-<td>The standardized name of the county in which the stop occurred.</td>
-<td>Chittenden County</td>
-</tr>
-<tr>
-<td>county_fips</td>
-<td>The standardized 5-digit FIPS code in which the stop occurred.</td>
-<td>50007</td>
-</tr>
-<tr>
-<td>district</td>
-<td>In several states (e.g., Illinois) the stop county cannot be inferred, but a comparably granular location can. This comparably granular location is stored in the district column. Most states do not have this column.</td>
-<td>ILLINOIS STATE POLICE 01</td>
-</tr>
-<tr>
-<td>fine_grained_location</td>
-<td>Any higher-resolution data about where the stop occurred: e.g., milepost or address. Not standardized across states.</td>
-<td>90400 I 89 N; EXIT 15 MM90/40</td>
-</tr>
-<tr>
-<td>police_department</td>
-<td>The police department or agency that made the stop. Not in a standard format across states.</td>
-<td>WILLISTON VSP</td>
-</tr>
-<tr>
-<td>driver_gender</td>
-<td>The driver’s gender, as recorded by the trooper. M, F, or NA.</td>
-<td>M</td>
-</tr>
-<tr>
-<td>driver_age_raw</td>
-<td>The original data value from which we compute the driver’s age when they were stopped. May be age, birth year, or birth date. Not in a standard format across states.</td>
-<td>1988</td>
-</tr>
-<tr>
-<td>driver_age</td>
-<td>The driver’s age when they were stopped. Set to NA if less than 15 or greater than or equal to 100.</td>
-<td>23</td>
-</tr>
-<tr>
-<td>driver_race_raw</td>
-<td>The original data value from which the driver’s standardized race is computed. Not in a standard format across states.</td>
-<td>African American</td>
-</tr>
-<tr>
-<td>driver_race</td>
-<td>The standardized driver race. Possible values are White, Black, Hispanic, Asian, Other, and NA, with NA denoting values which are unknown. Asian refers to Asian, Pacific Islander, and Indian. Native Americans/American Indians are included in the “other” category. Anyone with Hispanic ethnicity is classified as Hispanic, regardless of their recorded race.</td>
-<td>Black</td>
-</tr>
-<tr>
-<td>violation_raw</td>
-<td>The violation committed by the driver, in the language of the original data. Not in a standard format across states. Some stops have multiple violations.</td>
-<td>Speeding (10–19 MPH Over Prima Facie Limit *)</td>
-</tr>
-<tr>
-<td>violation</td>
-<td>The violation committed by the driver, standardized into categories which are consistent across states.</td>
-<td>Speeding</td>
-</tr>
-<tr>
-<td>search_conducted（是否被搜查）</td>
-<td>A TRUE/FALSE value indicating whether a search was performed.</td>
-<td>TRUE</td>
-</tr>
-<tr>
-<td>search_type_raw</td>
-<td>The justification for the search, in the language of the original data. NA if no search was performed. Not in a standard format across states. Some states have multiple justifications for a search.</td>
-<td>CONSENT SEARCH CONDUCTED</td>
-</tr>
-<tr>
-<td>search_type</td>
-<td>The normalized justification for the search. Where possible, this is standardized into categories which are consistent across states. For example, if something is clearly a consent search, search_type is referred to as “Consent”.</td>
-<td>Consent</td>
-</tr>
-<tr>
-<td>contraband_found</td>
-<td>A TRUE/FALSE value indicating whether a search was performed and contraband was found. FALSE if no search was performed.</td>
-<td>TRUE</td>
-</tr>
-<tr>
-<td>stop_outcome</td>
-<td>The outcome of the stop. Many states have idiosyncratic outcomes — for example, “CHP 215” in California — so this column is not standardized across states. “Citation” and “Warning” are the values which occur most commonly across states. If the stop has multiple outcomes, the most severe outcome is used. For example, if a stop resulted in a citation and a warning, stop_outcome would be “Citation”.</td>
-<td>Citation</td>
-</tr>
-<tr>
-<td>is_arrested</td>
-<td>A TRUE/FALSE value indicating whether an arrest was made.</td>
-<td>TRUE</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>FIPS：<a href="https://zh.wikipedia.org/wiki/%E8%81%AF%E9%82%A6%E8%B3%87%E6%96%99%E8%99%95%E7%90%86%E6%A8%99%E6%BA%96" target="_blank" rel="noopener">联邦信息处理标准（英语：Federal Information Processing Standards，缩写FIPS）</a></li>
-<li>VT: <a href="https://www.google.com/search?q=vt%E6%98%AF%E5%93%AA%E4%B8%AA%E5%B7%9E&amp;rlz=1C5CHFA_enUS783US785&amp;oq=VT&amp;aqs=chrome.0.69i59j69i57j0l4.1878j0j1&amp;sourceid=chrome&amp;ie=UTF-8" target="_blank" rel="noopener">美国的一个州</a></li>
-<li>M,F: 记录性别，M男，F女</li>
-<li>race: 可不是速度或者竞赛，而是种族,参考分类如下，与数据里的可能不一样，<a href="https://www.zhihu.com/question/21007176" target="_blank" rel="noopener">了解更多</a><ol>
-<li>American Indian or Alaska Native</li>
-<li>Asian</li>
-<li>Black or African American</li>
-<li>Native Hawaiian or Other Pacific Islander</li>
-<li>White</li>
-</ol>
-</li>
-<li>violation：违章</li>
-<li>NAN means the value is missing or irrelevant for that data row.</li>
-</ul>
-<h1 id="Know-the-data"><a href="#Know-the-data" class="headerlink" title="Know the data"></a>Know the data</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pd.read_csv()</span><br><span class="line">pd.head()</span><br><span class="line">pd.tail()</span><br><span class="line">pd.dtypes</span><br><span class="line">pd.isnull().sum()</span><br></pre></td></tr></table></figure>
-<p>Import the data and check the dtypes:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ri = pd.read_csv(&quot;/Users/wittyfans/Desktop/pycon-2018-tutorial/police.csv&quot;)</span><br><span class="line">ri.dtypes</span><br></pre></td></tr></table></figure>
-<p>Output:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">stop_date                     object</span><br><span class="line">stop_time                     object</span><br><span class="line">driver_gender                 object</span><br><span class="line">driver_age_raw               float64</span><br><span class="line">driver_age                   float64</span><br><span class="line">driver_race                   object</span><br><span class="line">violation_raw                 object</span><br><span class="line">violation                     object</span><br><span class="line">search_conducted                bool</span><br><span class="line">search_type                   object</span><br><span class="line">stop_outcome                  object</span><br><span class="line">is_arrested                   object</span><br><span class="line">stop_duration                 object</span><br><span class="line">drugs_related_stop              bool</span><br><span class="line">frisk                         object</span><br><span class="line">stop_datetime         datetime64[ns]</span><br><span class="line">dtype: object</span><br></pre></td></tr></table></figure>
-<h1 id="Handle-the-data"><a href="#Handle-the-data" class="headerlink" title="Handle the data"></a>Handle the data</h1><h2 id="1-Remove-the-column-that-only-contains-missing-values"><a href="#1-Remove-the-column-that-only-contains-missing-values" class="headerlink" title="1. Remove the column that only contains missing values"></a>1. Remove the column that only contains missing values</h2><h3 id="Drop-column"><a href="#Drop-column" class="headerlink" title="Drop column"></a>Drop column</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ri.drop(&apos;value&apos;,aixs=&apos;columns&apos;,inplace=True)</span><br><span class="line"></span><br><span class="line"># aixs = &apos;columns&apos;即我们要进行的是列操作，有时候也用aixs = 1代替。</span><br><span class="line"># inplace = True,即处理完后替代原来的数据，相当于下面这种写法：</span><br><span class="line"></span><br><span class="line">ri = ri.drop(&apos;county_name&apos;,axis=1)</span><br></pre></td></tr></table></figure>
-<p>There is another way to drop the columns, like:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">del ri[&apos;columns_name&apos;]</span><br></pre></td></tr></table></figure>
-<p>you can do that as this, that’s fine, but it’s not the <em>Pandas way</em>.</p>
-<p>Tips:</p>
-<ul>
-<li>Pay attention to default arguments</li>
-<li>check your work</li>
-<li>There is more than one way to do everything in pandas</li>
-</ul>
-<h2 id="2-Do-men-or-women-speed-more-often"><a href="#2-Do-men-or-women-speed-more-often" class="headerlink" title="2. Do men or women speed more often?"></a>2. Do men or women speed more often?</h2><h3 id="driver-gender-violaton"><a href="#driver-gender-violaton" class="headerlink" title="driver_gender,violaton"></a>driver_gender,violaton</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ri[ri.violation == &quot;Speeding&quot;].driver_gender.value_counts()</span><br></pre></td></tr></table></figure>
-<p>output:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">M    32979</span><br><span class="line">F    15482</span><br><span class="line">Name: driver_gender, dtype: int64</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ri[ri.violation == &quot;Speeding&quot;].driver_gender.value_counts(normalize=True) # get the percent value, 如果一个人超速，那么多大几率是男性或女性</span><br></pre></td></tr></table></figure>
-<p>output:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">M    0.680527</span><br><span class="line">F    0.319473</span><br><span class="line">Name: driver_gender, dtype: float64</span><br></pre></td></tr></table></figure>
-<p>反过来看，女性：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ri[ri.driver_gender == &apos;F&apos;].violation.value_counts(normalize=True)</span><br></pre></td></tr></table></figure>
-<p>output:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Speeding               0.658500</span><br><span class="line">Moving violation       0.136277</span><br><span class="line">Equipment              0.105780</span><br><span class="line">Registration/plates    0.043086</span><br><span class="line">Other                  0.029348</span><br><span class="line">Seat belt              0.027009</span><br><span class="line">Name: violation, dtype: float64</span><br></pre></td></tr></table></figure></p>
-<p>男性：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ri[ri.driver_gender == &apos;M&apos;].violation.value_counts(normalize=True)</span><br></pre></td></tr></table></figure>
-<p>output:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Speeding               0.524350</span><br><span class="line">Moving violation       0.207012</span><br><span class="line">Equipment              0.135671</span><br><span class="line">Other                  0.057668</span><br><span class="line">Registration/plates    0.038461</span><br><span class="line">Seat belt              0.036839</span><br><span class="line">Name: violation, dtype: float64</span><br></pre></td></tr></table></figure></p>
-<p>合并成一条命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ri.groupby(&apos;driver_gender&apos;).violation.value_counts(normalize=True)</span><br></pre></td></tr></table></figure>
-<p>output:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">driver_gender  violation          </span><br><span class="line">F              Speeding               0.658500</span><br><span class="line">               Moving violation       0.136277</span><br><span class="line">               Equipment              0.105780</span><br><span class="line">               Registration/plates    0.043086</span><br><span class="line">               Other                  0.029348</span><br><span class="line">               Seat belt              0.027009</span><br><span class="line">M              Speeding               0.524350</span><br><span class="line">               Moving violation       0.207012</span><br><span class="line">               Equipment              0.135671</span><br><span class="line">               Other                  0.057668</span><br><span class="line">               Registration/plates    0.038461</span><br><span class="line">               Seat belt              0.036839</span><br><span class="line">Name: violation, dtype: float64</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>when you wirte the groupby, just think for each value(in here is gender, man or women).</p>
+          <blockquote>
+<p>一次偶然的机会看到<a href="">王树义</a>老师的推荐YouTube上的这个pandas视频教程，于是花了点时间学习了一下，也就有了这篇笔记，因为课程是英文的，也没有提供<br>中文字幕，所以我的笔记也就懒得再用中文写了。</p>
 </blockquote>
-<ul>
-<li>count(): 返回所有数据统计之和</li>
-<li>value_counts(): 分别统计该数据分类下（如果有）的值</li>
-<li>normalize = True: 该选项等于True，则会返回 <em>relative frequencies of the unique values.</em></li>
-</ul>
-<h2 id="3-Does-gender-affect-who-gets-searched-during-a-stop"><a href="#3-Does-gender-affect-who-gets-searched-during-a-stop" class="headerlink" title="3. Does gender affect who gets searched during a stop?"></a>3. Does gender affect who gets searched during a stop?</h2><h3 id="driver-gender-search-conducted"><a href="#driver-gender-search-conducted" class="headerlink" title="driver_gender,search_conducted"></a>driver_gender,search_conducted</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ri.search_conducted.value_counts(normalize=True)</span><br></pre></td></tr></table></figure>
-<p>output:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">False    0.965163</span><br><span class="line">True     0.034837</span><br><span class="line">Name: search_conducted, dtype: float64</span><br></pre></td></tr></table></figure>
-<p>Same results with above, how does that work?<br>If the serious value is bool type and you can always just get a sum to konw the number of ones, or a mean to get the percentage of ones, that will simplify you code.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ri.search_conducted.mean()</span><br></pre></td></tr></table></figure>
-<p>output:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0.03483720473942948</span><br></pre></td></tr></table></figure>
-<p>groupby gender:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ri.groupby(&apos;driver_gender&apos;).search_conducted.mean()</span><br></pre></td></tr></table></figure>
-<p>output:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">driver_gender</span><br><span class="line">F    0.020033</span><br><span class="line">M    0.043326</span><br><span class="line">Name: search_conducted, dtype: float64</span><br></pre></td></tr></table></figure>
-<p>Does that prove any things? No, </p>
-<ul>
-<li>Causation is difficult to conclude, so focus on relationships.</li>
-<li>Include all relevant factors when studying a relationship.</li>
-</ul>
-<p>Let’s see details:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ri.groupby([&apos;driver_gender&apos;,&apos;violation&apos;]).search_conducted.mean()</span><br></pre></td></tr></table></figure></p>
-<p>output:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">driver_gender  violation          </span><br><span class="line">F              Equipment              0.042622</span><br><span class="line">               Moving violation       0.036205</span><br><span class="line">               Other                  0.056522</span><br><span class="line">               Registration/plates    0.066140</span><br><span class="line">               Seat belt              0.012598</span><br><span class="line">               Speeding               0.008720</span><br><span class="line">M              Equipment              0.070081</span><br><span class="line">               Moving violation       0.059831</span><br><span class="line">               Other                  0.047146</span><br><span class="line">               Registration/plates    0.110376</span><br><span class="line">               Seat belt              0.037980</span><br><span class="line">               Speeding               0.024925</span><br><span class="line">Name: search_conducted, dtype: float64</span><br></pre></td></tr></table></figure>
-<h2 id="4-Why-is-search-type-missing-so-often"><a href="#4-Why-is-search-type-missing-so-often" class="headerlink" title="4. Why is search_type missing so often?"></a>4. Why is search_type missing so often?</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ri.search_conducted.value_counts()</span><br></pre></td></tr></table></figure>
-<p>output:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">False    88545</span><br><span class="line">True      3196</span><br><span class="line">Name: search_conducted, dtype: int64</span><br></pre></td></tr></table></figure>
-<p>search_conducted means a search performed, 即一个车主被警察查了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ri.search_type.count()</span><br></pre></td></tr></table></figure>
-<p>output:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Incident to Arrest                                          1219</span><br><span class="line">Probable Cause                                               891</span><br><span class="line">Inventory                                                    220</span><br><span class="line">Reasonable Suspicion                                         197</span><br><span class="line">Protective Frisk                                             161</span><br><span class="line">Incident to Arrest,Inventory                                 129</span><br><span class="line">Incident to Arrest,Probable Cause                            106</span><br><span class="line">Probable Cause,Reasonable Suspicion                           75</span><br><span class="line">Incident to Arrest,Inventory,Probable Cause                   34</span><br><span class="line">Probable Cause,Protective Frisk                               33</span><br><span class="line">Incident to Arrest,Protective Frisk                           33</span><br><span class="line">Inventory,Probable Cause                                      22</span><br><span class="line">Incident to Arrest,Reasonable Suspicion                       13</span><br><span class="line">Incident to Arrest,Inventory,Protective Frisk                 11</span><br><span class="line">Inventory,Protective Frisk                                    11</span><br><span class="line">Protective Frisk,Reasonable Suspicion                         11</span><br><span class="line">Incident to Arrest,Probable Cause,Protective Frisk            10</span><br><span class="line">Incident to Arrest,Probable Cause,Reasonable Suspicion         6</span><br><span class="line">Incident to Arrest,Inventory,Reasonable Suspicion              4</span><br><span class="line">Inventory,Reasonable Suspicion                                 4</span><br><span class="line">Inventory,Probable Cause,Reasonable Suspicion                  2</span><br><span class="line">Inventory,Probable Cause,Protective Frisk                      2</span><br><span class="line">Probable Cause,Protective Frisk,Reasonable Suspicion           1</span><br><span class="line">Incident to Arrest,Protective Frisk,Reasonable Suspicion       1</span><br><span class="line">Name: search_type, dtype: int64</span><br></pre></td></tr></table></figure></p>
-<p>search_type, the reason for search performed, 即警察为什么要查这个车。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ri[ri.search_conducted == False].search_type.value_counts()</span><br></pre></td></tr></table></figure>
-<p>output:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Series([], Name: search_type, dtype: int64)</span><br></pre></td></tr></table></figure>
-<p>return empty series, why? because there is no value to count, nan and null is not a value, if it’s not what you want,add dropna= False in the value_counts() method likt this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ri[ri.search_conducted == False].search_type.value_counts(dropna=False)</span><br></pre></td></tr></table></figure>
-<h2 id="5-During-a-search-how-often-is-the-driver-frisked"><a href="#5-During-a-search-how-often-is-the-driver-frisked" class="headerlink" title="5. During a search, how often is the driver frisked?"></a>5. During a search, how often is the driver frisked?</h2><blockquote>
-<p>How to know is there a word in a string in Python? You may use ‘a’ in b, this is the pythoy way, we got pandas way like this:</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ri.search_type.str.contains()</span><br></pre></td></tr></table></figure>
-<p>针对每一行，判断是否有字符串在其中，有则返回True，无则False.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ri[&apos;frisk&apos;] = ri.search_type.str.contains(&apos;Probable Cause&apos;)</span><br><span class="line">ri.frisk</span><br></pre></td></tr></table></figure>
-<p>output:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">0          NaN</span><br><span class="line">1          NaN</span><br><span class="line">2          NaN</span><br><span class="line">3          NaN</span><br><span class="line">4          NaN</span><br><span class="line">5          NaN</span><br><span class="line">6          NaN</span><br><span class="line">7          NaN</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ri.frisk.value_counts(dropna=False)</span><br></pre></td></tr></table></figure>
-<p>output:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NaN      88545</span><br><span class="line">False     2014</span><br><span class="line">True      1182</span><br><span class="line">Name: frisk, dtype: int64</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ri.frisk.sum() -&gt; 1182</span><br><span class="line">ri.frisk.mean() -&gt; 0.36983729662077597</span><br><span class="line">1182/(1182+2014) -&gt; 0.36983729662077597</span><br></pre></td></tr></table></figure>
-<p>the mean, is caculated by frisked / (frisked+unfrisked), and will <strong>excluded the missing values.</strong></p>
-<h2 id="6-Which-year-had-the-least-number-of-stops"><a href="#6-Which-year-had-the-least-number-of-stops" class="headerlink" title="6. Which year had the least number of stops?"></a>6. Which year had the least number of stops?</h2><h3 id="Method-1-Use-the-str-slice"><a href="#Method-1-Use-the-str-slice" class="headerlink" title="Method 1: Use the str.slice"></a>Method 1: Use the str.slice</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ri.stop_date.str.slice(0,4).value_counts()</span><br></pre></td></tr></table></figure>
-<p>output:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">2012    10970</span><br><span class="line">2006    10639</span><br><span class="line">2007     9476</span><br><span class="line">2014     9228</span><br><span class="line">2008     8752</span><br><span class="line">2015     8599</span><br><span class="line">2011     8126</span><br><span class="line">2013     7924</span><br><span class="line">2009     7908</span><br><span class="line">2010     7561</span><br><span class="line">2005     2558</span><br></pre></td></tr></table></figure>
-<p>The stop_date format is: 2005-01-02, so slice(0,4) will return 2005, then do a value_counts will get the number of stops in all years.</p>
-<h3 id="Method-2-Use-the-datetime"><a href="#Method-2-Use-the-datetime" class="headerlink" title="Method 2: Use the datetime"></a>Method 2: Use the datetime</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">combined = ri.stop_date.str.cat(ri.stop_time,sep=&apos; &apos;)</span><br><span class="line">ri[&apos;stop_datetime&apos;] = pd.to_datetime(combined)</span><br></pre></td></tr></table></figure>
-<p>output:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">2012    10970</span><br><span class="line">2006    10639</span><br><span class="line">2007     9476</span><br><span class="line">2014     9228</span><br><span class="line">2008     8752</span><br><span class="line">2015     8599</span><br><span class="line">2011     8126</span><br><span class="line">2013     7924</span><br><span class="line">2009     7908</span><br><span class="line">2010     7561</span><br><span class="line">2005     2558</span><br></pre></td></tr></table></figure>
-<p>Use the pd.to_datetime method to convert a concated string to a datatime type value, then add a new col in ri.<br>cat is a string method to concat two string, the sep arg is a string or char you want insert in center.</p>
-<p>So, after that, how to get the year value?</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ri.stop_datetime.dt.year.value_counts()</span><br></pre></td></tr></table></figure>
-<p>datetime has a method .dt, and you can .year, .day, etc.</p>
-<h2 id="7-How-does-drug-activity-change-by-time-of-day"><a href="#7-How-does-drug-activity-change-by-time-of-day" class="headerlink" title="7. How does drug activity change by time of day?"></a>7. How does drug activity change by time of day?</h2><h3 id="stop-datetime-drugs-related-stop"><a href="#stop-datetime-drugs-related-stop" class="headerlink" title="stop_datetime,drugs_related_stop"></a>stop_datetime,drugs_related_stop</h3><p>Let’s specific, for every hour, what is the rate of the drugs_related_stop?</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ri.groupby(ri.stop_datetime.dt.hour).drugs_related_stop.mean()</span><br></pre></td></tr></table></figure>
-<p>output:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">stop_datetime</span><br><span class="line">0     0.019728</span><br><span class="line">1     0.013507</span><br><span class="line">2     0.015462</span><br><span class="line">3     0.017065</span><br><span class="line">4     0.011811</span><br><span class="line">5     0.004762</span><br><span class="line">6     0.003040</span><br><span class="line">7     0.003281</span><br><span class="line">8     0.002687</span><br><span class="line">9     0.006288</span><br><span class="line">10    0.005714</span><br><span class="line">11    0.006976</span><br><span class="line">12    0.004467</span><br><span class="line">13    0.010326</span><br><span class="line">14    0.007810</span><br><span class="line">15    0.006416</span><br><span class="line">16    0.005723</span><br><span class="line">17    0.005517</span><br><span class="line">18    0.010148</span><br><span class="line">19    0.011596</span><br><span class="line">20    0.008084</span><br><span class="line">21    0.013342</span><br><span class="line">22    0.013533</span><br><span class="line">23    0.016344</span><br><span class="line">Name: drugs_related_stop, dtype: float64</span><br></pre></td></tr></table></figure>
-<p>show it!</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ri.groupby(ri.stop_datetime.dt.hour).drugs_related_stop.mean().plot()</span><br></pre></td></tr></table></figure>
-<p>output:</p>
-<p><img src="https://mcwywq.bn.files.1drv.com/y4mkRchu7eh5ClZ_5hMguC0V-k3KY7tnt0-KpbEoif1EgVMEXCdt5VIxstOsVv-urRgNOdK6ebfF1SfkOyqWmxjcfz1a6F9_uQQpW79nkbZmYiKGVvAr1M6vXbh9ly0DNOSCIkNgyrDwQkjpDXtfRMwtfsZkhyd7UqsZJeKMxSsGfClSDqucjlFGZ3A7xkFxLDzORpau6TMPGXIkjjDjMkXHw/drugs_related.png?psid=1" alt=""></p>
-<p>if you want the notebook auto show the img, make sure you imported the packge.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
-<p>then when you type .plot() the img will show automatically.</p>
-<p>Lesssons:</p>
-<ul>
-<li>Consider removing chunks of data that may be biased</li>
-<li>Use the datetime data type for dates and times</li>
-</ul>
-<h2 id="8-Do-most-stops-occur-at-night"><a href="#8-Do-most-stops-occur-at-night" class="headerlink" title="8. Do most stops occur at night?"></a>8. Do most stops occur at night?</h2><p>Let do this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ri.stop_datetime.dt.hour.value_counts().plot()</span><br></pre></td></tr></table></figure>
-<p>you will get an error img, because the plot is generated by the value, not the index(in here is the hour),<br>so you need to sort with index first,</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ri.stop_datetime.dt.hour.value_counts().sort_index().plot()</span><br></pre></td></tr></table></figure>
-<p>ouput:</p>
-<p><img src="https://mcwywq.bn.files.1drv.com/y4mkRchu7eh5ClZ_5hMguC0V-k3KY7tnt0-KpbEoif1EgVMEXCdt5VIxstOsVv-urRgNOdK6ebfF1SfkOyqWmxjcfz1a6F9_uQQpW79nkbZmYiKGVvAr1M6vXbh9ly0DNOSCIkNgyrDwQkjpDXtfRMwtfsZkhyd7UqsZJeKMxSsGfClSDqucjlFGZ3A7xkFxLDzORpau6TMPGXIkjjDjMkXHw/drugs_related.png?psid=1" alt=""></p>
-<p>and there is a details version:</p>
-<p><img src="https://bn1301files.storage.live.com/y4mfDJ5BskfJi6Bl_KlVmBzKUzosUMz4c6sJtnFknHh-mKevDycVq5ghobnTWVfINyG-pQDAIfZK6UNCZOSpUP2IxLJJtgkpS4TN9lmc0VN0OcINS3bjH7EoGLkpNl0gsmiIlcTiyxb7K_qZyjTjmGu3-rCJ52mGcepghI8NxsInK-WUiy51tw0vQJGV-vKmdX78YOBeACPpGGemOYrpTmCcg/stop_hour_details.png?psid=1&amp;width=1278&amp;height=852" alt=""></p>
-<p>bt, how to define the night, In my view 22-4 is night, I want to filter the hours:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ri[(ri.stop_datetime.dt.hour &gt; 4) &amp; (ri.stop_datetime.dt.hour &lt; 22)].shape</span><br></pre></td></tr></table></figure>
-<p>if you have a category, want to apply the hours, you can define a method and map to the hours.</p>
-<h2 id="9-Find-the-bad-data-in-the-stop-duration-column-and-fix-it"><a href="#9-Find-the-bad-data-in-the-stop-duration-column-and-fix-it" class="headerlink" title="9. Find the bad data in the stop_duration column and fix it"></a>9. Find the bad data in the stop_duration column and fix it</h2><p>Check this value counts:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ri.stop_duration.value_counts()</span><br></pre></td></tr></table></figure>
-<p>output:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">0-15 Min     69543</span><br><span class="line">16-30 Min    13635</span><br><span class="line">30+ Min       3228</span><br><span class="line">2                1</span><br><span class="line">1                1</span><br><span class="line">Name: stop_duration, dtype: int64</span><br></pre></td></tr></table></figure>
-<p>We want to turn the stop_duration value equals ‘1’ to ‘NAN’, how?</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ri[(ri.stop_duration == &apos;1&apos;) | (ri.stop_duration == &apos;2&apos;)].stop_duration == &apos;NAN&apos;</span><br></pre></td></tr></table></figure>
-<p>that looks make sense,but check the value counts, it does’nt work.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">0-15 Min     69543</span><br><span class="line">16-30 Min    13635</span><br><span class="line">30+ Min       3228</span><br><span class="line">2                1</span><br><span class="line">1                1</span><br><span class="line">Name: stop_duration, dtype: int64</span><br></pre></td></tr></table></figure>
-<p>why? acturlly, you may get a warnning,</p>
-<blockquote>
-<p><em>A value is trying to be set on a copy of a slice from a DataFrame.</em></p>
-</blockquote>
-<p>You should use loc.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ri.loc[(ri.stop_duration == &apos;1&apos;) | (ri.stop_duration == &apos;2&apos;),&apos;stop_duration&apos;] = &apos;NAN&apos;</span><br></pre></td></tr></table></figure>
-<p>check again:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0-15 Min     69543</span><br><span class="line">16-30 Min    13635</span><br><span class="line">30+ Min       3228</span><br><span class="line">NAN              2</span><br><span class="line">Name: stop_duration, dtype: int64</span><br></pre></td></tr></table></figure>
-<p>注意比较一下这两者用法上的区别，如果想要了解更多loc的用法，可以关注该作者的另一个单独介绍的视频，<a href="https://www.youtube.com/watch?v=xvpNA7bC8cs" target="_blank" rel="noopener">油管链接</a>。</p>
-<p>but you get two string format ‘NAN’, you want get a really NAN value, okay, let fix it:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">ri.loc[ri.stop_duration == &apos;NAN&apos;,&apos;stop_duration&apos;] = np.nan</span><br></pre></td></tr></table></figure>
-<p>there you go!</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> 0-15 Min     69543</span><br><span class="line">16-30 Min    13635</span><br><span class="line">30+ Min       3228</span><br><span class="line">Name: stop_duration, dtype: int64</span><br></pre></td></tr></table></figure>
-<h1 id="生词"><a href="#生词" class="headerlink" title="生词"></a>生词</h1><ul>
-<li>search：这里应该理解为警察的搜查</li>
-<li>hypothetical: 假设</li>
-<li>slick way,精明的小技巧</li>
-<li>registration searched: 车牌造假违章</li>
-<li>conducted: 处理、行为</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/coding/利用Pandas分析美国交警开放的搜查数据.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -3017,7 +2729,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">46</span>
+                <span class="site-state-item-count">49</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
