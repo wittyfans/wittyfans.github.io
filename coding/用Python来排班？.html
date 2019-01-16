@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, My friend." />
+  <meta name="keywords" content="python,pandas," />
 
 
 
@@ -86,17 +86,23 @@
 
 
 
-<meta name="description" content="假设你的VPS的功能很单纯，没有Nginx或者Web Server，那么要如何在VPS和本地之间、或者两台VPS之间进行文件传输呢？答案就是scp命令。">
+<meta name="description" content="这也是可以做的的，并不比excel差哦">
+<meta name="keywords" content="python,pandas">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux之scp命令使用">
-<meta property="og:url" content="http://wittyfans.com/coding/Linux之scp命令的使用.html">
+<meta property="og:title" content="用Python来排班？">
+<meta property="og:url" content="http://wittyfans.com/coding/用Python来排班？.html">
 <meta property="og:site_name" content="wittyfans">
-<meta property="og:description" content="假设你的VPS的功能很单纯，没有Nginx或者Web Server，那么要如何在VPS和本地之间、或者两台VPS之间进行文件传输呢？答案就是scp命令。">
+<meta property="og:description" content="这也是可以做的的，并不比excel差哦">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-15T14:35:35.504Z">
+<meta property="og:image" content="https://bn1301files.storage.live.com/y4m21Og1jBfF-UnSCjBwTTl8sK4ek_tNWEsoLbHnc5WgckaDFeMLEikagYp4GIem_ZafSMVF99qhAKoJyFeQQGAj6WRZ1oBjqvV5rv4qEIM8kqdGQvefUtYNl3jG5u6MP5M6HB3G5AU2ZSmPMJKbD2wJjtAvECQ82EB4276NlVCV3JPUB-tnFXxSPyOFQiK95dQMFz2XF_xC_VwXrZMdNNaww/Raw_data.png?psid=1&width=2743&height=1354">
+<meta property="og:image" content="https://bn1301files.storage.live.com/y4mgtmM4T-r7AH8W5f3qKw2Lwo5j3UcAzDQKqjXx64gUN0v-af8c9K1_5k36eZSR81X0UKiwKBZCu7aiq8Syryn3bdniNX_VB1UQGVR0QQubDCz31GMRRdyAFmOHh1y82j2hFmy1zc_NtPtVNTPASdhpKriZpKHtrl2xYcSNvf1hVPIsaTz-QhoZwhmeTFxaw78oywC9LXkQpGP0YSApebQ3w/a.png?psid=1&width=2146&height=1146">
+<meta property="og:image" content="https://bn1301files.storage.live.com/y4m799Xq0W25h8l7V_3QOEXZgBFG2hhTi_5IEVz1G6ZwvNe3uJYNl1_PNw7z3aaWDGdjZ6YgXWb1-Jdm_LpkexITUQ5Q6kKUmZAxLOsH6Idfxx5hcoyJE08fRdZEuN_mZJRn6z3egU9E1UH_EQsSoEVLOfJf6EzpJhhvxfyTiwnYpkrGwI7mu3eOI3EOJjgbbrFclxQV9ZXEXtBS5c-PD6FYg/b.png?psid=1&width=2144&height=1154">
+<meta property="og:image" content="https://bn1301files.storage.live.com/y4mmmd_AK_zt5HwbnyJ4cKtO6UIRCEfot9dkcnyWXRo0T-Jh1TQjoTLxp1ujOvjh9rKtFxrH7hwgAtQni_OvfKOEDIL2oWoJvUjHAfoEadE2MVtqP-R2TWSej27Scl1Sh7oIvviZuB5dZlekB7f2Zs7nVswpPS-fldACbYuKJLU8LH85C7Dc0NcXCVuxS_jnZszmMoh4XXumEPzpxL6JV97rQ/c.png?psid=1&width=2132&height=1132">
+<meta property="og:updated_time" content="2019-01-16T13:23:57.693Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux之scp命令使用">
-<meta name="twitter:description" content="假设你的VPS的功能很单纯，没有Nginx或者Web Server，那么要如何在VPS和本地之间、或者两台VPS之间进行文件传输呢？答案就是scp命令。">
+<meta name="twitter:title" content="用Python来排班？">
+<meta name="twitter:description" content="这也是可以做的的，并不比excel差哦">
+<meta name="twitter:image" content="https://bn1301files.storage.live.com/y4m21Og1jBfF-UnSCjBwTTl8sK4ek_tNWEsoLbHnc5WgckaDFeMLEikagYp4GIem_ZafSMVF99qhAKoJyFeQQGAj6WRZ1oBjqvV5rv4qEIM8kqdGQvefUtYNl3jG5u6MP5M6HB3G5AU2ZSmPMJKbD2wJjtAvECQ82EB4276NlVCV3JPUB-tnFXxSPyOFQiK95dQMFz2XF_xC_VwXrZMdNNaww/Raw_data.png?psid=1&width=2743&height=1354">
 
 
 
@@ -124,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://wittyfans.com/coding/Linux之scp命令的使用.html"/>
+  <link rel="canonical" href="http://wittyfans.com/coding/用Python来排班？.html"/>
 
 
 
 
 
-  <title> Linux之scp命令使用 | wittyfans </title>
+  <title> 用Python来排班？ | wittyfans </title>
   <script type="text/javascript" src="/js/src/love.js"></script>
 </head>
 
@@ -262,7 +268,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/Linux之scp命令的使用.html">
+  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/用Python来排班？.html">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="wittyfans">
@@ -286,7 +292,7 @@
             
             
               
-                Linux之scp命令使用
+                用Python来排班？
               
             
           </h1>
@@ -299,8 +305,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-13T20:19:50+08:00">
-                2017-07-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-16T20:58:01+08:00">
+                2019-01-16
               </time>
             
 
@@ -337,7 +343,7 @@
 
           
           
-             <span id="/coding/Linux之scp命令的使用.html" class="leancloud_visitors" data-flag-title="Linux之scp命令使用">
+             <span id="/coding/用Python来排班？.html" class="leancloud_visitors" data-flag-title="用Python来排班？">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -369,23 +375,34 @@
 
       
         <blockquote>
-<p>假设你的VPS的功能很单纯，没有Nginx或者Web Server，那么要如何在VPS和本地之间、或者两台VPS之间进行文件传输呢？答案就是scp命令。</p>
+<p>这也是可以做的的，并不比excel差哦</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="使用SCP命令在远程VPS和本地之间进行文件传输"><a href="#使用SCP命令在远程VPS和本地之间进行文件传输" class="headerlink" title="使用SCP命令在远程VPS和本地之间进行文件传输"></a>使用SCP命令在远程VPS和本地之间进行文件传输</h1><p>假设你的VPS的功能很单纯，没有Nginx或者Web Server，那么要如何在VPS和本地之间、或者两台VPS之间进行文件传输呢？答案就是scp命令。</p>
-<h2 id="1-什么是scp"><a href="#1-什么是scp" class="headerlink" title="1 什么是scp"></a>1 什么是scp</h2><p>scp就是secure copy，是用来进行远程文件拷贝的。数据传输使用 ssh，并且和ssh 使用相同的认证方式，提供相同的安全保证。scp在需要进行验证时会要求你输入密码或口令。</p>
-<h2 id="2-实际操作"><a href="#2-实际操作" class="headerlink" title="2 实际操作"></a>2 实际操作</h2><p>2.1 下载VPS的文件(目录)到本地</p>
-<p>假设需要将VPS上的一个文件下载到本地，文件路径是/root/test.log，VPS的IP地址是12.34.56.78，VPS的账户名是root，SSH端口是6666，我们将这个文件下载到本地的/Users/admin/root/test.log，那么我们需要执行的scp命令是</p>
-<p>scp －P 6666 <a href="mailto:root@12.34.56.78" target="_blank" rel="noopener">root@12.34.56.78</a>:/root/test.log /Users/admin/root/test.log<br>scp支持对整个目录进行操作，例如将上述root目录下载到本地</p>
-<p>scp －P 6666 <a href="mailto:root@12.34.56.78" target="_blank" rel="noopener">root@12.34.56.78</a>:/root /Users/admin/root<br>执行scp命令后需要输入VPS上对应账户的密码</p>
-<p>2.2 上传本地的文件(目录)到VPS</p>
-<p>假设需要将本地的一个文件上传到VPS，本地文件的路径是/Users/admin/root/test.log，VPS的IP地址是12.34.56.78，VPS的账户名是root，SSH端口是6666，我们将这个文件上传到VPS的/root/test.log，那么我们需要执行的scp命令是</p>
-<p>scp -r －P 6666 /Users/admin/root/test.log <a href="mailto:root@12.34.56.78" target="_blank" rel="noopener">root@12.34.56.78</a>:/root/test.log<br>同理，也能上传整个目录</p>
-<p>scp -r －P 6666 /Users/admin/root <a href="mailto:root@12.34.56.78" target="_blank" rel="noopener">root@12.34.56.78</a>:/root</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li><a href="http://celerysoft.github.io/2016-07-07.html" target="_blank" rel="noopener">月下之光 - 攸溟</a></li>
+<h1 id="详解"><a href="#详解" class="headerlink" title="详解"></a>详解</h1><p>首先我们需要一份原数据，我得到的数据如下：</p>
+<p><img src="https://bn1301files.storage.live.com/y4m21Og1jBfF-UnSCjBwTTl8sK4ek_tNWEsoLbHnc5WgckaDFeMLEikagYp4GIem_ZafSMVF99qhAKoJyFeQQGAj6WRZ1oBjqvV5rv4qEIM8kqdGQvefUtYNl3jG5u6MP5M6HB3G5AU2ZSmPMJKbD2wJjtAvECQ82EB4276NlVCV3JPUB-tnFXxSPyOFQiK95dQMFz2XF_xC_VwXrZMdNNaww/Raw_data.png?psid=1&amp;width=2743&amp;height=1354" alt=""></p>
+<ul>
+<li>Name: 上班的同事</li>
+<li>A和V: 不同的班次</li>
+<li>0: 当天休息</li>
 </ul>
-<hr>
+<p>我们的需求是，休息时间由组长事先填好，随后随机将班次分给每天上班的人，需要保证分出去的班次不可以重复，并且是随机的，即每个人不可以每天都是一样的班。</p>
+<p>首先我们导入相关的包:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import random</span><br></pre></td></tr></table></figure>
+<p>新建一个班次生成类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Schedules:  </span><br><span class="line">    def __init__(self,schedules):</span><br><span class="line">        self._index = len(schedules)</span><br><span class="line">        self._schedules = schedules</span><br><span class="line">        </span><br><span class="line">    def get_schedules(self):</span><br><span class="line">        if self._index &gt; 0:                </span><br><span class="line">            pointer = random.choice([x for x in range(len(self._schedules))])</span><br><span class="line">            scheduleType = self._schedules[pointer]</span><br><span class="line">            del self._schedules[pointer]</span><br><span class="line">            self._index -= 1</span><br><span class="line">            return scheduleType</span><br><span class="line">        else:</span><br><span class="line">            return None</span><br></pre></td></tr></table></figure>
+<p>这个类的作用就是，你初始化的是给他一些班次列表，他会返回一个随机的班次，如果班级列表中的班次已经分配完了，则返回None。</p>
+<p>然后我们再写一个针对每一列设置班次的方法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">def set_schedule(col):</span><br><span class="line">    if col.name != &apos;Name&apos;:</span><br><span class="line">        colSchedules = col</span><br><span class="line">        # 该列中值不等于0的索引</span><br><span class="line">        pointers = list(col[col != 0].index)</span><br><span class="line">        # 值班类型</span><br><span class="line">        scheduleType = [&apos;A1&apos;,&apos;A2&apos;,&apos;A3&apos;,&apos;A4&apos;,&apos;V3&apos;,&apos;V2&apos;,&apos;A5&apos;,&apos;A6&apos;,&apos;A8&apos;,&apos;A7&apos;,&apos;V1&apos;,&apos;A9&apos;,&apos;A0&apos;]</span><br><span class="line">        random.shuffle(scheduleType)</span><br><span class="line">        random.shuffle(pointers)</span><br><span class="line">        for pointer in pointers:</span><br><span class="line">#             print(&quot;正在填第&#123;&#125;个&quot;.format(pointer))</span><br><span class="line">#             print(&quot;班表还剩&#123;&#125;个&quot;.format(len(scheduleType)))</span><br><span class="line">            if len(scheduleType) &gt; 0:</span><br><span class="line">                schedule = scheduleType.pop()</span><br><span class="line">#                 print(&quot;拿到班的类型是&#123;&#125;&quot;.format(schedule))</span><br><span class="line">                colSchedules[pointer] = schedule</span><br><span class="line">#                 print(&quot;修改之后的班表是&#123;&#125;&quot;.format(colSchedules))</span><br><span class="line">            else:</span><br><span class="line">                colSchedules[pointer] = &apos;A&apos;</span><br><span class="line">                continue</span><br><span class="line">        col = colSchedules</span><br><span class="line">    else:</span><br><span class="line">        pass</span><br></pre></td></tr></table></figure>
+<p>这里我将班次写在了方法里面，当然你也可以从外面传进去，该一下参数即可。最后，用pandas先将原始数据导入:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data = pd.read_excel(&quot;/Users/wittyfans/Documents/工作/Python NoteBook/Schedule/Schedule.xlsx&quot;)</span><br></pre></td></tr></table></figure>
+<p>运行就可以看到数据啦！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">days = [x for x in data.columns if x  != &apos;Name&apos;]</span><br><span class="line">data.apply(set_schedule)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
+<p>你也可以将数据导出为excel，使用pandas的to_excel方法即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data.to_excel(filePath)</span><br></pre></td></tr></table></figure>
+<h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p><img src="https://bn1301files.storage.live.com/y4mgtmM4T-r7AH8W5f3qKw2Lwo5j3UcAzDQKqjXx64gUN0v-af8c9K1_5k36eZSR81X0UKiwKBZCu7aiq8Syryn3bdniNX_VB1UQGVR0QQubDCz31GMRRdyAFmOHh1y82j2hFmy1zc_NtPtVNTPASdhpKriZpKHtrl2xYcSNvf1hVPIsaTz-QhoZwhmeTFxaw78oywC9LXkQpGP0YSApebQ3w/a.png?psid=1&amp;width=2146&amp;height=1146" alt="第一次班表"></p>
+<p><img src="https://bn1301files.storage.live.com/y4m799Xq0W25h8l7V_3QOEXZgBFG2hhTi_5IEVz1G6ZwvNe3uJYNl1_PNw7z3aaWDGdjZ6YgXWb1-Jdm_LpkexITUQ5Q6kKUmZAxLOsH6Idfxx5hcoyJE08fRdZEuN_mZJRn6z3egU9E1UH_EQsSoEVLOfJf6EzpJhhvxfyTiwnYpkrGwI7mu3eOI3EOJjgbbrFclxQV9ZXEXtBS5c-PD6FYg/b.png?psid=1&amp;width=2144&amp;height=1154" alt="第二次班表"></p>
+<p><img src="https://bn1301files.storage.live.com/y4mmmd_AK_zt5HwbnyJ4cKtO6UIRCEfot9dkcnyWXRo0T-Jh1TQjoTLxp1ujOvjh9rKtFxrH7hwgAtQni_OvfKOEDIL2oWoJvUjHAfoEadE2MVtqP-R2TWSej27Scl1Sh7oIvviZuB5dZlekB7f2Zs7nVswpPS-fldACbYuKJLU8LH85C7Dc0NcXCVuxS_jnZszmMoh4XXumEPzpxL6JV97rQ/c.png?psid=1&amp;width=2132&amp;height=1132" alt="第三次运行"></p>
+<h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line">import random</span><br><span class="line"></span><br><span class="line">class Schedules:  </span><br><span class="line">    def __init__(self,schedules):</span><br><span class="line">        self._index = len(schedules)</span><br><span class="line">        self._schedules = schedules</span><br><span class="line">        </span><br><span class="line">    def get_schedules(self):</span><br><span class="line">        if self._index &gt; 0:                </span><br><span class="line">            pointer = random.choice([x for x in range(len(self._schedules))])</span><br><span class="line">            scheduleType = self._schedules[pointer]</span><br><span class="line">            del self._schedules[pointer]</span><br><span class="line">            self._index -= 1</span><br><span class="line">            return scheduleType</span><br><span class="line">        else:</span><br><span class="line">            return None</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">def set_schedule(col):</span><br><span class="line">    if col.name != &apos;Name&apos;:</span><br><span class="line">        colSchedules = col</span><br><span class="line">        # 该列中值不等于0的索引</span><br><span class="line">        pointers = list(col[col != 0].index)</span><br><span class="line">        # 值班类型</span><br><span class="line">        scheduleType = [&apos;A1&apos;,&apos;A2&apos;,&apos;A3&apos;,&apos;A4&apos;,&apos;V3&apos;,&apos;V2&apos;,&apos;A5&apos;,&apos;A6&apos;,&apos;A8&apos;,&apos;A7&apos;,&apos;V1&apos;,&apos;A9&apos;,&apos;A0&apos;]</span><br><span class="line">        random.shuffle(scheduleType)</span><br><span class="line">        random.shuffle(pointers)</span><br><span class="line">        for pointer in pointers:</span><br><span class="line">#             print(&quot;正在填第&#123;&#125;个&quot;.format(pointer))</span><br><span class="line">#             print(&quot;班表还剩&#123;&#125;个&quot;.format(len(scheduleType)))</span><br><span class="line">            if len(scheduleType) &gt; 0:</span><br><span class="line">                schedule = scheduleType.pop()</span><br><span class="line">#                 print(&quot;拿到班的类型是&#123;&#125;&quot;.format(schedule))</span><br><span class="line">                colSchedules[pointer] = schedule</span><br><span class="line">#                 print(&quot;修改之后的班表是&#123;&#125;&quot;.format(colSchedules))</span><br><span class="line">            else:</span><br><span class="line">                colSchedules[pointer] = &apos;A&apos;</span><br><span class="line">                continue</span><br><span class="line">        col = colSchedules</span><br><span class="line">    else:</span><br><span class="line">        pass</span><br><span class="line"></span><br><span class="line">data = pd.read_excel(&quot;/Users/wittyfans/Documents/工作/Python NoteBook/Schedule/Schedule.xlsx&quot;)</span><br><span class="line">days = [x for x in data.columns if x  != &apos;Name&apos;]</span><br><span class="line">data.apply(set_schedule)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -423,13 +440,21 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/pandas/" rel="tag"># pandas</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/coding/Screen指南.html" rel="next" title="Screen指南">
-                <i class="fa fa-chevron-left"></i> Screen指南
+              <a href="/coding/Python如何连接WindowsSMB共享文件夹.html" rel="next" title="Python如何连接WindowsSMB共享文件夹?">
+                <i class="fa fa-chevron-left"></i> Python如何连接WindowsSMB共享文件夹?
               </a>
             
           </div>
@@ -437,10 +462,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/coding/Linux常用命令.html" rel="prev" title="Linux常用命令">
-                Linux常用命令 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -605,7 +626,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用SCP命令在远程VPS和本地之间进行文件传输"><span class="nav-number">1.</span> <span class="nav-text">使用SCP命令在远程VPS和本地之间进行文件传输</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么是scp"><span class="nav-number">1.1.</span> <span class="nav-text">1 什么是scp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-实际操作"><span class="nav-number">1.2.</span> <span class="nav-text">2 实际操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#详解"><span class="nav-number">1.</span> <span class="nav-text">详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#效果"><span class="nav-number">1.1.</span> <span class="nav-text">效果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码"><span class="nav-number">2.</span> <span class="nav-text">源码</span></a></li></ol></div>
             
 
           </div>
