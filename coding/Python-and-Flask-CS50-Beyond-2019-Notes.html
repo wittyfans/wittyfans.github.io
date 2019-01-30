@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="bigdata,zookeeper," />
+  <meta name="keywords" content="python,flask," />
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="An effort to develop and maintain an open-source server which enables highly reliable distributed coordination.">
-<meta name="keywords" content="bigdata,zookeeper">
+<meta name="description" content="Flask 是一个 Python 实现的 Web 开发微框架, 这是一个简单的笔记，想要深入了解的建议参考官方文档。">
+<meta name="keywords" content="python,flask">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Zookeeper安装、配置、启动">
-<meta property="og:url" content="http://wittyfans.com/coding/Zookeeper安装、配置、启动.html">
+<meta property="og:title" content="Python and Flask - CS50_Beyond_2019 Notes">
+<meta property="og:url" content="http://wittyfans.com/coding/Python-and-Flask-CS50-Beyond-2019-Notes.html">
 <meta property="og:site_name" content="wittyfans">
-<meta property="og:description" content="An effort to develop and maintain an open-source server which enables highly reliable distributed coordination.">
+<meta property="og:description" content="Flask 是一个 Python 实现的 Web 开发微框架, 这是一个简单的笔记，想要深入了解的建议参考官方文档。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-28T14:20:34.519Z">
+<meta property="og:updated_time" content="2019-01-30T13:20:44.373Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zookeeper安装、配置、启动">
-<meta name="twitter:description" content="An effort to develop and maintain an open-source server which enables highly reliable distributed coordination.">
+<meta name="twitter:title" content="Python and Flask - CS50_Beyond_2019 Notes">
+<meta name="twitter:description" content="Flask 是一个 Python 实现的 Web 开发微框架, 这是一个简单的笔记，想要深入了解的建议参考官方文档。">
 
 
 
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://wittyfans.com/coding/Zookeeper安装、配置、启动.html"/>
+  <link rel="canonical" href="http://wittyfans.com/coding/Python-and-Flask-CS50-Beyond-2019-Notes.html"/>
 
 
 
 
 
-  <title> Zookeeper安装、配置、启动 | wittyfans </title>
+  <title> Python and Flask - CS50_Beyond_2019 Notes | wittyfans </title>
   <script type="text/javascript" src="/js/src/love.js"></script>
 </head>
 
@@ -263,7 +263,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/Zookeeper安装、配置、启动.html">
+  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/Python-and-Flask-CS50-Beyond-2019-Notes.html">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="wittyfans">
@@ -287,7 +287,7 @@
             
             
               
-                Zookeeper安装、配置、启动
+                Python and Flask - CS50_Beyond_2019 Notes
               
             
           </h1>
@@ -300,8 +300,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-28T22:18:59+08:00">
-                2018-05-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-30T21:19:31+08:00">
+                2019-01-30
               </time>
             
 
@@ -338,7 +338,7 @@
 
           
           
-             <span id="/coding/Zookeeper安装、配置、启动.html" class="leancloud_visitors" data-flag-title="Zookeeper安装、配置、启动">
+             <span id="/coding/Python-and-Flask-CS50-Beyond-2019-Notes.html" class="leancloud_visitors" data-flag-title="Python and Flask - CS50_Beyond_2019 Notes">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -370,36 +370,34 @@
 
       
         <blockquote>
-<p>An effort to develop and maintain an open-source server which enables highly reliable distributed coordination.</p>
+<p>Flask 是一个 Python 实现的 Web 开发微框架, 这是一个简单的笔记，想要深入了解的建议参考官方文档。</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h1><p>要找特定的版本，可以去这个两个链接 </p>
+<h1 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h1><p>创建一个文件，然后进入该文件夹，创建一个py文件，然后在命令后导入，这样flask才知道要运行哪个程序:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export FLASK_APP=hello.py</span><br></pre></td></tr></table></figure>
+<p>导入以后就可以直接在当前目录使用flask run 了。</p>
+<h1 id="第一个flask程序"><a href="#第一个flask程序" class="headerlink" title="第一个flask程序"></a>第一个flask程序</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask,render_template</span><br><span class="line">app = Flask(__name__) # 新建一个flask app</span><br><span class="line"></span><br><span class="line">@app.route(&quot;/&quot;) </span><br><span class="line">def index():</span><br><span class="line">    return &quot;Hello,Word!&quot;</span><br></pre></td></tr></table></figure>
 <ul>
-<li>官方归档<a href="http://archive.apache.org/dist/" target="_blank" rel="noopener"> 🔗</a> </li>
-<li>CDN <a href="http://archive.cloudera.com/cdh5/cdh/5/" target="_blank" rel="noopener">🔗</a></li>
+<li>@app.route(“/“)是一个装饰器，如果有人访问/，那么就运行被装饰器装饰的函数，也就是下面返回Hello,word！</li>
 </ul>
-<p>CDN版本更多的考虑了兼容性的问题，建议尽可能用CDN的版本，下载后，scp到opt/softwares/,然后解压，如果发现显示是红色的，可以使用命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Chmod u+x filename</span><br></pre></td></tr></table></figure>
-<p>来使它具备可执行的权限，然后解压 <em>tar -zxf zookeeper -C /path/</em> 到modules文件夹中去。</p>
-<p>然后进入，主要有几个目录，bin, sbin, 等，跟hadoop是差不多的。</p>
-<h1 id="配置参数"><a href="#配置参数" class="headerlink" title="配置参数"></a>配置参数</h1><p>配置一般都是在conf目录下面，里面有三个文件:</p>
-<ul>
-<li>configuration.xsl</li>
-<li>log4j.properties (日志)</li>
-<li>zoo_sample.cfg (主要需要配置的)</li>
-</ul>
-<p>首先把zoo_sample.cfg改名成zoo.cfg, 进去配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">tickTime #心跳时间</span><br><span class="line">initLimit #初始化时间最久能忍多久，心跳时间为单位</span><br><span class="line">syneLimit #平时发消息延迟能忍多久 </span><br><span class="line">dataDir #保存数据的目录</span><br><span class="line">clientPort #客户端链接zookeeper服务器的端口，zookeeper会监听这个端口接受客户端请求</span><br><span class="line"># 把三个节点的信息添加进来：</span><br><span class="line">server.1=host1name:2888:3888</span><br><span class="line">server.2=host2name:2888:3888</span><br><span class="line">server.3=host3name:2888:3888</span><br></pre></td></tr></table></figure>
-<p>创建一个文件夹，路径为 <em>opt/modules/zookeeper/zkData</em>，然后在zkData文件夹中，创建一个名为 <em>myid</em> 的文件，并在其中标示为对应的id，master为1，然后分发到其他机器，再修改相应的 <em>myid</em> 文件，node1为2，node2为3.</p>
-<p>这样，zookeeper就配置完成了。</p>
-<h1 id="启动测试"><a href="#启动测试" class="headerlink" title="启动测试"></a>启动测试</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 启动</span><br><span class="line">zkserver.sh start</span><br><span class="line"></span><br><span class="line"># 链接（需要把全部节点启动方可链接成功）</span><br><span class="line">zkcli.sh</span><br></pre></td></tr></table></figure>
-<p>启动完成之后，集群会自动选举出一位老大作为tl，如果只有1台机器，会连接失败，因为集群中，可损坏的机器为N，它要满足一个算法： <em>2N+1</em> ，也就是说最少要有三台机器，如果只有一台启动，那集群会以为其他两台机器损坏了。</p>
-<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><p>链接成功后，就进入到了zookeeper终端界面，可以创建目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 创建 Create /foldername</span><br><span class="line"># 查看 get /foldername </span><br><span class="line"># 查看tl和flow zkserver.sh status</span><br></pre></td></tr></table></figure>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li>官方归档<a href="http://archive.apache.org/dist/" target="_blank" rel="noopener"> 🔗</a> </li>
-<li>CDN <a href="http://archive.cloudera.com/cdh5/cdh/5/" target="_blank" rel="noopener">🔗</a></li>
-</ul>
+<h1 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h1><h2 id="单个参数"><a href="#单个参数" class="headerlink" title="单个参数"></a>单个参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&quot;/wittyfans&quot;) </span><br><span class="line">def wittyfans():</span><br><span class="line">    return &quot;Hello, My master!!!&quot;</span><br><span class="line"></span><br><span class="line">@app.route(&quot;/&lt;string:name&gt;&quot;) </span><br><span class="line">def hello(name):</span><br><span class="line">    name = name.capitalize()</span><br><span class="line">    return f&quot;Hello! &#123;name&#125;&quot;</span><br></pre></td></tr></table></figure>
+<p>如果输入localhost:/wittyfans就返回”Hello, My master!!!”,如果是别的就返回他输入的名字。</p>
+<blockquote>
+<p>在route中定义变量，它可以传到函数里使用.flask会路由到最具体的网址，也就是说，输入/wittyfans还是会被上面的函数处理.</p>
+</blockquote>
+<h2 id="多个参数"><a href="#多个参数" class="headerlink" title="多个参数"></a>多个参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&quot;/&lt;string:admin_name&gt;/&lt;string:password&gt;&quot;) </span><br><span class="line">def varify(admin_name,password):</span><br><span class="line">    if admin_name == &apos;wittyfans&apos; and password == &apos;123&apos;:</span><br><span class="line">        return &apos;Welcome here&apos;</span><br><span class="line">    else:</span><br><span class="line">        return &apos;error&apos;</span><br></pre></td></tr></table></figure>
+<h1 id="使用html文件构建网页"><a href="#使用html文件构建网页" class="headerlink" title="使用html文件构建网页"></a>使用html文件构建网页</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&apos;/&apos;)</span><br><span class="line">def index():</span><br><span class="line">    return render_template(&quot;index.html&quot;)</span><br></pre></td></tr></table></figure>
+<p>对于网页来说，我们更多的是传出html文件,这时候需要在根目录新建templates文件夹，并将html文件放在其中</p>
+<p>我们可以将输入的值做处理后重新填充给html文件:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&apos;/&lt;string:name&gt;&apos;)</span><br><span class="line">def index(name):</span><br><span class="line">    return render_template(&quot;index.html&quot;,name=name.capitalize())</span><br></pre></td></tr></table></figure>
+<h1 id="示例：判断是否是新年"><a href="#示例：判断是否是新年" class="headerlink" title="示例：判断是否是新年"></a>示例：判断是否是新年</h1><p>逻辑部分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&apos;/&apos;)</span><br><span class="line">def index():</span><br><span class="line">    now = datetime.datetime.now()</span><br><span class="line">    is_new_years = now.month == 1 and now.day == 1</span><br><span class="line">    print(is_new_years)</span><br><span class="line">    return render_template(&quot;index.html&quot;,is_new_years=is_new_years)</span><br></pre></td></tr></table></figure>
+<p>html中,使用Conditional Templating</p>
+<figure class="highlight plain"><figcaption><span>html> </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;</span><br><span class="line">            wittyfans</span><br><span class="line">        &lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &#123;% if is_new_years %&#125;</span><br><span class="line">            &lt;h1&gt;YES&lt;/h1&gt;</span><br><span class="line">        &#123;% else %&#125;</span><br><span class="line">            &lt;h1&gt;NO&lt;/h1&gt;</span><br><span class="line">        &#123;% endif %&#125;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li><a href="https://www.youtube.com/watch?v=pP23CtOI-1U&amp;t=2772s" target="_blank" rel="noopener">Python and Flask - CS50 Beyond 2019)</a></li>
+<li><a href="https://dormousehole.readthedocs.io/en/latest/" target="_blank" rel="noopener">Flask文档</a></li>
+</ol>
 
       
     </div>
@@ -439,9 +437,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/bigdata/" rel="tag"># bigdata</a>
+            <a href="/tags/python/" rel="tag"># python</a>
           
-            <a href="/tags/zookeeper/" rel="tag"># zookeeper</a>
+            <a href="/tags/flask/" rel="tag"># flask</a>
           
         </div>
       
@@ -450,8 +448,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/coding/运行Hadoop-WordCount-出错.html" rel="next" title="运行Hadoop WordCount 出错">
-                <i class="fa fa-chevron-left"></i> 运行Hadoop WordCount 出错
+              <a href="/coding/用Python来排班？.html" rel="next" title="用Python来排班？">
+                <i class="fa fa-chevron-left"></i> 用Python来排班？
               </a>
             
           </div>
@@ -459,10 +457,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/coding/PowerShell批量改密码.html" rel="prev" title="PowerShell批量改密码">
-                PowerShell批量改密码 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -627,7 +621,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#下载安装"><span class="nav-number">1.</span> <span class="nav-text">下载安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置参数"><span class="nav-number">2.</span> <span class="nav-text">配置参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动测试"><span class="nav-number">3.</span> <span class="nav-text">启动测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用命令"><span class="nav-number">4.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#运行"><span class="nav-number">1.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第一个flask程序"><span class="nav-number">2.</span> <span class="nav-text">第一个flask程序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参数传递"><span class="nav-number">3.</span> <span class="nav-text">参数传递</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单个参数"><span class="nav-number">3.1.</span> <span class="nav-text">单个参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多个参数"><span class="nav-number">3.2.</span> <span class="nav-text">多个参数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用html文件构建网页"><span class="nav-number">4.</span> <span class="nav-text">使用html文件构建网页</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#示例：判断是否是新年"><span class="nav-number">5.</span> <span class="nav-text">示例：判断是否是新年</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>

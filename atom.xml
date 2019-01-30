@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wittyfans.com/"/>
-  <updated>2019-01-16T13:23:57.693Z</updated>
+  <updated>2019-01-30T13:20:44.373Z</updated>
   <id>http://wittyfans.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python and Flask - CS50_Beyond_2019 Notes</title>
+    <link href="http://wittyfans.com/coding/Python-and-Flask-CS50-Beyond-2019-Notes.html"/>
+    <id>http://wittyfans.com/coding/Python-and-Flask-CS50-Beyond-2019-Notes.html</id>
+    <published>2019-01-30T13:19:31.000Z</published>
+    <updated>2019-01-30T13:20:44.373Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>Flask 是一个 Python 实现的 Web 开发微框架, 这是一个简单的笔记，想要深入了解的建议参考官方文档。</p></blockquote><a id="more"></a><h1 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h1><p>创建一个文件，然后进入该文件夹，创建一个py文件，然后在命令后导入，这样flask才知道要运行哪个程序:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export FLASK_APP=hello.py</span><br></pre></td></tr></table></figure><p>导入以后就可以直接在当前目录使用flask run 了。</p><h1 id="第一个flask程序"><a href="#第一个flask程序" class="headerlink" title="第一个flask程序"></a>第一个flask程序</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask,render_template</span><br><span class="line">app = Flask(__name__) # 新建一个flask app</span><br><span class="line"></span><br><span class="line">@app.route(&quot;/&quot;) </span><br><span class="line">def index():</span><br><span class="line">    return &quot;Hello,Word!&quot;</span><br></pre></td></tr></table></figure><ul><li>@app.route(“/“)是一个装饰器，如果有人访问/，那么就运行被装饰器装饰的函数，也就是下面返回Hello,word！</li></ul><h1 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h1><h2 id="单个参数"><a href="#单个参数" class="headerlink" title="单个参数"></a>单个参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&quot;/wittyfans&quot;) </span><br><span class="line">def wittyfans():</span><br><span class="line">    return &quot;Hello, My master!!!&quot;</span><br><span class="line"></span><br><span class="line">@app.route(&quot;/&lt;string:name&gt;&quot;) </span><br><span class="line">def hello(name):</span><br><span class="line">    name = name.capitalize()</span><br><span class="line">    return f&quot;Hello! &#123;name&#125;&quot;</span><br></pre></td></tr></table></figure><p>如果输入localhost:/wittyfans就返回”Hello, My master!!!”,如果是别的就返回他输入的名字。</p><blockquote><p>在route中定义变量，它可以传到函数里使用.flask会路由到最具体的网址，也就是说，输入/wittyfans还是会被上面的函数处理.</p></blockquote><h2 id="多个参数"><a href="#多个参数" class="headerlink" title="多个参数"></a>多个参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&quot;/&lt;string:admin_name&gt;/&lt;string:password&gt;&quot;) </span><br><span class="line">def varify(admin_name,password):</span><br><span class="line">    if admin_name == &apos;wittyfans&apos; and password == &apos;123&apos;:</span><br><span class="line">        return &apos;Welcome here&apos;</span><br><span class="line">    else:</span><br><span class="line">        return &apos;error&apos;</span><br></pre></td></tr></table></figure><h1 id="使用html文件构建网页"><a href="#使用html文件构建网页" class="headerlink" title="使用html文件构建网页"></a>使用html文件构建网页</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&apos;/&apos;)</span><br><span class="line">def index():</span><br><span class="line">    return render_template(&quot;index.html&quot;)</span><br></pre></td></tr></table></figure><p>对于网页来说，我们更多的是传出html文件,这时候需要在根目录新建templates文件夹，并将html文件放在其中</p><p>我们可以将输入的值做处理后重新填充给html文件:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&apos;/&lt;string:name&gt;&apos;)</span><br><span class="line">def index(name):</span><br><span class="line">    return render_template(&quot;index.html&quot;,name=name.capitalize())</span><br></pre></td></tr></table></figure><h1 id="示例：判断是否是新年"><a href="#示例：判断是否是新年" class="headerlink" title="示例：判断是否是新年"></a>示例：判断是否是新年</h1><p>逻辑部分</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&apos;/&apos;)</span><br><span class="line">def index():</span><br><span class="line">    now = datetime.datetime.now()</span><br><span class="line">    is_new_years = now.month == 1 and now.day == 1</span><br><span class="line">    print(is_new_years)</span><br><span class="line">    return render_template(&quot;index.html&quot;,is_new_years=is_new_years)</span><br></pre></td></tr></table></figure><p>html中,使用Conditional Templating</p><figure class="highlight plain"><figcaption><span>html> </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;</span><br><span class="line">            wittyfans</span><br><span class="line">        &lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &#123;% if is_new_years %&#125;</span><br><span class="line">            &lt;h1&gt;YES&lt;/h1&gt;</span><br><span class="line">        &#123;% else %&#125;</span><br><span class="line">            &lt;h1&gt;NO&lt;/h1&gt;</span><br><span class="line">        &#123;% endif %&#125;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol><li><a href="https://www.youtube.com/watch?v=pP23CtOI-1U&amp;t=2772s" target="_blank" rel="noopener">Python and Flask - CS50 Beyond 2019)</a></li><li><a href="https://dormousehole.readthedocs.io/en/latest/" target="_blank" rel="noopener">Flask文档</a></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Flask 是一个 Python 实现的 Web 开发微框架, 这是一个简单的笔记，想要深入了解的建议参考官方文档。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
+    
+    
+      <category term="python" scheme="http://wittyfans.com/tags/python/"/>
+    
+      <category term="flask" scheme="http://wittyfans.com/tags/flask/"/>
+    
+  </entry>
   
   <entry>
     <title>用Python来排班？</title>
@@ -226,11 +252,11 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="shell" scheme="http://wittyfans.com/tags/shell/"/>
-    
       <category term="windows" scheme="http://wittyfans.com/tags/windows/"/>
     
       <category term="cmd" scheme="http://wittyfans.com/tags/cmd/"/>
+    
+      <category term="shell" scheme="http://wittyfans.com/tags/shell/"/>
     
   </entry>
   
@@ -535,36 +561,6 @@
       <category term="sql" scheme="http://wittyfans.com/tags/sql/"/>
     
       <category term="mysql" scheme="http://wittyfans.com/tags/mysql/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hadoop The Effective Guide 笔记</title>
-    <link href="http://wittyfans.com/coding/Hadoop%20The%20Effective%20Guide%20%E7%AC%94%E8%AE%B0.html"/>
-    <id>http://wittyfans.com/coding/Hadoop The Effective Guide 笔记.html</id>
-    <published>2018-04-16T08:49:29.000Z</published>
-    <updated>2018-04-17T03:58:43.949Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>Big data is here, Let’s learn how to store and analyze it.</p></blockquote><a id="more"></a> <h1 id="Hadoop-The-Effective-Guide-Notes"><a href="#Hadoop-The-Effective-Guide-Notes" class="headerlink" title="Hadoop The Effective Guide Notes"></a><em>Hadoop The Effective Guide</em> Notes</h1><h1 id="Meet-Hadoop"><a href="#Meet-Hadoop" class="headerlink" title="Meet Hadoop"></a>Meet Hadoop</h1><ul><li>作者主要说明，大数据的时代已经到来，而且时时刻刻影响着我们的生活，对于这么庞大的数据。</li><li>The good news is that big data is here. The bad news is that we are struggling to store and analyze it.</li><li>A common way of avoiding data loss is through replication</li></ul><h1 id="What’s-in-this-book"><a href="#What’s-in-this-book" class="headerlink" title="What’s in this book?"></a>What’s in this book?</h1><ul><li>Chapter 1 a high-level introduction to Hadoop</li><li>Chapter 2 provides an introduction to MapReduce. </li><li>Chapter 3 looks at Hadoop filesystems, and in particular HDFS, in depth. </li><li>Chapter 4 discusses YARN, Hadoop’s cluster resource management system.</li><li>Chapter 5 covers the I/O building blocks in Hadoop: data integrity, compression, serialization, and file-based data structures.</li></ul><h2 id="关于HBase"><a href="#关于HBase" class="headerlink" title="关于HBase"></a>关于HBase</h2><ul><li>A component to provide online access was HBase, a key-value store that uses HDFS for its underlying storage</li><li>Provides both online read/write access of individual rows and batch operations for reading and writing data in bulk, making it a good solution for building applications on</li></ul><h2 id="关于YARN"><a href="#关于YARN" class="headerlink" title="关于YARN"></a>关于YARN</h2><p>即，Yet Another Resource Negotiator，YARN is a cluster resource management system, which allows any distributed program (not just MapRe‐duce) to run on data in a Hadoop cluster.</p><h2 id="对比其他的系统"><a href="#对比其他的系统" class="headerlink" title="对比其他的系统"></a>对比其他的系统</h2><p>下面介绍一下Hadoop特有的特性</p><ol><li>关系型数据库管理系统<br>对于数据，我们要知道，seek time is improving more slowly than transfer rate.关于影响数据检索效率的因素可以看<a href="https://segmentfault.com/a/1190000002884077" target="_blank" rel="noopener">这篇文章</a></li><li>Grid Computing</li><li>Volunteer Computing</li></ol><h2 id="Hadoop简介"><a href="#Hadoop简介" class="headerlink" title="Hadoop简介"></a>Hadoop简介</h2><h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><ol><li><p>bin：Hadoop最基本的管理脚本和使用脚本的目录，这些脚本是sbin目录下管理脚本的基础实现，用户可以直接使用这些脚本管理和使用Hadoop。</p></li><li><p>sbin：Hadoop管理脚本所在的目录，主要包含HDFS和YARN中各类服务的启动/关闭脚本。</p></li><li><p>etc：Hadoop配置文件所在的目录，包括core-site.xml、hdfs-site.xml、mapred-site.xml等从Hadoop1.0继承而来的配置文件和yarn-site.xml等Hadoop2.0新增的配置文件。</p></li><li><p>本地平台相关库（include、lib、libexec），include：对外提供的编程库头文件（具体动态库和静态库在lib目录中），这些头文件均是用C++定义的，通常用于C++程序访问HDFS或者编写MapReduce程序。lib：该目录包含了Hadoop对外提供的编程动态库和静态库，与include目录中的头文件结合使用。libexec：各个服务对用的shell配置文件所在的目录，可用于配置日志输出、启动参数（比如JVM参数）等基本信息。</p></li><li><p>share：Hadoop各个模块编译后的jar包所在的目录。</p></li></ol><h1 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h1><p>什么是一个MapReduce的作业呢？一个完整的作业包括了输入数据、MapReduce程序和配置信息。Hadoop会把作业分为若干个小作业，其中包含两类任务：map任务和reduce任务。</p><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>查看java的jdk路径：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/libexec/java_home</span><br></pre></td></tr></table></figure><p>编辑别名</p><ol><li>vim ~/.bash_profile</li><li>再运行 source ~/.bash_profile</li><li>source 或小数点 （.） 可以将配置文件的内容读进来目前的 shell 环境中,不需要登出。</li></ol><p>参考：</p><ul><li><a href="http://hanslen.me/2018/01/19/How-to-install-Hadoop-on-macOS-High-Sierra/" target="_blank" rel="noopener">Install Hadoop</a></li></ul><h1 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">alias hstart=&quot;/usr/local/Cellar/hadoop/2.8.2/sbin/start-all.sh&quot;</span><br><span class="line"></span><br><span class="line">alias hstop=&quot;/usr/local/Cellar/hadoop/2.8.2/sbin/stop-all.sh&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">JobTracker:http://localhost:8088</span><br><span class="line"></span><br><span class="line">Specific Node Information:http://localhost:8042, you will see</span><br></pre></td></tr></table></figure><h1 id="Hadoop节点"><a href="#Hadoop节点" class="headerlink" title="Hadoop节点"></a>Hadoop节点</h1><p>用户的数据进来，会把数据分成一份一份的block</p><ul><li><a href="https://yuerblog.cc/2017/01/22/understand-bridge-and-dhcp/" target="_blank" rel="noopener">关于桥接与NAT的介绍不错的文章</a></li></ul><h1 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h1><h2 id="CentOS"><a href="#CentOS" class="headerlink" title="CentOS"></a>CentOS</h2><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">CentOS7 已经废除了ipconfig命令</span><br><span class="line"># 查看网卡信息</span><br><span class="line">1. 网卡细节，输入ip addr</span><br><span class="line">2. 查看网络接口统计数据,输入ip link或ip -s link</span><br><span class="line"></span><br><span class="line"># 如果你不知道在哪里可以找到ifconfig命令，请按照以下简单的步骤来找到它。首先，让我们找出哪个包提供了ifconfig命令：</span><br><span class="line">yum provides ifconfig</span><br><span class="line"></span><br><span class="line"># 安装ipconfig</span><br><span class="line">yum install net-tools</span><br></pre></td></tr></table></figure><h2 id="配置Hadoop"><a href="#配置Hadoop" class="headerlink" title="配置Hadoop"></a>配置Hadoop</h2><p>主要有三个文件用来配置，这些配置文件都在conf子目录中：</p><ul><li>core-site.xml，指定默认文件系统和工作空间，类似tmp目录需要最创建</li><li>hdfs-site.xml，配置HDFS属性</li><li>mapred-site.xml，配置mapReduce属性</li><li>workers,写上slaves的host（这个问题困扰我好几天，我看的教程是2.几的）</li></ul><h3 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">entos从7开始默认用的是firewalld，这个是基于iptables的，虽然有iptables的核心，但是iptables的服务是没安装的。所以你只要停止firewalld服务即可：</span><br><span class="line">sudo systemctl stop firewalld.service &amp;&amp; sudo systemctl disable firewalld.service</span><br><span class="line"></span><br><span class="line">如果你要改用iptables的话，需要安装iptables服务：</span><br><span class="line">yum install iptables-services</span><br><span class="line">sudo systemctl enable iptables &amp;&amp; sudo systemctl enable ip6tables</span><br><span class="line">sudo systemctl start iptables &amp;&amp; sudo systemctl start ip6tables</span><br></pre></td></tr></table></figure><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul><li><a href="https://www.zybuluo.com/Emptyset/note/220230" target="_blank" rel="noopener">Hadoop完全分布式集群搭建手记</a></li><li><a href="https://zhangchenchen.github.io/2018/01/30/record-for-hdfs/" target="_blank" rel="noopener">Hadoop学习之HDFS</a></li><li><a href="https://www.jianshu.com/p/7e1460c931d0" target="_blank" rel="noopener">Hadoop搭建与概念介绍</a></li><li><a href="https://www.jianshu.com/p/ea0ffb832161" target="_blank" rel="noopener">HDFS的shell操作及基本工作机制</a></li></ul><h2 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h2><ul><li>cluster：集群</li><li>estimate:估计</li><li>forecasting:预测</li><li>tenfold：十倍</li><li>avd：热衷于</li><li>growing apace：增长迅速</li><li>notoriously challenging：众所周知的挑战</li><li>In a nutshell：简而言之</li><li>evolved：进化</li><li>ad hoc analysis</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Big data is here, Let’s learn how to store and analyze it.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
-    
-    
-      <category term="big data" scheme="http://wittyfans.com/tags/big-data/"/>
-    
-      <category term="hadoop" scheme="http://wittyfans.com/tags/hadoop/"/>
-    
-      <category term="hive" scheme="http://wittyfans.com/tags/hive/"/>
-    
-      <category term="大数据" scheme="http://wittyfans.com/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/"/>
     
   </entry>
   
