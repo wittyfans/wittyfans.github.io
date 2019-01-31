@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python,dash,web,data," />
+  <meta name="keywords" content="web,dash,python,data," />
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="Dash is a productive Python framework for building web applications,This part contains dash install, layout of dash, how to style the html tag in dash, using the callbacks, update data in real time,e">
-<meta name="keywords" content="python,dash,web,data">
+<meta name="description" content="Dash是一个高效的 Web APP构建框架，这个部分包含了Dash的安装，dash中的layout，如何去个性化dash中的html元素，以及复用dash的元素，如何使用dash的回调函数，实时数据监控等.">
+<meta name="keywords" content="web,dash,python,data">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dash 基础">
 <meta property="og:url" content="http://wittyfans.com/coding/Dash-基础.html">
 <meta property="og:site_name" content="wittyfans">
-<meta property="og:description" content="Dash is a productive Python framework for building web applications,This part contains dash install, layout of dash, how to style the html tag in dash, using the callbacks, update data in real time,e">
+<meta property="og:description" content="Dash是一个高效的 Web APP构建框架，这个部分包含了Dash的安装，dash中的layout，如何去个性化dash中的html元素，以及复用dash的元素，如何使用dash的回调函数，实时数据监控等.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-31T14:02:31.735Z">
+<meta property="og:updated_time" content="2019-01-31T14:11:46.263Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dash 基础">
-<meta name="twitter:description" content="Dash is a productive Python framework for building web applications,This part contains dash install, layout of dash, how to style the html tag in dash, using the callbacks, update data in real time,e">
+<meta name="twitter:description" content="Dash是一个高效的 Web APP构建框架，这个部分包含了Dash的安装，dash中的layout，如何去个性化dash中的html元素，以及复用dash的元素，如何使用dash的回调函数，实时数据监控等.">
 
 
 
@@ -370,14 +370,16 @@
 
       
         <blockquote>
-<p>Dash is a productive Python framework for building web applications,This part contains dash install, layout of dash, how to style the html tag in dash, using the callbacks, update data in real time,etc.<br>Dash是一个高效的 Web APP构建框架，这个部分包含了Dash的安装，dash中的layout，如何去个性化dash中的html元素，以及复用dash的元素，如何使用dash的回调函数，实时数据监控等.</p>
+<p>Dash是一个高效的 Web APP构建框架，这个部分包含了Dash的安装，dash中的layout，如何去个性化dash中的html元素，以及复用dash的元素，如何使用dash的回调函数，实时数据监控等.</p>
 </blockquote>
 <a id="more"></a>
+<h1 id="Dash-的特点"><a href="#Dash-的特点" class="headerlink" title="Dash 的特点"></a>Dash 的特点</h1><p>Dash is a productive Python framework for building web applications,This part contains dash install, layout of dash, how to style the html tag in dash, using the callbacks, update data in real time,etc.</p>
 <ul>
 <li>building data visualization apps</li>
 <li>Inherently cross-platform and mobile ready</li>
 </ul>
-<h1 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip install dash==0.35.1  # The core dash backend</span><br><span class="line">pip install dash-html-components==0.13.4  # HTML components</span><br><span class="line">pip install dash-core-components==0.42.1  # Supercharged components</span><br><span class="line">pip install dash-table==3.1.11  # Interactive DataTable component (new!)</span><br></pre></td></tr></table></figure>
+<h1 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h1><p>如果直接pip install dash,那在导入某些组件（例如我导入Event组件）的时候会提示找不到包，后面我重新通过指定dash官方文档中的命令重新安装后，成功解决了该问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pip install dash==0.35.1  # The core dash backend</span><br><span class="line">pip install dash-html-components==0.13.4  # HTML components</span><br><span class="line">pip install dash-core-components==0.42.1  # Supercharged components</span><br><span class="line">pip install dash-table==3.1.11  # Interactive DataTable component (new!)</span><br></pre></td></tr></table></figure>
 <h1 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h1><h2 id="Hello-Dash"><a href="#Hello-Dash" class="headerlink" title="Hello Dash"></a>Hello Dash</h2><blockquote>
 <p>Layout描述了该app是什么样子,所有的可视化组建都用python类来定义，主要有两种dash_core_components和dash_html_components，不过你也可以定义自己的js和react.js类。</p>
 </blockquote>
@@ -480,11 +482,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag"># python</a>
+            <a href="/tags/web/" rel="tag"># web</a>
           
             <a href="/tags/dash/" rel="tag"># dash</a>
           
-            <a href="/tags/web/" rel="tag"># web</a>
+            <a href="/tags/python/" rel="tag"># python</a>
           
             <a href="/tags/data/" rel="tag"># data</a>
           
@@ -668,7 +670,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Installation"><span class="nav-number">1.</span> <span class="nav-text">Installation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Layout"><span class="nav-number">2.</span> <span class="nav-text">Layout</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hello-Dash"><span class="nav-number">2.1.</span> <span class="nav-text">Hello Dash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Style-html"><span class="nav-number">2.2.</span> <span class="nav-text">Style html</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复用组件"><span class="nav-number">2.3.</span> <span class="nav-text">复用组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pandas-dataframe到table"><span class="nav-number">2.4.</span> <span class="nav-text">Pandas dataframe到table</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多的可视化组件"><span class="nav-number">2.5.</span> <span class="nav-text">更多的可视化组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MarkDown"><span class="nav-number">2.6.</span> <span class="nav-text">MarkDown</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Core-Components"><span class="nav-number">2.7.</span> <span class="nav-text">Core Components</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#帮助"><span class="nav-number">2.8.</span> <span class="nav-text">帮助</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Layout-总结"><span class="nav-number">2.9.</span> <span class="nav-text">Layout 总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Callbacks"><span class="nav-number">3.</span> <span class="nav-text">Callbacks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实时数据跟踪"><span class="nav-number">3.1.</span> <span class="nav-text">实时数据跟踪</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">3.1.1.</span> <span class="nav-text">参考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Slider图绘制"><span class="nav-number">3.2.</span> <span class="nav-text">Slider图绘制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多个输入"><span class="nav-number">3.3.</span> <span class="nav-text">多个输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多个输出"><span class="nav-number">3.4.</span> <span class="nav-text">多个输出</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#状态监听"><span class="nav-number">4.</span> <span class="nav-text">状态监听</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Dash-的特点"><span class="nav-number">1.</span> <span class="nav-text">Dash 的特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Installation"><span class="nav-number">2.</span> <span class="nav-text">Installation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Layout"><span class="nav-number">3.</span> <span class="nav-text">Layout</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Hello-Dash"><span class="nav-number">3.1.</span> <span class="nav-text">Hello Dash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Style-html"><span class="nav-number">3.2.</span> <span class="nav-text">Style html</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复用组件"><span class="nav-number">3.3.</span> <span class="nav-text">复用组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pandas-dataframe到table"><span class="nav-number">3.4.</span> <span class="nav-text">Pandas dataframe到table</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更多的可视化组件"><span class="nav-number">3.5.</span> <span class="nav-text">更多的可视化组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MarkDown"><span class="nav-number">3.6.</span> <span class="nav-text">MarkDown</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Core-Components"><span class="nav-number">3.7.</span> <span class="nav-text">Core Components</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#帮助"><span class="nav-number">3.8.</span> <span class="nav-text">帮助</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Layout-总结"><span class="nav-number">3.9.</span> <span class="nav-text">Layout 总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Callbacks"><span class="nav-number">4.</span> <span class="nav-text">Callbacks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实时数据跟踪"><span class="nav-number">4.1.</span> <span class="nav-text">实时数据跟踪</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">4.1.1.</span> <span class="nav-text">参考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Slider图绘制"><span class="nav-number">4.2.</span> <span class="nav-text">Slider图绘制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多个输入"><span class="nav-number">4.3.</span> <span class="nav-text">多个输入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多个输出"><span class="nav-number">4.4.</span> <span class="nav-text">多个输出</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#状态监听"><span class="nav-number">5.</span> <span class="nav-text">状态监听</span></a></li></ol></div>
             
 
           </div>
