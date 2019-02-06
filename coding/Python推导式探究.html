@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python,HelpDesk,jira," />
+  <meta name="keywords" content="python," />
 
 
 
@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="再也不用担心jira工单超时了 🤟">
-<meta name="keywords" content="python,HelpDesk,jira">
+<meta name="description" content="推导式应该是python中最受喜爱的一部分内容了，它可以让你以一种简单的形式过滤原来的数据生成一份新的数据。">
+<meta name="keywords" content="python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Auto assign ticket with Jira python api">
-<meta property="og:url" content="http://wittyfans.com/coding/Auto-assign-ticket-with-Jira-python-api.html">
+<meta property="og:title" content="Python推导式探究">
+<meta property="og:url" content="http://wittyfans.com/coding/Python推导式探究.html">
 <meta property="og:site_name" content="wittyfans">
-<meta property="og:description" content="再也不用担心jira工单超时了 🤟">
+<meta property="og:description" content="推导式应该是python中最受喜爱的一部分内容了，它可以让你以一种简单的形式过滤原来的数据生成一份新的数据。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-08T08:23:28.011Z">
+<meta property="og:updated_time" content="2019-02-06T04:13:26.510Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Auto assign ticket with Jira python api">
-<meta name="twitter:description" content="再也不用担心jira工单超时了 🤟">
+<meta name="twitter:title" content="Python推导式探究">
+<meta name="twitter:description" content="推导式应该是python中最受喜爱的一部分内容了，它可以让你以一种简单的形式过滤原来的数据生成一份新的数据。">
 
 
 
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://wittyfans.com/coding/Auto-assign-ticket-with-Jira-python-api.html"/>
+  <link rel="canonical" href="http://wittyfans.com/coding/Python推导式探究.html"/>
 
 
 
 
 
-  <title> Auto assign ticket with Jira python api | wittyfans </title>
+  <title> Python推导式探究 | wittyfans </title>
   <script type="text/javascript" src="/js/src/love.js"></script>
 </head>
 
@@ -263,7 +263,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/Auto-assign-ticket-with-Jira-python-api.html">
+  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/Python推导式探究.html">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="wittyfans">
@@ -287,7 +287,7 @@
             
             
               
-                Auto assign ticket with Jira python api
+                Python推导式探究
               
             
           </h1>
@@ -300,8 +300,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-05T22:40:07+08:00">
-                2018-10-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-06T12:08:59+08:00">
+                2019-02-06
               </time>
             
 
@@ -338,7 +338,7 @@
 
           
           
-             <span id="/coding/Auto-assign-ticket-with-Jira-python-api.html" class="leancloud_visitors" data-flag-title="Auto assign ticket with Jira python api">
+             <span id="/coding/Python推导式探究.html" class="leancloud_visitors" data-flag-title="Python推导式探究">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -370,15 +370,40 @@
 
       
         <blockquote>
-<p>再也不用担心jira工单超时了 🤟</p>
+<p>推导式应该是python中最受喜爱的一部分内容了，它可以让你以一种简单的形式过滤原来的数据生成一份新的数据。</p>
 </blockquote>
 <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line">import os</span><br><span class="line">from collections import Counter</span><br><span class="line">from jira import JIRA</span><br><span class="line">from datetime import datetime</span><br><span class="line"></span><br><span class="line"># The notifier function</span><br><span class="line">def run_once(f):</span><br><span class="line">    def wrapper(*args, **kwargs):</span><br><span class="line">        if not wrapper.has_run:</span><br><span class="line">            wrapper.has_run = True</span><br><span class="line">            return f(*args, **kwargs)</span><br><span class="line">    wrapper.has_run = False</span><br><span class="line">    return wrapper</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def notify(title, subtitle, message):</span><br><span class="line">    t = &apos;-title &#123;!r&#125;&apos;.format(title)</span><br><span class="line">    s = &apos;-subtitle &#123;!r&#125;&apos;.format(subtitle)</span><br><span class="line">    m = &apos;-message &#123;!r&#125;&apos;.format(message)</span><br><span class="line">    v = &apos;-sound glass&apos;</span><br><span class="line">    os.system(&apos;terminal-notifier &#123;&#125;&apos;.format(&apos; &apos;.join([m, t, s, v])))</span><br><span class="line"></span><br><span class="line">def timer(n):</span><br><span class="line">    print(&quot;初始化&quot;)</span><br><span class="line">    print(&quot;开始监测工单...&quot;)</span><br><span class="line">    jira = JIRA(&apos;你的jira服务器地址&apos;,basic_auth=(&apos;用户名&apos;, &apos;密码&apos;))</span><br><span class="line">    while True:</span><br><span class="line">        tickets = jira.search_issues(&apos;The JQL for search jira ticket，搜索工单的jql&apos;)</span><br><span class="line">        for issue in tickets:</span><br><span class="line">            # jira.assign_issue(issue, &apos;需要assign的用户名&apos;)</span><br><span class="line">            print(&apos;&#123;&#125;,&#123;&#125;,&#123;&#125;,&#123;&#125;,&#123;&#125;&apos;.format(issue.key,issue.fields.creator,issue.fields.summary,str(issue.fields.customfield_10208),issue.fields.priority.name))</span><br><span class="line">            notify(title    = &apos;JIRA&apos;,</span><br><span class="line">                   subtitle = issue.key,</span><br><span class="line">                   message  = issue.fields.summary)</span><br><span class="line">            jira.assign_issue(issue, &apos;需要assign的用户名&apos;)</span><br><span class="line">        time.sleep(n)</span><br><span class="line">timer(120)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用之前，需要先安装相关的包（主要是jira），使用pip安装即可</li>
-<li>在Mac OS上运行，将会有通知提示，提示音都可以自定义，如果在windows上运行，将<em> The notifier function</em>函数和相关语句删除即可</li>
-<li>timer（120），每隔120S请求一次数据，可以自定义</li>
-<li>可以自定义一个userlist，实现多个assigner自动、随机分配</li>
+<h1 id="推导式"><a href="#推导式" class="headerlink" title="推导式"></a>推导式</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>在数组中，推导式的用法类似这样：</p>
+<p>[<em>expr</em> for val in collection if <em>condition</em>]</p>
+<p>基本上和下面的for循环的意思一样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">result = []</span><br><span class="line">for val in collection:</span><br><span class="line">    if condition:</span><br><span class="line">        result.append(expr)</span><br></pre></td></tr></table></figure>
+<p>举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">string = [&apos;a&apos;,&apos;as&apos;,&apos;bat&apos;,&apos;car&apos;,&apos;dove&apos;,&apos;python&apos;]</span><br><span class="line">[x.upper() for x in strings if len(x) &gt;2]</span><br><span class="line"></span><br><span class="line">[&apos;BAT&apos;,&apos;CAR&apos;,&apos;DOVE&apos;,&apos;PYTHON&apos;]</span><br></pre></td></tr></table></figure>
+<h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><p>字典的推导式，类似这样，注意外面是花括号：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dict_comp = &#123;key-expr:value-expr for value in collection if condition&#125;</span><br></pre></td></tr></table></figure>
+<p>快速建立键值对：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loc_mapping = &#123;val:index for index,val in enumerate(strings)&#125;</span><br></pre></td></tr></table></figure>
+<p>假设你有一堆股票数据:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">prices = &#123;</span><br><span class="line">    &apos;ACME&apos;: 45.23,</span><br><span class="line">    &apos;AAPL&apos;: 612.78,</span><br><span class="line">    &apos;IBM&apos;: 205.55,</span><br><span class="line">    &apos;HPQ&apos;: 37.20,</span><br><span class="line">    &apos;FB&apos;: 10.75</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>利用字典推导来过滤这些数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 过滤出价格高于200的</span><br><span class="line">p1 = &#123;key: value for key, value in prices.items() if value &gt; 200&#125;</span><br><span class="line"></span><br><span class="line"># 找出科技公司</span><br><span class="line">tech_names = &#123;&apos;AAPL&apos;, &apos;IBM&apos;, &apos;HPQ&apos;, &apos;MSFT&apos;&#125;</span><br><span class="line">p2 = &#123;key: value for key, value in prices.items() if key in tech_names&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><p>集合的推导式和列表几乎一样，除了外面的括号不一样<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;expr for value in collection if condition&#125;</span><br></pre></td></tr></table></figure></p>
+<p>假设我们需要一个集合，里面包含了所有集合元素的长度，那么可以这样写:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unique_lengths = &#123;len(x) for x in strings&#125;</span><br></pre></td></tr></table></figure>
+<p>利用map函数，可以更简洁：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set(map(len,strings))</span><br></pre></td></tr></table></figure>
+<h2 id="复合推导"><a href="#复合推导" class="headerlink" title="复合推导"></a>复合推导</h2><p>假设我们有个二维数组包含了英语和西班牙语的名字:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">all_data = [</span><br><span class="line">                [&apos;John&apos;, &apos;Emily&apos;, &apos;Michael&apos;, &apos;Mary&apos;, &apos;Steven&apos;],</span><br><span class="line">                [&apos;Maria&apos;, &apos;Juan&apos;, &apos;Javier&apos;, &apos;Natalia&apos;, &apos;Pilar&apos;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>我们现在想要找出这两个子列表中，包含e字母的个数大于等于两个的，这样我们写一个复合推导:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">result = [name for names in all_data for name in names if name.count(&apos;e&apos;) &gt;=2 ]</span><br><span class="line">result = [&apos;Steven&apos;]</span><br></pre></td></tr></table></figure>
+<p>这样写也许有点难以理解，再来看一个将元组合并成数组的例子:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">some_tuples = [(1,2,3),(4,5,6),(7,8,9)]</span><br><span class="line">flattened = [x for tup in some_tuples for x in tup]</span><br><span class="line">flattened #输出 [1,2,3,4,5,6,7,8,9]</span><br></pre></td></tr></table></figure>
+<p>在[]中的表达式的顺序，其实和我们自己写的遍历数组是一样的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">flattened = []</span><br><span class="line">for tup in some_tuples:</span><br><span class="line">    for x in tup:</span><br><span class="line">        flattened.append(x)</span><br></pre></td></tr></table></figure>
+<p>推导式尽管很方便，但是我们有时候也要从代码可读性上去思考问题，而不是让人在语法上面很困惑你写的代码，虽然这样也是可以的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">some_tuples = [(1,2,3),(4,5,6),(7,8,9)]</span><br><span class="line">[[x for x in tup] for tup in some_tuples]</span><br></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><em>Python for data analyse - List,Set, and Dict Comprehensions</em></li>
 </ul>
 
       
@@ -421,10 +446,6 @@
           
             <a href="/tags/python/" rel="tag"># python</a>
           
-            <a href="/tags/HelpDesk/" rel="tag"># HelpDesk</a>
-          
-            <a href="/tags/jira/" rel="tag"># jira</a>
-          
         </div>
       
 
@@ -432,8 +453,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/coding/PowerShell-Encrypting-Credentials-Generator.html" rel="next" title="PowerShell Encrypting Credentials Generator">
-                <i class="fa fa-chevron-left"></i> PowerShell Encrypting Credentials Generator
+              <a href="/coding/Built-in-Data-Structures-in-Python.html" rel="next" title="Built-in Data Structures in Python">
+                <i class="fa fa-chevron-left"></i> Built-in Data Structures in Python
               </a>
             
           </div>
@@ -441,10 +462,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/coding/Windows-CMD命令记录.html" rel="prev" title="Windows CMD命令记录">
-                Windows CMD命令记录 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -491,8 +508,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -590,6 +616,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#推导式"><span class="nav-number">1.</span> <span class="nav-text">推导式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">1.1.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字典"><span class="nav-number">1.2.</span> <span class="nav-text">字典</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合"><span class="nav-number">1.3.</span> <span class="nav-text">集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复合推导"><span class="nav-number">1.4.</span> <span class="nav-text">复合推导</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
