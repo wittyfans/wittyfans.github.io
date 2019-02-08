@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, My friend." />
+  <meta name="keywords" content="windows,cmd," />
 
 
 
@@ -86,13 +86,20 @@
 
 
 
-<meta property="og:type" content="website">
+<meta name="description" content="如何用脚本批量映射windows网络驱动器，并修改其名称？">
+<meta name="keywords" content="windows,cmd">
+<meta property="og:type" content="article">
 <meta property="og:title" content="wittyfans">
-<meta property="og:url" content="http://wittyfans.com/tags/效率/index.html">
+<meta property="og:url" content="http://wittyfans.com/coding/Windows-批量映射并重命名网络驱动器.html">
 <meta property="og:site_name" content="wittyfans">
+<meta property="og:description" content="如何用脚本批量映射windows网络驱动器，并修改其名称？">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://msegceporticoprodassets.blob.core.windows.net/inline-media/0e21d35a-52f5-4ea4-9971-d0c4a23ea705-zh-hans">
+<meta property="og:updated_time" content="2019-02-08T09:33:25.040Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="wittyfans">
+<meta name="twitter:description" content="如何用脚本批量映射windows网络驱动器，并修改其名称？">
+<meta name="twitter:image" content="https://msegceporticoprodassets.blob.core.windows.net/inline-media/0e21d35a-52f5-4ea4-9971-d0c4a23ea705-zh-hans">
 
 
 
@@ -120,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://wittyfans.com/tags/效率/"/>
+  <link rel="canonical" href="http://wittyfans.com/coding/Windows-批量映射并重命名网络驱动器.html"/>
 
 
 
 
 
-  <title> 标签: 效率 | wittyfans </title>
+  <title>  | wittyfans </title>
   <script type="text/javascript" src="/js/src/love.js"></script>
 </head>
 
@@ -148,7 +155,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right  ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -248,46 +255,222 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        效率
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/Windows-批量映射并重命名网络驱动器.html">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="wittyfans">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="wittyfans">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="wittyfans" src="">
+    </span>
+  </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-08T17:24:34+08:00">
+                2019-02-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/coding/" itemprop="url" rel="index">
+                    <span itemprop="name">coding</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/coding/Windows-批量映射并重命名网络驱动器.html" class="leancloud_visitors" data-flag-title="">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+               <span>℃</span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <blockquote>
+<p>如何用脚本批量映射windows网络驱动器，并修改其名称？</p>
+</blockquote>
+<a id="more"></a>
+<p>映射网络驱动器后，可以直接在windows的资源管理器中访问指定的网络路径，不用每次都输入常常的路径地址，非常方便。</p>
+<p><img src="https://msegceporticoprodassets.blob.core.windows.net/inline-media/0e21d35a-52f5-4ea4-9971-d0c4a23ea705-zh-hans" alt=""></p>
+<h1 id="手动映射"><a href="#手动映射" class="headerlink" title="手动映射"></a>手动映射</h1><p>映射网络路径很简单</p>
+<ol>
+<li>直接打开文件资源管理器，然后选择映射网络驱动器</li>
+<li>在“驱动器”列表中，选择驱动器号。（任何可用驱动器号均可。）</li>
+<li>在“文件夹”框中，键入文件夹或计算机的路径，或者选择“浏览”以查找文件夹或计算机。若要在每次登录到电脑时都进行连接，请选中“登录时重新连接”复选框。<br>选择“完成”。</li>
+</ol>
+<p>但这有个问题，即它映射后显示的名字是该文件夹的路径，如果名字中有空格或者中文，可能会出现名字就是整个路径的情况，尽管你可以手动改过来，但如果你要在域中批量给电脑映射，这种方式就不太方便了。</p>
+<h1 id="bat直接映射"><a href="#bat直接映射" class="headerlink" title="bat直接映射"></a>bat直接映射</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@ECHO OFF</span><br><span class="line">net use Z: /delete</span><br><span class="line">net use Z: \\you\\net\\url /persistent:yes</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+<p>通过bat批量映射，不过这种方法也无法自定义名字。</p>
+<h1 id="修改注册表-bat"><a href="#修改注册表-bat" class="headerlink" title="修改注册表+bat"></a>修改注册表+bat</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">net use F: /delete</span><br><span class="line">reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\MountPoints2\##\10.22.22.2#disk#file#&apos;wittyfans file&apos;#files /v _LabelFromReg /t REG_SZ /f /d &quot;我随便映射的一个盘&quot;</span><br><span class="line">net use F: &quot;\\10.22.22.2\disk\file\wittyfans file\files&quot; /persistent:yes</span><br></pre></td></tr></table></figure>
+<p>先将需要命名的盘符删除，再将路径和需要定义的名字添加到注册表,随后映射即可。<br>需要注意几点：</p>
+<ul>
+<li>在注册表编辑语句中，后面的路径中的斜杠需要用井号替代</li>
+<li>路径中文件夹的名字中包含空格的，需要用引号括起来</li>
+</ul>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/coding/Windows自动化AutoIT动手玩.html" itemprop="url">
-              
-                <span itemprop="name">Windows自动化AutoIT动手玩</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-reward-image.png" alt="wittyfans WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-06-03T16:40:29+08:00"
-              content="2018-06-03" >
-          06-03
-        </time>
-      </div>
 
-    </header>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/windows/" rel="tag"># windows</a>
+          
+            <a href="/tags/cmd/" rel="tag"># cmd</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/coding/NumPy之NDarrays创建、运算、切片、索引.html" rel="next" title="NumPy之NDarrays创建、运算、切片、索引">
+                <i class="fa fa-chevron-left"></i> NumPy之NDarrays创建、运算、切片、索引
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/coding/Windows-脚本重命名网络驱动器.html" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -295,6 +478,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -314,8 +501,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -413,6 +609,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#手动映射"><span class="nav-number">1.</span> <span class="nav-text">手动映射</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bat直接映射"><span class="nav-number">2.</span> <span class="nav-text">bat直接映射</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改注册表-bat"><span class="nav-number">3.</span> <span class="nav-text">修改注册表+bat</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
@@ -527,6 +739,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
