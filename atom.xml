@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wittyfans.com/"/>
-  <updated>2019-02-08T09:40:23.000Z</updated>
+  <updated>2019-02-09T08:05:49.260Z</updated>
   <id>http://wittyfans.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Numpy Universal Functions</title>
+    <link href="http://wittyfans.com/coding/Numpy-Universal-Functions.html"/>
+    <id>http://wittyfans.com/coding/Numpy-Universal-Functions.html</id>
+    <published>2019-02-09T08:01:12.000Z</published>
+    <updated>2019-02-09T08:05:49.260Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>Numpy中一些基本函数参考。</p></blockquote><a id="more"></a><h1 id="Universal-Functions"><a href="#Universal-Functions" class="headerlink" title="Universal Functions"></a>Universal Functions</h1><p><em>Universal Functions</em> 也叫 <em>ufunc</em>，比如开根 <em>sqrt</em>，<em>exp</em>:</p><p><em>Sqrt:</em></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">arr = np.arange(10)</span><br><span class="line">np.sqrt(arr)</span><br><span class="line">输出：</span><br><span class="line"></span><br><span class="line">array([ 0.        ,  1.        ,  1.41421356,  1.73205081,  2.        ,</span><br><span class="line">        2.23606798,  2.44948974,  2.64575131,  2.82842712,  3.        ])</span><br></pre></td></tr></table></figure><p><em>exp:</em></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">np.exp(arr)</span><br><span class="line">输出：</span><br><span class="line"></span><br><span class="line">array([  1.00000000e+00,   2.71828183e+00,   7.38905610e+00,</span><br><span class="line">         2.00855369e+01,   5.45981500e+01,   1.48413159e+02,</span><br><span class="line">         4.03428793e+02,   1.09663316e+03,   2.98095799e+03,</span><br><span class="line">         8.10308393e+03])</span><br></pre></td></tr></table></figure><p>你有两个数组，它们的长度都是一样的，你需要对比两个数组中对应的值，返回大的：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">a = np.random.randn(1,10)*10</span><br><span class="line"># 输出</span><br><span class="line"></span><br><span class="line">array([[  7.45106569,   2.47039999,  13.3143474 ,  11.73359137,</span><br><span class="line">         -5.16471496,   3.37688733,  -3.03783497,  13.94821303,</span><br><span class="line">        -13.79166595,   4.35553629]])</span><br><span class="line"></span><br><span class="line">b = np.random.randn(1,10)*10</span><br><span class="line"># 输出</span><br><span class="line"></span><br><span class="line">array([[  0.73315303,   5.87494888,   4.01168595,   3.78652398,</span><br><span class="line">         -0.35151181,  -5.61564742,   3.0190971 ,  -2.28944227,</span><br><span class="line">          6.45900038,  14.22907421]])</span><br></pre></td></tr></table></figure><p>利用 <em>np</em> 的 <em>maximun</em> 函数就可以做到：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">np.maximum(a,b)</span><br><span class="line"># 输出：</span><br><span class="line"></span><br><span class="line">array([[  7.45106569,   5.87494888,  13.3143474 ,  11.73359137,</span><br><span class="line">         -0.35151181,   3.37688733,   3.0190971 ,  13.94821303,</span><br><span class="line">          6.45900038,  14.22907421]])</span><br></pre></td></tr></table></figure><h1 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h1><p><img src="https://i.loli.net/2019/02/09/5c5e89c06da7b.jpg" alt="ufuncs"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Numpy中一些基本函数参考。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
+    
+    
+      <category term="python" scheme="http://wittyfans.com/tags/python/"/>
+    
+      <category term="numpy" scheme="http://wittyfans.com/tags/numpy/"/>
+    
+  </entry>
   
   <entry>
     <title>Windows 批量映射并重命名网络驱动器</title>
@@ -432,9 +458,9 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="windows" scheme="http://wittyfans.com/tags/windows/"/>
-    
       <category term="shell" scheme="http://wittyfans.com/tags/shell/"/>
+    
+      <category term="windows" scheme="http://wittyfans.com/tags/windows/"/>
     
       <category term="cmd" scheme="http://wittyfans.com/tags/cmd/"/>
     
@@ -460,11 +486,11 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
+      <category term="python" scheme="http://wittyfans.com/tags/python/"/>
+    
       <category term="jira" scheme="http://wittyfans.com/tags/jira/"/>
     
       <category term="HelpDesk" scheme="http://wittyfans.com/tags/HelpDesk/"/>
-    
-      <category term="python" scheme="http://wittyfans.com/tags/python/"/>
     
   </entry>
   
@@ -519,32 +545,6 @@
       <category term="Jira" scheme="http://wittyfans.com/tags/Jira/"/>
     
       <category term="Groovy" scheme="http://wittyfans.com/tags/Groovy/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>kafka分布式集群部署</title>
-    <link href="http://wittyfans.com/coding/kafka%E5%88%86%E5%B8%83%E5%BC%8F%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2.html"/>
-    <id>http://wittyfans.com/coding/kafka分布式集群部署.html</id>
-    <published>2018-06-08T03:13:19.000Z</published>
-    <updated>2018-06-08T03:17:50.893Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>一个高吞吐量的消息队列系统，可以达到高效的流处理，借助zookeeper确保了证数据的安全。</p></blockquote><a id="more"></a><h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">下载官网 kafka.2.10-0.8.2.1.tgz 版本</span><br></pre></td></tr></table></figure><h1 id="kafka集群配置"><a href="#kafka集群配置" class="headerlink" title="kafka集群配置"></a>kafka集群配置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 传输数据到集群 -&gt; scp -r ***.tgz opt/software/</span><br><span class="line"># 解压 -&gt; /opt/modules</span><br><span class="line"># 配置</span><br><span class="line"></span><br><span class="line">1. Server.propertis文件</span><br><span class="line">-&gt; broker.id -&gt; 1或则2，nod1 -&gt; 1,node2 -&gt; 2</span><br><span class="line">-&gt; port=9092</span><br><span class="line">-&gt; host.name -&gt; userhostname</span><br><span class="line">-&gt; 修改日志路径 -&gt; log.dirs = /tmp/kafka-logs</span><br><span class="line">-&gt; zookeeper.connect=master,node1,node2;</span><br><span class="line">2. 分发到其他机器</span><br><span class="line"></span><br><span class="line">3. 修改其他机器上的server.properties文件</span><br></pre></td></tr></table></figure><h1 id="启动并测试"><a href="#启动并测试" class="headerlink" title="启动并测试"></a>启动并测试</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. bin/zookeeper-server-start.sh config/zookeeper.properties</span><br><span class="line">2. bin/kafka-server-start.sh config/server.properties</span><br><span class="line">3. 创建 Topic -&gt; &gt; bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test</span><br><span class="line">4. 创建生产端和消费端</span><br><span class="line">-&gt; bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test</span><br><span class="line">-&gt; bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning</span><br></pre></td></tr></table></figure><p>创建好了的topic可以在zookeeper的目录下的brokers/topics里面去查看。</p><h1 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h1><ul><li>host.name要改成跟本机对应的hostname,才能在第二、三台机器上启动server</li></ul><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul><li><a href="http://kafka.apache.org/quickstart" target="_blank" rel="noopener">Kafka QuickStart</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;一个高吞吐量的消息队列系统，可以达到高效的流处理，借助zookeeper确保了证数据的安全。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
-    
-    
-      <category term="BigData" scheme="http://wittyfans.com/tags/BigData/"/>
-    
-      <category term="Kafka" scheme="http://wittyfans.com/tags/Kafka/"/>
     
   </entry>
   
