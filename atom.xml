@@ -238,11 +238,11 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="web" scheme="http://wittyfans.com/tags/web/"/>
+      <category term="python" scheme="http://wittyfans.com/tags/python/"/>
     
       <category term="dash" scheme="http://wittyfans.com/tags/dash/"/>
     
-      <category term="python" scheme="http://wittyfans.com/tags/python/"/>
+      <category term="web" scheme="http://wittyfans.com/tags/web/"/>
     
       <category term="data" scheme="http://wittyfans.com/tags/data/"/>
     
@@ -512,11 +512,11 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="python" scheme="http://wittyfans.com/tags/python/"/>
-    
       <category term="jira" scheme="http://wittyfans.com/tags/jira/"/>
     
       <category term="HelpDesk" scheme="http://wittyfans.com/tags/HelpDesk/"/>
+    
+      <category term="python" scheme="http://wittyfans.com/tags/python/"/>
     
   </entry>
   
