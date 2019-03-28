@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wittyfans.com/"/>
-  <updated>2019-02-09T16:24:25.546Z</updated>
+  <updated>2019-03-28T12:20:58.466Z</updated>
   <id>http://wittyfans.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Pandas 统计工作数据</title>
+    <link href="http://wittyfans.com/coding/Pandas-%E7%BB%9F%E8%AE%A1%E5%B7%A5%E4%BD%9C%E6%95%B0%E6%8D%AE.html"/>
+    <id>http://wittyfans.com/coding/Pandas-统计工作数据.html</id>
+    <published>2019-03-28T12:19:18.000Z</published>
+    <updated>2019-03-28T12:20:58.466Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>利用Pandas统计工作中的数据，包括数据导入、时间序列处理、loc方法，绘图等等。</p></blockquote><a id="more"></a><h1 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h1><p><img src="https://i.loli.net/2019/03/28/5c9cb955919aa.png" alt="import_data.png"></p><ul><li>因为从txt导入数据，所以固定sep为，</li><li>header即没有头部</li><li>爬取日期数据则会将string类型的date自动转化为date类型，方便整理</li></ul><h1 id="设置index"><a href="#设置index" class="headerlink" title="设置index"></a>设置index</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwdlog = pwdlog.set_index(&apos;date&apos;)</span><br></pre></td></tr></table></figure><p>设置index方便索引，对时间进行切片。</p><h1 id="探索数据"><a href="#探索数据" class="headerlink" title="探索数据"></a>探索数据</h1><h2 id="数据描述"><a href="#数据描述" class="headerlink" title="数据描述"></a>数据描述</h2><p><img src="https://i.loli.net/2019/03/28/5c9cb919e4393.png" alt="describe.png"></p><h2 id="按天数计算数据"><a href="#按天数计算数据" class="headerlink" title="按天数计算数据"></a>按天数计算数据</h2><p><img src="https://i.loli.net/2019/03/28/5c9cb9561af75.png" alt="resample_d.png"></p><p>resample方法将按照时间区间统计数量，count方法为统计，如果是sum则为相加，另也有机酸平均值等方法可选，resample可以将天数缩小为时间，对于的值将会被填充为你想要设置的值，也可以将分钟，小时等统计成天数，周数，工作日等等。</p><h2 id="谁的数据最多？"><a href="#谁的数据最多？" class="headerlink" title="谁的数据最多？"></a>谁的数据最多？</h2><p><img src="https://i.loli.net/2019/03/28/5c9cb956112b1.png" alt="reset_numbers.png"></p><p>to_frame方法主要将这些数据转化为frame。</p><h2 id="哪一天的数据最多？"><a href="#哪一天的数据最多？" class="headerlink" title="哪一天的数据最多？"></a>哪一天的数据最多？</h2><p><img src="https://i.loli.net/2019/03/28/5c9cb9561cd6c.png" alt="reset_order_by_day.png"></p><h2 id="探索2-13这一天的数据"><a href="#探索2-13这一天的数据" class="headerlink" title="探索2/13这一天的数据"></a>探索2/13这一天的数据</h2><p><img src="https://i.loli.net/2019/03/28/5c9cb9553474b.png" alt="2_13_loc .png"></p><p>可以看到一共收到133个用户改密码请求。</p><h2 id="2-13谁处理的请求最多"><a href="#2-13谁处理的请求最多" class="headerlink" title="2/13谁处理的请求最多"></a>2/13谁处理的请求最多</h2><p><img src="https://i.loli.net/2019/03/28/5c9cb95556338.png" alt="2_13_loc_it.png"></p><h1 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h1><h1 id="按天"><a href="#按天" class="headerlink" title="按天"></a>按天</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pwdlog.resample(&apos;d&apos;).count()[&apos;name&apos;].plot()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure><p><img src="https://i.loli.net/2019/03/28/5c9cb955da58b.png" alt="plot_by_day.png"></p><h1 id="按小时"><a href="#按小时" class="headerlink" title="按小时"></a>按小时</h1><p><img src="https://i.loli.net/2019/03/28/5c9cb955dd364.png" alt="plot_h.png"></p><h1 id="按分钟"><a href="#按分钟" class="headerlink" title="按分钟"></a>按分钟</h1><p><img src="https://i.loli.net/2019/03/28/5c9cb955e96ec.png" alt="plot_m.png"></p><h1 id="按名字"><a href="#按名字" class="headerlink" title="按名字"></a>按名字</h1><p><img src="https://i.loli.net/2019/03/28/5c9cb95565cb9.png" alt="fz.png"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;利用Pandas统计工作中的数据，包括数据导入、时间序列处理、loc方法，绘图等等。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
+    
+    
+      <category term="bigdata" scheme="http://wittyfans.com/tags/bigdata/"/>
+    
+      <category term="pandas" scheme="http://wittyfans.com/tags/pandas/"/>
+    
+  </entry>
   
   <entry>
     <title>NumPy操作数组</title>
@@ -512,37 +538,11 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="jira" scheme="http://wittyfans.com/tags/jira/"/>
-    
-      <category term="HelpDesk" scheme="http://wittyfans.com/tags/HelpDesk/"/>
-    
       <category term="python" scheme="http://wittyfans.com/tags/python/"/>
     
-  </entry>
-  
-  <entry>
-    <title>PowerShell Encrypting Credentials Generator</title>
-    <link href="http://wittyfans.com/coding/PowerShell-Encrypting-Credentials-Generator.html"/>
-    <id>http://wittyfans.com/coding/PowerShell-Encrypting-Credentials-Generator.html</id>
-    <published>2018-10-05T14:11:51.000Z</published>
-    <updated>2018-10-08T15:02:58.950Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>使用PowerShell运行，输入密码，生存的String会自动复制到剪贴板，直接去需要的地方粘贴即可。</p></blockquote><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Add-Type -AssemblyName System.Windows.Forms</span><br><span class="line"></span><br><span class="line">function Read-MessageBoxDialog</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    param ([string]$Message,</span><br><span class="line"></span><br><span class="line">        [string]$WindowTitle,</span><br><span class="line"></span><br><span class="line">        [System.Windows.Forms.MessageBoxButtons]$Buttons = [System.Windows.Forms.MessageBoxButtons]::OK,</span><br><span class="line"></span><br><span class="line">        [System.Windows.Forms.MessageBoxIcon]$Icon = [System.Windows.Forms.MessageBoxIcon]::None)</span><br><span class="line"></span><br><span class="line">    Add-Type -AssemblyName System.Windows.Forms</span><br><span class="line"></span><br><span class="line">    return [System.Windows.Forms.MessageBox]::Show($Message, $WindowTitle, $Buttons, $Icon)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">write-host &quot;请输入原始密码：↓↓↓↓&quot;</span><br><span class="line">$inputPWD = Read-Host | ConvertTo-SecureString -AsPlainText -Force</span><br><span class="line">$encryptedPWD = $inputPWD | ConvertFrom-SecureString</span><br><span class="line">[Windows.Forms.Clipboard]::SetText($encryptedPWD)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Read-MessageBoxDialog -Message &quot;已拷贝到剪贴板&quot; -WindowTitle &quot;安全密码制作工具&quot; -Buttons OK -Icon Information</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;使用PowerShell运行，输入密码，生存的String会自动复制到剪贴板，直接去需要的地方粘贴即可。&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
-    
-    
       <category term="HelpDesk" scheme="http://wittyfans.com/tags/HelpDesk/"/>
     
-      <category term="PowerShell" scheme="http://wittyfans.com/tags/PowerShell/"/>
+      <category term="jira" scheme="http://wittyfans.com/tags/jira/"/>
     
   </entry>
   

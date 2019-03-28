@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python,bigdata,numpy,pandas,ploting," />
+  <meta name="keywords" content="bigdata,pandas," />
 
 
 
@@ -86,22 +86,30 @@
 
 
 
-<meta name="description" content="Talk is cheap, show me the picture!">
-<meta name="keywords" content="python,bigdata,numpy,pandas,ploting">
+<meta name="description" content="利用Pandas统计工作中的数据，包括数据导入、时间序列处理、loc方法，绘图等等。">
+<meta name="keywords" content="bigdata,pandas">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用Python做数据可视化">
-<meta property="og:url" content="http://wittyfans.com/coding/用Python做数据可视化.html">
+<meta property="og:title" content="Pandas 统计工作数据">
+<meta property="og:url" content="http://wittyfans.com/coding/Pandas-统计工作数据.html">
 <meta property="og:site_name" content="wittyfans">
-<meta property="og:description" content="Talk is cheap, show me the picture!">
+<meta property="og:description" content="利用Pandas统计工作中的数据，包括数据导入、时间序列处理、loc方法，绘图等等。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/bar_plot_multi_ex.png">
-<meta property="og:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/bar_plot_stacked_ex.png">
-<meta property="og:image" content="https://xfjlcq.bn.files.1drv.com/y4mHSUL0Fe0J2icuEUtKoUHovl1jCzOHR3BSoy5LdPsDttVbG0OJYys58TNGyXOLLj0elzuvTe8dSPxanf28ZanIF5y-qdjw_BoG3hlVLh0HiLxXbQpTRX2Mdg_wqv7jHA-cWaQdKRwpT07LUWhQNNF97VE4rtUSwCGLslxsludS7d7FTp1X9_c9z1eMPE5Nj2-Z4FZYU6zSUZXSD_iLFspsw/legendPlot.png?psid=1">
-<meta property="og:updated_time" content="2019-01-16T12:35:42.105Z">
+<meta property="og:image" content="https://i.loli.net/2019/03/28/5c9cb955919aa.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/28/5c9cb919e4393.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/28/5c9cb9561af75.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/28/5c9cb956112b1.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/28/5c9cb9561cd6c.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/28/5c9cb9553474b.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/28/5c9cb95556338.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/28/5c9cb955da58b.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/28/5c9cb955dd364.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/28/5c9cb955e96ec.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/28/5c9cb95565cb9.png">
+<meta property="og:updated_time" content="2019-03-28T12:20:58.466Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="用Python做数据可视化">
-<meta name="twitter:description" content="Talk is cheap, show me the picture!">
-<meta name="twitter:image" content="https://pandas.pydata.org/pandas-docs/stable/_images/bar_plot_multi_ex.png">
+<meta name="twitter:title" content="Pandas 统计工作数据">
+<meta name="twitter:description" content="利用Pandas统计工作中的数据，包括数据导入、时间序列处理、loc方法，绘图等等。">
+<meta name="twitter:image" content="https://i.loli.net/2019/03/28/5c9cb955919aa.png">
 
 
 
@@ -129,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://wittyfans.com/coding/用Python做数据可视化.html"/>
+  <link rel="canonical" href="http://wittyfans.com/coding/Pandas-统计工作数据.html"/>
 
 
 
 
 
-  <title> 用Python做数据可视化 | wittyfans </title>
+  <title> Pandas 统计工作数据 | wittyfans </title>
   <script type="text/javascript" src="/js/src/love.js"></script>
 </head>
 
@@ -267,7 +275,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/用Python做数据可视化.html">
+  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/Pandas-统计工作数据.html">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="wittyfans">
@@ -291,7 +299,7 @@
             
             
               
-                用Python做数据可视化
+                Pandas 统计工作数据
               
             
           </h1>
@@ -304,8 +312,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-16T20:24:41+08:00">
-                2019-01-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-28T20:19:18+08:00">
+                2019-03-28
               </time>
             
 
@@ -342,7 +350,7 @@
 
           
           
-             <span id="/coding/用Python做数据可视化.html" class="leancloud_visitors" data-flag-title="用Python做数据可视化">
+             <span id="/coding/Pandas-统计工作数据.html" class="leancloud_visitors" data-flag-title="Pandas 统计工作数据">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -374,79 +382,31 @@
 
       
         <blockquote>
-<p>Talk is cheap, show me the picture!</p>
+<p>利用Pandas统计工作中的数据，包括数据导入、时间序列处理、loc方法，绘图等等。</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="导入相关包"><a href="#导入相关包" class="headerlink" title="导入相关包"></a>导入相关包</h1><p>Import the plt:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br></pre></td></tr></table></figure>
-<h1 id="不同的图表"><a href="#不同的图表" class="headerlink" title="不同的图表"></a>不同的图表</h1><p>you can do this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">data.plt.bar()</span><br></pre></td></tr></table></figure>
-<p>and this is the diffrent types plot:</p>
+<h1 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h1><p><img src="https://i.loli.net/2019/03/28/5c9cb955919aa.png" alt="import_data.png"></p>
 <ul>
-<li>‘bar’ or ‘barh’ for bar plots</li>
-<li>‘hist’ for histogram</li>
-<li>‘box’ for boxplot</li>
-<li>‘kde’ or ‘density’ for density plots</li>
-<li>‘area’ for area plots</li>
-<li>‘scatter’ for scatter plots</li>
-<li>‘hexbin’ for hexagonal bin plots</li>
-<li>‘pie’ for pie plots</li>
+<li>因为从txt导入数据，所以固定sep为，</li>
+<li>header即没有头部</li>
+<li>爬取日期数据则会将string类型的date自动转化为date类型，方便整理</li>
 </ul>
-<p>and you can specific the kind in methond:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot(kind=&apos;bar&apos;)</span><br></pre></td></tr></table></figure>
-<p>Reference:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.plot.area     df.plot.barh     df.plot.density  df.plot.hist     df.plot.line     df.plot.scatter</span><br><span class="line">df.plot.bar      df.plot.box      df.plot.hexbin   df.plot.kde      df.plot.pie</span><br></pre></td></tr></table></figure>
-<h1 id="把列合并展示"><a href="#把列合并展示" class="headerlink" title="把列合并展示"></a>把列合并展示</h1><p>When you plotting,stacked = True means conbined the columns value,from this:</p>
-<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/bar_plot_multi_ex.png" alt=""></p>
-<p>to this</p>
-<p><img src="https://pandas.pydata.org/pandas-docs/stable/_images/bar_plot_stacked_ex.png" alt=""></p>
-<p>plot.bar(stacked=True); </p>
-<p>If you want thehorizontal bar plots, use the barh method:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">df2.plot.barh(stacked=True)</span><br></pre></td></tr></table></figure>
-<h1 id="使用绘图对象"><a href="#使用绘图对象" class="headerlink" title="使用绘图对象"></a>使用绘图对象</h1><p>Plots in matplotlib is a Figure object, you can new a plot window:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure()</span><br></pre></td></tr></table></figure>
-<h2 id="多个图一起绘制"><a href="#多个图一起绘制" class="headerlink" title="多个图一起绘制"></a>多个图一起绘制</h2><p>and you can add the sub plots to this object,</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure() </span><br><span class="line">ax1 = fig.add_subplot(2, 2, 1) </span><br><span class="line">ax2 = fig.add_subplot(2, 2, 2) </span><br><span class="line">ax3 = fig.add_subplot(2, 2, 3)</span><br><span class="line">ax4 = fig.add_subplot(2, 2, 4)</span><br></pre></td></tr></table></figure>
-<p>This will let you get four plot sub plots in one  window, and any command will show in the last plot.</p>
-<h2 id="快速创建多个子图"><a href="#快速创建多个子图" class="headerlink" title="快速创建多个子图"></a>快速创建多个子图</h2><p>and you create subplots fast like this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fig,axes = plt.subplots(3,3)</span><br><span class="line">axes[0,0].hist(np.random.randn(100),bins=20,color=&apos;k&apos;,alpha=0.3)</span><br></pre></td></tr></table></figure>
-<h2 id="控制子图之间的间隙"><a href="#控制子图之间的间隙" class="headerlink" title="控制子图之间的间隙"></a>控制子图之间的间隙</h2><p>subplots spacing is under control by </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.subplots_adjust(wspace=0,hspace=0)</span><br></pre></td></tr></table></figure>
-<h1 id="个性化"><a href="#个性化" class="headerlink" title="个性化"></a>个性化</h1><h2 id="线的虚实、颜色"><a href="#线的虚实、颜色" class="headerlink" title="线的虚实、颜色"></a>线的虚实、颜色</h2><p>In the plot() method, it can accept a string to stylying, to plot x verus y with green dashes , you would execute:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ax.plot(x,y,&apos;g--&apos;)</span><br></pre></td></tr></table></figure>
-<p>of course, the color and dash can setting seperate:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ax.plot(x, y, linestyle=&apos;--&apos;, color=&apos;g&apos;)</span><br></pre></td></tr></table></figure>
-<p>linestyle:</p>
-<ul>
-<li>-</li>
-<li>--</li>
-</ul>
-<p>Line plots can additionally have <em>markers</em> to highlight the actual data points.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">plot(&apos;ko--&apos;)</span><br><span class="line"></span><br><span class="line">or</span><br><span class="line"></span><br><span class="line">plot(marker=&apos;o&apos;)</span><br></pre></td></tr></table></figure>
-<h2 id="一份数据，多种展示方式"><a href="#一份数据，多种展示方式" class="headerlink" title="一份数据，多种展示方式"></a>一份数据，多种展示方式</h2><p>我们可以将不同的drawstyle结合在一起，放在同一幅图中显示，比如这样</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ri.groupby(ri.stop_datetime.dt.hour).drugs_related_stop.mean().plot(linestyle=&apos;--&apos;,color=&apos;g&apos;,marker=&apos;o&apos;,label=&apos;Default&apos;)</span><br><span class="line">ri.groupby(ri.stop_datetime.dt.hour).drugs_related_stop.mean().plot(linestyle=&apos;-&apos;,color=&apos;r&apos;,marker=&apos;o&apos;,label=&apos;steps-post&apos;,drawstyle=&apos;steps-post&apos;)</span><br><span class="line">plt.legend(loc=&apos;best&apos;)</span><br></pre></td></tr></table></figure>
-<p><img src="https://xfjlcq.bn.files.1drv.com/y4mHSUL0Fe0J2icuEUtKoUHovl1jCzOHR3BSoy5LdPsDttVbG0OJYys58TNGyXOLLj0elzuvTe8dSPxanf28ZanIF5y-qdjw_BoG3hlVLh0HiLxXbQpTRX2Mdg_wqv7jHA-cWaQdKRwpT07LUWhQNNF97VE4rtUSwCGLslxsludS7d7FTp1X9_c9z1eMPE5Nj2-Z4FZYU6zSUZXSD_iLFspsw/legendPlot.png?psid=1" alt=""></p>
-<p>drawstyle的类型：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&apos;default&apos;, &apos;steps&apos;, &apos;steps-pre&apos;, &apos;steps-mid&apos;, &apos;steps-post&apos;&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="多份数据合并展示"><a href="#多份数据合并展示" class="headerlink" title="多份数据合并展示"></a>多份数据合并展示</h2><p>An easy way to adding legends:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from numpy.random import randn </span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(1, 1, 1)</span><br><span class="line">ax.plot(randn(1000).cumsum(), &apos;k&apos;, label=&apos;one&apos;) ax.plot(randn(1000).cumsum(), &apos;k--&apos;, label=&apos;two&apos;)</span><br><span class="line">ax.plot(randn(1000).cumsum(), &apos;k.&apos;, label=&apos;three&apos;) </span><br><span class="line">ax.legend(loc=&apos;best&apos;)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>The loc tells matplotlib where to place the plot. If you aren’t picky, ‘best’ is a good option, as it will choose a location that is most out of the way. To exclude one or more elements from the legend, pass no label or label=’<em>nolegend</em>‘.</p>
-</blockquote>
-<h2 id="设置图的基本属性"><a href="#设置图的基本属性" class="headerlink" title="设置图的基本属性"></a>设置图的基本属性</h2><p>设置plot的标题:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ax.set_title(&apos;Drugs Releted Stop Search Rate&apos;)</span><br></pre></td></tr></table></figure>
-<p>设置x轴的标题：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ax.set_xlabel(&apos;hours&apos;)</span><br></pre></td></tr></table></figure>
-<p>下面的x轴的单位和标签也可以设置，注意个数必须统一:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">drm = ri.groupby(ri.stop_datetime.dt.hour).drugs_related_stop.mean()</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(1,1,1)</span><br><span class="line">ax.plot(drm)</span><br><span class="line"></span><br><span class="line">ticks = ax.set_xticks([0,6,12,18])</span><br><span class="line">labels = ax.set_xticklabels([&apos;Mid Night&apos;,&apos;Morning&apos;,&apos;Moon&apos;,&apos;AftenNoon&apos;])</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Y-axis is same, substituting y for x in above.</p>
-</blockquote>
-<h2 id="如何根据GroupBy中多列的值绘制"><a href="#如何根据GroupBy中多列的值绘制" class="headerlink" title="如何根据GroupBy中多列的值绘制"></a>如何根据GroupBy中多列的值绘制</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fig,ax = plt.subplots(figsize=(16,7))</span><br><span class="line">data.groupby(&apos;A&apos;,&apos;B&apos;).count().unstack().plot(ax=ax)</span><br></pre></td></tr></table></figure>
-<p>Use the unstack method to plotting.</p>
-<blockquote>
-<p>To be contiuned…</p>
-</blockquote>
+<h1 id="设置index"><a href="#设置index" class="headerlink" title="设置index"></a>设置index</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwdlog = pwdlog.set_index(&apos;date&apos;)</span><br></pre></td></tr></table></figure>
+<p>设置index方便索引，对时间进行切片。</p>
+<h1 id="探索数据"><a href="#探索数据" class="headerlink" title="探索数据"></a>探索数据</h1><h2 id="数据描述"><a href="#数据描述" class="headerlink" title="数据描述"></a>数据描述</h2><p><img src="https://i.loli.net/2019/03/28/5c9cb919e4393.png" alt="describe.png"></p>
+<h2 id="按天数计算数据"><a href="#按天数计算数据" class="headerlink" title="按天数计算数据"></a>按天数计算数据</h2><p><img src="https://i.loli.net/2019/03/28/5c9cb9561af75.png" alt="resample_d.png"></p>
+<p>resample方法将按照时间区间统计数量，count方法为统计，如果是sum则为相加，另也有机酸平均值等方法可选，resample可以将天数缩小为时间，对于的值将会被填充为你想要设置的值，也可以将分钟，小时等统计成天数，周数，工作日等等。</p>
+<h2 id="谁的数据最多？"><a href="#谁的数据最多？" class="headerlink" title="谁的数据最多？"></a>谁的数据最多？</h2><p><img src="https://i.loli.net/2019/03/28/5c9cb956112b1.png" alt="reset_numbers.png"></p>
+<p>to_frame方法主要将这些数据转化为frame。</p>
+<h2 id="哪一天的数据最多？"><a href="#哪一天的数据最多？" class="headerlink" title="哪一天的数据最多？"></a>哪一天的数据最多？</h2><p><img src="https://i.loli.net/2019/03/28/5c9cb9561cd6c.png" alt="reset_order_by_day.png"></p>
+<h2 id="探索2-13这一天的数据"><a href="#探索2-13这一天的数据" class="headerlink" title="探索2/13这一天的数据"></a>探索2/13这一天的数据</h2><p><img src="https://i.loli.net/2019/03/28/5c9cb9553474b.png" alt="2_13_loc .png"></p>
+<p>可以看到一共收到133个用户改密码请求。</p>
+<h2 id="2-13谁处理的请求最多"><a href="#2-13谁处理的请求最多" class="headerlink" title="2/13谁处理的请求最多"></a>2/13谁处理的请求最多</h2><p><img src="https://i.loli.net/2019/03/28/5c9cb95556338.png" alt="2_13_loc_it.png"></p>
+<h1 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h1><h1 id="按天"><a href="#按天" class="headerlink" title="按天"></a>按天</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pwdlog.resample(&apos;d&apos;).count()[&apos;name&apos;].plot()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2019/03/28/5c9cb955da58b.png" alt="plot_by_day.png"></p>
+<h1 id="按小时"><a href="#按小时" class="headerlink" title="按小时"></a>按小时</h1><p><img src="https://i.loli.net/2019/03/28/5c9cb955dd364.png" alt="plot_h.png"></p>
+<h1 id="按分钟"><a href="#按分钟" class="headerlink" title="按分钟"></a>按分钟</h1><p><img src="https://i.loli.net/2019/03/28/5c9cb955e96ec.png" alt="plot_m.png"></p>
+<h1 id="按名字"><a href="#按名字" class="headerlink" title="按名字"></a>按名字</h1><p><img src="https://i.loli.net/2019/03/28/5c9cb95565cb9.png" alt="fz.png"></p>
 
       
     </div>
@@ -486,15 +446,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag"># python</a>
-          
             <a href="/tags/bigdata/" rel="tag"># bigdata</a>
           
-            <a href="/tags/numpy/" rel="tag"># numpy</a>
-          
             <a href="/tags/pandas/" rel="tag"># pandas</a>
-          
-            <a href="/tags/ploting/" rel="tag"># ploting</a>
           
         </div>
       
@@ -503,8 +457,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/coding/利用Pandas分析美国交警开放的搜查数据.html" rel="next" title="利用Pandas分析美国交警开放的搜查数据">
-                <i class="fa fa-chevron-left"></i> 利用Pandas分析美国交警开放的搜查数据
+              <a href="/coding/NumPy操作数组.html" rel="next" title="NumPy操作数组">
+                <i class="fa fa-chevron-left"></i> NumPy操作数组
               </a>
             
           </div>
@@ -512,10 +466,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/coding/如何用Scrapy开发一个贴吧爬虫.html" rel="prev" title="如何用Scrapy开发一个贴吧爬虫">
-                如何用Scrapy开发一个贴吧爬虫 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -680,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#导入相关包"><span class="nav-number">1.</span> <span class="nav-text">导入相关包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不同的图表"><span class="nav-number">2.</span> <span class="nav-text">不同的图表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#把列合并展示"><span class="nav-number">3.</span> <span class="nav-text">把列合并展示</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用绘图对象"><span class="nav-number">4.</span> <span class="nav-text">使用绘图对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#多个图一起绘制"><span class="nav-number">4.1.</span> <span class="nav-text">多个图一起绘制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速创建多个子图"><span class="nav-number">4.2.</span> <span class="nav-text">快速创建多个子图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制子图之间的间隙"><span class="nav-number">4.3.</span> <span class="nav-text">控制子图之间的间隙</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#个性化"><span class="nav-number">5.</span> <span class="nav-text">个性化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线的虚实、颜色"><span class="nav-number">5.1.</span> <span class="nav-text">线的虚实、颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一份数据，多种展示方式"><span class="nav-number">5.2.</span> <span class="nav-text">一份数据，多种展示方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多份数据合并展示"><span class="nav-number">5.3.</span> <span class="nav-text">多份数据合并展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置图的基本属性"><span class="nav-number">5.4.</span> <span class="nav-text">设置图的基本属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何根据GroupBy中多列的值绘制"><span class="nav-number">5.5.</span> <span class="nav-text">如何根据GroupBy中多列的值绘制</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#导入数据"><span class="nav-number">1.</span> <span class="nav-text">导入数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设置index"><span class="nav-number">2.</span> <span class="nav-text">设置index</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#探索数据"><span class="nav-number">3.</span> <span class="nav-text">探索数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据描述"><span class="nav-number">3.1.</span> <span class="nav-text">数据描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#按天数计算数据"><span class="nav-number">3.2.</span> <span class="nav-text">按天数计算数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#谁的数据最多？"><span class="nav-number">3.3.</span> <span class="nav-text">谁的数据最多？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哪一天的数据最多？"><span class="nav-number">3.4.</span> <span class="nav-text">哪一天的数据最多？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#探索2-13这一天的数据"><span class="nav-number">3.5.</span> <span class="nav-text">探索2/13这一天的数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-13谁处理的请求最多"><span class="nav-number">3.6.</span> <span class="nav-text">2/13谁处理的请求最多</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绘图"><span class="nav-number">4.</span> <span class="nav-text">绘图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#按天"><span class="nav-number">5.</span> <span class="nav-text">按天</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#按小时"><span class="nav-number">6.</span> <span class="nav-text">按小时</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#按分钟"><span class="nav-number">7.</span> <span class="nav-text">按分钟</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#按名字"><span class="nav-number">8.</span> <span class="nav-text">按名字</span></a></li></ol></div>
             
 
           </div>
