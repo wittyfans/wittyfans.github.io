@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wittyfans.com/"/>
-  <updated>2019-04-08T14:24:16.379Z</updated>
+  <updated>2019-04-08T14:29:56.796Z</updated>
   <id>http://wittyfans.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>PowerShell通过Http, HTTPS, 和FTp下载文件</title>
+    <title>PowerShell通过http, https, 和ftp下载文件</title>
     <link href="http://wittyfans.com/coding/PowerShell%E9%80%9A%E8%BF%87Http-HTTPS-%E5%92%8CFTp%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6.html"/>
     <id>http://wittyfans.com/coding/PowerShell通过Http-HTTPS-和FTp下载文件.html</id>
     <published>2019-04-08T14:13:44.000Z</published>
-    <updated>2019-04-08T14:24:16.379Z</updated>
+    <updated>2019-04-08T14:29:56.796Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>利用 <em>PowerShell</em> 发起请求，不仅可以下载文件，还可以利用管道对文件进行解析，这一点比 <em>CMD</em> 命令行和 <em>Linux</em> 下的 <em>wget</em> 还要好用。</p></blockquote><a id="more"></a><h1 id="内网环境下"><a href="#内网环境下" class="headerlink" title="内网环境下"></a>内网环境下</h1><p>如果你工作的环境主要是通过 <em>Server Message Block (SMB)</em> 协议来传输文件，那么可以直接在 <em>powershell</em> 中使用 <em>copy-item</em> 命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Copy-Item -Source \\server\share\file -Destination C:\path\</span><br></pre></td></tr></table></figure><p>如果你在公司的内网（域环境）下，那么这个命令挺适合你，如果你是要下载外网或者 <em>Internet</em> 上面的数据，事情就变得复杂一点了。</p><h1 id="Internet"><a href="#Internet" class="headerlink" title="Internet"></a>Internet</h1><h2 id="任意版本-powershell"><a href="#任意版本-powershell" class="headerlink" title="任意版本 powershell"></a>任意版本 <em>powershell</em></h2><p>如果你用的power shell 2.x 的版本，你需要使用 <em>new-object</em> 配合 <em>System.Net.WebClient</em> 来实现：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$WebClient = New-Object System.Net.WebClient</span><br><span class="line">$WebClient.DownloadFile(&quot;https://www.wittyfans.com/file&quot;,&quot;C:\path\file&quot;)</span><br></pre></td></tr></table></figure><h2 id="powershell-版本3-x-以上"><a href="#powershell-版本3-x-以上" class="headerlink" title="powershell 版本3.x 以上"></a><em>powershell</em> 版本3.x 以上</h2><p>如果是 <em>powershell 3.x</em>, 可以用 <em>Invoke-WebRequest</em>命令。Invoke-WebRequest 和Linux其实还有一些关系。它比 <em>wget</em> 还要好用一些，因为它不仅可以下载，而且可以对文件进行解析。</p><p>使用：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Invoke-WebRequest -Uri &quot;http://www.wittyfans.com&quot; -OutFile &quot;C:\path\file&quot;</span><br></pre></td></tr></table></figure><ul><li>默认会下载这个网页，所以如果你指定的下载路径只是一个文件夹，<em>powershell</em>会提示找不到路径，这时候你需要指定路径加文件名.</li><li>如果你省略本地路径，则<em>powershell</em>会默认使用脚本所在目录的路径</li></ul><p>举例：</p><p>下载<em>sublime</em>:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Invoke-WebRequest -uri &quot;https://download.sublimetext.com/Sublime%20Text%20Build%203207%20x64%20Setup.exe&quot; -OutFile &quot;C:\Users\wittyfans\Desktop\sublime.exe&quot;</span><br></pre></td></tr></table></figure><p><em>Invoke-WebRequest</em> 默认把下载的东西传输给管道，如果你需要保存文件，必须要指定 <em>outfile</em> 参数。而且你还可以在管道中后面去分析这个文件，如果你传输的是二进制文件，<em>power shell</em>会默认以文本的方式处理，这时候你就没办法分析了，不过你可以增加一个参数，只分析文本内容，你需要这样使用：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Invoke-WebRequest &quot;http://www.wittyfans.com&quot; | Select-Object -ExpandProperty Content | Out-File &quot;file&quot;</span><br></pre></td></tr></table></figure><p>如果你想要保存所有管道中的文件：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Invoke-WebRequest &quot;http://www.wittyfans.com&quot; -OutFile &quot;file&quot; -PassThru | Select-Object -ExpandProperty Content</span><br></pre></td></tr></table></figure><h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>如果你的下载需要验证身份，<em>powershell</em>不会提示你，除非你指定了用户名，此时<em>powershell</em>会提示你输入密码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 1</span><br><span class="line">Invoke-WebRequest -Uri https://www.wittyfans.com/ -OutFile C:&quot;\path\file&quot; -Credential &quot;yourUserName&quot;</span><br><span class="line"></span><br><span class="line"># 2</span><br><span class="line">$Credentials = Get-Credential</span><br><span class="line">Invoke-WebRequest -Uri &quot;https://www.wittyfans.com&quot; -OutFile &quot;C:\path\file&quot; -Credential $Credentials</span><br></pre></td></tr></table></figure><p>你可以使用<em>-UseDefaultCredentials</em> 参数来使用当前用户的凭据，这样就可以省略 <em>Credential</em> 参数。</p><p>也可以使用弹窗来要求输入密码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$client = new-object System.Net.WebClient</span><br><span class="line">$client.Credentials = Get-Credential</span><br><span class="line">$client.DownloadFile(&quot;http://i.imgur.com/JnphmRt.jpg&quot;,&quot;C:\Users\Fatima Wahab\Desktop\cat.jpg&quot;)</span><br></pre></td></tr></table></figure><p>注意检查资源的路径是对的，如果你的路径是该网站的首页，那么就会出错。</p><p>为了确保安全，建议你使用 <em>https</em> 验证，如果只是基本的验证方式，你的密码可能会被抓包分析出来。</p><p>这种下载的验证方式之适用于那些服务器自己管理凭据的情况，现今很多的公司都是用 <em>content management system (CMS)</em> 来验证用户，这时候你就需要使用<em>powershell</em>填写一些表单再提交,用我写的一个函数来举个例子,这个函数只是验证身份，没有下载的动作:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Function login-in($userName,$userPassWord)&#123;</span><br><span class="line">    # 请求并保存session</span><br><span class="line">    $R=Invoke-WebRequest &quot;the_url&quot; -SessionVariable fb</span><br><span class="line"></span><br><span class="line">    # 填写表单信息</span><br><span class="line">    $Form = $R.Forms[0]</span><br><span class="line">    $Form.Fields[&quot;account&quot;]=$userName</span><br><span class="line">    $Form.Fields[&quot;password&quot;] = $userPassWord</span><br><span class="line">    $Form.Fields[&quot;signIn&quot;] = &quot;Sign+in&quot;</span><br><span class="line"></span><br><span class="line">    # 提交 </span><br><span class="line">    $R=Invoke-WebRequest -Uri (&quot;the_url&quot; + $Form.Action) -WebSession $FB -Method POST -Body $Form.Fields</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如果想要安全一些，最好不要使用<em>FTP</em>的方式，建议用<em>SFTP</em> 或者 <em>SCP</em>，但 <em>Invoke-WebRequest</em> 不支持这些协议，你可以安装一些第三方的库来实现，现在已经有相关的库实现了。</p><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul><li><a href="https://www.addictivetips.com/windows-tips/how-to-download-a-file-with-a-powershell-command-in-windows-10/" target="_blank" rel="noopener">How To Download A File With A PowerShell Command In Windows 10</a></li><li><a href="https://stackoverflow.com/questions/51225598/downloading-a-file-with-powershell" target="_blank" rel="noopener">StackOverFlow上关于 Downloading a file with powershell 的回答</a></li></ul>]]></content>
     
@@ -292,11 +292,11 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
+      <category term="web" scheme="http://wittyfans.com/tags/web/"/>
+    
       <category term="python" scheme="http://wittyfans.com/tags/python/"/>
     
       <category term="dash" scheme="http://wittyfans.com/tags/dash/"/>
-    
-      <category term="web" scheme="http://wittyfans.com/tags/web/"/>
     
       <category term="data" scheme="http://wittyfans.com/tags/data/"/>
     
@@ -538,9 +538,9 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
-      <category term="shell" scheme="http://wittyfans.com/tags/shell/"/>
-    
       <category term="windows" scheme="http://wittyfans.com/tags/windows/"/>
+    
+      <category term="shell" scheme="http://wittyfans.com/tags/shell/"/>
     
       <category term="cmd" scheme="http://wittyfans.com/tags/cmd/"/>
     
