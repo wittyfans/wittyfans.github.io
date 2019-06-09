@@ -37,20 +37,6 @@
   </entry>
   
   <entry>
-    <title>常用命令整理</title>
-    <link href="http://wittyfans.com/writing/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%95%B4%E7%90%86.html"/>
-    <id>http://wittyfans.com/writing/常用命令整理.html</id>
-    <published>2019-06-07T13:47:33.000Z</published>
-    <updated>2019-06-07T13:47:33.242Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>Excel笔记P1</title>
     <link href="http://wittyfans.com/coding/Excel%E7%AC%94%E8%AE%B0P1.html"/>
     <id>http://wittyfans.com/coding/Excel笔记P1.html</id>
@@ -527,6 +513,30 @@
       <category term="Pandas" scheme="http://wittyfans.com/tags/Pandas/"/>
     
       <category term="Big Data" scheme="http://wittyfans.com/tags/Big-Data/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Pandas常用操作</title>
+    <link href="http://wittyfans.com/coding/Pandas%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C.html"/>
+    <id>http://wittyfans.com/coding/Pandas常用操作.html</id>
+    <published>2018-12-29T04:16:02.000Z</published>
+    <updated>2018-12-31T03:38:10.182Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>常用的操作与命令，记录一下</p></blockquote><a id="more"></a><h1 id="Pandas-常用操作"><a href="#Pandas-常用操作" class="headerlink" title="Pandas 常用操作"></a>Pandas 常用操作</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1. 更改列的顺序</span><br><span class="line">pdusersInfo = pdusersInfo[[&apos;username&apos;,&apos;sex&apos;,&apos;platform&apos;]]</span><br><span class="line"></span><br><span class="line">2. 从字典构造DataFrame</span><br><span class="line">usersInfo = &#123;&apos;username&apos;:username,&apos;sex&apos;:usersex,&apos;platform&apos;:platform&#125;</span><br><span class="line">pdusersInfo = pd.DataFrame.from_dict(usersInfo)</span><br><span class="line"></span><br><span class="line">3. 本地json转换成pd数据</span><br><span class="line">import json</span><br><span class="line">with open(&quot;path/filename.json&quot;,encoding=&quot;utf-8&quot;) as jsonFile:</span><br><span class="line">    data = json.load(jsonFile)</span><br><span class="line">pdJson = pd.DataFrame(data)</span><br><span class="line"></span><br><span class="line">4.数据分段统计，bins是分段的标记，ages为数据，数据将会按照18-25,25-35等分段统计，right为控制数据偏向哪一边</span><br><span class="line">ages = [20,22,21,27,47,33,67,42,100,60,60]</span><br><span class="line">bins = [18,25,35,60,100]</span><br><span class="line"></span><br><span class="line">cats = pd.cut(ages,bins,right=False)</span><br><span class="line">pd.value_counts(cats)</span><br><span class="line"></span><br><span class="line">5. 去重复</span><br><span class="line">data.drop_duplicates() -&gt; 去掉所有列的数据都一样的</span><br><span class="line">data.drop_duplicates([&quot;name&quot;,&quot;age&quot;]) -&gt; 去除名字和年龄一样的数据</span><br><span class="line"></span><br><span class="line">6. 合并两个表</span><br><span class="line">c = a.append(b)</span><br><span class="line">c.data.drop_duplicates()</span><br><span class="line"></span><br><span class="line">7. 统计列中某个值出现的次数</span><br><span class="line">pd.value_counts(colname.value)</span><br><span class="line"></span><br><span class="line">8. Excel交互</span><br><span class="line">&gt; 这三条代码的意思是，导入pandas，读取文件，并简要显示文件内容。</span><br><span class="line">import pandas as pd</span><br><span class="line">data = pd.read_excel(&quot;C://Users/username/path/filename.xlsx&quot;)</span><br><span class="line">data.tail</span><br><span class="line">data.dtypes</span><br><span class="line"></span><br><span class="line">&gt; 导出</span><br><span class="line">out_path = &quot;/Users/wittyfans/Desktop/4F/PhoneData.xlsx&quot;</span><br><span class="line">writer = pd.ExcelWriter(out_path , engine=&apos;xlsxwriter&apos;)</span><br><span class="line">data.to_excel(writer, sheet_name=&apos;Sheet1&apos;)</span><br><span class="line">writer.save()</span><br><span class="line"></span><br><span class="line">9. 过滤</span><br><span class="line">&gt; 过滤前五条数据：</span><br><span class="line">data.ID[:5]</span><br><span class="line"></span><br><span class="line">10. 丢弃空值</span><br><span class="line"> data.dropna()</span><br><span class="line"></span><br><span class="line">11. 类型转换</span><br><span class="line">int = double.astype(int)</span><br><span class="line"></span><br><span class="line">13. 从html请求表</span><br><span class="line">url = &apos;/Users/wittyfans/Desktop/a.html&apos;</span><br><span class="line">dfs = pd.read_html(url,header=0)</span><br><span class="line"></span><br><span class="line">14. 从字典构造DataFrame</span><br><span class="line">users = &#123;&apos;names&apos;:usernames,&apos;sex&apos;:usersexs,&apos;platform&apos;:userplatform&#125;</span><br><span class="line">users = pd.DataFrame(users)</span><br><span class="line"></span><br><span class="line">15. 根据指定值分组</span><br><span class="line">data.groupby(&apos;platform&apos;)</span><br><span class="line"></span><br><span class="line">16. 根据指定列排序</span><br><span class="line">data.sort_values(&apos;names&apos;,ascending=False)</span><br><span class="line"></span><br><span class="line">17. csv交互</span><br><span class="line">pd.read_csv(&quot;/Users/wittyfans/Desktop/example.csv&quot;)</span><br><span class="line"></span><br><span class="line">18. 选择数据</span><br><span class="line">- [参考](https://morvanzhou.github.io/tutorials/data-manipulation/np-pd/3-2-pd-indexing/)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;常用的操作与命令，记录一下&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
+    
+    
+      <category term="Data" scheme="http://wittyfans.com/tags/Data/"/>
     
   </entry>
   
