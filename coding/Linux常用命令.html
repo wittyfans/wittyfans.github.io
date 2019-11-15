@@ -86,18 +86,15 @@
 
 
 
-<meta name="description" content="Linux常用参考手册，定期更新～">
 <meta name="keywords" content="系统,Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux常用命令">
 <meta property="og:url" content="http://wittyfans.com/coding/Linux常用命令.html">
 <meta property="og:site_name" content="wittyfans">
-<meta property="og:description" content="Linux常用参考手册，定期更新～">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-29T03:40:21.298Z">
+<meta property="og:updated_time" content="2019-06-09T12:21:10.732Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux常用命令">
-<meta name="twitter:description" content="Linux常用参考手册，定期更新～">
 
 
 
@@ -370,24 +367,225 @@
 
       
         <blockquote>
-<p>Linux常用参考手册，定期更新～</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="服务器连接与配置"><a href="#服务器连接与配置" class="headerlink" title="服务器连接与配置"></a>服务器连接与配置</h1><h2 id="修改alias（别名），简化命令操作"><a href="#修改alias（别名），简化命令操作" class="headerlink" title="修改alias（别名），简化命令操作"></a>修改alias（别名），简化命令操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.bash_profile</span><br><span class="line">alias testhost=&apos;ssh root@8.8.8.8 -p 22&apos;</span><br></pre></td></tr></table></figure>
-<h2 id="修改ssh配置，简化ssh命令"><a href="#修改ssh配置，简化ssh命令" class="headerlink" title="修改ssh配置，简化ssh命令"></a>修改ssh配置，简化ssh命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.ssh/config</span><br><span class="line">#输入：</span><br><span class="line"></span><br><span class="line">Host testhost</span><br><span class="line">  HostName 8.8.8.8</span><br><span class="line">  Port 2222</span><br><span class="line">  User foo</span><br><span class="line"></span><br><span class="line">#保存后，可使用 ssh testhost 登陆服务器</span><br></pre></td></tr></table></figure>
-<h2 id="Mac使用秘钥无密码登陆"><a href="#Mac使用秘钥无密码登陆" class="headerlink" title="Mac使用秘钥无密码登陆"></a>Mac使用秘钥无密码登陆</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 生成本地秘钥，一路回车即可</span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line"># 上传生成的秘钥到服务器</span><br><span class="line">scp ~/.ssh/id_rsa.pub testhost:~/.ssh/</span><br><span class="line"># 使用以下命令将 id_rsa.pub 更名为 authorized_keys</span><br><span class="line">mv id_rsa.pub authorized_keys</span><br><span class="line"># 修改权限</span><br><span class="line">chmod 700 ~/.ssh/</span><br><span class="line">chmod 600 ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
-<h1 id="系统信息"><a href="#系统信息" class="headerlink" title="系统信息"></a>系统信息</h1><ul>
-<li>df -hl ：查看硬盘使用情况，以M显示</li>
-<li>free -m :查看内存使用情况</li>
-<li>top 查看CPU的使用情况</li>
+<h1 id="Linux-Mac-Commands"><a href="#Linux-Mac-Commands" class="headerlink" title="Linux / Mac Commands"></a>Linux / Mac Commands</h1><h1 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h1><ul>
+<li>cd</li>
+<li>pwd</li>
+<li>ls</li>
+<li>ls -a</li>
+<li>ls -l </li>
+<li>ls -la</li>
+<li>cd .. </li>
+<li>ls sub_dir/</li>
+<li>cd ~</li>
 </ul>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li><a href="http://www.laozuo.org/1345.html" target="_blank" rel="noopener">硬盘</a></li>
-<li><a href="http://www.cnblogs.com/xd502djj/archive/2011/03/01/1968041.html" target="_blank" rel="noopener">内存</a></li>
-<li><a href="http://www.cnblogs.com/xd502djj/archive/2011/03/01/1968041.html" target="_blank" rel="noopener">CPU</a></li>
+<h1 id="Files"><a href="#Files" class="headerlink" title="Files"></a>Files</h1><ul>
+<li>mkdir</li>
+<li>touch</li>
+<li>cp, copy a file</li>
+<li>cp -r, copy a directory</li>
+<li>mv, rename or moving a file</li>
+<li>open</li>
+<li>rm</li>
+<li>rm -rf, force removing a directory</li>
+<li>man(-r), show some info</li>
+<li>about, info</li>
 </ul>
-<hr>
-<p>持续更新</p>
+<h1 id="Find"><a href="#Find" class="headerlink" title="Find"></a>Find</h1><h2 id="help"><a href="#help" class="headerlink" title="help"></a>help</h2><ul>
+<li>man find</li>
+</ul>
+<h2 id="by-name"><a href="#by-name" class="headerlink" title="by name"></a>by name</h2><ul>
+<li>find ., list all file and folder below current</li>
+<li>find folder</li>
+<li>find . -type d, find all foldre, no file</li>
+<li>find . -type f, find all file , no foldre</li>
+<li>find . -type f -name “test.txt”, name as text txt file</li>
+<li>find . -type f -name “text*”, name as txt all file</li>
+<li>find . -type f -iname “text*”, 不区分大小写</li>
+<li>find . -type f -name “*.py”</li>
+</ul>
+<h2 id="by-time"><a href="#by-time" class="headerlink" title="by time"></a>by time</h2><ul>
+<li>find . -type f -mmin -10,过去十分钟修改过的文件</li>
+<li>find . -type f -mmin +10</li>
+<li>find . -type f -mmin +1 -mmin -5</li>
+<li>find . -type f -mtime -20</li>
+</ul>
+<blockquote>
+<p>amin,atime: access min and access day; cmin,ctime: change min and change day; mmin,mtime: modify;</p>
+</blockquote>
+<h2 id="by-size"><a href="#by-size" class="headerlink" title="by size"></a>by size</h2><ul>
+<li><p>find . -size +5m</p>
+<blockquote>
+<p>k,g is work too</p>
+</blockquote>
+</li>
+<li><p>ls -lah ./folders, info about sub folder and files,including size</p>
+</li>
+<li>find . -empty</li>
+</ul>
+<h2 id="permission"><a href="#permission" class="headerlink" title="permission"></a>permission</h2><ul>
+<li>find. -perm 777, read, write, and excute</li>
+<li>find folder -exec chown coreschafer:www-data {} +</li>
+</ul>
+<blockquote>
+<p>find folder, will return all folder, -exec will run the command in that results, {} palceholder, + end of the command.</p>
+</blockquote>
+<ul>
+<li>find folder -type f -exec chmod 664 {} +</li>
+<li>find folder -perm 664</li>
+<li>find . -type f -name “*.jpg”</li>
+<li>find . -type f -name “*.jpg” -maxdepth 1, searched 1 level down</li>
+<li>find . -type f -name “*.jpg” -maxdepth 1 -exec rm {} +, delete serched files</li>
+</ul>
+<h1 id="Grep"><a href="#Grep" class="headerlink" title="Grep"></a>Grep</h1><h2 id="Grep-single-file"><a href="#Grep-single-file" class="headerlink" title="Grep single file"></a>Grep single file</h2><blockquote>
+<p>searched text</p>
+</blockquote>
+<ul>
+<li>grep “text_you_want_search” filename.txt</li>
+<li>grep -w “text_you_want_search” filename.txt, have to match all words</li>
+<li>grep -wi “text_you_want_search” filename.txt, igore the lowcase and uppearcse.</li>
+<li>grep -win “text_you_want_search” filename.txt, get info about the line number</li>
+<li>grep -win -B 4 “text_you_want_search” filename.txt, return the context about the searched words, 4 line, behind</li>
+<li>grep -win -A 4 “text_you_want_search” filename.txt, return the context about the searched words, 4 line, ahead</li>
+<li>grep -win -C 4 “text_you_want_search” filename.txt, return the context about the searched words, 4 line, two line before and two behind.</li>
+</ul>
+<h2 id="Grep-multi-file"><a href="#Grep-multi-file" class="headerlink" title="Grep multi file"></a>Grep multi file</h2><ul>
+<li>grep -win “text_” ./*, all file</li>
+<li>grep -win “text_” ./*.txt, txt file</li>
+<li>grep -winr “text” ./ , search all subdir</li>
+<li>grep -wirl “text” ./ , no need match info, just file list</li>
+<li>grep -wirc “text” ./ , show matched number in eatch file</li>
+</ul>
+<h2 id="Grep-command-history"><a href="#Grep-command-history" class="headerlink" title="Grep command history"></a>Grep command history</h2><ul>
+<li>history | grep “git commit”</li>
+<li>history | grep “git commit” | grep “dotfile”</li>
+</ul>
+<h2 id="Grep-rgx"><a href="#Grep-rgx" class="headerlink" title="Grep rgx"></a>Grep rgx</h2><ul>
+<li>grep -P “\d{3}-\d{3}-\d{4}” file.txt, work well in linux, mac need to config, I configed</li>
+</ul>
+<h1 id="cURL"><a href="#cURL" class="headerlink" title="cURL"></a>cURL</h1><h2 id="Requests"><a href="#Requests" class="headerlink" title="Requests"></a>Requests</h2><ul>
+<li>curl url</li>
+<li>curl <a href="http://localhost:5000" target="_blank" rel="noopener">http://localhost:5000</a></li>
+<li>curl http:***/json_file<ul>
+<li>curl -i http:***/json_file, details info about the get</li>
+</ul>
+</li>
+<li>curl http:***/method<ul>
+<li>curl -d “first=name&amp;last=lastname” http:***/method, d for data, Post request</li>
+<li>curl -X PUT -d “first=name&amp;last=lastname” http:***/method, d for data, Pust request</li>
+<li>curl -X DELETE http:***/method, delete request</li>
+</ul>
+</li>
+</ul>
+<h2 id="Verify"><a href="#Verify" class="headerlink" title="Verify"></a>Verify</h2><blockquote>
+<p>could not verify your access ?</p>
+</blockquote>
+<ul>
+<li>curl -u username:password http://***, Auth</li>
+</ul>
+<h2 id="Download"><a href="#Download" class="headerlink" title="Download"></a>Download</h2><blockquote>
+<p>Download file</p>
+</blockquote>
+<ul>
+<li>curl http://***/folder, return binary file , error</li>
+<li>curl -o filename.jpg http://***/folder, sucess</li>
+</ul>
+<blockquote>
+<p>Saving large json file</p>
+</blockquote>
+<ul>
+<li>curl -o file_name.json http:/.api.the_url*</li>
+</ul>
+<h1 id="rsync"><a href="#rsync" class="headerlink" title="rsync"></a>rsync</h1><h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><blockquote>
+<p>aviable in Mac, debian-based linux need to install</p>
+</blockquote>
+<ul>
+<li>apt-get install rsync</li>
+<li>yum install rsync</li>
+</ul>
+<h2 id="Use"><a href="#Use" class="headerlink" title="Use"></a>Use</h2><ul>
+<li>rsync folder1/* backup/ , sync fils to backup folder,will skping the subfolder’s file, but affected subfolder</li>
+<li>rsync -r folder1/* backup/ , including subfolder’s file</li>
+<li>rsync -r folder1 backup/, sync folder, not content in it</li>
+</ul>
+<h2 id="Check-chage-before-run"><a href="#Check-chage-before-run" class="headerlink" title="Check chage before run"></a>Check chage before run</h2><ul>
+<li>rsync -a –dry-run folder1/* backup/, check before the command run, now view showed<ul>
+<li>rsync -av –dry-run folder1/* backup/, auto view</li>
+</ul>
+</li>
+</ul>
+<h2 id="Source-folder-has-new-file"><a href="#Source-folder-has-new-file" class="headerlink" title="Source_folder has new file"></a>Source_folder has new file</h2><ul>
+<li>rsync -av –delete –dry-run original/ backup/, check, be careful !</li>
+</ul>
+<h2 id="Do-it-in-local-and-host"><a href="#Do-it-in-local-and-host" class="headerlink" title="Do it in local and host"></a>Do it in local and host</h2><ul>
+<li>rsync -zaP -p local_folder username@ip:~/public/, z for compress, a for all, P for tarnsfer in internet</li>
+<li>rsync 0zaP username@ip:~/public/file ~/Downloads/, revers</li>
+</ul>
+<h1 id="Cron"><a href="#Cron" class="headerlink" title="Cron"></a>Cron</h1><ul>
+<li>crontab -l, list the crons</li>
+</ul>
+<blockquote>
+<p>set your editor to nano, default vim</p>
+</blockquote>
+<ul>
+<li><p>export EDITOR=/user/bin/nano</p>
+</li>
+<li><p>crontab -e, open editor</p>
+<ul>
+<li>press i to input</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Algorhythm for schuel you task with time</span><br><span class="line"></span><br><span class="line"># ┌───────────── minute (0 - 59)</span><br><span class="line"># │ ┌───────────── hour (0 - 23)</span><br><span class="line"># │ │ ┌───────────── day of month (1 - 31)</span><br><span class="line"># │ │ │ ┌───────────── month (1 - 12)</span><br><span class="line"># │ │ │ │ ┌───────────── day of week (0 - 6) (Sunday to Saturday;</span><br><span class="line"># │ │ │ │ │                                       7 is also Sunday on some systems)</span><br><span class="line"># │ │ │ │ │</span><br><span class="line"># │ │ │ │ │</span><br><span class="line"># * * * * *  command_to_execute</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://youtu.be/QZJ1drMQz1A" target="_blank" rel="noopener">More in</a></li>
+<li><a href="https://github.com/CoreyMSchafer/code_snippets/blob/master/Cron-Tasks/snippets.txt" target="_blank" rel="noopener">snippets</a></li>
+<li><a href="https://crontab.guru/" target="_blank" rel="noopener">tools to make a cron job</a></li>
+</ul>
+<h1 id="Profile"><a href="#Profile" class="headerlink" title="Profile"></a>Profile</h1><ul>
+<li>PS1=”customer_namae”; , change the name, temporary</li>
+<li>ls -la, show dot file, find .bash_profile</li>
+</ul>
+<h2 id="backup"><a href="#backup" class="headerlink" title="backup"></a>backup</h2><ol>
+<li>mv .bash_profile backup_folder</li>
+<li>mv .bashrc back_folder</li>
+</ol>
+<h2 id="created"><a href="#created" class="headerlink" title="created"></a>created</h2><ol>
+<li>cd !</li>
+<li>touch .bash_profile</li>
+<li>touch .bashrc</li>
+<li>subl .bash_profile -&gt; echo “Hello from bash_profile”, subl for sublime</li>
+<li>subl .bashrc -&gt; echo “Hello from bashrc”</li>
+</ol>
+<blockquote>
+<p>bash_profile, run every time you open terminal, or ssh login to some machine. when you input bash, you will get the print from bashrc.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if [-f ~/.bashrc]; then</span><br><span class="line">	source ~/.bashrc</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<h2 id="config-terminal-view"><a href="#config-terminal-view" class="headerlink" title="config terminal view"></a>config terminal view</h2><p>You can add the keywords in below list to the ps1, to show some extra info.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># config display name</span><br><span class="line">ps1 = &quot;-&gt;&quot;; export PS1</span><br><span class="line"></span><br><span class="line"># if you config command is too long, you can += it</span><br><span class="line">ps1 += &quot;some_other_config&quot;</span><br><span class="line"></span><br><span class="line"># add the infomation of you computer, or time</span><br><span class="line"></span><br><span class="line">\u: usernmae</span><br><span class="line">\h: hostname</span><br><span class="line">\n: new line</span><br><span class="line">\t: the current time</span><br><span class="line">\w: current working directory</span><br><span class="line">\W: base name of current working directory</span><br></pre></td></tr></table></figure>
+<p>In shell, you can print with {}, like :</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># This will print the pwd&apos;s output in shell.</span><br><span class="line">You current diretory is $(pwd)</span><br><span class="line"></span><br><span class="line"># change color, no stop, all font will set to orange</span><br><span class="line">echo &quot;$(tput setaf 166) This is orange&quot;</span><br><span class="line"></span><br><span class="line"># set a stop of the change color command</span><br><span class="line">echo &quot;$(tput setaf 166) This is orange $(tput sgr0)&quot;</span><br></pre></td></tr></table></figure>
+<h1 id="Mac-OS-Keyboard-Shortcuts"><a href="#Mac-OS-Keyboard-Shortcuts" class="headerlink" title="Mac OS Keyboard Shortcuts"></a>Mac OS Keyboard Shortcuts</h1><ul>
+<li>using arrow key to view the history command</li>
+<li>ctrl + a, jump to the begining of line</li>
+<li>ctrl + e, jump to the end</li>
+<li>option + left/rithg, jump by words</li>
+<li>holding option key, move mourse to the point you want to go</li>
+<li>ctrl + u, delete code before the point</li>
+<li>ctrl + k, delete everything after the cursor</li>
+<li>!fi, re run the command in history that begins with fi</li>
+<li>ctrl+ r, search the history command that you inputed</li>
+<li>ctrl + l, clean the screen, without clean the history output</li>
+<li>ctrl + k, clearn the screen ,including the history output</li>
+</ul>
+<h1 id="Aliases"><a href="#Aliases" class="headerlink" title="Aliases"></a>Aliases</h1><ol>
+<li>sudo vim .bash_profile</li>
+<li>alias dt = ‘cd !/Desktop/‘</li>
+<li>killall Finder</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.bash_profile</span><br><span class="line">alias testhost=&apos;ssh root@8.8.8.8 -p 22&apos;</span><br></pre></td></tr></table></figure>
+<h1 id="generate-key"><a href="#generate-key" class="headerlink" title="generate key"></a>generate key</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 生成本地秘钥，一路回车即可</span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line"># 上传生成的秘钥到服务器</span><br><span class="line">scp ~/.ssh/id_rsa.pub testhost:~/.ssh/</span><br><span class="line"># 使用以下命令将 id_rsa.pub 更名为 authorized_keys</span><br><span class="line">mv id_rsa.pub authorized_keys</span><br><span class="line"># 修改权限</span><br><span class="line">chmod 700 ~/.ssh/</span><br><span class="line">chmod 600 ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -518,7 +716,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">52</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -535,7 +733,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-count">65</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -615,7 +813,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#服务器连接与配置"><span class="nav-number">1.</span> <span class="nav-text">服务器连接与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改alias（别名），简化命令操作"><span class="nav-number">1.1.</span> <span class="nav-text">修改alias（别名），简化命令操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改ssh配置，简化ssh命令"><span class="nav-number">1.2.</span> <span class="nav-text">修改ssh配置，简化ssh命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mac使用秘钥无密码登陆"><span class="nav-number">1.3.</span> <span class="nav-text">Mac使用秘钥无密码登陆</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系统信息"><span class="nav-number">2.</span> <span class="nav-text">系统信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-Mac-Commands"><span class="nav-number">1.</span> <span class="nav-text">Linux / Mac Commands</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Basic"><span class="nav-number">2.</span> <span class="nav-text">Basic</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Files"><span class="nav-number">3.</span> <span class="nav-text">Files</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Find"><span class="nav-number">4.</span> <span class="nav-text">Find</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#help"><span class="nav-number">4.1.</span> <span class="nav-text">help</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#by-name"><span class="nav-number">4.2.</span> <span class="nav-text">by name</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#by-time"><span class="nav-number">4.3.</span> <span class="nav-text">by time</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#by-size"><span class="nav-number">4.4.</span> <span class="nav-text">by size</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#permission"><span class="nav-number">4.5.</span> <span class="nav-text">permission</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Grep"><span class="nav-number">5.</span> <span class="nav-text">Grep</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Grep-single-file"><span class="nav-number">5.1.</span> <span class="nav-text">Grep single file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Grep-multi-file"><span class="nav-number">5.2.</span> <span class="nav-text">Grep multi file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Grep-command-history"><span class="nav-number">5.3.</span> <span class="nav-text">Grep command history</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Grep-rgx"><span class="nav-number">5.4.</span> <span class="nav-text">Grep rgx</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cURL"><span class="nav-number">6.</span> <span class="nav-text">cURL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Requests"><span class="nav-number">6.1.</span> <span class="nav-text">Requests</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Verify"><span class="nav-number">6.2.</span> <span class="nav-text">Verify</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Download"><span class="nav-number">6.3.</span> <span class="nav-text">Download</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rsync"><span class="nav-number">7.</span> <span class="nav-text">rsync</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install"><span class="nav-number">7.1.</span> <span class="nav-text">Install</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Use"><span class="nav-number">7.2.</span> <span class="nav-text">Use</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Check-chage-before-run"><span class="nav-number">7.3.</span> <span class="nav-text">Check chage before run</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Source-folder-has-new-file"><span class="nav-number">7.4.</span> <span class="nav-text">Source_folder has new file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Do-it-in-local-and-host"><span class="nav-number">7.5.</span> <span class="nav-text">Do it in local and host</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cron"><span class="nav-number">8.</span> <span class="nav-text">Cron</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Profile"><span class="nav-number">9.</span> <span class="nav-text">Profile</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#backup"><span class="nav-number">9.1.</span> <span class="nav-text">backup</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#created"><span class="nav-number">9.2.</span> <span class="nav-text">created</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#config-terminal-view"><span class="nav-number">9.3.</span> <span class="nav-text">config terminal view</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Mac-OS-Keyboard-Shortcuts"><span class="nav-number">10.</span> <span class="nav-text">Mac OS Keyboard Shortcuts</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Aliases"><span class="nav-number">11.</span> <span class="nav-text">Aliases</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#generate-key"><span class="nav-number">12.</span> <span class="nav-text">generate key</span></a></li></ol></div>
             
 
           </div>
