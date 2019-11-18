@@ -96,7 +96,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2019/11/18/SbPAWvxuiRELnO6.png">
 <meta property="og:image" content="https://i.loli.net/2019/11/15/2cYvGT3VPQhU5dE.png">
-<meta property="og:updated_time" content="2019-11-18T02:59:47.355Z">
+<meta property="og:updated_time" content="2019-11-18T03:11:14.378Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="监督学习实例：学校图书数据分类">
 <meta name="twitter:description" content="我们学校比旁边的学校在教科书上面花了更多的钱吗？这是否有用呢？">
@@ -380,8 +380,8 @@
 </blockquote>
 <a id="more"></a>
 <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>学校想知道，我们比旁边的学校在教科书上面花了更多的钱吗？这是否有用？</p>
-<p>要回到这个问题，首先我们需要有教科书的数据，并进行分类，然而分类是一个及其复杂的操作，学校每年都会花很多的时间去手动分类。</p>
-<p>我们的目标是可以建立一个机器学习模型自动处理这个步骤。</p>
+<p>要回答这个问题，首先我们需要有教科书的数据，并进行分类。然而分类是一个及其复杂的操作，学校每年都会花很多的时间去手动分类。</p>
+<p>我们的目标是可以建立一个机器学习模型自动处理这个分类步骤。</p>
 <p>比如《线性代数》，这本书我们会给他几个标签：</p>
 <ul>
 <li>数学</li>
@@ -461,8 +461,7 @@
 </tbody>
 </table>
 <p>这个步骤又叫做 <code>binary indicator</code> representation.</p>
-<p>如果你有多列数据需要转化成 <code>category</code>类型，可以使用 lambda 函数加dataframe的apply方法，记得设置axis=0.</p>
-<p>使用<code>df.dtypes.value_counts()</code>来查看你的数据里数据类型的分布情况。</p>
+<p>如果你有多列数据需要转化成 <code>category</code>类型，可以使用 lambda 函数加dataframe的apply方法，记得设置axis=0，也就是处理方式是按列，处理完成之后，你可以使用<code>df.dtypes.value_counts()</code>来查看你的数据里数据类型的分布情况。</p>
 <h1 id="如何定义成功？"><a href="#如何定义成功？" class="headerlink" title="如何定义成功？"></a>如何定义成功？</h1><p>用accuracy，没办法解决垃圾邮件的问题，这个我们在机器学习那一章已经讲过，所以我们使用<code>log loss</code>，简单来说,accuracy是尽可能的提高正确率，而<code>log loss</code>则是尽可能的降低错误率。</p>
 <p>下面是我们使用的<code>loss function</code>的定义：</p>
 <p>$$logloss=-\frac{1}{N}\sum_{i=1}^{N}(y_ilogs(p_i))+(1-y_i)log(1-p_i)$$</p>
@@ -475,7 +474,7 @@
 <p>叫做求和符号，读作<em>segema</em>,它的意思就是连续的加法，比如:</p>
 <p>$$\sum_{k=1}^{n}ak=a_1+a_2+a_3+..a_n$$</p>
 <p>k是下标，它会从k变化到n，当k=1的时候，ak就是a1，当k=2的时候，ak就是a2，最后一项就是k=n,segima的意思呢就是把这些项全都加起来。</p>
-<p>所以这里的segema的意思就是把数据中，每一行的数据都加起来。</p>
+<p>所以这里的segema的意思就是把数据中，每一行的数据都加起来，如果你不了解求和符号，可以参考我的这篇<a href="http://wittyfans.com/math/%E6%95%B0%E5%AD%A6%E5%A4%8D%E4%B9%A0%EF%BC%9A%E6%B1%82%E5%92%8C%E7%AC%A6%E5%8F%B7.html">文章</a></p>
 <p>把一行的数据乘以 $$-\frac{1}{N}$$，得到这一行的logloss.</p>
 <h2 id="log-loss函数示例"><a href="#log-loss函数示例" class="headerlink" title="log loss函数示例"></a>log loss函数示例</h2><h3 id="假设A"><a href="#假设A" class="headerlink" title="假设A"></a>假设A</h3><ul>
 <li>true label=0</li>
@@ -491,7 +490,7 @@
 <li>预测0的概率是0.5</li>
 </ul>
 <p>则los函数表示为：</p>
-<p>$$logloss=-\frac{1}{1}<em>1</em>\log^{0.5}+(1-1)*\log^{1-0.5}$$</p>
+<p>$$logloss=-\frac{1}{1}1\log^{0.5}+(1-1)\log^{1-0.5}$$</p>
 <p>带入公式计算可得：</p>
 <p>$$=-\log^{0.5}$$</p>
 <p>$$=0.69$$</p>
@@ -581,6 +580,8 @@
 </ul>
 <p>当然，sklearn提供了一种非常直接的方式使用interaction terms，即：<em>PolynomialFeatures</em>,</p>
 <p>另外还有一个叫做SparseInteractions的包，也可以做同样的事情。</p>
+<p>最后，我们不可能因为选一个不一样的模型就改善所有的情况，模型的优化是一个渐进的步骤，可能是你将模型的某个参数调整一下，可能是你在语义处理方面更换了一个更好的工具，这些东西都需要你去根据你的实际情况作出调整。</p>
+<p>这篇文章就到这里结束了，下一篇将会是非监督学习。</p>
 
       
     </div>
