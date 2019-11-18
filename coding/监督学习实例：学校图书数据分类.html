@@ -94,12 +94,13 @@
 <meta property="og:site_name" content="wittyfans">
 <meta property="og:description" content="我们学校比旁边的学校在教科书上面花了更多的钱吗？这是否有用呢？">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/11/18/SbPAWvxuiRELnO6.png">
 <meta property="og:image" content="https://i.loli.net/2019/11/15/2cYvGT3VPQhU5dE.png">
-<meta property="og:updated_time" content="2019-11-17T16:08:54.813Z">
+<meta property="og:updated_time" content="2019-11-18T02:59:47.355Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="监督学习实例：学校图书数据分类">
 <meta name="twitter:description" content="我们学校比旁边的学校在教科书上面花了更多的钱吗？这是否有用呢？">
-<meta name="twitter:image" content="https://i.loli.net/2019/11/15/2cYvGT3VPQhU5dE.png">
+<meta name="twitter:image" content="https://i.loli.net/2019/11/18/SbPAWvxuiRELnO6.png">
 
 
 
@@ -373,6 +374,7 @@
       
         <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
+<p><img src="https://i.loli.net/2019/11/18/SbPAWvxuiRELnO6.png" alt=""></p>
 <blockquote>
 <p>我们学校比旁边的学校在教科书上面花了更多的钱吗？这是否有用呢？</p>
 </blockquote>
@@ -461,36 +463,38 @@
 <p>这个步骤又叫做 <code>binary indicator</code> representation.</p>
 <p>如果你有多列数据需要转化成 <code>category</code>类型，可以使用 lambda 函数加dataframe的apply方法，记得设置axis=0.</p>
 <p>使用<code>df.dtypes.value_counts()</code>来查看你的数据里数据类型的分布情况。</p>
-<h2 id="如何定义成功？"><a href="#如何定义成功？" class="headerlink" title="如何定义成功？"></a>如何定义成功？</h2><p>用accuracy，没办法解决垃圾邮件的问题，这个我们在机器学习那一章已经讲过，所以我们使用<code>log loss</code>，简单来说,accuracy是尽可能的提高正确率，而<code>log loss</code>则是尽可能的降低错误率。</p>
+<h1 id="如何定义成功？"><a href="#如何定义成功？" class="headerlink" title="如何定义成功？"></a>如何定义成功？</h1><p>用accuracy，没办法解决垃圾邮件的问题，这个我们在机器学习那一章已经讲过，所以我们使用<code>log loss</code>，简单来说,accuracy是尽可能的提高正确率，而<code>log loss</code>则是尽可能的降低错误率。</p>
 <p>下面是我们使用的<code>loss function</code>的定义：</p>
 <p>$$logloss=-\frac{1}{N}\sum_{i=1}^{N}(y_ilogs(p_i))+(1-y_i)log(1-p_i)$$</p>
 <ul>
 <li>y：是否分类正确，1=yes,0=no</li>
 <li>p：为1的概率</li>
 </ul>
-<p>复习一下， $\sum$ 叫做求和符号，读作<em>segema</em>,它的意思就是连续的加法，比如:</p>
+<p>复习一下， </p>
+<p>$$\sum$$ </p>
+<p>叫做求和符号，读作<em>segema</em>,它的意思就是连续的加法，比如:</p>
 <p>$$\sum_{k=1}^{n}ak=a_1+a_2+a_3+..a_n$$</p>
 <p>k是下标，它会从k变化到n，当k=1的时候，ak就是a1，当k=2的时候，ak就是a2，最后一项就是k=n,segima的意思呢就是把这些项全都加起来。</p>
-<p>所以这里的 $\sum$ 的意思就是把数据中，每一行的数据都加起来。</p>
-<p>把一行的数据乘以 $-\frac{1}{N}$，得到这一行的logloss.</p>
-<h3 id="log-loss函数示例"><a href="#log-loss函数示例" class="headerlink" title="log loss函数示例"></a>log loss函数示例</h3><h3 id="假设A"><a href="#假设A" class="headerlink" title="假设A"></a>假设A</h3><ul>
+<p>所以这里的segema的意思就是把数据中，每一行的数据都加起来。</p>
+<p>把一行的数据乘以 $$-\frac{1}{N}$$，得到这一行的logloss.</p>
+<h2 id="log-loss函数示例"><a href="#log-loss函数示例" class="headerlink" title="log loss函数示例"></a>log loss函数示例</h2><h3 id="假设A"><a href="#假设A" class="headerlink" title="假设A"></a>假设A</h3><ul>
 <li>true label=0</li>
 <li>预测1的概率是p=0.9：</li>
 </ul>
 <p>带入公式计算可得：</p>
-<p>$log loss=(1-y)\log^{1-p}$</p>
-<p>$=\log^{1-0.9}$</p>
-<p>$=\log^{0.1}$</p>
-<p>$=2.3$</p>
+<p>$$log loss=(1-y)\log^{1-p}$$</p>
+<p>$$=\log^{1-0.9}$$</p>
+<p>$$=\log^{0.1}$$</p>
+<p>$$=2.3$$</p>
 <h3 id="假设B"><a href="#假设B" class="headerlink" title="假设B"></a>假设B</h3><ul>
 <li>true label=1</li>
 <li>预测0的概率是0.5</li>
 </ul>
 <p>则los函数表示为：</p>
-<p>$logloss=-\frac{1}{1}<em>1</em>\log^{0.5}+(1-1)*\log^{1-0.5}$</p>
+<p>$$logloss=-\frac{1}{1}<em>1</em>\log^{0.5}+(1-1)*\log^{1-0.5}$$</p>
 <p>带入公式计算可得：</p>
-<p>$=-\log^{0.5}$</p>
-<p>$=0.69$</p>
+<p>$$=-\log^{0.5}$$</p>
+<p>$$=0.69$$</p>
 <h3 id="log-loss-python实现"><a href="#log-loss-python实现" class="headerlink" title="log loss python实现"></a>log loss python实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">def compute_log_loss(predicted, actual, eps=1e-14):</span><br><span class="line"> &quot;&quot;&quot; Computes the logarithmic loss between predicted and</span><br><span class="line"> actual when these are 1D arrays.</span><br><span class="line"></span><br><span class="line"> :param predicted: The predicted probabilities as floats between 0-1</span><br><span class="line"> :param actual: The actual binary labels. Either 0 or 1.</span><br><span class="line"> :param eps (optional): log(0) is inf, so we need to offset our</span><br><span class="line"> predicted values slightly by eps from 0 or 1.</span><br><span class="line"> &quot;&quot;&quot;</span><br><span class="line"> predicted = np.clip(predicted, eps, 1 - eps)</span><br><span class="line"> loss = -1 * np.mean(actual * np.log(predicted)</span><br><span class="line"> + (1 - actual)</span><br><span class="line"> * np.log(1 - predicted))</span><br><span class="line"></span><br><span class="line"> return loss</span><br></pre></td></tr></table></figure>
 <p>我们可以用这个函数取计算一些提供好的值的log loss值，下面是算好后的结果:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Log loss, correct and confident: 0.05129329438755058</span><br><span class="line">Log loss, correct and not confident: 0.4307829160924542</span><br><span class="line">Log loss, wrong and not confident: 1.049822124498678</span><br><span class="line">Log loss, wrong and confident: 2.9957322735539904</span><br><span class="line">Log loss, actual labels: 9.99200722162646e-15</span><br></pre></td></tr></table></figure>
@@ -804,7 +808,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#导入数据"><span class="nav-number">2.</span> <span class="nav-text">导入数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#探索数据"><span class="nav-number">2.1.</span> <span class="nav-text">探索数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FTE-全职员工数"><span class="nav-number">2.2.</span> <span class="nav-text">FTE 全职员工数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">2.3.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何定义成功？"><span class="nav-number">2.4.</span> <span class="nav-text">如何定义成功？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#log-loss函数示例"><span class="nav-number">2.4.1.</span> <span class="nav-text">log loss函数示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#假设A"><span class="nav-number">2.4.2.</span> <span class="nav-text">假设A</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#假设B"><span class="nav-number">2.4.3.</span> <span class="nav-text">假设B</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#log-loss-python实现"><span class="nav-number">2.4.4.</span> <span class="nav-text">log loss python实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#建立模型"><span class="nav-number">3.</span> <span class="nav-text">建立模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#预测"><span class="nav-number">3.1.</span> <span class="nav-text">预测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自然语言处理简要概述（NLP）"><span class="nav-number">3.2.</span> <span class="nav-text">自然语言处理简要概述（NLP）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tokenizing-与-gram"><span class="nav-number">3.2.1.</span> <span class="nav-text">Tokenizing 与 gram</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本到数字"><span class="nav-number">3.3.</span> <span class="nav-text">文本到数字</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#改善您的模型"><span class="nav-number">4.</span> <span class="nav-text">改善您的模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Pipelines-feature-amp-text-preprocessing"><span class="nav-number">4.1.</span> <span class="nav-text">Pipelines, feature &amp; text preprocessing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Text-features-and-feature-unions"><span class="nav-number">4.2.</span> <span class="nav-text">Text features and feature unions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回归学校数据"><span class="nav-number">4.3.</span> <span class="nav-text">回归学校数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#专家指点"><span class="nav-number">5.</span> <span class="nav-text">专家指点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#统计技巧-interaction-terms"><span class="nav-number">5.1.</span> <span class="nav-text">统计技巧,interaction terms</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#导入数据"><span class="nav-number">2.</span> <span class="nav-text">导入数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#探索数据"><span class="nav-number">2.1.</span> <span class="nav-text">探索数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FTE-全职员工数"><span class="nav-number">2.2.</span> <span class="nav-text">FTE 全职员工数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">2.3.</span> <span class="nav-text">数据类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何定义成功？"><span class="nav-number">3.</span> <span class="nav-text">如何定义成功？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#log-loss函数示例"><span class="nav-number">3.1.</span> <span class="nav-text">log loss函数示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#假设A"><span class="nav-number">3.1.1.</span> <span class="nav-text">假设A</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#假设B"><span class="nav-number">3.1.2.</span> <span class="nav-text">假设B</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#log-loss-python实现"><span class="nav-number">3.1.3.</span> <span class="nav-text">log loss python实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#建立模型"><span class="nav-number">4.</span> <span class="nav-text">建立模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#预测"><span class="nav-number">4.1.</span> <span class="nav-text">预测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自然语言处理简要概述（NLP）"><span class="nav-number">4.2.</span> <span class="nav-text">自然语言处理简要概述（NLP）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tokenizing-与-gram"><span class="nav-number">4.2.1.</span> <span class="nav-text">Tokenizing 与 gram</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文本到数字"><span class="nav-number">4.3.</span> <span class="nav-text">文本到数字</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#改善您的模型"><span class="nav-number">5.</span> <span class="nav-text">改善您的模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Pipelines-feature-amp-text-preprocessing"><span class="nav-number">5.1.</span> <span class="nav-text">Pipelines, feature &amp; text preprocessing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Text-features-and-feature-unions"><span class="nav-number">5.2.</span> <span class="nav-text">Text features and feature unions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回归学校数据"><span class="nav-number">5.3.</span> <span class="nav-text">回归学校数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#专家指点"><span class="nav-number">6.</span> <span class="nav-text">专家指点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#统计技巧-interaction-terms"><span class="nav-number">6.1.</span> <span class="nav-text">统计技巧,interaction terms</span></a></li></ol></li></ol></div>
             
 
           </div>
