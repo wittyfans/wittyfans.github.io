@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wittyfans.com/"/>
-  <updated>2019-11-16T08:09:59.554Z</updated>
+  <updated>2019-11-18T12:12:17.045Z</updated>
   <id>http://wittyfans.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>机器学习：处理jira工单的分类问题</title>
+    <link href="http://wittyfans.com/coding/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%A4%84%E7%90%86jira%E5%B7%A5%E5%8D%95%E7%9A%84%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98.html"/>
+    <id>http://wittyfans.com/coding/机器学习：处理jira工单的分类问题.html</id>
+    <published>2019-11-18T12:10:20.000Z</published>
+    <updated>2019-11-18T12:12:17.045Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>如何根据jira工单的category自动找到处理它的组呢？这是一个利用机器学习中knn算法的小实践.</p></blockquote><a id="more"></a><h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><p>我们使用knn分类算法，knn是广为使用的一种机器学习算法，应用于各种应用，如金融、医疗保健、政治学、手写字识别、图像识别与视频识别。</p><p>在信用评级中，金融机构用来预测客户的信用评级。在贷款支付机构中，银行来预测贷款是否安全。在政治中，它被用来预测潜在选名是否会投票。</p><p>简单介绍下knn:</p><p>knn是non-parametric算法，即无假设的意思，它不会对基础数据的分布做任何假设，即不会根据数据集来确定模型结构。</p><p>这很有用，因为在现实世界中，很多的数据集是不遵从数学理论的假设的。</p><p>同时knn是lazy algorithm算法，即它不需要在模型建立前做大量的数据训练工作。</p><h1 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h1><p>我们已经把一些数据保存到了jira数据库，现在将它们的分类与所属组拿出来：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sql = select category,assign_group from issues limit 10000</span><br><span class="line">db = pymysql.connect(&apos;db_host&apos;,&apos;db_username&apos;,&apos;db_pwd&apos;,&apos;db&apos;)</span><br><span class="line">df = pd.read_sql(sql,con=db)</span><br></pre></td></tr></table></figure><p>现在数据已经保存到了df中。</p><h1 id="A-basic-Exapple"><a href="#A-basic-Exapple" class="headerlink" title="A basic Exapple"></a>A basic Exapple</h1><h2 id="单个features"><a href="#单个features" class="headerlink" title="单个features"></a>单个features</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import preprocessing</span><br><span class="line">le = preprocessing.LabelEncoder()</span><br><span class="line">category_encoded = le.fit_transform(df.category)</span><br><span class="line">reporter_encoded = le.fit_transform(reporter)</span><br><span class="line">features = list(zip(category_encoded,reporter_encoded))</span><br><span class="line">label = le.fit(df.assign_group)</span><br><span class="line"></span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=3)</span><br><span class="line">knn.fit(features,label)</span><br><span class="line">knn.predict([[0,2]])</span><br></pre></td></tr></table></figure><h2 id="多个features"><a href="#多个features" class="headerlink" title="多个features"></a>多个features</h2><p>另外一种方式，x是我们的category，y则是所属组。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.neighbors import KNeighborsClassifier </span><br><span class="line"></span><br><span class="line">x_df = df.category</span><br><span class="line">x_train = pd.get_dummies(x_df)</span><br><span class="line"></span><br><span class="line">y_df = df.assign_group</span><br><span class="line">y_train = y_df.values</span><br><span class="line"></span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=6)</span><br><span class="line">knn.fit(x_train,y_train)</span><br></pre></td></tr></table></figure><p>随后你可以直接将x_train传给knn做个预测，然后跟真实的数据做个对比。</p><blockquote><p>拿训练的数据来做预测是不可取的，你必须给模型一些它从来没有看见过的数据预测，这样才能准确的测试模型的性能</p></blockquote><p>你也可以自己生成一些数据来查看，如你已经知道get_dummies后的df有144列，那么你可以自行生成一个2d的dummie数组传给knn.predit.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">arr_list = np.concatenate(np.zeros((1,143)))</span><br><span class="line">temp_arr = arr_list.tolist()</span><br><span class="line">temp_arr.insert(44,1)</span><br><span class="line">new_x = [temp_arr.insert]</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">output: array([&apos;Helpdesk CN&apos;])</span><br></pre></td></tr></table></figure><h2 id="分割数据并查看得分"><a href="#分割数据并查看得分" class="headerlink" title="分割数据并查看得分"></a>分割数据并查看得分</h2><p>下面演示了将数据拆分成train,和test后的预测分数：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=42)</span><br><span class="line"></span><br><span class="line">knn= KNeighborsClassifier(n_neighbors=6)</span><br><span class="line">knn.fit(X_train,y_train)</span><br><span class="line"></span><br><span class="line">knn.score(X_test,y_test)</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">output:0.781</span><br></pre></td></tr></table></figure><p>78%，这个模型效果还是不错的！</p><h2 id="选择Neighbors"><a href="#选择Neighbors" class="headerlink" title="选择Neighbors"></a>选择Neighbors</h2><p>我们知道对于knn算法，其中一个关键的参数是neighbors,那么对于不同的neighbors，我们的accuracy的分数是什么样的呢？我们可以来画个图检测一下：</p><p><img src="https://i.loli.net/2019/11/18/Qzlb7BVyCJT3X6F.png" alt=""></p><p>可以看到neighbors在6-7之间，accuracy是最高的，在2-5之间，test的得分竟然比训练数据都要高。</p><h2 id="使用knn的优缺点"><a href="#使用knn的优缺点" class="headerlink" title="使用knn的优缺点"></a>使用knn的优缺点</h2><ul><li>knn算法对于处理非线性数据很有用，可以用它一起处理回归问题</li><li>knn的测试阶段较慢且耗资源，需要很多的内存来保存来预测的整个数据集</li><li>强烈建议将数据进行同比例的标准化，比如将所有数据缩放到0,1的区间内</li><li>knn不适合太高维度的数据，在那种情况下，需要将维度降低</li><li>处理缺失值有助于改善模型的准确度</li></ul><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p><strong>1. knn fit其中的x,x一定只能是get_dummies算出来的数据吗？</strong></p><p>不是，比如 iris 的数据摘要，X的数据是各个部分的长、宽:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[[5.1,3.5,1.4,0.2],</span><br><span class="line">[4.9,3,1.4,0.2]]</span><br></pre></td></tr></table></figure><p><strong>2. knn fit其中的y，y可以是原始数据类型吗？如a,b,a,c</strong></p><p>可以，如 datacamp 题目中的政党数据，y=df[‘party’]:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Out[8]: </span><br><span class="line">0      republican</span><br><span class="line">1      republican</span><br><span class="line">2        democrat</span><br><span class="line">3        democrat</span><br><span class="line">4        democrat</span><br><span class="line">5        democrat</span><br><span class="line">6        democrat</span><br><span class="line">7      republican</span><br><span class="line">8      republican</span><br><span class="line">9        democrat</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;如何根据jira工单的category自动找到处理它的组呢？这是一个利用机器学习中knn算法的小实践.&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
+    
+    
+      <category term="jira" scheme="http://wittyfans.com/tags/jira/"/>
+    
+      <category term="data analysis" scheme="http://wittyfans.com/tags/data-analysis/"/>
+    
+      <category term="machine learning" scheme="http://wittyfans.com/tags/machine-learning/"/>
+    
+  </entry>
   
   <entry>
     <title>数学复习：求和符号</title>
@@ -252,11 +280,11 @@
       <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
     
     
+      <category term="windows" scheme="http://wittyfans.com/tags/windows/"/>
+    
       <category term="helpdesk" scheme="http://wittyfans.com/tags/helpdesk/"/>
     
       <category term="powershell" scheme="http://wittyfans.com/tags/powershell/"/>
-    
-      <category term="windows" scheme="http://wittyfans.com/tags/windows/"/>
     
   </entry>
   
@@ -515,32 +543,6 @@
       <category term="dash" scheme="http://wittyfans.com/tags/dash/"/>
     
       <category term="data" scheme="http://wittyfans.com/tags/data/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python and Flask - CS50_Beyond_2019 Notes</title>
-    <link href="http://wittyfans.com/coding/Python-and-Flask-CS50-Beyond-2019-Notes.html"/>
-    <id>http://wittyfans.com/coding/Python-and-Flask-CS50-Beyond-2019-Notes.html</id>
-    <published>2019-01-30T13:19:31.000Z</published>
-    <updated>2019-01-31T13:58:51.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>Flask 是一个 Python 实现的 Web 开发微框架.</p></blockquote><a id="more"></a><h1 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h1><p>创建一个文件，然后进入该文件夹，创建一个py文件，然后在命令后导入，这样flask才知道要运行哪个程序:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export FLASK_APP=hello.py</span><br></pre></td></tr></table></figure><p>导入以后就可以直接在当前目录使用flask run 了。</p><h1 id="第一个flask程序"><a href="#第一个flask程序" class="headerlink" title="第一个flask程序"></a>第一个flask程序</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask,render_template</span><br><span class="line">app = Flask(__name__) # 新建一个flask app</span><br><span class="line"></span><br><span class="line">@app.route(&quot;/&quot;) </span><br><span class="line">def index():</span><br><span class="line">    return &quot;Hello,Word!&quot;</span><br></pre></td></tr></table></figure><ul><li>@app.route(“/“)是一个装饰器，如果有人访问/，那么就运行被装饰器装饰的函数，也就是下面返回Hello,word！</li></ul><h1 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h1><h2 id="单个参数"><a href="#单个参数" class="headerlink" title="单个参数"></a>单个参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&quot;/wittyfans&quot;) </span><br><span class="line">def wittyfans():</span><br><span class="line">    return &quot;Hello, My master!!!&quot;</span><br><span class="line"></span><br><span class="line">@app.route(&quot;/&lt;string:name&gt;&quot;) </span><br><span class="line">def hello(name):</span><br><span class="line">    name = name.capitalize()</span><br><span class="line">    return f&quot;Hello! &#123;name&#125;&quot;</span><br></pre></td></tr></table></figure><p>如果输入localhost:/wittyfans就返回”Hello, My master!!!”,如果是别的就返回他输入的名字。</p><blockquote><p>在route中定义变量，它可以传到函数里使用.flask会路由到最具体的网址，也就是说，输入/wittyfans还是会被上面的函数处理.</p></blockquote><h2 id="多个参数"><a href="#多个参数" class="headerlink" title="多个参数"></a>多个参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&quot;/&lt;string:admin_name&gt;/&lt;string:password&gt;&quot;) </span><br><span class="line">def varify(admin_name,password):</span><br><span class="line">    if admin_name == &apos;wittyfans&apos; and password == &apos;123&apos;:</span><br><span class="line">        return &apos;Welcome here&apos;</span><br><span class="line">    else:</span><br><span class="line">        return &apos;error&apos;</span><br></pre></td></tr></table></figure><h1 id="使用html文件构建网页"><a href="#使用html文件构建网页" class="headerlink" title="使用html文件构建网页"></a>使用html文件构建网页</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&apos;/&apos;)</span><br><span class="line">def index():</span><br><span class="line">    return render_template(&quot;index.html&quot;)</span><br></pre></td></tr></table></figure><p>对于网页来说，我们更多的是传出html文件,这时候需要在根目录新建templates文件夹，并将html文件放在其中</p><p>我们可以将输入的值做处理后重新填充给html文件:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&apos;/&lt;string:name&gt;&apos;)</span><br><span class="line">def index(name):</span><br><span class="line">    return render_template(&quot;index.html&quot;,name=name.capitalize())</span><br></pre></td></tr></table></figure><h1 id="示例：判断是否是新年"><a href="#示例：判断是否是新年" class="headerlink" title="示例：判断是否是新年"></a>示例：判断是否是新年</h1><p>逻辑部分</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@app.route(&apos;/&apos;)</span><br><span class="line">def index():</span><br><span class="line">    now = datetime.datetime.now()</span><br><span class="line">    is_new_years = now.month == 1 and now.day == 1</span><br><span class="line">    print(is_new_years)</span><br><span class="line">    return render_template(&quot;index.html&quot;,is_new_years=is_new_years)</span><br></pre></td></tr></table></figure><p>html中,使用Conditional Templating</p><figure class="highlight plain"><figcaption><span>html> </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">        &lt;title&gt;</span><br><span class="line">            wittyfans</span><br><span class="line">        &lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &#123;% if is_new_years %&#125;</span><br><span class="line">            &lt;h1&gt;YES&lt;/h1&gt;</span><br><span class="line">        &#123;% else %&#125;</span><br><span class="line">            &lt;h1&gt;NO&lt;/h1&gt;</span><br><span class="line">        &#123;% endif %&#125;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol><li><a href="https://www.youtube.com/watch?v=pP23CtOI-1U&amp;t=2772s" target="_blank" rel="noopener">Python and Flask - CS50 Beyond 2019)</a></li><li><a href="https://dormousehole.readthedocs.io/en/latest/" target="_blank" rel="noopener">Flask文档</a></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Flask 是一个 Python 实现的 Web 开发微框架.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-      <category term="coding" scheme="http://wittyfans.com/categories/coding/"/>
-    
-    
-      <category term="python" scheme="http://wittyfans.com/tags/python/"/>
-    
-      <category term="flask" scheme="http://wittyfans.com/tags/flask/"/>
     
   </entry>
   

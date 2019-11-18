@@ -1,0 +1,975 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="编程,JS,前端," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="wittyfans" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="个人JS学习的实战记录">
+<meta name="keywords" content="编程,JS,前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript学习笔记——实战">
+<meta property="og:url" content="http://wittyfans.com/coding/JavaScript学习笔记——实战.html">
+<meta property="og:site_name" content="wittyfans">
+<meta property="og:description" content="个人JS学习的实战记录">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-15T14:46:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript学习笔记——实战">
+<meta name="twitter:description" content="个人JS学习的实战记录">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wittyfans.com/coding/JavaScript学习笔记——实战.html"/>
+
+
+
+
+
+  <title> JavaScript学习笔记——实战 | wittyfans </title>
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">wittyfans</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">学则不固,知则不惑</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/JavaScript学习笔记——实战.html">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="wittyfans">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="wittyfans">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="wittyfans" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript学习笔记——实战
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-22T16:41:21+08:00">
+                2017-05-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/coding/" itemprop="url" rel="index">
+                    <span itemprop="name">coding</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/coding/JavaScript学习笔记——实战.html" class="leancloud_visitors" data-flag-title="JavaScript学习笔记——实战">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+               <span>℃</span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>个人JS学习的实战记录</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><h2 id="🔑-实战翻转字符串"><a href="#🔑-实战翻转字符串" class="headerlink" title="🔑 实战翻转字符串"></a>🔑 实战翻转字符串</h2><blockquote>
+<p>先把字符串转化成数组，再借助数组的reverse方法翻转数组顺序，最后把数组转化成字符串。你的结果必须得是一个字符串.当你完成不了挑战的时候，记得开大招’Read-Search-Ask’。这是一些对你有帮助的资源:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function reverseString(str) &#123;</span><br><span class="line">  var allStr = str.split(&apos;&apos;);</span><br><span class="line">  allStr = allStr.reverse();</span><br><span class="line">  allStr = allStr.join(&apos;&apos;);</span><br><span class="line">  </span><br><span class="line">  return allStr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">reverseString(&quot;Greetings from Earth&quot;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>split方法中，如果不写’’，那么数组中的“,”也会被转化成字符</li>
+</ul>
+<h2 id="🔑-实战计算一个整数的阶乘"><a href="#🔑-实战计算一个整数的阶乘" class="headerlink" title="🔑 实战计算一个整数的阶乘"></a>🔑 实战计算一个整数的阶乘</h2><blockquote>
+<p>参考：一个正整数的阶乘（英语：factorial）是所有小于及等于该数的正整数的积，并且0的阶乘为1。自然数n的阶乘写作n!</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function factorialize(num) &#123;</span><br><span class="line">  if(num === 0)&#123;</span><br><span class="line">    return 1;</span><br><span class="line">  &#125;</span><br><span class="line">  for(var i = num-1;i &gt;0;i--)&#123;</span><br><span class="line">    num = num * i;</span><br><span class="line">  &#125;</span><br><span class="line">  return num;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">factorialize(5);</span><br></pre></td></tr></table></figure>
+<h2 id="🔑-实战去除字符串中的标点符号与空格"><a href="#🔑-实战去除字符串中的标点符号与空格" class="headerlink" title="🔑 实战去除字符串中的标点符号与空格"></a>🔑 实战去除字符串中的标点符号与空格</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function palindrome(str) &#123;</span><br><span class="line">  // Good luck!</span><br><span class="line">  var str1 = str.toLowerCase();</span><br><span class="line">  str1 = str1.replace(/\W|_/g,&apos;&apos;);</span><br><span class="line">  arrIndex = str1.length-1;</span><br><span class="line">  </span><br><span class="line">  for(var i = 0;i&lt;=arrIndex/2;i++)&#123;</span><br><span class="line">    if(str1[i] != str1[arrIndex-i])&#123;</span><br><span class="line">      return false;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;  </span><br><span class="line">  return true;</span><br><span class="line">&#125;</span><br><span class="line">palindrome(&quot;A man, a plan, a canal. Panama&quot;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>replace() 方法返回一个由替换值替换一些或所有匹配的模式后的新字符串.即前面匹配到的内容，用后边的替换。<ul>
+<li>补充：查阅MOZILLA文档心得，replace方法MOZILLA官网用法介绍为str.replace(regexpl|substr,newSubstr|function),中间的|意思是这个参数可以是A|，也可以是|B.</li>
+<li>参考：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace" target="_blank" rel="noopener">Replace()用法</a></li>
+</ul>
+</li>
+<li>正则/\W|_/g,’’的意思：参考：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions" target="_blank" rel="noopener">正则语法</a>,/\W的意识是匹配所有非字母，如果是小写的w，那就是所有字母A-Z，a-z.</li>
+<li>从两端对比数组的值，如何设计if语句？<ul>
+<li>思路：假设数组长度为21，那么需要对比的值为1:21,2:20,3:19,</li>
+<li>即 i:数组长度-i，for循环的次数为(21-1)/2</li>
+</ul>
+</li>
+</ul>
+<h2 id="🔑-找到提供的句子中最长的单词，并计算它的长度"><a href="#🔑-找到提供的句子中最长的单词，并计算它的长度" class="headerlink" title="🔑 找到提供的句子中最长的单词，并计算它的长度"></a>🔑 找到提供的句子中最长的单词，并计算它的长度</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function findLongestWord(str) &#123;</span><br><span class="line">  var words=str.split(&apos; &apos;);</span><br><span class="line">  var maxLength=0;</span><br><span class="line">  for(var i=0;i&lt;words.length;i++)&#123;</span><br><span class="line">    if(maxLength&lt;words[i].length)&#123;</span><br><span class="line">      maxLength=words[i].length;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return maxLength;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">findLongestWord(&quot;The quick brown fox jumped over the lazy dog&quot;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://www.w3cplus.com/javascript/find-the-longest-word-solution.html" target="_blank" rel="noopener">参考</a></li>
+</ul>
+<h2 id="🔑-确保字符串的每个单词首字母都大写，其余部分小写。"><a href="#🔑-确保字符串的每个单词首字母都大写，其余部分小写。" class="headerlink" title="🔑 确保字符串的每个单词首字母都大写，其余部分小写。"></a>🔑 确保字符串的每个单词首字母都大写，其余部分小写。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function titleCase(str) &#123;</span><br><span class="line">  return str.toLowerCase().split(&apos; &apos;).map(function(word)&#123;</span><br><span class="line">    </span><br><span class="line">    return word.charAt(0).toUpperCase() + word.slice(1);</span><br><span class="line">  &#125;).join(&apos; &apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">titleCase(&quot;I&apos;m a little tea pot&quot;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://www.w3cplus.com/javascript/title-case-a-sentence-in-javascript.html" target="_blank" rel="noopener">参考</a></li>
+</ul>
+<h2 id="🔑-下面的大数组中包含了4个小数组，分别找到每个小数组的最大值，然后把它们串联起来，形成一个新数组。"><a href="#🔑-下面的大数组中包含了4个小数组，分别找到每个小数组的最大值，然后把它们串联起来，形成一个新数组。" class="headerlink" title="🔑 下面的大数组中包含了4个小数组，分别找到每个小数组的最大值，然后把它们串联起来，形成一个新数组。"></a>🔑 下面的大数组中包含了4个小数组，分别找到每个小数组的最大值，然后把它们串联起来，形成一个新数组。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function largestOfFour(arr) &#123;</span><br><span class="line">  // You can do this!</span><br><span class="line">  return arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>思路<ul>
+<li>循环访问数组，在第二层循环中，碰到大的记录下来给longest</li>
+<li>第二层循环结束的时候，把longest Push 到数组，longest变为0</li>
+</ul>
+</li>
+<li>代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function largestOfFour(arr) &#123;</span><br><span class="line">  // You can do this!</span><br><span class="line">  var largest = 0;</span><br><span class="line">  var result = [];</span><br><span class="line">  for(var i = 0; i &lt; arr.length; i++)&#123;</span><br><span class="line">    </span><br><span class="line">    for(var j = 0; j&lt;=arr[i].length;j++)&#123;</span><br><span class="line">      if (largest &lt; arr[i][j])&#123;</span><br><span class="line">        largest = arr[i][j];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    result.push(largest);</span><br><span class="line">    largest = 0;</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="🔑-检查一个字符串-str-是否以指定的字符串-target-结尾。"><a href="#🔑-检查一个字符串-str-是否以指定的字符串-target-结尾。" class="headerlink" title="🔑 检查一个字符串(str)是否以指定的字符串(target)结尾。"></a>🔑 检查一个字符串(str)是否以指定的字符串(target)结尾。</h2><ul>
+<li><p>提示</p>
+<ul>
+<li>参考：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/substr" target="_blank" rel="noopener">String.substr()</a>,substr() 方法返回一个字符串中从指定位置开始到指定字符数的字符。</li>
+</ul>
+</li>
+<li><p>代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function confirmEnding(str, target) &#123;</span><br><span class="line">  // &quot;Never give up and good luck will find you.&quot;</span><br><span class="line">  // -- Falcor</span><br><span class="line">  var targetLength = target.length;</span><br><span class="line">  var strEnd = str.substr(-targetLength);</span><br><span class="line">  if(strEnd === target)&#123;</span><br><span class="line">    return true;</span><br><span class="line">  &#125;</span><br><span class="line">  return false;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">confirmEnding(&quot;Bastian&quot;, &quot;n&quot;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="🔑-Repeat-a-string-repeat-a-string"><a href="#🔑-Repeat-a-string-repeat-a-string" class="headerlink" title="🔑 Repeat a string repeat a string"></a>🔑 Repeat a string repeat a string</h2><ul>
+<li><p>提示</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String#Methods" target="_blank" rel="noopener">String</a></li>
+</ul>
+</li>
+<li><p>代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function repeat(str, num) &#123;</span><br><span class="line">  // repeat after me</span><br><span class="line">  if (num&lt;0)&#123;</span><br><span class="line">    return &apos;&apos;;</span><br><span class="line">  &#125;</span><br><span class="line">  return str.repeat(num);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">repeat(&quot;abc&quot;, 3);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="🔑-如果字符串的长度比指定的参数num长，则把多余的部分用…来表示。"><a href="#🔑-如果字符串的长度比指定的参数num长，则把多余的部分用…来表示。" class="headerlink" title="🔑 如果字符串的长度比指定的参数num长，则把多余的部分用…来表示。"></a>🔑 如果字符串的长度比指定的参数num长，则把多余的部分用…来表示。</h2><ul>
+<li><p>提示</p>
+<ul>
+<li>beginSlice从该索引（以 0 为基数）处开始提取原字符串中的字符。如果值为负数，会被当做 sourceLength + beginSlice 看待，这里的sourceLength 是字符串的长度 (例如， 如果beginSlice 是 -3 则看作是: sourceLength - 3)</li>
+<li>endSlice可选。在该索引（以 0 为基数）处结束提取字符串。如果省略该参数，slice会一直提取到字符串末尾。如果该参数为负数，则被看作是 sourceLength + endSlice，这里的 sourceLength 就是字符串的长度(例如，如果 endSlice 是 -3，则是, sourceLength - 3)。</li>
+<li>slice() 提取的新字符串包括beginSlice但不包括 endSlice。</li>
+</ul>
+</li>
+<li><p>代码(如果一直找不到思路，不妨停下来休息一下，过一会儿讲注意力重新转移过来的时候就会发现有了新的想法💡)</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function largestOfFour(arr) &#123;</span><br><span class="line">  // You can do this!</span><br><span class="line">  var largest = 0;</span><br><span class="line">  var result = [];</span><br><span class="line">  for(var i = 0; i &lt; arr.length; i++)&#123;</span><br><span class="line">    </span><br><span class="line">    for(var j = 0; j&lt;=arr[i].length;j++)&#123;</span><br><span class="line">      if (largest &lt; arr[i][j])&#123;</span><br><span class="line">        largest = arr[i][j];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    result.push(largest);</span><br><span class="line">    largest = 0;</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);</span><br></pre></td></tr></table></figure>
+<h2 id="✅🔑-Chunky-Monkey：把一个数组arr按照指定的数组大小size分割成若干个数组块。"><a href="#✅🔑-Chunky-Monkey：把一个数组arr按照指定的数组大小size分割成若干个数组块。" class="headerlink" title="## ✅🔑 Chunky Monkey：把一个数组arr按照指定的数组大小size分割成若干个数组块。"></a>## ✅🔑 Chunky Monkey：把一个数组arr按照指定的数组大小size分割成若干个数组块。</h2><ul>
+<li>提示<ul>
+<li>Array.push()：</li>
+<li>Array.slice():方法返回一个从开始到结束（不包括结束）选择的数组的一部分浅拷贝到一个新数组对象。</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil" target="_blank" rel="noopener">Math.ceil</a>： 返回大于或等于一个给定数字的最小整数。</li>
+</ul>
+</li>
+<li>代码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function chunk(arr, size) &#123; </span><br><span class="line">  </span><br><span class="line">  var newArrLength=Math.ceil(arr.length/size);  </span><br><span class="line">  var innerArr=[];  </span><br><span class="line">  for (var i=0; i&lt;newArrLength; i++)&#123; </span><br><span class="line">    </span><br><span class="line">    innerArr.push(arr.splice(0,size)); </span><br><span class="line">  &#125;  </span><br><span class="line">  return innerArr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="🔑-Slasher-Flick：返回一个数组被截断n个元素后还剩余的元素，截断从索引0开始。"><a href="#🔑-Slasher-Flick：返回一个数组被截断n个元素后还剩余的元素，截断从索引0开始。" class="headerlink" title="🔑 Slasher Flick：返回一个数组被截断n个元素后还剩余的元素，截断从索引0开始。"></a>🔑 Slasher Flick：返回一个数组被截断n个元素后还剩余的元素，截断从索引0开始。</h2><ul>
+<li>代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function slasher(arr, howMany) &#123;</span><br><span class="line">  // it doesn&apos;t always pay to be first</span><br><span class="line">  var arrLength = arr.length;</span><br><span class="line">  if(howMany &lt; arrLength)&#123;</span><br><span class="line">  arr = arr.slice(howMany);</span><br><span class="line">  return arr;</span><br><span class="line">  &#125;</span><br><span class="line">  return [];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">slasher([1, 2, 3], 2);</span><br><span class="line"></span><br><span class="line">\</span><br></pre></td></tr></table></figure>
+<h2 id="🔑-如果数组第一个字符串元素包含了第二个字符串元素的所有字符，函数返回true。"><a href="#🔑-如果数组第一个字符串元素包含了第二个字符串元素的所有字符，函数返回true。" class="headerlink" title="🔑 如果数组第一个字符串元素包含了第二个字符串元素的所有字符，函数返回true。"></a>🔑 如果数组第一个字符串元素包含了第二个字符串元素的所有字符，函数返回true。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function mutation(arr) &#123;</span><br><span class="line">  var arrz = arr[0].toLowerCase();</span><br><span class="line">  var arro = arr[1].toLowerCase();</span><br><span class="line">  for(var i = 0; i &lt; arro.length; i++)&#123;</span><br><span class="line">    if(arrz.indexOf(arro.charAt(i)) == -1)&#123;</span><br><span class="line">      return false;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return true;</span><br><span class="line">&#125;</span><br><span class="line">mutation([&quot;hello&quot;, &quot;hey&quot;]);</span><br></pre></td></tr></table></figure>
+<h2 id="✅-删除数组中的所有假值。"><a href="#✅-删除数组中的所有假值。" class="headerlink" title="✅ 删除数组中的所有假值。"></a>✅ 删除数组中的所有假值。</h2><ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Boolean" target="_blank" rel="noopener">Boolean</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank" rel="noopener">Filter</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function bouncer(arr) &#123;</span><br><span class="line">  // Don&apos;t show a false ID to this bouncer.</span><br><span class="line">  var result = [];</span><br><span class="line">  for(var i = 0; i &lt;= arr.length;i++)&#123;</span><br><span class="line">     if(Boolean(arr[i]))&#123;</span><br><span class="line">        result.push(arr[i]);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bouncer([7, &quot;ate&quot;, &quot;&quot;, false, 9]);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="✅-实现一个摧毁-destroyer-函数，第一个参数是待摧毁的数组，其余的参数是待摧毁的值。"><a href="#✅-实现一个摧毁-destroyer-函数，第一个参数是待摧毁的数组，其余的参数是待摧毁的值。" class="headerlink" title="✅ 实现一个摧毁(destroyer)函数，第一个参数是待摧毁的数组，其余的参数是待摧毁的值。"></a>✅ 实现一个摧毁(destroyer)函数，第一个参数是待摧毁的数组，其余的参数是待摧毁的值。</h2><ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/arguments" target="_blank" rel="noopener">arguments</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank" rel="noopener">Filter</a></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function destroyer(arr) &#123;</span><br><span class="line">  // Remove all the values</span><br><span class="line">  var args=[];</span><br><span class="line">  for(var i=0;i&lt;arguments.length;i++)&#123;</span><br><span class="line">    args.push(arguments[i]);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  var temp=arr.filter(function(element,index,array)&#123;</span><br><span class="line">    return args.indexOf(element)&lt;0;</span><br><span class="line">  &#125;);</span><br><span class="line">  return temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="✅-先给数组排序，然后找到指定的值在数组的位置，最后返回位置对应的索引。"><a href="#✅-先给数组排序，然后找到指定的值在数组的位置，最后返回位置对应的索引。" class="headerlink" title="✅ 先给数组排序，然后找到指定的值在数组的位置，最后返回位置对应的索引。"></a>✅ 先给数组排序，然后找到指定的值在数组的位置，最后返回位置对应的索引。</h2><ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/sort" target="_blank" rel="noopener">Sort</a></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function where(arr, num) &#123;</span><br><span class="line">  arr.push(num);//插入</span><br><span class="line">  arr.sort(function(a,b)&#123;</span><br><span class="line">    return a-b;//排序</span><br><span class="line">  &#125;);</span><br><span class="line">  return arr.indexOf(num);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="✅-写一个ROT13函数，实现输入加密字符串，输出解密字符串"><a href="#✅-写一个ROT13函数，实现输入加密字符串，输出解密字符串" class="headerlink" title="✅ 写一个ROT13函数，实现输入加密字符串，输出解密字符串"></a>✅ 写一个ROT13函数，实现输入加密字符串，输出解密字符串</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function rot13(str) &#123; // LBH QVQ VG!</span><br><span class="line">  var arr=str.toUpperCase().split(&quot; &quot;);</span><br><span class="line">  var str1=[];</span><br><span class="line"></span><br><span class="line">  for(var i=0;i&lt;arr.length;i++) &#123;</span><br><span class="line">    var arr1=arr[i].split(&quot;&quot;);</span><br><span class="line">    for(var j=0;j&lt;arr1.length;j++) &#123;</span><br><span class="line">      var num=arr1[j].charCodeAt();</span><br><span class="line">      if(num&gt;=65&amp;&amp;num&lt;=90) &#123;</span><br><span class="line">        arr1[j]=num+13&gt;90?String.fromCharCode(64+(num+13-90)):String.fromCharCode(num + 13);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    str1.push(arr1.join(&quot;&quot;));</span><br><span class="line">  &#125;</span><br><span class="line"> return str1.join(&quot; &quot;);</span><br><span class="line"> //return String.charCodeAt(str);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Change the inputs below to test</span><br><span class="line">rot13(&quot;Z&quot;);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-reward-image.png" alt="wittyfans WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/编程/" rel="tag"># 编程</a>
+          
+            <a href="/tags/JS/" rel="tag"># JS</a>
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/coding/一步一步用WordPress建站-持续更新.html" rel="next" title="一步一步用WordPress建站(持续更新)">
+                <i class="fa fa-chevron-left"></i> 一步一步用WordPress建站(持续更新)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/coding/JavaScript学习笔记——错误集.html" rel="prev" title="JavaScript学习笔记——错误集">
+                JavaScript学习笔记——错误集 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="wittyfans" />
+          <p class="site-author-name" itemprop="name">wittyfans</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">56</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wittyfans" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://music.163.com/#/user/event?id=5842815" target="_blank" title="Netease Music">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Netease Music
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.instagram.com/wittyfans/" target="_blank" title="Instagram">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Instagram
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/wittyfans" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#实战"><span class="nav-number">1.</span> <span class="nav-text">实战</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#🔑-实战翻转字符串"><span class="nav-number">1.1.</span> <span class="nav-text">🔑 实战翻转字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🔑-实战计算一个整数的阶乘"><span class="nav-number">1.2.</span> <span class="nav-text">🔑 实战计算一个整数的阶乘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🔑-实战去除字符串中的标点符号与空格"><span class="nav-number">1.3.</span> <span class="nav-text">🔑 实战去除字符串中的标点符号与空格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🔑-找到提供的句子中最长的单词，并计算它的长度"><span class="nav-number">1.4.</span> <span class="nav-text">🔑 找到提供的句子中最长的单词，并计算它的长度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🔑-确保字符串的每个单词首字母都大写，其余部分小写。"><span class="nav-number">1.5.</span> <span class="nav-text">🔑 确保字符串的每个单词首字母都大写，其余部分小写。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🔑-下面的大数组中包含了4个小数组，分别找到每个小数组的最大值，然后把它们串联起来，形成一个新数组。"><span class="nav-number">1.6.</span> <span class="nav-text">🔑 下面的大数组中包含了4个小数组，分别找到每个小数组的最大值，然后把它们串联起来，形成一个新数组。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🔑-检查一个字符串-str-是否以指定的字符串-target-结尾。"><span class="nav-number">1.7.</span> <span class="nav-text">🔑 检查一个字符串(str)是否以指定的字符串(target)结尾。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🔑-Repeat-a-string-repeat-a-string"><span class="nav-number">1.8.</span> <span class="nav-text">🔑 Repeat a string repeat a string</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🔑-如果字符串的长度比指定的参数num长，则把多余的部分用…来表示。"><span class="nav-number">1.9.</span> <span class="nav-text">🔑 如果字符串的长度比指定的参数num长，则把多余的部分用…来表示。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#✅🔑-Chunky-Monkey：把一个数组arr按照指定的数组大小size分割成若干个数组块。"><span class="nav-number">1.10.</span> <span class="nav-text">## ✅🔑 Chunky Monkey：把一个数组arr按照指定的数组大小size分割成若干个数组块。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🔑-Slasher-Flick：返回一个数组被截断n个元素后还剩余的元素，截断从索引0开始。"><span class="nav-number">1.11.</span> <span class="nav-text">🔑 Slasher Flick：返回一个数组被截断n个元素后还剩余的元素，截断从索引0开始。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🔑-如果数组第一个字符串元素包含了第二个字符串元素的所有字符，函数返回true。"><span class="nav-number">1.12.</span> <span class="nav-text">🔑 如果数组第一个字符串元素包含了第二个字符串元素的所有字符，函数返回true。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#✅-删除数组中的所有假值。"><span class="nav-number">1.13.</span> <span class="nav-text">✅ 删除数组中的所有假值。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#✅-实现一个摧毁-destroyer-函数，第一个参数是待摧毁的数组，其余的参数是待摧毁的值。"><span class="nav-number">1.14.</span> <span class="nav-text">✅ 实现一个摧毁(destroyer)函数，第一个参数是待摧毁的数组，其余的参数是待摧毁的值。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#✅-先给数组排序，然后找到指定的值在数组的位置，最后返回位置对应的索引。"><span class="nav-number">1.15.</span> <span class="nav-text">✅ 先给数组排序，然后找到指定的值在数组的位置，最后返回位置对应的索引。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#✅-写一个ROT13函数，实现输入加密字符串，输出解密字符串"><span class="nav-number">1.16.</span> <span class="nav-text">✅ 写一个ROT13函数，实现输入加密字符串，输出解密字符串</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wittyfans</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("7sScl0n1AlEtVDaUHuXzxPqc-gzGzoHsz", "qKXpoqGbK1sdFYMiik7Evuan");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

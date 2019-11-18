@@ -1,0 +1,907 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="jira,data analysis,machine learning," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="wittyfans" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="如何根据jira工单的category自动找到处理它的组呢？这是一个利用机器学习中knn算法的小实践.">
+<meta name="keywords" content="jira,data analysis,machine learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习：处理jira工单的分类问题">
+<meta property="og:url" content="http://wittyfans.com/coding/机器学习：处理jira工单的分类问题.html">
+<meta property="og:site_name" content="wittyfans">
+<meta property="og:description" content="如何根据jira工单的category自动找到处理它的组呢？这是一个利用机器学习中knn算法的小实践.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/11/18/Qzlb7BVyCJT3X6F.png">
+<meta property="og:updated_time" content="2019-11-18T12:12:17.045Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习：处理jira工单的分类问题">
+<meta name="twitter:description" content="如何根据jira工单的category自动找到处理它的组呢？这是一个利用机器学习中knn算法的小实践.">
+<meta name="twitter:image" content="https://i.loli.net/2019/11/18/Qzlb7BVyCJT3X6F.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wittyfans.com/coding/机器学习：处理jira工单的分类问题.html"/>
+
+
+
+
+
+  <title> 机器学习：处理jira工单的分类问题 | wittyfans </title>
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">wittyfans</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">学则不固,知则不惑</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/机器学习：处理jira工单的分类问题.html">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="wittyfans">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="wittyfans">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="wittyfans" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                机器学习：处理jira工单的分类问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-18T20:10:20+08:00">
+                2019-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/coding/" itemprop="url" rel="index">
+                    <span itemprop="name">coding</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/coding/机器学习：处理jira工单的分类问题.html" class="leancloud_visitors" data-flag-title="机器学习：处理jira工单的分类问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+               <span>℃</span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>如何根据jira工单的category自动找到处理它的组呢？这是一个利用机器学习中knn算法的小实践.</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><p>我们使用knn分类算法，knn是广为使用的一种机器学习算法，应用于各种应用，如金融、医疗保健、政治学、手写字识别、图像识别与视频识别。</p>
+<p>在信用评级中，金融机构用来预测客户的信用评级。在贷款支付机构中，银行来预测贷款是否安全。在政治中，它被用来预测潜在选名是否会投票。</p>
+<p>简单介绍下knn:</p>
+<p>knn是non-parametric算法，即无假设的意思，它不会对基础数据的分布做任何假设，即不会根据数据集来确定模型结构。</p>
+<p>这很有用，因为在现实世界中，很多的数据集是不遵从数学理论的假设的。</p>
+<p>同时knn是lazy algorithm算法，即它不需要在模型建立前做大量的数据训练工作。</p>
+<h1 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h1><p>我们已经把一些数据保存到了jira数据库，现在将它们的分类与所属组拿出来：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sql = select category,assign_group from issues limit 10000</span><br><span class="line">db = pymysql.connect(&apos;db_host&apos;,&apos;db_username&apos;,&apos;db_pwd&apos;,&apos;db&apos;)</span><br><span class="line">df = pd.read_sql(sql,con=db)</span><br></pre></td></tr></table></figure>
+<p>现在数据已经保存到了df中。</p>
+<h1 id="A-basic-Exapple"><a href="#A-basic-Exapple" class="headerlink" title="A basic Exapple"></a>A basic Exapple</h1><h2 id="单个features"><a href="#单个features" class="headerlink" title="单个features"></a>单个features</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import preprocessing</span><br><span class="line">le = preprocessing.LabelEncoder()</span><br><span class="line">category_encoded = le.fit_transform(df.category)</span><br><span class="line">reporter_encoded = le.fit_transform(reporter)</span><br><span class="line">features = list(zip(category_encoded,reporter_encoded))</span><br><span class="line">label = le.fit(df.assign_group)</span><br><span class="line"></span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=3)</span><br><span class="line">knn.fit(features,label)</span><br><span class="line">knn.predict([[0,2]])</span><br></pre></td></tr></table></figure>
+<h2 id="多个features"><a href="#多个features" class="headerlink" title="多个features"></a>多个features</h2><p>另外一种方式，x是我们的category，y则是所属组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from sklearn.neighbors import KNeighborsClassifier </span><br><span class="line"></span><br><span class="line">x_df = df.category</span><br><span class="line">x_train = pd.get_dummies(x_df)</span><br><span class="line"></span><br><span class="line">y_df = df.assign_group</span><br><span class="line">y_train = y_df.values</span><br><span class="line"></span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=6)</span><br><span class="line">knn.fit(x_train,y_train)</span><br></pre></td></tr></table></figure>
+<p>随后你可以直接将x_train传给knn做个预测，然后跟真实的数据做个对比。</p>
+<blockquote>
+<p>拿训练的数据来做预测是不可取的，你必须给模型一些它从来没有看见过的数据预测，这样才能准确的测试模型的性能</p>
+</blockquote>
+<p>你也可以自己生成一些数据来查看，如你已经知道get_dummies后的df有144列，那么你可以自行生成一个2d的dummie数组传给knn.predit.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">arr_list = np.concatenate(np.zeros((1,143)))</span><br><span class="line">temp_arr = arr_list.tolist()</span><br><span class="line">temp_arr.insert(44,1)</span><br><span class="line">new_x = [temp_arr.insert]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">output: array([&apos;Helpdesk CN&apos;])</span><br></pre></td></tr></table></figure>
+<h2 id="分割数据并查看得分"><a href="#分割数据并查看得分" class="headerlink" title="分割数据并查看得分"></a>分割数据并查看得分</h2><p>下面演示了将数据拆分成train,和test后的预测分数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=42)</span><br><span class="line"></span><br><span class="line">knn= KNeighborsClassifier(n_neighbors=6)</span><br><span class="line">knn.fit(X_train,y_train)</span><br><span class="line"></span><br><span class="line">knn.score(X_test,y_test)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">output:0.781</span><br></pre></td></tr></table></figure>
+<p>78%，这个模型效果还是不错的！</p>
+<h2 id="选择Neighbors"><a href="#选择Neighbors" class="headerlink" title="选择Neighbors"></a>选择Neighbors</h2><p>我们知道对于knn算法，其中一个关键的参数是neighbors,那么对于不同的neighbors，我们的accuracy的分数是什么样的呢？我们可以来画个图检测一下：</p>
+<p><img src="https://i.loli.net/2019/11/18/Qzlb7BVyCJT3X6F.png" alt=""></p>
+<p>可以看到neighbors在6-7之间，accuracy是最高的，在2-5之间，test的得分竟然比训练数据都要高。</p>
+<h2 id="使用knn的优缺点"><a href="#使用knn的优缺点" class="headerlink" title="使用knn的优缺点"></a>使用knn的优缺点</h2><ul>
+<li>knn算法对于处理非线性数据很有用，可以用它一起处理回归问题</li>
+<li>knn的测试阶段较慢且耗资源，需要很多的内存来保存来预测的整个数据集</li>
+<li>强烈建议将数据进行同比例的标准化，比如将所有数据缩放到0,1的区间内</li>
+<li>knn不适合太高维度的数据，在那种情况下，需要将维度降低</li>
+<li>处理缺失值有助于改善模型的准确度</li>
+</ul>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p><strong>1. knn fit其中的x,x一定只能是get_dummies算出来的数据吗？</strong></p>
+<p>不是，比如 iris 的数据摘要，X的数据是各个部分的长、宽:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[[5.1,3.5,1.4,0.2],</span><br><span class="line">[4.9,3,1.4,0.2]]</span><br></pre></td></tr></table></figure>
+<p><strong>2. knn fit其中的y，y可以是原始数据类型吗？如a,b,a,c</strong></p>
+<p>可以，如 datacamp 题目中的政党数据，y=df[‘party’]:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Out[8]: </span><br><span class="line">0      republican</span><br><span class="line">1      republican</span><br><span class="line">2        democrat</span><br><span class="line">3        democrat</span><br><span class="line">4        democrat</span><br><span class="line">5        democrat</span><br><span class="line">6        democrat</span><br><span class="line">7      republican</span><br><span class="line">8      republican</span><br><span class="line">9        democrat</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-reward-image.png" alt="wittyfans WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jira/" rel="tag"># jira</a>
+          
+            <a href="/tags/data-analysis/" rel="tag"># data analysis</a>
+          
+            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/math/数学复习：求和符号.html" rel="next" title="数学复习：求和符号">
+                <i class="fa fa-chevron-left"></i> 数学复习：求和符号
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="wittyfans" />
+          <p class="site-author-name" itemprop="name">wittyfans</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">58</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">72</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wittyfans" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://music.163.com/#/user/event?id=5842815" target="_blank" title="Netease Music">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Netease Music
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.instagram.com/wittyfans/" target="_blank" title="Instagram">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Instagram
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/wittyfans" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#算法"><span class="nav-number">1.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据"><span class="nav-number">2.</span> <span class="nav-text">数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#A-basic-Exapple"><span class="nav-number">3.</span> <span class="nav-text">A basic Exapple</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单个features"><span class="nav-number">3.1.</span> <span class="nav-text">单个features</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多个features"><span class="nav-number">3.2.</span> <span class="nav-text">多个features</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分割数据并查看得分"><span class="nav-number">3.3.</span> <span class="nav-text">分割数据并查看得分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择Neighbors"><span class="nav-number">3.4.</span> <span class="nav-text">选择Neighbors</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用knn的优缺点"><span class="nav-number">3.5.</span> <span class="nav-text">使用knn的优缺点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题"><span class="nav-number">4.</span> <span class="nav-text">问题</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wittyfans</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("7sScl0n1AlEtVDaUHuXzxPqc-gzGzoHsz", "qKXpoqGbK1sdFYMiik7Evuan");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

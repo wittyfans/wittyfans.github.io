@@ -1,0 +1,1075 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python,crawler,scrapy," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="wittyfans" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="就是看看大家在贴吧玩啥，爬了100多兆母校的数据，回来慢慢分析，以后再做个数据可视化，感兴趣的可以拿去爬一下自己喜欢的贴吧。">
+<meta name="keywords" content="python,crawler,scrapy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何用Scrapy开发一个贴吧爬虫">
+<meta property="og:url" content="http://wittyfans.com/coding/如何用Scrapy开发一个贴吧爬虫.html">
+<meta property="og:site_name" content="wittyfans">
+<meta property="og:description" content="就是看看大家在贴吧玩啥，爬了100多兆母校的数据，回来慢慢分析，以后再做个数据可视化，感兴趣的可以拿去爬一下自己喜欢的贴吧。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-16T12:44:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何用Scrapy开发一个贴吧爬虫">
+<meta name="twitter:description" content="就是看看大家在贴吧玩啥，爬了100多兆母校的数据，回来慢慢分析，以后再做个数据可视化，感兴趣的可以拿去爬一下自己喜欢的贴吧。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wittyfans.com/coding/如何用Scrapy开发一个贴吧爬虫.html"/>
+
+
+
+
+
+  <title> 如何用Scrapy开发一个贴吧爬虫 | wittyfans </title>
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">wittyfans</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">学则不固,知则不惑</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/如何用Scrapy开发一个贴吧爬虫.html">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="wittyfans">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="wittyfans">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="wittyfans" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                如何用Scrapy开发一个贴吧爬虫
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-16T20:38:35+08:00">
+                2019-01-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/coding/" itemprop="url" rel="index">
+                    <span itemprop="name">coding</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/coding/如何用Scrapy开发一个贴吧爬虫.html" class="leancloud_visitors" data-flag-title="如何用Scrapy开发一个贴吧爬虫">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+               <span>℃</span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>就是看看大家在贴吧玩啥，爬了100多兆母校的数据，回来慢慢分析，以后再做个数据可视化，感兴趣的可以拿去爬一下自己喜欢的贴吧。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="scrapy"><a href="#scrapy" class="headerlink" title="scrapy"></a>scrapy</h1><p>A scrapy projects, <a href="https://github.com/wittyfans/scrapy" target="_blank" rel="noopener">Github Link</a>.</p>
+<h1 id="贴吧爬虫开发记录"><a href="#贴吧爬虫开发记录" class="headerlink" title="贴吧爬虫开发记录"></a>贴吧爬虫开发记录</h1><h2 id="抓取数据并存储"><a href="#抓取数据并存储" class="headerlink" title="抓取数据并存储"></a>抓取数据并存储</h2><p>因为我要抓取很多链接，最开始的想法就是直接把所有的url给内置的start_urls方法，于是我自己写了个生成器，直接怼给了它，但发现不管用。<br>翻了下官方的文档：</p>
+<blockquote>
+<p>make_requests_from_url() 将被调用来创建Request对象。 该方法仅仅会被Scrapy调用一次，因此您可以将其实现为生成器</p>
+</blockquote>
+<p>于是就自己写了生成器给make_requests_from_url() 用，在把response 返回:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">def start_requests(self):</span><br><span class="line">    self.logger.info(&quot;START:&quot;)</span><br><span class="line">    for url in self.getBBSUrl(&quot;守望先锋&quot;,10):</span><br><span class="line">        yield self.make_requests_from_url(url)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>但后面又发现这个在最新的官方文档里面没有, 原来, Spider.make_requests_from_url is deprecated (issue 1728, fixes issue 1495), 看来又要改一下才行，先挖个坑吧。</p>
+</blockquote>
+<p><em>更新：</em></p>
+<p>看了下官方的例子:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Return multiple Requests and items from a single callback:</span><br><span class="line"></span><br><span class="line">import scrapy</span><br><span class="line"></span><br><span class="line">class MySpider(scrapy.Spider):</span><br><span class="line">    name = &apos;example.com&apos;</span><br><span class="line">    allowed_domains = [&apos;example.com&apos;]</span><br><span class="line">    start_urls = [</span><br><span class="line">        &apos;http://www.example.com/1.html&apos;,</span><br><span class="line">        &apos;http://www.example.com/2.html&apos;,</span><br><span class="line">        &apos;http://www.example.com/3.html&apos;,</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    def parse(self, response):</span><br><span class="line">        for h3 in response.xpath(&apos;//h3&apos;).extract():</span><br><span class="line">            yield &#123;&quot;title&quot;: h3&#125;</span><br><span class="line"></span><br><span class="line">        for url in response.xpath(&apos;//a/@href&apos;).extract():</span><br><span class="line">            yield scrapy.Request(url, callback=self.parse)</span><br></pre></td></tr></table></figure>
+<p>直接将 yield self.make_requests_from_url(url) 换成 yield scrapy.Request(url, callback=self.parse) 就好了。</p>
+<p>之前是使用直接赋值的方式来将xpath解析到的值给item，也就是:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def parse(self, response):</span><br><span class="line">    alltitles = []</span><br><span class="line">    item = TiebaItem()</span><br><span class="line">    titles = response.xpath(&quot;//a[@class=&apos;j_th_tit &apos;]//text()&quot;).extract()</span><br><span class="line">    for title in titles:</span><br><span class="line">        alltitles.append(title)</span><br><span class="line">    item[&quot;summarys&quot;] = alltitles</span><br><span class="line">    return item</span><br></pre></td></tr></table></figure>
+<p>titles是一个页面中所有的title，是一个数组对象，但发现如果我直接将title赋值到item，也是可以的，这里纯粹多此一举，所以变成:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def parse(self, response):</span><br><span class="line">    item = TiebaItem()</span><br><span class="line">    titles = response.xpath(&quot;//a[@class=&apos;j_th_tit &apos;]//text()&quot;).extract()</span><br><span class="line">    item[&quot;summarys&quot;] = titles</span><br><span class="line">    return item</span><br></pre></td></tr></table></figure>
+<p>后面改用了ItemLoader，ItemLoader是更抽象的一种使用方式。我们知道，数据都是存储在item里面的，每次使用的时候都需要创建item，之后再<br>通过response.xpath选择需要的值，赋值给item里面对应的字段。</p>
+<p>itemLoader把这个过程抽象为，你在新建itemLoader的时候把要装数据的item给我，然后只需要给我字段和要存的值就好，另一个好处是，你还可以在itemLoader这个环节对一些数据做处理，比如首尾空格去除，添加特定字段等。</p>
+<p>所以修改后的存储代码变成了这样:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def parse(self, response):</span><br><span class="line">        l = ItemLoader(item=TiebaItem(),response=response)</span><br><span class="line">        l.add_xpath(&quot;summarys&quot;,&quot;//a[@class=&apos;j_th_tit &apos;]//text()&quot;)</span><br><span class="line">        l.add_xpath(&quot;links&quot;,&apos;//a[@class=&quot;j_th_tit &quot;]//@href&apos;)</span><br><span class="line">        return l.load_item()</span><br></pre></td></tr></table></figure>
+<p>另一种方式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def parse(self, response):</span><br><span class="line">    post = l.nested_xpath(&quot;//a[@class=&apos;j_th_tit &apos;]&quot;)</span><br><span class="line">    post.add_xpath(&apos;summary&apos;, &apos;text()&apos;)</span><br><span class="line">    post.add_xpath(&apos;link&apos;, &apos;@href&apos;)</span><br><span class="line">    return l.load_item()</span><br></pre></td></tr></table></figure>
+<p>现在我提取了帖子的两条数据，一个是标题，另一个是标题的链接，存储在item里面是这个样子的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    &#123;&quot;summarys&quot;:[&quot;标题1&quot;,&quot;标题2&quot;],&quot;Links&quot;:[&quot;Link1&quot;,&quot;Link2&quot;]&#125;,</span><br><span class="line">    &#123;&quot;summarys&quot;:[&quot;标题3&quot;,&quot;标题4&quot;],&quot;Links&quot;:[&quot;Link3&quot;,&quot;Link4&quot;]&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>这基本上是请求一次，返回了贴吧里面一页的数据，然后从中提取了所有标题和链接，所以是一次请求，一行数据。那有没有办法把所有的标题和链接合并到一起呢？也就是从多个请求提取到的数据存到item中的同一个字段里。</p>
+<p>仔细想想这样有必要吗？用pd分析一下这个json数据看看。</p>
+<blockquote>
+<p>Method 1</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">summarys = []</span><br><span class="line">links = []</span><br><span class="line"></span><br><span class="line">for link in data.link:</span><br><span class="line">    for value in link:</span><br><span class="line">        url = &quot;tieba.baidu.com&quot;+str(value)</span><br><span class="line">        links.append(url)</span><br><span class="line">for summary in data.summary:</span><br><span class="line">    for value in summary:</span><br><span class="line">        summarys.append(value)</span><br><span class="line">post = pd.DataFrame()</span><br><span class="line">post[&quot;summarys&quot;] = summarys</span><br><span class="line">post[&quot;link&quot;] = links</span><br><span class="line">post</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Method 2</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def toPD(data):</span><br><span class="line">    post = pd.DataFrame()</span><br><span class="line">    for col in data.columns:</span><br><span class="line">        coldata = []</span><br><span class="line">        for value in data[col]:</span><br><span class="line">            for j in value:</span><br><span class="line">                coldata.append(j)</span><br><span class="line">        post[col] = pd.Series(coldata)</span><br><span class="line">    return post</span><br><span class="line">toPD(data)</span><br></pre></td></tr></table></figure>
+<p>输出的数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">0	哈哈哈哈大幺蛾子	tieba.baidu.com/p/5982395208</span><br><span class="line">1	安娜玩家表示看到堡垒和奥丽莎就高兴，打不动靶太安逸了	tieba.baidu.com/p/5984392212</span><br><span class="line">2	这个200hz的有人用过吗，和144的差多少?平常只打守望先	tieba.baidu.com/p/5978507290</span><br><span class="line">3	这麦克雷是挂吗 大家帮忙看看	tieba.baidu.com/p/5984115608</span><br><span class="line">4	我真是服了，削猪的时候，我不出声，因为我不玩；削76的时候，	tieba.baidu.com/p/5982819128</span><br><span class="line">5	这难道就是开窍了吗？	tieba.baidu.com/p/5979734484</span><br></pre></td></tr></table></figure>
+<p>检查了下链接，跟标题一样，那就先这样吧，继续研究深度爬取，多抓一些信息。</p>
+<p>用scrapy 的shell调试了一下，得到了这些信息的xpath的表达式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">l.add_xpath(&apos;replysCount&apos;,&apos;//span[@class=&quot;threadlist_rep_num center_text&quot;]//text()&apos;) #回复数</span><br><span class="line">l.add_xpath(&apos;authorName&apos;,&apos;//span[@class=&quot;frs-author-name-wrap&quot;]//text()&apos;) #作者名字</span><br><span class="line">l.add_xpath(&apos;authorMainPageUrl&apos;,&apos;//span[@class=&quot;frs-author-name-wrap&quot;]//@href&apos;) #作者主页链接</span><br></pre></td></tr></table></figure>
+<p>用panda处理了一下，得到如下数据:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Index</th>
+<th style="text-align:center">authorMainUrl</th>
+<th style="text-align:center">author</th>
+<th style="text-align:center">posturl</th>
+<th style="text-align:center">replys</th>
+<th>summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">tieba.baidu.com/home/main/?un=%E7%BA%AF%E5%B1%</td>
+<td style="text-align:center">一呼吸一</td>
+<td style="text-align:center">tieba.baidu.com/p/5978804665</td>
+<td style="text-align:center">94</td>
+<td style="text-align:center">毛妹这个英雄是不是该削了?竞技把把都有，万金油的存在，她的盾</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">tieba.baidu.com/home/main/?un=q526246486&amp;ie=ut</td>
+<td style="text-align:center">贴吧用户</td>
+<td style="text-align:center">tieba.baidu.com/p/5924655619</td>
+<td style="text-align:center">41</td>
+<td style="text-align:center">这波刀大家打几分</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">tieba.baidu.com/home/main/?un=%E9%99%86%E6%95%</td>
+<td style="text-align:center">陆散散</td>
+<td style="text-align:center">tieba.baidu.com/p/5984318268</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">算了 不想骂了 鱼塘水真多我佛了</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">tieba.baidu.com/home/main/?un=%E8%99%90%E7%88%</td>
+<td style="text-align:center">虐爆</td>
+<td style="text-align:center">tieba.baidu.com/p/5983683236</td>
+<td style="text-align:center">104</td>
+<td style="text-align:center">为什么你们有那么多小姐姐一起玩</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">tieba.baidu.com/home/main/?un=G7IP9&amp;ie=utf-8&amp;i</td>
+<td style="text-align:center">黎曦</td>
+<td style="text-align:center">tieba.baidu.com/p/5983616276</td>
+<td style="text-align:center">65</td>
+<td style="text-align:center">问几个问题</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>String 的startwith()方法可以接受多个参数，但必须是tuple，也就是string.startwith((‘a’,’b’))</li>
+</ul>
+<p>但此时又遇到了一个新问题，当我在pandas里进行列数据合并的时候，提示出错，应该是列长不一样，也就是某些数据有遗漏。然后用<br>pd.Series()解决了问题，它会将缺失的数据填充为NaN，但缺发现标题和发帖人的对应关系出错了。</p>
+<p>这时候就抛出了一个问题，既然要保留item中数据的结构，那么在合并数据的时候，是否可以保证数据的对应关系呢？</p>
+<h2 id="2018-12-22"><a href="#2018-12-22" class="headerlink" title="2018.12.22"></a>2018.12.22</h2><p><strong>新问题的新思考：</strong></p>
+<blockquote>
+<p>目前解决问题的思路是这样的，假设一个分页有10个帖子，我一次性拿10个帖子的标题，发帖人，回复量，这10个帖子处理完了，再进行下一步。这样会遇到合并数据的问题,<br>其次出来的数据，也是十条一组的存储在item里面。如果我之后再想得到这个帖子的内容，回复这个帖子的人，这些人的信息，难道再去找之前的URL，再把拿到的数据去做复杂的合并吗？<br>这么一想觉得现在的方法不行，一开始我只是考虑到了爬这些标题做分析，但现在想要更多的数据，就必须换一种方法。</p>
+</blockquote>
+<p>Todo:</p>
+<ul>
+<li>有一个div有两个class，一个是gril, 另一个是hot gril, 那么在我通过girl定位到了这个“gril”之后，怎么知道她是hot girl呢？</li>
+</ul>
+<h2 id="新的架构"><a href="#新的架构" class="headerlink" title="新的架构"></a>新的架构</h2><p>现在的方法是，利用深层爬取。刚开始的请求还是一样的，请求一页的数据，然后从中收集所有帖子的链接，这时候返回这一页的帖子链接的list，然后在一个个循环请求，回来的数据传给回调方法处理并存储到item里面。</p>
+<p>这里的关键在于，第一页的数据抓取完了之后，得找到下一页的链接继续请求，从请求的数据中继续找帖子，找下一页，如此循环，通过指定CLOSESPIDER_ITEMCOUNT的值可以让爬虫在爬了特定的值后停下来，不然会一直继续下一页，参见下面的tips.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">def parse(self, response):</span><br><span class="line">    # get the next page info</span><br><span class="line">    nextPageUrls = response.xpath(&quot;//a[@class=&apos;next pagination-item &apos;]//@href&quot;)</span><br><span class="line">    for url in nextPageUrls.extract():</span><br><span class="line">        self.logger.info(&quot;=====Now request:&#123;&#125;=====&quot;.format(url))</span><br><span class="line">        yield scrapy.Request(urljoin(&apos;https://tieba.baidu.com&apos;,url))</span><br><span class="line"></span><br><span class="line">    # get the post urls and collec the info.</span><br><span class="line">    postSubUrls = response.xpath(&quot;//a[@class=&apos;j_th_tit &apos;]//@href&quot;).extract()</span><br><span class="line">    postUrls = list(map(self.addPref,postSubUrls))</span><br><span class="line">    for url in postUrls.__reversed__():</span><br><span class="line">        yield scrapy.Request(url,callback=self.parsePost,meta=&#123;&apos;url&apos;:url&#125;)</span><br><span class="line"></span><br><span class="line">def parsePost(self,response):</span><br><span class="line">    l = ItemLoader(item=TiebaItem(),response=response)</span><br><span class="line">    title = response.xpath(&quot;//div[@class=&apos;core_title_wrap_bright clearfix&apos;]//text()&quot;).extract()[0]</span><br><span class="line">    l.add_value(&quot;link&quot;,response.meta[&apos;url&apos;])</span><br><span class="line">    l.add_value(&quot;title&quot;,title)</span><br><span class="line">    l.add_xpath(&quot;replyUsers&quot;,&quot;//div[@class=&apos;d_author&apos;]//li[@class=&apos;d_name&apos;]//a[@class=&apos;p_author_name j_user_card&apos;]//text()&quot;)</span><br><span class="line">    l.add_xpath(&quot;replyContent&quot;,&quot;//div[@class=&apos;d_post_content j_d_post_content &apos;]//text()&quot;)</span><br><span class="line">    yield l.load_item()</span><br></pre></td></tr></table></figure>
+<p>上面的代码，我将下一页的请求放在抽取帖子内容后面，就会出现只能抓一页的情况，折腾了半天，后参考《精通PYTHON爬虫框架Scrapy——异步图书》代码才解决，不知何故，待研究。</p>
+<p>一些技巧：</p>
+<ul>
+<li><a href="https://www.zhihu.com/question/54773510" target="_blank" rel="noopener">利用meta参数，在请求之间传信息</a></li>
+<li>多利用 urljoin 来合并url，而不是自己写函数再map</li>
+<li>scrapy crawl name -s CLOSESPIDER_ITEMCOUNT=100 通过-s指定CLOSESPIDER_ITEMCOUNT的值可以让爬虫在爬了特定的值后停下来</li>
+</ul>
+<h2 id="2018-12-23"><a href="#2018-12-23" class="headerlink" title="2018.12.23"></a>2018.12.23</h2><p>今天换了个个音乐主题的贴吧billboard吧抓数据，发现xpath表达式都抓不到东西了，检查了一下发现不同的吧某些东西还不一样，比如billboard吧和守望先锋吧帖子内容的class：</p>
+<ul>
+<li>“d_post_content j_d_post_content ”</li>
+<li>“d_post_content j_d_post_content  clearfix”</li>
+</ul>
+<p>billboard吧的class增加了一个clearfix的值，这是用来清除浮动的，要了解清楚浮动是干嘛，可以参考<a href="https://www.jianshu.com/p/9d6a6fc3e398" target="_blank" rel="noopener">这篇文章</a>，现在有两个办法</p>
+<ul>
+<li>找到这个clearfix的规律，有clearfix的吧或者帖子就给我们的xpath表达式加上</li>
+<li>还是按照原来的方法去取值，如果取不到，那就加上clearfix</li>
+</ul>
+<p>目前来看第二种方法比较简单，先试试:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># 标题</span><br><span class="line">title = response.xpath(&quot;//div[@class=&apos;core_title_wrap_bright clearfix&apos;]//text()&quot;)</span><br><span class="line">if title:</span><br><span class="line">    title = title.extract()[0]</span><br><span class="line">else:</span><br><span class="line">    title = response.xpath(&quot;//div[@class=&apos;core_title core_title_theme_bright&apos;]//text()&quot;).extract()[0]</span><br><span class="line">                                        </span><br><span class="line"># 链接</span><br><span class="line">l.add_value(&quot;link&quot;,response.meta[&apos;url&apos;])</span><br><span class="line">l.add_value(&quot;title&quot;,title)</span><br><span class="line"># 跟帖用户</span><br><span class="line">l.add_xpath(&quot;replyUsers&quot;,&quot;//div[@class=&apos;d_author&apos;]//li[@class=&apos;d_name&apos;]//a[@class=&apos;p_author_name j_user_card&apos;]//text()&quot;)</span><br><span class="line"># 跟帖内容</span><br><span class="line">replyContent = response.xpath(&quot;//div[@class=&apos;d_post_content j_d_post_content  clearfix&apos;]//text()&quot;)</span><br><span class="line">if replyContent:</span><br><span class="line">    replyContent = replyContent.extract()</span><br><span class="line">else:</span><br><span class="line">    replyContent = response.xpath(&quot;//div[@class=&apos;d_post_content j_d_post_content &apos;]//text()&quot;).extract()</span><br><span class="line">l.add_value(&quot;replyContent&quot;,replyContent)</span><br></pre></td></tr></table></figure>
+<p>没问题，成功抓到所需要的信息,现在我要抓去更多用户的信息，这帖子回复的人是个妹子还是汉子那肯定得知道不，通过分析html结果，被我发现了这么一个字段:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">data-field=&quot;&#123;</span><br><span class="line"></span><br><span class="line">    &quot;author&quot;:&#123;&quot;user_id&quot;:2350893056,&quot;user_name&quot;:&quot;GYGGYFDDH&quot;,&quot;name_u&quot;:&quot;GYGGYFDDH&amp;ie=utf-8&quot;,&quot;user_sex&quot;:2,&quot;portrait&quot;:&quot;00c84759474759464444481f8c&quot;,&quot;is_like&quot;:1,&quot;level_id&quot;:6,&quot;level_name&quot;:&quot;\u51cc\u6ce2\u55b5\u6b65&quot;,&quot;cur_score&quot;:118,&quot;bawu&quot;:0,&quot;props&quot;:null,&quot;user_nickname&quot;:&quot;\u767d\u00ba\u82d7\u7f2a&quot;&#125;,</span><br><span class="line"></span><br><span class="line">    &quot;content&quot;:&#123;&quot;post_id&quot;:123353095371,&quot;is_anonym&quot;:false,&quot;open_id&quot;:&quot;tbclient&quot;,&quot;open_type&quot;:&quot;android&quot;,&quot;date&quot;:&quot;2018-12-23 10:35&quot;,&quot;vote_crypt&quot;:&quot;&quot;,&quot;post_no&quot;:1,&quot;type&quot;:&quot;0&quot;,&quot;comment_num&quot;:0,&quot;is_fold&quot;:0,&quot;ptype&quot;:&quot;0&quot;,&quot;is_saveface&quot;:false,&quot;props&quot;:null,&quot;post_index&quot;:0,&quot;pb_tpoint&quot;:null&#125;</span><br><span class="line">    </span><br><span class="line">    &#125;&quot;</span><br></pre></td></tr></table></figure>
+<p>这就是突破口了，author是用户的信息，content是这个帖子的信息，比如回复的时间。user_sex就是性别，1是男，2是女，仔细一看这里面还有用户的设备信息，比如用的是苹果还是安卓。<br>试着抓一些信息下来，xpath表达式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">l.add_xpath(&quot;replyUsers&quot;,&quot;//div[@class=&apos;p_postlist&apos;]/div/attribute::data-field&quot;)</span><br></pre></td></tr></table></figure>
+<p>选取所有class是p_postlist的第一个子节点，然后选择它的叫做data-field的属性，即上面的信息了，抓到了所有的数据，用pd过滤一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">usernames = []</span><br><span class="line">usersexs = []</span><br><span class="line">for users in sxyData.replyUsers:</span><br><span class="line">    for userinfo in users:</span><br><span class="line">        userInfoString = &quot;&quot;.join(userinfo)</span><br><span class="line">        if userInfoString.startswith(&quot;&#123;&quot;):</span><br><span class="line">            user = pd.read_json(userInfoString)</span><br><span class="line">            usernames.append(user.author[&quot;user_name&quot;])</span><br><span class="line">            usersexs.append(user.author[&quot;user_sex&quot;])</span><br><span class="line">users = &#123;&apos;names&apos;:usernames,&apos;sex&apos;:usersexs&#125;</span><br><span class="line">users = pd.DataFrame(users)</span><br><span class="line">users</span><br></pre></td></tr></table></figure>
+<p>这里会从中提取出用户名和性别，因为某些数据不是以{}包装的，所以在用pd提取json对象之前，先判断一下,得到的数据如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0	夜和海1996	1</span><br><span class="line">1	华丽atobekeigo	2</span><br><span class="line">5	永中一小生	0</span><br><span class="line">6	哦啦啦旅途啦	0</span><br><span class="line">7	lzlzyz	1</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>1：男生</li>
+<li>2：女生</li>
+<li>0:未知</li>
+</ul>
+<h2 id="todo"><a href="#todo" class="headerlink" title="todo"></a>todo</h2><ul>
+<li>下午突然想到，应该可以通过子或父节点获取这个class的属性，再去提取信息，这样就不需要判断了，直接可以根据相对关系选择它的class名</li>
+</ul>
+<h2 id="2018-12-24"><a href="#2018-12-24" class="headerlink" title="2018.12.24"></a>2018.12.24</h2><p>在处理抓帖子内容的时候出现一些问题，因为有一些帖子的评论很多，也是有下一页的，虽然处理逻辑和帖子列表的差不多，但仔细研究后发现是不一样的，并且找出了之前的代码的缺陷:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def parse(self, response):</span><br><span class="line">        # get the post urls and collec the info.</span><br><span class="line">        postSubUrls = response.xpath(&quot;//a[@class=&apos;j_th_tit &apos;]//@href&quot;).extract()</span><br><span class="line">        self.logger.info(&quot;==============Now Request pages===========&#123;&#125;&quot;.format(postSubUrls))</span><br><span class="line">        for subrul in postSubUrls:</span><br><span class="line">            url = urljoin(self.urlPrefix,subrul)</span><br><span class="line">            self.logger.info(&quot;----------Now request url=============&#123;&#125;&quot;.format(url))</span><br><span class="line">            yield scrapy.Request(url,callback=self.parsePost,meta=&#123;&apos;url&apos;:url&#125;)</span><br><span class="line"></span><br><span class="line">        # get the next page info</span><br><span class="line">        nextPageUrls = response.xpath(&quot;//a[@class=&apos;next pagination-item &apos;]//@href&quot;)    </span><br><span class="line">        for url in nextPageUrls.extract():</span><br><span class="line">            yield scrapy.Request(urljoin(self.urlPrefix,url),callback=self.parse)</span><br></pre></td></tr></table></figure>
+<p>主要是这里的抓帖子内容和下一页的顺序对调了，以及之前我在yield下一页的时候，竟然没有指定回掉方法，这导致第一页帖子里面就有些帖子没有抓下来。随后开始研究如何抓第二页的评论，此处遇到一个大坑, 即第二页的标题变了，变成了”回复： {原来的标题}”,导致新抓下来的标题都<br>存到了另一个字段，我还以为没抓下来，一直在改，之所以存到了下一个字段，是因为我在下一页的请求发起之前，就已经yield返回了l.load_item().</p>
+<p>找到原因了就好办了，对于那些抓下一页的评论的帖子，它的title我们可以一开始就指定，然后通过meta传递给下一个请求，在下一个请求中判断如果meta中有title，那么title就设置为meta中的，这里在判断meta(meta是一个字典)中是否某个key的时候犯了个小错,我是这么写的:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if d.meta[&apos;apples&apos;]:</span><br></pre></td></tr></table></figure>
+<p>但其实应该这样写:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if &apos;apples&apos; in d:</span><br></pre></td></tr></table></figure>
+<p>参见：<a href="https://stackoverflow.com/questions/44035287/check-key-exist-in-python-dict/44035382" target="_blank" rel="noopener">Check key exist in python dict</a></p>
+<p>但这样抓下来的帖子还是有一个问题，当爬虫爬下一个评论页的时候，这一页的数据它就会返回，所以在json数据中，就会有标题，链接重复，但评论和跟帖用户不一样的数据，本来的数据是一个帖子一条数据，但现在是只要这个帖子又下一页的评论，就会新建一条数据，虽然它的标题和链接是一样的。</p>
+<h2 id="2018-12-26"><a href="#2018-12-26" class="headerlink" title="2018.12.26"></a>2018.12.26</h2><p>这问题困扰了我好几天，还是没有找到解决的办法，尝试过:</p>
+<ul>
+<li>在爬取comments的过程中，不yeild数据，将爬下来的评论append给meta，回调方法指向自身，重复直到没有下一页为止，但这样scrapy直接把之前的数据都丢掉了，可能是因为每次重新<br>进入方法的时候，都new了一个新的itemLoader。</li>
+</ul>
+<blockquote>
+<p>暂时搁置一下，反正帖子标题是一样的，后面用pandas处理一下吧。</p>
+</blockquote>
+<p>我想提取出来的数据是，每个comments作为一条记录，同时记录帖子的标题和用户，但比对抓下来的数据后发现评论中的用户数量和评论本身不一致，这就尴尬了，不建立好对应关系，数据根本就没办法分析啊。</p>
+<p>不过基本可以确定，评论中的第一条就是楼主，先把楼主的信息抓出来吧。</p>
+<h2 id="2019-01-07"><a href="#2019-01-07" class="headerlink" title="2019.01.07"></a>2019.01.07</h2><p>今天了解到scrapy的另一个特性，即CrawlSpider类型的爬虫，在这个爬虫里面，它可以像下面这样去抽取post的连接和下一页的链接：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rules = (</span><br><span class="line">    Rule(LinkExtractor(restrict_xpaths=&quot;//div[@class=&apos;pb_footer&apos;]//ul[@class=&apos;l_posts_num&apos;]//a&quot;),callback=&apos;parse&apos;),</span><br><span class="line">    Rule(LinkExtractor(restrict_xpaths=&quot;//a[@class=&apos;j_th_tit &apos;]&quot;),callback=&apos;parsePost&apos;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>《精通python爬虫》这本书上说：</p>
+<blockquote>
+<p>Rule中可以指定回调函数，也就是上面我写的callback=’parse’(这里只能是函数的字符串名字，而不是self.parse)。如果我们没有指定callback函数，那么scrapy将会跟踪已经抽取的链接，如果你希望跟踪链接，那么需要再callback中使用return或yield返回它们，或者将Rule的follow参数设置为true，当你的页面既包含item又包含其他有用的导航链接时，该功能可能会非常有用。</p>
+</blockquote>
+<p>看完这一段，我有几个疑问：</p>
+<ul>
+<li>callback函数中，如何拿到想跟踪的链接？</li>
+<li>yield的链接，直接返回这个链接，还是返回response对象？</li>
+<li>返回的数据（或者链接），由谁来处理？</li>
+</ul>
+<p>rules: 是Rule对象的集合，用于匹配目标网站并排除干扰<br>parse_start_url: 用于爬取起始响应，必须要返回Item，Request中的一个。</p>
+<p>查了一些资料，rules的规则：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">rules = [</span><br><span class="line">    Rule(</span><br><span class="line">        link_extractor,     # LinkExtractor对象</span><br><span class="line">        callback=None,      # 请求到响应数据时的回调函数</span><br><span class="line">        cb_kwargs=None,     # 调用函数设置的参数,不要指定为parse</span><br><span class="line">        follow=None,        # 是否从response跟进链接，为布尔值</span><br><span class="line">        process_links=None, # 过滤linkextractor列表，每次获取列表时都会调用</span><br><span class="line">        process_request=None    # 过滤request,每次提取request都会调用</span><br><span class="line">    )</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>LinkExtractor的参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class scrapy.contrib.linkextractor.sgml.SgmlLinkExtractor(</span><br><span class="line">    allow = (),         # 符合正则表达式参数的数据会被提取</span><br><span class="line">    deny = (),          # 符合正则表达式参数的数据禁止提取</span><br><span class="line">    allow_domains = (),     # 包含的域名中可以提取数据</span><br><span class="line">    deny_domains = (),      # 包含的域名中禁止提取数据</span><br><span class="line">    deny_extensions = (),       </span><br><span class="line">    restrict_xpath = (),        # 使用xpath提取数据，和allow共同起作用</span><br><span class="line">    tags = (),          # 根据标签名称提取数据</span><br><span class="line">    attrs = (),         # 根据标签属性提取数据</span><br><span class="line">    canonicalize = (),</span><br><span class="line">    unique = True,          # 剔除重复链接请求</span><br><span class="line">    process_value = None</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<h1 id="xpath参考"><a href="#xpath参考" class="headerlink" title="xpath参考"></a>xpath参考</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1. 进入scrapy调试界面</span><br><span class="line">scrapy shell &apos;url&apos;</span><br><span class="line"></span><br><span class="line">2. 调试界面使用xpath</span><br><span class="line">response.xpath(&apos;&apos;)</span><br><span class="line"></span><br><span class="line">3. 抓取指定类的元素,//为获取所有元素，返回的是list，所有如果在上一级使用了//,那么下一级也是用//,如果是/,那么提取的就是该list中的第一个元素</span><br><span class="line">xpath(&apos;//div[@class=&quot;title&quot;]//text()&apos;),text()为获取该元素下的文本，如果需要纯文本，还需要在后面加extract()方法</span><br><span class="line"></span><br><span class="line">4. 提取属性</span><br><span class="line">xpath(&quot;//div[@class=&apos;pb_footer&apos;]//ul[@class=&apos;l_posts_num&apos;]//a//@href&quot;),主要是后面的@href</span><br></pre></td></tr></table></figure>
+<h1 id="scrapy参考"><a href="#scrapy参考" class="headerlink" title="scrapy参考"></a>scrapy参考</h1><h2 id="setting"><a href="#setting" class="headerlink" title="setting"></a>setting</h2><blockquote>
+<p>这里说的设置，只要在setting.py中添加一条记录即可</p>
+</blockquote>
+<ol>
+<li><p>设置utf-8格式，避免中文出错<br>FEED_EXPORT_ENCODING = ‘utf-8’</p>
+</li>
+<li><p>不遵守网站的爬虫策略<br>ROBOTSTXT_OBEY = False</p>
+</li>
+</ol>
+<h2 id="commands"><a href="#commands" class="headerlink" title="commands"></a>commands</h2><ol>
+<li><p>启动爬虫<br>scrapy crawl CrawlerName</p>
+</li>
+<li><p>启动爬虫，导出数据为json<br>scrapy crawl CrawlerName -o filename.json </p>
+</li>
+<li><p>爬了指定的数据后，就关闭<br>scrapy crawl CrawlerName -o filename.json -s CLOSESPIDER_ITEMCOUNT=50</p>
+</li>
+</ol>
+<h2 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h2><p>scrapy shell环境下，配置user-agent:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">url = &apos;http://www.example.com&apos;</span><br><span class="line">request = scrapy.Request(url, headers=&#123;&apos;User-Agent&apos;: &apos;Mybot&apos;&#125;)</span><br><span class="line">fetch(request)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>生成爬虫<br>scrapy genspider -l 查看可用的模版<br>scrapy genspider -t crawl name url </li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-reward-image.png" alt="wittyfans WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/crawler/" rel="tag"># crawler</a>
+          
+            <a href="/tags/scrapy/" rel="tag"># scrapy</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/coding/用Python做数据可视化.html" rel="next" title="用Python做数据可视化">
+                <i class="fa fa-chevron-left"></i> 用Python做数据可视化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/coding/Python如何连接WindowsSMB共享文件夹.html" rel="prev" title="Python如何连接WindowsSMB共享文件夹?">
+                Python如何连接WindowsSMB共享文件夹? <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="wittyfans" />
+          <p class="site-author-name" itemprop="name">wittyfans</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">56</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wittyfans" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://music.163.com/#/user/event?id=5842815" target="_blank" title="Netease Music">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Netease Music
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.instagram.com/wittyfans/" target="_blank" title="Instagram">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Instagram
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/wittyfans" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#scrapy"><span class="nav-number">1.</span> <span class="nav-text">scrapy</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#贴吧爬虫开发记录"><span class="nav-number">2.</span> <span class="nav-text">贴吧爬虫开发记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#抓取数据并存储"><span class="nav-number">2.1.</span> <span class="nav-text">抓取数据并存储</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018-12-22"><span class="nav-number">2.2.</span> <span class="nav-text">2018.12.22</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新的架构"><span class="nav-number">2.3.</span> <span class="nav-text">新的架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018-12-23"><span class="nav-number">2.4.</span> <span class="nav-text">2018.12.23</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#todo"><span class="nav-number">2.5.</span> <span class="nav-text">todo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018-12-24"><span class="nav-number">2.6.</span> <span class="nav-text">2018.12.24</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018-12-26"><span class="nav-number">2.7.</span> <span class="nav-text">2018.12.26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2019-01-07"><span class="nav-number">2.8.</span> <span class="nav-text">2019.01.07</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#xpath参考"><span class="nav-number">3.</span> <span class="nav-text">xpath参考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scrapy参考"><span class="nav-number">4.</span> <span class="nav-text">scrapy参考</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#setting"><span class="nav-number">4.1.</span> <span class="nav-text">setting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#commands"><span class="nav-number">4.2.</span> <span class="nav-text">commands</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell"><span class="nav-number">4.3.</span> <span class="nav-text">shell</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wittyfans</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("7sScl0n1AlEtVDaUHuXzxPqc-gzGzoHsz", "qKXpoqGbK1sdFYMiik7Evuan");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

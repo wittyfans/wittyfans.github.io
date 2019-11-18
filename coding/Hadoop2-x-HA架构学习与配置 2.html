@@ -1,0 +1,911 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="hadoop,bigdata,HA," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="wittyfans" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="HA，即一套宕机解决方案，用来实现分布式系统中的自动故障转移。">
+<meta name="keywords" content="hadoop,bigdata,HA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop2.x HA架构学习与配置">
+<meta property="og:url" content="http://wittyfans.com/coding/Hadoop2-x-HA架构学习与配置.html">
+<meta property="og:site_name" content="wittyfans">
+<meta property="og:description" content="HA，即一套宕机解决方案，用来实现分布式系统中的自动故障转移。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-29T14:58:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hadoop2.x HA架构学习与配置">
+<meta name="twitter:description" content="HA，即一套宕机解决方案，用来实现分布式系统中的自动故障转移。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wittyfans.com/coding/Hadoop2-x-HA架构学习与配置.html"/>
+
+
+
+
+
+  <title> Hadoop2.x HA架构学习与配置 | wittyfans </title>
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">wittyfans</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">学则不固,知则不惑</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/Hadoop2-x-HA架构学习与配置.html">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="wittyfans">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="wittyfans">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="wittyfans" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Hadoop2.x HA架构学习与配置
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-29T22:57:17+08:00">
+                2018-05-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/coding/" itemprop="url" rel="index">
+                    <span itemprop="name">coding</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/coding/Hadoop2-x-HA架构学习与配置.html" class="leancloud_visitors" data-flag-title="Hadoop2.x HA架构学习与配置">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+               <span>℃</span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>HA，即一套宕机解决方案，用来实现分布式系统中的自动故障转移。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="HA是什么？"><a href="#HA是什么？" class="headerlink" title="HA是什么？"></a>HA是什么？</h1><blockquote>
+<p>我们说DataNode存储数据, NameNode是目录，而yarn中,ResourceManager, 相当于是任务的总指挥，项目管理，那么这个HDFS中的NameNode和Yarn中的ResourceManager其实是非常重要的，如果一台挂了，那么整个集群都会没法提供服务，HA就是为这种故障提供一套解决方案。</p>
+</blockquote>
+<h1 id="HA原理"><a href="#HA原理" class="headerlink" title="HA原理"></a>HA原理</h1><p>在NameNode的目录更新的时候，会在本地的edits和fsImage中保存更新记录，所以我们可以设置多个NameNode，然后设置一个中间节点去保存这个edits和fsImage文件，这样每个NameNode有更新，这个中间节点就会记录，确保一台NameNode宕机的时候能及时的把数据转移到其他Node上去。</p>
+<p>这个中间节点就叫做JournalNode，它也有副本，即多份Namenode的日志。</p>
+<h1 id="HDFS-HA配置"><a href="#HDFS-HA配置" class="headerlink" title="HDFS HA配置"></a>HDFS HA配置</h1><h2 id="规划"><a href="#规划" class="headerlink" title="规划"></a>规划</h2><p>先看一下之前的配置:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NameNode</span><br><span class="line">DataNode1 DataNode2 DataNode3</span><br></pre></td></tr></table></figure>
+<p>规划了HA的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NameNode  NameNode</span><br><span class="line">DataNode1 DataNode2 DataNode3</span><br><span class="line">Journalnode Journalnode Journalnode</span><br></pre></td></tr></table></figure>
+<h2 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h2><p>备份原来的配置 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp -r hadoop/ dist-hadoop</span><br><span class="line">mv tmp/ dist-tmp</span><br></pre></td></tr></table></figure>
+<p>再在原来的目录中重新创建tmp文件夹。</p>
+<h2 id="配置hdfs-site-xml"><a href="#配置hdfs-site-xml" class="headerlink" title="配置hdfs-site.xml"></a>配置hdfs-site.xml</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1. dfs.nameservice -&gt; 取个名字</span><br><span class="line">2. dfs.ha.namenodes.上面的名字 -&gt;nn1,nn2</span><br><span class="line">3. rpc.address.ns.nn1 -&gt; hostname:8020</span><br><span class="line">4. rpc.address.ns.nn2 -&gt; hostname:8020</span><br><span class="line">5. http-address.ns.nn1 -&gt; hostname:50070</span><br><span class="line">6. http-address.ns.nn2 -&gt; hostname:50070</span><br><span class="line">7. Shared.edits.dir -&gt; qjournal://master:8485;node1:8485;node2:8485;</span><br><span class="line">8. dfs.journalnode.edits.dir -&gt; /opt/modules/hadoop/data/jn</span><br><span class="line">9. failover.proxy.provider.mycluster -&gt; : 设置成默认值即可</span><br><span class="line">10. Fecing.methods -&gt; sshfence : 隔离机制</span><br><span class="line">11. Private-key-files -&gt; hadoop : 用户名</span><br></pre></td></tr></table></figure>
+<h2 id="配置core-site-xml"><a href="#配置core-site-xml" class="headerlink" title="配置core-site.xml"></a>配置core-site.xml</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. fs.defaultFS -&gt; hdfs://ns</span><br></pre></td></tr></table></figure>
+<h2 id="配置其他机器"><a href="#配置其他机器" class="headerlink" title="配置其他机器"></a>配置其他机器</h2><p>目录与配置都与第一台一样。</p>
+<h1 id="HDFS中HA启动与测试"><a href="#HDFS中HA启动与测试" class="headerlink" title="HDFS中HA启动与测试"></a>HDFS中HA启动与测试</h1><h2 id="启动HA"><a href="#启动HA" class="headerlink" title="启动HA"></a>启动HA</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. 启动1,2,3机器 -&gt; sbin/hadoop-daemon.sh start journalnode</span><br><span class="line">2. 格式化 -&gt; bxn/hdfs namenode -format</span><br><span class="line">3. 重启NameNode</span><br><span class="line">4. 在nn2上，同步nn1的原数据信息 -&gt; bin/hdfs namenode -bootstrpStandby</span><br><span class="line">5. 启动nn2</span><br><span class="line">6. 将nn1的状态改为active -&gt; bin/hdfs haadmin -transitionToActive nn1</span><br><span class="line">7. 启动测试 -&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="测试人工故障转移"><a href="#测试人工故障转移" class="headerlink" title="测试人工故障转移"></a>测试人工故障转移</h2><p>测试的原理是，先上传一个文件到DataNode，然后这个时候把NN1干掉，再去取数据，观察其是否会自动切换NameNode.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. 创建目录 -&gt; bin/hdfs dfs -mkdir -p /path/</span><br><span class="line">2. 上传目录 -&gt; bin/hdfs dfs -put /path/</span><br><span class="line">3. 尝试读取文件 -&gt; hdfs dfs -text /user/kfk/data/filename</span><br><span class="line">4. 干掉nn1观察 -&gt; jps:21319 -&gt; kill -8 21317</span><br><span class="line">5. Nn2改成active -&gt; hdfs haadmin -transitionToActive nn2</span><br><span class="line">--forceactive</span><br><span class="line">6. 再从nn1尝试读取文件观察是否成功 -&gt; hdfs dfs -text /user/kfk/data/filename</span><br></pre></td></tr></table></figure>
+<p>以上的切换的过程，是人工手动切换的方式，但如果借助Zookeeper，就可以实现自动故障转移了。</p>
+<h2 id="自动故障转移"><a href="#自动故障转移" class="headerlink" title="自动故障转移"></a>自动故障转移</h2><p>首先需要配置hdfs-site文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. dfs.ha.automic-failover.enabled.youmaster -&gt; true</span><br><span class="line">2. ha.zookeeper.quorum -&gt; master:2181,node1:2181,node:2181</span><br></pre></td></tr></table></figure>
+<p>停掉所有服务，然后启动集群的zookeeper.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. zkserver.sh start</span><br><span class="line">2. 初始化HA再Zookeeper中状态bin/hdfs zkfc -formatZK</span><br><span class="line">3. start-dfs.sh</span><br><span class="line">4. 各个机器上启动 -&gt; Hadooop-daemon.sh start zkfc</span><br></pre></td></tr></table></figure>
+<p>配置完成之后，启动集群后，如果有多个nanonode，系统会自动帮我们选一个active。</p>
+<p>如果ZKFC没有启动起来，可以去log里面找 <em>zkfc-bigdata-pro02.master.logs</em> 日志。</p>
+<p>配置完成之后，HDFS中的HA分布如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">namenode    namenode</span><br><span class="line">datanode    datanode    datanode</span><br><span class="line">journalnode journalnode journalnode</span><br><span class="line">zkfc        zkfc</span><br></pre></td></tr></table></figure>
+<h1 id="Yarn中HA"><a href="#Yarn中HA" class="headerlink" title="Yarn中HA"></a>Yarn中HA</h1><h2 id="原理介绍"><a href="#原理介绍" class="headerlink" title="原理介绍"></a>原理介绍</h2><p>对于Yarn来说，ResourceManager是最重要的，所以需要多台ResourceManager，实现一台RM宕机后，可以自动切换到另一台RM.</p>
+<p>同样，Yarn中实现HA，也是借助于Zookeeper。</p>
+<p>先来看一下规划:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RM RM</span><br><span class="line">NM NM NM</span><br></pre></td></tr></table></figure>
+<h2 id="Yarn-site配置"><a href="#Yarn-site配置" class="headerlink" title="Yarn-site配置"></a>Yarn-site配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1. 删除yarn.resourcemanager.hostname项，因为多台rm之后就不需要再指定rm了</span><br><span class="line">2. yarn.resourcemanager.ha.enabled -&gt; true</span><br><span class="line">3. cluster-id -&gt; rs</span><br><span class="line">4. ha.rm-ids -&gt; rm1,rm2</span><br><span class="line">5. hostname.rm1 -&gt; yourhostname</span><br><span class="line">6. hostname.rm2 -&gt; yourhostname</span><br><span class="line">7. zk.address -&gt;master:2181;node1:2181;node2:2181</span><br><span class="line">8. recovery.enabled -&gt; true</span><br><span class="line">9. 配置数据恢复为zookeeper: *.store.class -&gt; default_config</span><br></pre></td></tr></table></figure>
+<p>按照这个顺序配置，再分发到其他的节点，然后就可以测试了。</p>
+<h2 id="Yarn-HA-启动与测试"><a href="#Yarn-HA-启动与测试" class="headerlink" title="Yarn HA 启动与测试"></a>Yarn HA 启动与测试</h2><ol>
+<li>启动RM两个</li>
+<li>启动NM三个</li>
+<li>测试 <em>MapReduce WordCount</em> 程序</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. yarn-daemon.sh start resourcemanager (in nn1 and nn2)</span><br><span class="line">2. yarn-daemon.sh start nodemanager(in master nd1 nd2)</span><br></pre></td></tr></table></figure>
+<p>测试 <em>MapReduce</em> 就不赘述啦，至此 <em>HA</em> 在 <em>Hadoop</em> 中的配置结束。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-reward-image.png" alt="wittyfans WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hadoop/" rel="tag"># hadoop</a>
+          
+            <a href="/tags/bigdata/" rel="tag"># bigdata</a>
+          
+            <a href="/tags/HA/" rel="tag"># HA</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/coding/PowerShell批量改密码.html" rel="next" title="PowerShell批量改密码">
+                <i class="fa fa-chevron-left"></i> PowerShell批量改密码
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/coding/初探HBase.html" rel="prev" title="初探HBase">
+                初探HBase <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="wittyfans" />
+          <p class="site-author-name" itemprop="name">wittyfans</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">56</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wittyfans" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://music.163.com/#/user/event?id=5842815" target="_blank" title="Netease Music">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Netease Music
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.instagram.com/wittyfans/" target="_blank" title="Instagram">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Instagram
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/wittyfans" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HA是什么？"><span class="nav-number">1.</span> <span class="nav-text">HA是什么？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HA原理"><span class="nav-number">2.</span> <span class="nav-text">HA原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HDFS-HA配置"><span class="nav-number">3.</span> <span class="nav-text">HDFS HA配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#规划"><span class="nav-number">3.1.</span> <span class="nav-text">规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备环境"><span class="nav-number">3.2.</span> <span class="nav-text">准备环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置hdfs-site-xml"><span class="nav-number">3.3.</span> <span class="nav-text">配置hdfs-site.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置core-site-xml"><span class="nav-number">3.4.</span> <span class="nav-text">配置core-site.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置其他机器"><span class="nav-number">3.5.</span> <span class="nav-text">配置其他机器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HDFS中HA启动与测试"><span class="nav-number">4.</span> <span class="nav-text">HDFS中HA启动与测试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#启动HA"><span class="nav-number">4.1.</span> <span class="nav-text">启动HA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试人工故障转移"><span class="nav-number">4.2.</span> <span class="nav-text">测试人工故障转移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自动故障转移"><span class="nav-number">4.3.</span> <span class="nav-text">自动故障转移</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Yarn中HA"><span class="nav-number">5.</span> <span class="nav-text">Yarn中HA</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#原理介绍"><span class="nav-number">5.1.</span> <span class="nav-text">原理介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Yarn-site配置"><span class="nav-number">5.2.</span> <span class="nav-text">Yarn-site配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Yarn-HA-启动与测试"><span class="nav-number">5.3.</span> <span class="nav-text">Yarn HA 启动与测试</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wittyfans</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("7sScl0n1AlEtVDaUHuXzxPqc-gzGzoHsz", "qKXpoqGbK1sdFYMiik7Evuan");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

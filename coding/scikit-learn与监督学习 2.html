@@ -1,0 +1,1180 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="data analysis,machine learning,Python,sklearn," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="wittyfans" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="给机器学习的能力，让它可以根据数据自己做决定的一种技术。">
+<meta name="keywords" content="data analysis,machine learning,Python,sklearn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="scikit-learn与监督学习">
+<meta property="og:url" content="http://wittyfans.com/coding/scikit-learn与监督学习.html">
+<meta property="og:site_name" content="wittyfans">
+<meta property="og:description" content="给机器学习的能力，让它可以根据数据自己做决定的一种技术。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/11/15/AFHezumhwD5grWB.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/15/9sEMrji8LR5AXUt.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/14/a9OnfKcCSb4tw1r.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/15/kQdZoCr5EAwiF8q.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/15/5VwtUYGKu8gH6ey.png">
+<meta property="og:updated_time" content="2019-11-15T14:18:26.118Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="scikit-learn与监督学习">
+<meta name="twitter:description" content="给机器学习的能力，让它可以根据数据自己做决定的一种技术。">
+<meta name="twitter:image" content="https://i.loli.net/2019/11/15/AFHezumhwD5grWB.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wittyfans.com/coding/scikit-learn与监督学习.html"/>
+
+
+
+
+
+  <title> scikit-learn与监督学习 | wittyfans </title>
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">wittyfans</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">学则不固,知则不惑</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/scikit-learn与监督学习.html">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="wittyfans">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="wittyfans">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="wittyfans" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                scikit-learn与监督学习
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-26T17:38:14+08:00">
+                2019-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/coding/" itemprop="url" rel="index">
+                    <span itemprop="name">coding</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/coding/scikit-learn与监督学习.html" class="leancloud_visitors" data-flag-title="scikit-learn与监督学习">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+               <span>℃</span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://i.loli.net/2019/11/15/AFHezumhwD5grWB.png" alt=""></p>
+<blockquote>
+<p>给机器学习的能力，让它可以根据<strong>数据</strong>自己做决定的一种技术。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h1><h2 id="监督学习与非监督学习"><a href="#监督学习与非监督学习" class="headerlink" title="监督学习与非监督学习"></a>监督学习与非监督学习</h2><p>什么是机器学习？它是给机器学习的能力，让它可以根据<strong>数据</strong>自己做决定的一种技术。</p>
+<p>如，电子邮件是否是垃圾邮件，根据数据自动分类。</p>
+<p>如果您使用的<strong>数据</strong>，是labled的，这就叫监督学习，如果是不unlabeled，则是非监督学习。</p>
+<p>非监督学习的例子，如企业根据用户的数据，对用户进行分类(clustering).</p>
+<blockquote>
+<p>clustering，非监督学习的一个分支。</p>
+</blockquote>
+<h2 id="Reinforcement-learning"><a href="#Reinforcement-learning" class="headerlink" title="Reinforcement learning"></a>Reinforcement learning</h2><p>这是一种对系统进行奖赏与惩罚的训练技术，让机器可以根据环境的变化作出反应,典型的应用如阿法狗。</p>
+<p>我们将首先focus在监督学习这部分。</p>
+<p>我们将根据数据来训练，这些数据叫做 <code>prodictor varibles</code> 或者 <code>features</code>,<code>indenpendent varibles</code>，训练的目的是要做出预测，要预测的值叫做 <code>target varibles</code>,<code>denpendent varibles</code>或<code>response varible</code>, 如果预测的值是一组分类信息，如花的品种，人的性格，这种预测叫做<code>classfication</code>,如果是一些连续的值，如股票的价格，那就叫做<code>regression</code>.</p>
+<p>现在我们先学习 <code>classfication</code>.</p>
+<p>对于监督学习，首先需要数据，那么数据从哪里来？</p>
+<ul>
+<li>历史的数据，已经做好了分类</li>
+<li>通过自己的试验获取，如A/B Test</li>
+</ul>
+<p>机器学习的工具有很多，我们主要是用 <code>scikit-learn</code>或者说<code>sklearn</code>.</p>
+<p>其他的工具包括:</p>
+<ul>
+<li>TensorFlow</li>
+<li>keras</li>
+</ul>
+<h1 id="探索数据"><a href="#探索数据" class="headerlink" title="探索数据"></a>探索数据</h1><h2 id="示例数据"><a href="#示例数据" class="headerlink" title="示例数据"></a>示例数据</h2><p>主要是用花瓣的数据，其中包括:</p>
+<ul>
+<li>petal lengh, 花瓣长度</li>
+<li>petal width，花瓣宽度</li>
+<li>sepal length，萼片 <code>èpiàn</code> 长度</li>
+<li>sepal width，萼片 <code>èpiàn</code> 宽度</li>
+</ul>
+<blockquote>
+<p>萼片，即花瓣下面，包住花的那部分。</p>
+</blockquote>
+<p>关于花，有不同的品种，在英文中叫做<code>species</code>，我们的数据中有三种，Iris Setosa（山鸢尾）、Iris Versicolour（杂色鸢尾），以及Iris Virginica（维吉尼亚鸢尾）。</p>
+<p>数据怎么导入呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from sklearn import datasets</span><br><span class="line">iris = datases.load_iris()</span><br></pre></td></tr></table></figure>
+<p>这是bunch类型的数据，跟python内置的dict数据差不多。</p>
+<blockquote>
+<p>对于数据，记住,sample in rows, features are columns.</p>
+</blockquote>
+<h2 id="实例数据"><a href="#实例数据" class="headerlink" title="实例数据"></a>实例数据</h2><p>美国众议员议员数据,US House of Representatives Congressmen.</p>
+<p>我们去预测它们的政党隶属关系(party affiliation),即：</p>
+<ul>
+<li>‘Democrat’,民主党</li>
+<li>‘Republican’，共和党</li>
+</ul>
+<p>根据什么来预测呢？根据它们对特定问题的投票。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[&apos;party&apos;, &apos;infants&apos;, &apos;water&apos;, &apos;budget&apos;,</span><br><span class="line">&apos;physician&apos;, &apos;salvador&apos;,&apos;religious&apos;,</span><br><span class="line">&apos;satellite&apos;, &apos;aid&apos;, &apos;missile&apos;, &apos;immigration&apos;,</span><br><span class="line">&apos;synfuels&apos;,&apos;education&apos;, &apos;superfund&apos;,</span><br><span class="line">&apos;crime&apos;, &apos;duty_free_exports&apos;, &apos;eaa_rsa&apos;]</span><br></pre></td></tr></table></figure>
+<p>上面是数据集的列名，即一些议题的投票情况。</p>
+<p>我们使用countplot图来探索这些数据，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">plt.figure()</span><br><span class="line">sns.countplot(x=&apos;education&apos;, hue=&apos;party&apos;, data=df, palette=&apos;RdBu&apos;)</span><br><span class="line">plt.xticks([0,1], [&apos;No&apos;, &apos;Yes&apos;])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h1 id="Classification"><a href="#Classification" class="headerlink" title="Classification"></a>Classification</h1><p>我们手头有labled的数据，但我们还需要对那些没有标记的数据进行标记，我们需要对标记过数据学习，然后建立一个标记器。</p>
+<p>标记过的数据叫做traning data.</p>
+<h3 id="标记数据-KNN算法"><a href="#标记数据-KNN算法" class="headerlink" title="标记数据-KNN算法"></a>标记数据-KNN算法</h3><p>我们用knn算法来实现这个步骤，knn是根据数据的邻居来预测的一种算法，比如放眼望全世界，如果您的位置在中国，那么我可以预测您有很大的几率是中国人，因为您和很多的中国人在一起，对于knn算法，我们首先需要根据knn算法建立模型并训练，训练模型我们叫fiting modal，在sklearn中，我们使用<code>fit()</code>方法，而<code>predit()</code>用来预测。</p>
+<p>如:<code>knn.fit(iris[&#39;data],iris[&#39;target&#39;])</code></p>
+<p>使用knn fit方法的条件:</p>
+<ol>
+<li>np或者pd类型的数据</li>
+<li>features是连续型的数据，不是分类数据</li>
+<li>没有缺失值</li>
+</ol>
+<p>fit后，knn会返回fit后的分类器（classifier）本身，然后就可以拿来使用了。</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># Import KNeighborsClassifier from sklearn.neighbors</span><br><span class="line">from sklearn.neighbors import KNeighborsClassifier</span><br><span class="line"></span><br><span class="line"># Create arrays for the features and the response variable</span><br><span class="line">y = df[&apos;party&apos;].values</span><br><span class="line">X = df.drop(&apos;party&apos;, axis=1).values</span><br><span class="line"></span><br><span class="line"># Create a k-NN classifier with 6 neighbors</span><br><span class="line">knn = KNeighborsClassifier(n_neighbors=6)</span><br><span class="line"></span><br><span class="line"># Fit the classifier to the data</span><br><span class="line">knn.fit(X,y)</span><br></pre></td></tr></table></figure>
+<p>neighbors设置为6，这是这个示例默认的值，您可以设置成其他的值，在这个示例中，6是最合适的。</p>
+<h2 id="测试模型性能-Accuracy"><a href="#测试模型性能-Accuracy" class="headerlink" title="测试模型性能-Accuracy"></a>测试模型性能-Accuracy</h2><p>accuracy是测试一个模型的指标，计算方法是模型的<code>正确预测数/测试数据总数</code>，那么我们用什么数据来算accuracy呢？</p>
+<p>我们肯定需要用从来没有给模型用过的数据来计算，也不能用那些训练过模型的数据。</p>
+<p>所以，一般的做法是，将数据分成两组：</p>
+<ol>
+<li>traning set,用来训练模型</li>
+<li>test set，用来预测，测试模型性能</li>
+</ol>
+<p>我们用<code>train_test_split</code> 方法来实现，这个方法的参数中，</p>
+<ul>
+<li>x，y就不多介绍</li>
+<li>test_size为您要分隔的比例，一般来说traing占0.7，test占0.3</li>
+<li><p>stratify设置为y（y包含lable），这个参数可以让您的lable（分类数据）比较均匀的分布在分隔后的数据中，不至于过于集中</p>
+<p>  训练完成之后，可以预测，然后就可以使用<code>knn.score(x_test,y_testx)</code>查看模型的分数。</p>
+</li>
+</ul>
+<p>另外对于n_neighbors，设置的值越大，则数据集之间的分界线（decision boundary）越不敏感，曲线变得更平滑，更少的波动，但太大会导致overfitting,而太小会导致underfiting。</p>
+<h1 id="Regression"><a href="#Regression" class="headerlink" title="Regression"></a>Regression</h1><p>regression问题是连续型的值的预测，如gdp, 房价。</p>
+<p>我们对波士顿房价的数据进行预测，x值为一个街区中的房子房间的平均数量，可以观察到，房间数越多，价格越高。</p>
+<p>regression的预测使用的是 <code>linear_model</code>模块。</p>
+<h2 id="线性回归基础"><a href="#线性回归基础" class="headerlink" title="线性回归基础"></a>线性回归基础</h2><p>线性回归的基础就是<code>y=a*x+b</code>类似的一次函数,y是我们需要预测的值，x是我们的features，我们做的就是去寻找最合适的a与b，确定最合适的那个函数。</p>
+<p>这么一个函数，我们叫做loss或者cost函数，我们为这个函数找到最合适的a与b值，让它确定的这个线，跟所有图中的点的的 <strong>垂直</strong> 距离最近，这里所说的距离就叫做 <code>residual</code>。</p>
+<p><img src="https://i.loli.net/2019/11/15/9sEMrji8LR5AXUt.png" alt="Residual"></p>
+<p>我们可以尝试减少所有 <code>risidual</code> 相加的和，但是正负会抵消，因为点距离线的距离有正负，那么我们减少这个距离的平方的和会比较好，即将所有的点与线段的距离平方后，再相加。</p>
+<p>使用这个函数，就叫做最小二乘法（ordinary least squares）或者说OLS.</p>
+<p>当我们训练的模型只有一个feature的时候，我们会使用 <code>y=a*x+b</code>,当feature增加到两个，则使用<code>y=a1*x1+a2*x2+b</code>,以此类推。</p>
+<p>所以如果有两个feature的情况，我们的任务就是确定函数中三个数的值，<code>a1,a2,b</code>.</p>
+<h2 id="实例讲解"><a href="#实例讲解" class="headerlink" title="实例讲解"></a>实例讲解</h2><p>我们现在根据人的生育率来预测寿命，那么我们的x值就是生育率，我们会把它作为参数传给回归器，我们的生育率是有一个范围的，不可能为负数，也不可能是好几百，所以我们从收集到的真实数据中找到最小的和最大的作为生育率的范围。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># 导入相关的包</span><br><span class="line">from sklearn.linear_model import LinearRegression</span><br><span class="line"></span><br><span class="line"># 创建回归器</span><br><span class="line">reg = LinearRegression()</span><br><span class="line"></span><br><span class="line"># 确定生育率的范围，并reshape为回归器需要的shape（这里的数据是给预测器预测用的）</span><br><span class="line">prediction_space = np.linspace(min(X_fertility), max(X_fertility)).reshape(-1,1)</span><br><span class="line"></span><br><span class="line"># 把收集到的数据x与y传给回归器，让它学会怎么回归</span><br><span class="line">reg.fit(X_fertility,y)</span><br><span class="line"></span><br><span class="line"># 学会回归之后，把我们确定好的生育率范围数据传给预测器</span><br><span class="line">y_pred = reg.predict(prediction_space)</span><br><span class="line"></span><br><span class="line"># 打印 R^2 ，评分</span><br><span class="line">print(reg.score(X_fertility, y))</span><br><span class="line"></span><br><span class="line"># 绘图</span><br><span class="line">plt.plot(prediction_space, y_pred, color=&apos;black&apos;, linewidth=3)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h2 id="分割数据"><a href="#分割数据" class="headerlink" title="分割数据"></a>分割数据</h2><p>我们提到过分割数据的概念，主要是使用<code>train_test_split</code>包方法。<br>分隔好数据后我们即可进行预测，预测后的数据使用回归器的score方法查看预测效果，另外这里还介绍一个对预测效果的打分工具，即<code>mean_squared_error</code>.</p>
+<p>您可以通过 <code>from sklearn.metrics import mean_squared_error</code> 引入并使用它。</p>
+<p>它又叫做 <em>Root Mean Squared Error (RMSE)</em>.</p>
+<p>它使用的参数是预测的数据与真实的数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># y_test已c好</span><br><span class="line"></span><br><span class="line">y_pred = reg.predict(X_test)</span><br><span class="line">rmse = np.sqrt(mean_squared_error(y_test,y_pred))</span><br></pre></td></tr></table></figure>
+<h2 id="Cross-validation"><a href="#Cross-validation" class="headerlink" title="Cross-validation"></a>Cross-validation</h2><p>RMSE的分数和您分割数据的方式是有关系的，我们需要一种科学的分割方式。<br>在test的数据中，可能会存在一种数据层面的 <em>peculiarities</em> 导致它不能代表模型对新数据的预测能力。<br>解决这个问题的技术就叫做 <em>cross-validation</em>,它将所有数据分组，并分别作为测试与训练组，这样便可以最大化训练的数据，同时也将所有的对所有的数据进行了预测。</p>
+<p>先简单介绍下 <em>cross-validation</em> 的步骤：</p>
+<ol>
+<li>将数据分隔成5（或者别的）组，这里可以说组 group,也有人说fold</li>
+<li>将第一组作为test组，剩下的4组作为training组，training完成后，预测test组的数据，计算出结果作为标准（Metric1）</li>
+<li>将第二组作为test，重复直到最后一组(metric1,2,3,4,5)</li>
+<li>对5组metric进行统计分析，如mean，median，置信区间等等</li>
+</ol>
+<blockquote>
+<p>分割成5组，即5folds = 5-fold CV, 10 folds = 10 folds CV,组数越多，所需要的计算量就大。</p>
+</blockquote>
+<h2 id="Regularized-regression"><a href="#Regularized-regression" class="headerlink" title="Regularized regression"></a>Regularized regression</h2><p>回忆一下，我们对于线性回归的定义，我们找到与所有点的垂直距离最短的线,即确定这个一次函数的系数（coefficient），但如果我们让这些系数或者说参数很大，我们就会过度拟合（overfitting），所以我们需要控制这个系数（coefficient），如果coefficient变得很大，它就是不听话，那我们就对函数做出惩罚，我们知道regulation是合规的意思，这里的也就是说对regression的参数作出规范。</p>
+<p>接下来我们会介绍一些常见的regulation。</p>
+<h3 id="Ridge-regression-岭回归"><a href="#Ridge-regression-岭回归" class="headerlink" title="Ridge regression 岭回归"></a>Ridge regression 岭回归</h3><p>ridge regression就是一个加强版的OLS loss function，它多了一个<code>阿尔法</code>参数，当阿尔法为0的时候，ridge regression变成了普通的ols函数，当阿尔法变得很大，对overfitting的惩罚也变得更大，更敏感，这会让模型变得过于简单(underfitting).</p>
+<p>对于ridge regression的使用，它多了个alpha参数。另外对于不同参数，我们需要将它 <em>归一化</em>，所以在初始化ridge实例的时候，需要指定 <code>normalize=true</code>.</p>
+<h3 id="Lasso-regression-套索回归"><a href="#Lasso-regression-套索回归" class="headerlink" title="Lasso regression 套索回归"></a>Lasso regression 套索回归</h3><p>Lasson回归的特点是，它可以自己选择feature，这样就会把那些不重要features的系数降为或者说（shrink）为0.</p>
+<p>当我们训练好模型后，我们可以通过 <code>.coef_</code> 来查看模型中各个features的权重，或者说偏好。</p>
+<p>下面是关于 coef_ 的解释。：</p>
+<blockquote>
+<p><em>The coef_ contain the coefficients for the prediction of each of the targets. It is also the same as if you trained a model to predict each of the targets separately.</em></p>
+</blockquote>
+<p>我们可以将columns与conef_绘图，这就可以看到哪些featues对模型的影响是最大的，这在许多的bussniss与科学实验中都有很多应用。</p>
+<p><strong>附：关于Lasso的Python实践</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># Import Lasso</span><br><span class="line">from sklearn.linear_model import Lasso</span><br><span class="line"></span><br><span class="line"># Instantiate a lasso regressor: lasso</span><br><span class="line">lasso = Lasso(alpha=0.4,normalize=True)</span><br><span class="line"></span><br><span class="line"># Fit the regressor to the data</span><br><span class="line">lasso.fit(X,y)</span><br><span class="line"></span><br><span class="line"># Compute and print the coefficients</span><br><span class="line">lasso_coef = lasso.coef_</span><br><span class="line">print(lasso_coef)</span><br><span class="line"></span><br><span class="line"># Plot the coefficients</span><br><span class="line">plt.plot(range(len(df_columns)), lasso_coef)</span><br><span class="line">plt.xticks(range(len(df_columns)), df_columns.values, rotation=60)</span><br><span class="line">plt.margins(0.02)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>Lasso非常适合选择features，但是在构建回归模型时，Ridge回归应该是您的首选。</p>
+<p>关于阿尔法参数对ridge的影响，可以多研究研究<a href="https://campus.datacamp.com/courses/supervised-learning-with-scikit-learn/regression-2?ex=13" target="_blank" rel="noopener">这个</a>章节。</p>
+<h1 id="调整模型"><a href="#调整模型" class="headerlink" title="调整模型"></a>调整模型</h1><p>训练好模型之后，并不能完美的预测数据，就如打磨任何一件产品，粗加工后还需要细腻的打磨。这一节将会引入一些其他的metric来衡量您建立的模型，同时也会介绍优化模型的技术，即hyperparameter tuning.</p>
+<p>在分类的问题中，accuracy是我们评价模型的标尺，但accuracy不总是唯一衡量模型的标准。</p>
+<p>比如在垃圾邮件的检测问题中，如果我们把所有的邮件都作为正常邮件，因为我们只有1%的垃圾邮件。我们的模型准确度高达99%！听起来还不错，但这完全是个糟糕的模型</p>
+<p>先记住，这种正常的数据远远多于异常数据的情况，叫做 <code>class imbalance</code>.</p>
+<h2 id="评价模型的标尺"><a href="#评价模型的标尺" class="headerlink" title="评价模型的标尺"></a>评价模型的标尺</h2><p>给定一个两个结果的分类器，如垃圾邮件问题：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">预测到的垃圾邮件</th>
+<th style="text-align:left">预测到的真实邮件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">实际为垃圾邮件</td>
+<td style="text-align:left"><strong>True Positive</strong></td>
+<td style="text-align:left">False Negative</td>
+</tr>
+<tr>
+<td style="text-align:left">实际为真实邮件</td>
+<td style="text-align:left">False Positive</td>
+<td style="text-align:left"><strong>True Negative</strong></td>
+</tr>
+</tbody>
+</table>
+<p>上面的这个表，叫做confusion matrix</p>
+<ul>
+<li>左上和右下的为预测正确的情况</li>
+<li>通常，感兴趣的组为positive，想要预测垃圾邮件，那么垃圾邮件即为positive的</li>
+</ul>
+<p>为什么需要confusion matrix?</p>
+<ol>
+<li>计算Accuracy,即：对角线（diagonal）格子数/格子总数, <code>tp+tn/(tp+tn+fp+fn)</code></li>
+<li>计算其他的模型指标，如：<ol>
+<li><strong>Precision</strong>，又叫positive predictive,PPV: <code>tp/(tp+fp)</code>,在垃圾邮件模型中为，<code>实际垃圾邮件数量/预测垃圾邮件数量</code>；这个指标值越高，意味着我们更少的真实邮件预测为垃圾邮件，提高precision则我们的预测更准确，它又叫做准确率，查准率</li>
+<li><strong>Recall</strong>，<code>tp/(tp+fn)</code>,预测正确的垃圾邮件占所有实际垃圾邮件之比，提高recall即意味着尽可能多的预测所有垃圾邮件，所以它也叫做查全率或叫召回率</li>
+<li><strong>F1score</strong>,<code>2*(precision*recall/precision+recall)</code>，Precision与recall分别对应查准问题与查全问题，然而常常二者不能同时提高，所以对于实际复杂问题处理很有偏见，于是我们引入F1-score来近似帮助我们解决实际问题。</li>
+</ol>
+</li>
+</ol>
+<p>可以直接使用confusion matrix函数来计算，它接受两个数据，一个是y_test,另一个是y_pred，即预测出来的数据。</p>
+<p>对于 resulting matrix, 也是一样的，在所有的sklearn的预测函数中，第一个参数总是test数据，第二个一般都是预测出来的数据,另外还有一个support参数，它就是test数据中对于不同结果的响应情况，总数就是test数据的长度。</p>
+<h2 id="Logistic-regression"><a href="#Logistic-regression" class="headerlink" title="Logistic regression"></a>Logistic regression</h2><p>不要被这个名字迷惑，logistic regression其实是用来处理分类问题的。</p>
+<p>它返回的是概率，当预测的数据概率大于0.5，我们标记为1，如果小于0.5，则标记为0.</p>
+<p>它有点像线性回归，会在图像上把两组数据区分开来,这个边界就叫做线性决策边界（linear decision boundary）</p>
+<p>在使用logistic regression的时候，我们可以定义这个概率（默认是0.5）.</p>
+<ul>
+<li>如果定为0，那么所有进来的数据全部预测为1</li>
+<li>如果定为1，所有进来的数据全部预测为0</li>
+</ul>
+<h3 id="ROC-曲线"><a href="#ROC-曲线" class="headerlink" title="ROC 曲线"></a>ROC 曲线</h3><p>根据我们之前定义的混淆矩阵，我们再来了解两个指标,方便我们引入ROC的概念：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">预测到的垃圾邮件</th>
+<th style="text-align:left">预测到的真实邮件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">实际为垃圾邮件</td>
+<td style="text-align:left"><strong>True Positive</strong></td>
+<td style="text-align:left">False Negative</td>
+</tr>
+<tr>
+<td style="text-align:left">实际为真实邮件</td>
+<td style="text-align:left">False Positive</td>
+<td style="text-align:left"><strong>True Negative</strong></td>
+</tr>
+</tbody>
+</table>
+<p>假设我们有如下的图：</p>
+<p><img src="https://i.loli.net/2019/11/14/a9OnfKcCSb4tw1r.png" alt="ROC曲线"></p>
+<ul>
+<li><p>FPR, fpr = fp/(fp+tn),FPR表示，在所有的垃圾邮件中，被预测成正常邮件的比例。它告诉我们，随机拿一个垃圾邮件，有多大概率会将其预测成正常邮件。显然我们会希望FPR越小越好。</p>
+</li>
+<li><p>TPR，fpr=(tp/tp+fn), TPR表示，在所有的正常邮件中，被预测为正常邮件的比例，即随机拿一个正常邮件，有多大的概率会被预测称正常邮件，我们希望这个值越大越好。</p>
+</li>
+</ul>
+<p>x轴是FPR，y轴是TPR，那么点（0，0），（1，1）意味着什么呢？</p>
+<ul>
+<li>（0，0）即FPR=0，TPR=0，也就是FP=0，TP=0，意味着，所有的邮件，我都把它预测为垃圾邮件</li>
+<li>（1，1）意味着，所有邮件，我都预测为正常邮件</li>
+<li>(1,0)，即FPR=1，TPR=0，这是最糟糕的情况。所有的预测都预测错了</li>
+<li>点(0,1)，FPR=0说明FP=0，也就是说没有一个真实邮件被看作垃圾邮件，TPR=1，即所有正常邮件都是标记成正常邮件，这是最好的情况</li>
+</ul>
+<p>我们知道，在二分类（0，1）的模型中，一般我们最后的输出是一个概率值，表示结果是1的概率。那么我们最后怎么决定输入的x是属于0或1呢？我们需要一个阈值，超过这个阈值则归类为1，低于这个阈值就归类为0。所以，不同的阈值会导致分类的结果不同，也就是混淆矩阵不一样了，FPR和TPR也就不一样了。所以当阈值从0开始慢慢移动到1的过程，就会形成很多对(FPR, TPR)的值，将它们画在坐标系上，就是所谓的ROC曲线了。</p>
+<blockquote>
+<p>引用自CSDN博主「Webbley」的<a href="https://blog.csdn.net/liweibin1994/article/details/79462554" target="_blank" rel="noopener">原创文章</a>。</p>
+</blockquote>
+<h3 id="建立Logistic-modal"><a href="#建立Logistic-modal" class="headerlink" title="建立Logistic modal"></a>建立Logistic modal</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># Import the necessary modules</span><br><span class="line">from sklearn.linear_model import LogisticRegression</span><br><span class="line">from sklearn.metrics import confusion_matrix,classification_report</span><br><span class="line"></span><br><span class="line"># Create training and test sets</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.4, random_state=42)</span><br><span class="line"></span><br><span class="line"># Create the classifier: logreg</span><br><span class="line">logreg = LogisticRegression()</span><br><span class="line"></span><br><span class="line"># Fit the classifier to the training data</span><br><span class="line">logreg.fit(X_train,y_train)</span><br><span class="line"></span><br><span class="line"># Predict the labels of the test set: y_pred</span><br><span class="line">y_pred = logreg.predict(X_test)</span><br><span class="line"></span><br><span class="line"># Compute and print the confusion matrix and classification report</span><br><span class="line">print(confusion_matrix(y_test, y_pred))</span><br><span class="line">print(classification_report(y_test, y_pred))</span><br></pre></td></tr></table></figure>
+<h3 id="绘制ROC曲线"><a href="#绘制ROC曲线" class="headerlink" title="绘制ROC曲线"></a>绘制ROC曲线</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 引入roc的包</span><br><span class="line">from sklearn.metrics import roc_curve</span><br><span class="line"></span><br><span class="line">y_pred_prob = logreg.predict_proba(X_test)[:,1]</span><br><span class="line">fpr, tpr, thresholds = roc_curve(y_test, y_pred_prob)</span><br><span class="line"></span><br><span class="line">plt.plot([0, 1], [0, 1], &apos;k--&apos;)</span><br><span class="line">plt.plot(fpr, tpr, label=&apos;Logistic Regression&apos;)</span><br><span class="line">plt.xlabel(&apos;False Positive Rate’)</span><br><span class="line">plt.ylabel(&apos;True Positive Rate&apos;)</span><br><span class="line">plt.title(&apos;Logistic Regression ROC Curve&apos;)</span><br><span class="line">plt.show();</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2019/11/15/kQdZoCr5EAwiF8q.png" alt="ROC曲线下面的面积"></p>
+<p>当我们的FPR与TRP位于（0，1）的时候，预测到的结果是最好的，观察这个ROC图像，即ROC曲线下面的面积最大的时候，所以我们可以得出:</p>
+<blockquote>
+<p>ROC曲线下面的面积越大，模型越好！</p>
+</blockquote>
+<p>这个面积就叫做AUC，同样也是一个使用广泛的分类问题评价标尺。</p>
+<h3 id="计算AUC"><a href="#计算AUC" class="headerlink" title="计算AUC"></a>计算AUC</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># Import necessary modules</span><br><span class="line">from sklearn.metrics import roc_auc_score</span><br><span class="line">from sklearn.model_selection import cross_val_score</span><br><span class="line"></span><br><span class="line"># Compute predicted probabilities: y_pred_prob</span><br><span class="line">y_pred_prob = logreg.predict_proba(X_test)[:,1]</span><br><span class="line"></span><br><span class="line"># Compute and print AUC score</span><br><span class="line">print(&quot;AUC: &#123;&#125;&quot;.format(roc_auc_score(y_test, y_pred_prob)))</span><br><span class="line"></span><br><span class="line"># Compute cross-validated AUC scores: cv_auc</span><br><span class="line">cv_auc = cross_val_score(logreg,X,y,cv=5,scoring=&apos;roc_auc&apos;)</span><br><span class="line"></span><br><span class="line"># Print list of AUC scores</span><br><span class="line">print(&quot;AUC scores computed using 5-fold cross-validation: &#123;&#125;&quot;.format(cv_auc))</span><br></pre></td></tr></table></figure>
+<h2 id="Hyperparameter-tuning"><a href="#Hyperparameter-tuning" class="headerlink" title="Hyperparameter tuning"></a>Hyperparameter tuning</h2><ul>
+<li>线性回归：选择参数</li>
+<li>ridge/lasso: 选择alpha</li>
+<li>KNN：选择neighbors</li>
+</ul>
+<p>上面这些选择的参数，就叫做Hyperparameter tuning。</p>
+<p>所以一个好的模型，就在于选择一个好的参数，这个参数如何决定呢？</p>
+<p>我们可以定义一个grid表格，将参数填进去，一个一个的试验，直到找到最好的那个。</p>
+<p><img src="https://i.loli.net/2019/11/15/5VwtUYGKu8gH6ey.png" alt="Grid search cross-validation
+"></p>
+<h3 id="GridSearchCV"><a href="#GridSearchCV" class="headerlink" title="GridSearchCV"></a>GridSearchCV</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># Import necessary modules</span><br><span class="line">from sklearn.linear_model import LogisticRegression</span><br><span class="line">from sklearn.model_selection import GridSearchCV</span><br><span class="line"></span><br><span class="line"># Setup the hyperparameter grid</span><br><span class="line">c_space = np.logspace(-5, 8, 15)</span><br><span class="line">param_grid = &#123;&apos;C&apos;: c_space&#125;</span><br><span class="line"></span><br><span class="line"># Instantiate a logistic regression classifier: logreg</span><br><span class="line">logreg = LogisticRegression()</span><br><span class="line"></span><br><span class="line"># Instantiate the GridSearchCV object: logreg_cv</span><br><span class="line">logreg_cv = GridSearchCV(logreg, param_grid, cv=5)</span><br><span class="line"></span><br><span class="line"># Fit it to the data</span><br><span class="line">logreg_cv.fit(X,y)</span><br><span class="line"></span><br><span class="line"># Print the tuned parameters and score</span><br><span class="line">print(&quot;Tuned Logistic Regression Parameters: &#123;&#125;&quot;.format(logreg_cv.best_params_))</span><br><span class="line">print(&quot;Best score is &#123;&#125;&quot;.format(logreg_cv.best_score_))</span><br></pre></td></tr></table></figure>
+<h3 id="RandomizedSearchCV"><a href="#RandomizedSearchCV" class="headerlink" title="RandomizedSearchCV"></a>RandomizedSearchCV</h3><p>上面的searchCV是按照一定的规则来测试参数，而randomizedSearchCV则是随机选择数据作为测试的参数，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># Import necessary modules</span><br><span class="line">from scipy.stats import randint</span><br><span class="line">from sklearn.tree import DecisionTreeClassifier</span><br><span class="line">from sklearn.model_selection import RandomizedSearchCV</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Setup the parameters and distributions to sample from: param_dist</span><br><span class="line">param_dist = &#123;&quot;max_depth&quot;: [3, None],</span><br><span class="line">              &quot;max_features&quot;: randint(1, 9),</span><br><span class="line">              &quot;min_samples_leaf&quot;: randint(1, 9),</span><br><span class="line">              &quot;criterion&quot;: [&quot;gini&quot;, &quot;entropy&quot;]&#125;</span><br><span class="line"></span><br><span class="line"># Instantiate a Decision Tree classifier: tree</span><br><span class="line">tree = DecisionTreeClassifier()</span><br><span class="line"></span><br><span class="line"># Instantiate the RandomizedSearchCV object: tree_cv</span><br><span class="line">tree_cv = RandomizedSearchCV(tree, param_dist, cv=5)</span><br><span class="line"></span><br><span class="line"># Fit it to the data</span><br><span class="line">tree_cv.fit(X,y)</span><br><span class="line"></span><br><span class="line"># Print the tuned parameters and score</span><br><span class="line">print(&quot;Tuned Decision Tree Parameters: &#123;&#125;&quot;.format(tree_cv.best_params_))</span><br><span class="line">print(&quot;Best score is &#123;&#125;&quot;.format(tree_cv.best_score_))</span><br></pre></td></tr></table></figure>
+<h1 id="数据预处理与管道"><a href="#数据预处理与管道" class="headerlink" title="数据预处理与管道"></a>数据预处理与管道</h1><p>现实世界的数据是复杂的，我们目前使用的都是标记过的数据，如果是没有标记过的数据，我们就需要将其打上标记，我们可以使用pandas的get_dummies()方法或者是sklearn的OneHotEncoder()，它会完成数据之间的转换，如下所示:</p>
+<p><em>原始数据：</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">origin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">US</td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Europe</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Asia</td>
+</tr>
+</tbody>
+</table>
+<p><em>get_dummies()后：</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">origin_Asia</th>
+<th style="text-align:left">origin_Europe</th>
+<th style="text-align:left">origin_US</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">0</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">0</td>
+</tr>
+</tbody>
+</table>
+<p>对于dummies后的数据，如果我们已经有了前两列（origin_Asia,origin_Rurope）的数据，就可以推测剩下的就是US的数据了，所以可以把US这里列删掉。</p>
+<h2 id="处理missing-data"><a href="#处理missing-data" class="headerlink" title="处理missing data"></a>处理missing data</h2><p>您收集到的数据，不会是完美的，肯定有些值是缺失的，它们可能为0，为nan，或者以其他形式记录的空值。</p>
+<p>你可以使用np.dropna来把所有为空值的行删除，但这样很可能会让你的数据总量变少。</p>
+<p>你也可以自动将所有的空值，以该列的平均值替代。</p>
+<p>可以利用imputer对象来处理，如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">imp = impImputer(missing_values=&apos;NaN&apos;,strategy=&apos;mean&apos;,axix=0)</span><br><span class="line"></span><br><span class="line">imp.fit(X)</span><br><span class="line">imp.transform(X)</span><br></pre></td></tr></table></figure>
+<p>用imp fit X后，便可对数据进行transform，因此imputer对象也叫transformer.</p>
+<h2 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h2><p>将你的操作打包成一个数组，就变成了一个pipline，你可以把你的操作（如处理missing value，大小写转换等等）都写进管道，一次性处理。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># Import necessary modules</span><br><span class="line">from sklearn.preprocessing import Imputer</span><br><span class="line">from sklearn.pipeline import Pipeline</span><br><span class="line">from sklearn.svm import SVC</span><br><span class="line"></span><br><span class="line"># Setup the pipeline steps: steps</span><br><span class="line">steps = [(&apos;imputation&apos;, Imputer(missing_values=&apos;NaN&apos;, strategy=&apos;most_frequent&apos;, axis=0)),</span><br><span class="line">        (&apos;SVM&apos;, SVC())]</span><br><span class="line"></span><br><span class="line"># Create the pipeline: pipeline</span><br><span class="line">pipeline = Pipeline(steps)</span><br><span class="line"></span><br><span class="line"># Create training and test sets</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.3,random_state=42)</span><br><span class="line"></span><br><span class="line"># Fit the pipeline to the train set</span><br><span class="line">pipeline.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line"># Predict the labels of the test set</span><br><span class="line">y_pred = pipeline.predict(X_test)</span><br><span class="line"></span><br><span class="line"># Compute metrics</span><br><span class="line">print(classification_report(y_test, y_pred))</span><br></pre></td></tr></table></figure>
+<h2 id="Centering-and-scaling"><a href="#Centering-and-scaling" class="headerlink" title="Centering and scaling"></a>Centering and scaling</h2><p>模型的featuers的数据值，它的取值范围可能是非常大的，比如年龄的区间是0-100，而体重的区间则不一样。对模型来说，我们最好将这些数据进行缩放（scaling），全部放到同一个区间中，这样它们对于模型的重要程度才比较好估计。</p>
+<p>缩放的范围可以是0-1，也可以是-1到1.</p>
+<p>可以查看sklearn的文档，了解更多关于scaling的细节。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-reward-image.png" alt="wittyfans WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/data-analysis/" rel="tag"># data analysis</a>
+          
+            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+            <a href="/tags/sklearn/" rel="tag"># sklearn</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/coding/NumPy-ndarray-基本操作.html" rel="next" title="Numpy ndarray 基本操作">
+                <i class="fa fa-chevron-left"></i> Numpy ndarray 基本操作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/coding/数据可视化基础与技术.html" rel="prev" title="数据可视化基础与技术">
+                数据可视化基础与技术 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="wittyfans" />
+          <p class="site-author-name" itemprop="name">wittyfans</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">56</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wittyfans" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://music.163.com/#/user/event?id=5842815" target="_blank" title="Netease Music">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Netease Music
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.instagram.com/wittyfans/" target="_blank" title="Instagram">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Instagram
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/wittyfans" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#机器学习"><span class="nav-number">1.</span> <span class="nav-text">机器学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#监督学习与非监督学习"><span class="nav-number">1.1.</span> <span class="nav-text">监督学习与非监督学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reinforcement-learning"><span class="nav-number">1.2.</span> <span class="nav-text">Reinforcement learning</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#探索数据"><span class="nav-number">2.</span> <span class="nav-text">探索数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#示例数据"><span class="nav-number">2.1.</span> <span class="nav-text">示例数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例数据"><span class="nav-number">2.2.</span> <span class="nav-text">实例数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Classification"><span class="nav-number">3.</span> <span class="nav-text">Classification</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标记数据-KNN算法"><span class="nav-number">3.0.1.</span> <span class="nav-text">标记数据-KNN算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试模型性能-Accuracy"><span class="nav-number">3.1.</span> <span class="nav-text">测试模型性能-Accuracy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Regression"><span class="nav-number">4.</span> <span class="nav-text">Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性回归基础"><span class="nav-number">4.1.</span> <span class="nav-text">线性回归基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例讲解"><span class="nav-number">4.2.</span> <span class="nav-text">实例讲解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分割数据"><span class="nav-number">4.3.</span> <span class="nav-text">分割数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cross-validation"><span class="nav-number">4.4.</span> <span class="nav-text">Cross-validation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Regularized-regression"><span class="nav-number">4.5.</span> <span class="nav-text">Regularized regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ridge-regression-岭回归"><span class="nav-number">4.5.1.</span> <span class="nav-text">Ridge regression 岭回归</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lasso-regression-套索回归"><span class="nav-number">4.5.2.</span> <span class="nav-text">Lasso regression 套索回归</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调整模型"><span class="nav-number">5.</span> <span class="nav-text">调整模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#评价模型的标尺"><span class="nav-number">5.1.</span> <span class="nav-text">评价模型的标尺</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logistic-regression"><span class="nav-number">5.2.</span> <span class="nav-text">Logistic regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ROC-曲线"><span class="nav-number">5.2.1.</span> <span class="nav-text">ROC 曲线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立Logistic-modal"><span class="nav-number">5.2.2.</span> <span class="nav-text">建立Logistic modal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制ROC曲线"><span class="nav-number">5.2.3.</span> <span class="nav-text">绘制ROC曲线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算AUC"><span class="nav-number">5.2.4.</span> <span class="nav-text">计算AUC</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hyperparameter-tuning"><span class="nav-number">5.3.</span> <span class="nav-text">Hyperparameter tuning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GridSearchCV"><span class="nav-number">5.3.1.</span> <span class="nav-text">GridSearchCV</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RandomizedSearchCV"><span class="nav-number">5.3.2.</span> <span class="nav-text">RandomizedSearchCV</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据预处理与管道"><span class="nav-number">6.</span> <span class="nav-text">数据预处理与管道</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#处理missing-data"><span class="nav-number">6.1.</span> <span class="nav-text">处理missing data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#管道"><span class="nav-number">6.2.</span> <span class="nav-text">管道</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Centering-and-scaling"><span class="nav-number">6.3.</span> <span class="nav-text">Centering and scaling</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wittyfans</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("7sScl0n1AlEtVDaUHuXzxPqc-gzGzoHsz", "qKXpoqGbK1sdFYMiik7Evuan");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,1105 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="编程,JS,前端," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="wittyfans" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="JS的函数与对象。">
+<meta name="keywords" content="编程,JS,前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript学习笔记——函数与对象">
+<meta property="og:url" content="http://wittyfans.com/coding/JavaScript学习笔记——函数与对象.html">
+<meta property="og:site_name" content="wittyfans">
+<meta property="og:description" content="JS的函数与对象。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-15T14:46:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript学习笔记——函数与对象">
+<meta name="twitter:description" content="JS的函数与对象。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wittyfans.com/coding/JavaScript学习笔记——函数与对象.html"/>
+
+
+
+
+
+  <title> JavaScript学习笔记——函数与对象 | wittyfans </title>
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">wittyfans</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">学则不固,知则不惑</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/JavaScript学习笔记——函数与对象.html">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="wittyfans">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="wittyfans">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="wittyfans" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript学习笔记——函数与对象
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-22T16:45:54+08:00">
+                2017-05-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/coding/" itemprop="url" rel="index">
+                    <span itemprop="name">coding</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/coding/JavaScript学习笔记——函数与对象.html" class="leancloud_visitors" data-flag-title="JavaScript学习笔记——函数与对象">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+               <span>℃</span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>JS的函数与对象。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="函数-🔂"><a href="#函数-🔂" class="headerlink" title="函数 🔂"></a>函数 🔂</h1><p><strong>函数是带有名称(named)和参数的代码段,可以一次定义多次调用</strong></p>
+<ul>
+<li>如果函数挂载在一个对象上，作为对象的一个属性，就称它为对象的方法，当通过这个对象来调用函数时，该对象就是此次调用的上下文，也就是该函数的this值</li>
+<li>JS中，函数即对象，所以甚至可以给函数赋予属性</li>
+<li>函数可以在函数中定义，此时它可以访问父函数中的任何变量，这意味着形成了一个闭包</li>
+<li>一条函数声明语句，实际上创建了函数并赋予给了变量</li>
+<li>函数的名字是函数内部的一个局部变量</li>
+<li>以表达式定义的函数在定义前无法调用</li>
+<li>一个方法无非是存在一个对象中的JS函数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function plus(x)&#123;</span><br><span class="line">	return x+1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">square = function(x)&#123;</span><br><span class="line">	return x*x;</span><br><span class="line">&#125;</span><br><span class="line">//函数是一种值，可以赋值给变量</span><br><span class="line"></span><br><span class="line">square(plus(1));</span><br><span class="line">// =&gt;4 在一个表达式中调用两个函数</span><br></pre></td></tr></table></figure>
+<ul>
+<li>定义了一个名为plus的函数，参数是x，用的时候把要处理的数据传给x就好</li>
+<li>函数处理完的数据由return返回</li>
+<li>函数是一种值，可以赋值给变量</li>
+</ul>
+<p><strong>当函数和对象写在一起的时候，函数就变成了方法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var a = []; //定义空的数组</span><br><span class="line">a.push(1,2,3); //给数组增加三个元素</span><br><span class="line">a.reverse(); //另一个方法，数组元素次序反转</span><br><span class="line"></span><br><span class="line">points.dist = function()&#123; </span><br><span class="line">	var p1 = this[0];</span><br><span class="line">	var p2 = this[1];</span><br><span class="line">	</span><br><span class="line">	var a = p2.x - p1.x;</span><br><span class="line">	var b = p2.y - p1,y;</span><br><span class="line">	</span><br><span class="line">	return Math.sqrt(a * a + b * b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">points.dist();</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>dist是对象的方法，没有参数，运算的数据来源于对象本身</li>
+</ul>
+<h2 id="方法链"><a href="#方法链" class="headerlink" title="方法链"></a>方法链</h2><ul>
+<li>当方法的返回值是对象，这个对象还可以再调用其它的方法</li>
+<li>不要将调用方法的链式调用与构造函数的链式调用混淆</li>
+<li>this是关键字，不是属性、变量</li>
+</ul>
+<h2 id="构造函数调用"><a href="#构造函数调用" class="headerlink" title="构造函数调用"></a>构造函数调用</h2><ul>
+<li>在方法调用之前使用了new关键字，就构成了构造函数调用</li>
+<li>构造函数调用和普通的调用在实参处理、调用上下文、返回值方面有所不同</li>
+<li>没有形参的构造函数调用可以省略圆括号，比如var o = new object;和var o = new object();是等价的</li>
+<li>构造函数调用创建一个新的空对象，这个对象继承构造函数的prototype属性，并将这个这个对象用作其上下文</li>
+<li>在new o.m()中，调用上下文并不是o</li>
+</ul>
+<h2 id="间接调用"><a href="#间接调用" class="headerlink" title="间接调用"></a>间接调用</h2><ul>
+<li>JS中函数也是对象，所以函数也可以使用方法</li>
+<li>函数有两个方法可以用来间接的调用函数，Call(),Apply()，参数是调用所需的this值</li>
+</ul>
+<h2 id="实参与形参"><a href="#实参与形参" class="headerlink" title="实参与形参"></a>实参与形参</h2><ul>
+<li>JS的函数定义并没有指定函数形参的类型，调用也不会对实参做任何类型检查</li>
+<li>JS函数调用也不检查传入形参的个数，当传入的参数比需要的少，剩下的会被设置为undefined</li>
+<li>可以做到显式测试函数实参的类型，例如在函数体内，使用if判断语句，a = a || [];，这里的意思是，如果传入的数组是空的，那就创建一个新的（a要提前声明）</li>
+<li>如果使用这种方式，建议吧可选的实参放到函数参数列表之后</li>
+</ul>
+<h2 id="实参对象（ES5中被移除）"><a href="#实参对象（ES5中被移除）" class="headerlink" title="实参对象（ES5中被移除）"></a>实参对象（ES5中被移除）</h2><ul>
+<li>当调用函数的时候，传进来的参数个数太多怎么办？</li>
+<li>函数体内有一个实参对象，它可以通过arguments标识符访问，里面存储了函数的实参值，可以通过数组下标的形式访问传入的实参值</li>
+<li>和真正的数组一样，arguments也有length属性</li>
+<li>实参对象在很多地方都很有用，就是让函数可以操作任意数量的实参</li>
+<li>注意arguments不是真的数字，而是实参对象，即类数组对象</li>
+<li>callee和caller属性（非严格模式下才可以使用）</li>
+</ul>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><ul>
+<li>JS会处理实参类型与所需类型不一致的情况，一般会利用tostring方法将其转化为字符串中</li>
+</ul>
+<h2 id="作为值的函数"><a href="#作为值的函数" class="headerlink" title="作为值的函数"></a>作为值的函数</h2><ul>
+<li>函数不仅是一种语法，也是一种值，也就是说，可以把函数赋值给变量，储存在对象的属性或数组的元素中，作为参数传入另外一个函数等</li>
+<li><p>来看一段代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function square(x) &#123;return x*x&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>定义一个新的函数对象，赋值给square</li>
+<li>函数名字实际上是看不见的，square仅仅是变量的名字</li>
+</ul>
+</li>
+</ul>
+<h2 id="自定义函数属性"><a href="#自定义函数属性" class="headerlink" title="自定义函数属性"></a>自定义函数属性</h2><ul>
+<li><p>JS中函数并不是原始值，而是一种特殊的对象，也就是说函数可以拥有属性，而且因为函数的声明被提前，可以在函数声明之前给它的成员赋值，看例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">uniqueInteger.counter = 0;</span><br><span class="line">function uniqueInteger()&#123;</span><br><span class="line">	return uniqueInteger.counter++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这个函数使用了一个自身的属性来保存每次返回的值，以便每次调用都能跟踪上次的返回值</p>
+<h2 id="作为命名空间的函数"><a href="#作为命名空间的函数" class="headerlink" title="作为命名空间的函数"></a>作为命名空间的函数</h2></li>
+<li>常常可以定义一个简单的函数用作临时的命名空间<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//第一种模式</span><br><span class="line">function mymodule()&#123;</span><br><span class="line">//模块代码</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//匿名函数模式</span><br><span class="line"></span><br><span class="line">(function()&#123;</span><br><span class="line">//模块代码</span><br><span class="line">&#125;()); //结束函数定义后马上调用</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><ul>
+<li>JS函数对象的内部状态不仅包括函数的代码逻辑，还必须引用当前的作用域链</li>
+<li>函数对象可以通过作用域链相互关联起来，函数内部的变量都可以保存在函数的作用域内</li>
+<li>从技术的角度来讲，所有的JS函数都是闭包：它们都是对象、它们都关联到作用域链、</li>
+<li>调用函数时闭包所指向的作用域链和定义函数时闭包所指向的作用域链可能不同</li>
+<li>有时候一个函数嵌套了另一个函数，外部函数将嵌套的函数作为对象返回</li>
+<li><p>举例1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var scope = &quot;global scope&quot;;</span><br><span class="line">function checscope()&#123;</span><br><span class="line">	var scope = &quot;local scope&quot;;</span><br><span class="line">	function f() &#123;return scope;&#125;</span><br><span class="line">	return f();</span><br><span class="line">&#125;</span><br><span class="line">checkscope()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>举例2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var scope = &quot;global scope&quot;;</span><br><span class="line">function checscope()&#123;</span><br><span class="line">	var scope = &quot;local scope&quot;;</span><br><span class="line">	function f() &#123;return scope;&#125;</span><br><span class="line">	return f;</span><br><span class="line">&#125;</span><br><span class="line">checkscope()()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>效果是一样的，函数定义时的作用域链到函数执行时依然有效</p>
+</li>
+<li>外部函数中定义的局部变量在函数返回后就不存在了吗？非也，这要看具体情况，如果函数定义的局部变量在CPU的栈总，那么函数返回时它们的确就不存在了，但作用域链是一个对象列表，不是绑定的栈，当定义了嵌套函数的时候，会有一个外部引用指向这个嵌套函数，它就不会被销毁</li>
+<li><p>上面的uniqueInteger（）函数有一个bug，即别人可以修改计数器，导致不一定能产生正确的值，但闭包也可以捕捉单个函数调用的局部变量，而且这些变量会变称私有状态，我们可以利用闭包来重写这个函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var uniqueInteger = (function()&#123;</span><br><span class="line">	var counter = 0;</span><br><span class="line">	return function() &#123; return counter++;&#125;;</span><br><span class="line">&#125;());</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>你需要仔细查看这段代码才能知道它的意思，粗看你会以为这是把一个函数赋值给uniqueInterger，但其实这是把一个立即执行的函数的返回值赋值给了uniqueInterger</p>
+</li>
+<li>在被返回的函数中，它还是可以访问counter变量的</li>
+<li><p>从技术的角度来看，可以把闭包合并为属性存器方法getter和setter，看例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function counter(n)&#123;</span><br><span class="line">	return &#123;</span><br><span class="line">	get count()&#123;return n++&#125;,</span><br><span class="line">	set count(m)&#123;</span><br><span class="line">		if (m&gt;=n) n = m;</span><br><span class="line">		else throw(&quot;count can onyl be set to a larger value&quot;);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var c = count(1000);</span><br><span class="line">c.count // =&gt; 1000</span><br><span class="line">c.count // =&gt; 1001</span><br><span class="line">c.count = 2000; // =&gt;</span><br><span class="line">c.count // =&gt; 2000</span><br><span class="line">c.count = 2000 // =&gt; Error!</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>闭包中访问外部函数的arguments和this值，需要做特殊处理</strong></p>
+</li>
+</ul>
+<h2 id="函数属性、方法和构造函数"><a href="#函数属性、方法和构造函数" class="headerlink" title="函数属性、方法和构造函数"></a>函数属性、方法和构造函数</h2><blockquote>
+<p>因为函数也是对象，所以它们也可以拥有属性和方法，就像普通的对象也可以拥有属性和方法一样。甚至可以用Function()构造函数来创建新的函数对象。</p>
+</blockquote>
+<h3 id="length属性"><a href="#length属性" class="headerlink" title="length属性"></a>length属性</h3><p>arguments.length表示传入函数的实参的个数。而函数本身的length不一样，它是只读的，代表函数实参的数量，也就是函数在定义时给出的实参个数。function check(args){},args.length表示实参的真实个数，args.callee.lengt表示期望的实参个数</p>
+<h3 id="prototype属性"><a href="#prototype属性" class="headerlink" title="prototype属性"></a>prototype属性</h3><p>每个函数都有一个prototype属性，这个属性指向一个对象的引用，这个对象叫做原型对象。每一个函数都包含不同的原型对象，当将函数用作构造函数的时候，新创建的对象会从原型对象上继承属性。</p>
+<h3 id="✅-call-方法和apply-方法"><a href="#✅-call-方法和apply-方法" class="headerlink" title="✅ call()方法和apply()方法"></a>✅ call()方法和apply()方法</h3><p>以对象O的方法来调用函数f(),f.call(o);即<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">o.m = f; //将f临时存储为o的临时方法</span><br><span class="line">o.m() //调用它，不传入参数</span><br><span class="line">delete o.m; //将临时方法删除</span><br></pre></td></tr></table></figure></p>
+<h3 id="✅-bind-方法"><a href="#✅-bind-方法" class="headerlink" title="✅ bind()方法"></a>✅ bind()方法</h3><p>将函数绑定至某个对象，当在函数f()上调用bind()方法并传入一个对象o做为参数，这个方法将返回一个新的函数，例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function f(y) &#123;return this.x+y;&#125;</span><br><span class="line">var o = &#123;x : 1&#125;;</span><br><span class="line">var g = f.bind(o);</span><br><span class="line">g(2) =&gt; 3 //通过g(x)来调用o.f(x)</span><br></pre></td></tr></table></figure></p>
+<h3 id="toString-方法"><a href="#toString-方法" class="headerlink" title="toString()方法"></a>toString()方法</h3><ul>
+<li>返回字符串，相关语句，或者源码、”[native code]”字符串</li>
+</ul>
+<h3 id="Function-构造函数"><a href="#Function-构造函数" class="headerlink" title="Function()构造函数"></a>Function()构造函数</h3><p>可以通过Function()构造函数来定义函数，比如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var f = new Function(&quot;x&quot;,&quot;y&quot;,&quot;return x*y&quot;);</span><br><span class="line">//等价于👇</span><br><span class="line">var f = function(x,y) &#123;return x*y&#125;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>可以传入任意数量的实参，最后一个字符串为函数体</li>
+<li>可以用这个构造函数动态的修改、编译函数</li>
+<li>每次调用构造函数都会解析函数体，并创建新的函数对象，在循环语句下会影响效率</li>
+<li>这样创建的函数并不是使用词法作用域，相反，函数体代码的编译总是在顶层函数执行，正如下面代码所示：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var scope = “global”;</span><br><span class="line">function construcFunction() &#123;</span><br><span class="line">	var scope = “local”;</span><br><span class="line">	return new Function(“return scope”);//无法获取local的值</span><br><span class="line">&#125;</span><br><span class="line">construFunction()(); =&gt; “global”</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="✅-可调用对象"><a href="#✅-可调用对象" class="headerlink" title="✅ 可调用对象"></a>✅ 可调用对象</h3><ul>
+<li>可调用对象是一个对象，可以在函数调用表达式中调用这个对象。</li>
+<li>所有的函数都是可以调用的，但不一定可调用对象都是函数。</li>
+</ul>
+<h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><blockquote>
+<p>JS可以像操作对象一样操控函数</p>
+</blockquote>
+<h3 id="使用函数处理数组"><a href="#使用函数处理数组" class="headerlink" title="使用函数处理数组"></a>使用函数处理数组</h3><p>参考实战环节的map、Reduce方法的使用</p>
+<h3 id="✅-高阶函数"><a href="#✅-高阶函数" class="headerlink" title="✅ 高阶函数"></a>✅ 高阶函数</h3><h3 id="✅-不完全函数"><a href="#✅-不完全函数" class="headerlink" title="✅ 不完全函数"></a>✅ 不完全函数</h3><h3 id="✅-记忆"><a href="#✅-记忆" class="headerlink" title="✅ 记忆"></a>✅ 记忆</h3><h1 id="对象📦"><a href="#对象📦" class="headerlink" title="对象📦"></a>对象📦</h1><blockquote>
+<p>对象是一种复合的值，通常是名+值的组合，可以通过名来访问相应的值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//对象是 名：值 对的集合，或 字符串到值 映射的集合</span><br><span class="line">var book = &#123; </span><br><span class="line">	topic: &quot;JavaScript&quot;,</span><br><span class="line">	fat: true</span><br><span class="line">&#125;;</span><br><span class="line">//三种创建对象的方式</span><br><span class="line">&#123;&#125;;</span><br><span class="line">var x = new object();</span><br><span class="line">var a = Object.create(&#123;x:1,y:2&#125;);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<ul>
+<li>对象是动态的，可以随时新增、删除属性（名+值）；</li>
+<li>我们通过引用去操作对象，引用类似于C语言中的指针，如果x是指向一个对象的引用，那么执行var y = x; 变量y也是指向同一个对象，而非副本。通过y修改这个对象，也会对x造成影响。</li>
+<li>对象常见的用法，创建(create)，设置（set）查找(query)，删除(delete)，检测(test)，枚举(enumerate),将在之后介绍。</li>
+<li>属性（名：值）中属性的名可以是任何字符串，包括空字符串，但不能同名，值可以是任何js值，也可以是getter、setter函数</li>
+<li>属性还有一个值用来控制它本身是否可写、可枚举、可配置</li>
+<li>对象本身还有三个相关的对象特性来控制、标记对象的功能<ul>
+<li>对象的原型：指向另外一个对象</li>
+<li>对象的类：表示对象类型的字符串</li>
+<li>对象的扩展标记：是否可以添加新属性</li>
+</ul>
+</li>
+<li>三类对象类型<ul>
+<li>内置对象</li>
+<li>宿主对象</li>
+<li>自定义对象</li>
+</ul>
+</li>
+<li>两类属性<ul>
+<li>自有属性</li>
+<li>继承属性</li>
+</ul>
+</li>
+</ul>
+<h2 id="三个属性"><a href="#三个属性" class="headerlink" title="三个属性"></a>三个属性</h2><p>原型属性：用来继承的属性，可以用对象的getprototype()方法查询该属性</p>
+<ul>
+<li>用Object.create()方法创建的对象会有一个costrutor属性，它指向Object()的构造函数</li>
+<li>如果想要检查某个属性是否属于某个对象，可以使用isPrototypeOf()方法</li>
+</ul>
+<p>类属性：是一个字符串，用来表示对象的一些信息</p>
+<ul>
+<li>用tostring方法可以得到对象的类属性，如果toString方法被重写了，可以使用classOf()方法</li>
+<li>需要注意的是，有了对象以后才能使用toString()方法</li>
+<li>不可以通过<a href="">直接量</a>来调用toString()方法,直接量，即表达式 ？</li>
+<li>关于ClassOf()方法，如果自定义了classOf方法，它返回的值会是Object</li>
+</ul>
+<p>可拓属性：决定了该对象是否可以拓展属性</p>
+<ul>
+<li>宿主对象的可拓展性由JavaScript引擎决定</li>
+<li>可以使用Object.esExtendible（）方法来判断该对象是否可以增加新的属性</li>
+<li>Object.PreventExtensions()可以转换对象的拓展属性，即让不可拓展的对象变成可拓展的，</li>
+<li>Freeze()方法可以让对象的属性变成冻结的状态，不可配置</li>
+</ul>
+<h2 id="对象的序列化"><a href="#对象的序列化" class="headerlink" title="对象的序列化"></a>对象的序列化</h2><ul>
+<li>对象的序列化即将对象变成字符串，或者是反过来。一般是对象=&gt;Jason</li>
+<li>函数，Regexp，Error对象和Undefined值不可以序列或还原</li>
+<li>Stringify()只可以序列枚举对象</li>
+<li>序列函数都有第二个参数，是可选的</li>
+</ul>
+<h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><ul>
+<li>对象直接量:<ul>
+<li>{x:0};</li>
+<li>对象直接量是一个表达式，如果在for循环内使用，会创建出很多新对象，并且每次创建的对象的属性值也可能不同</li>
+</ul>
+</li>
+<li>关键字new<ul>
+<li>var x = new Object();</li>
+<li>new后面的函数叫做构造函数，像数组、日期类构造函数是默认的，当然也可以自定义</li>
+</ul>
+</li>
+<li>object.create()函数<ul>
+<li>var a = Object.create({x:1,y:2}); a继承了x和y,<a href="">什么是继承？</a></li>
+<li>create（）提供了两个参数，第一个参数是这个对象的原型，第二个是一个可选参数，用来对对象的属性进行进一步描述，之后会详细讲述第二个参数</li>
+<li>如果第一个参数传入null，那这个对象不会继承任何东西，甚至不包括基础方法，都不能和运算符一起工作</li>
+<li>如果需要创建一个空对象，需要传入Object.prototype</li>
+<li>可以通过任意原型创建新对象，换句话说可以让任意对象可继承</li>
+<li>inherit()函数，返回一个新对象，这个新对象继承了参数对象的属性</li>
+</ul>
+</li>
+</ul>
+<h2 id="属性的使用与设置"><a href="#属性的使用与设置" class="headerlink" title="属性的使用与设置"></a>属性的使用与设置</h2><ul>
+<li>标识符：.之后为标识符，是静态的，必须写死在程序中作为索引</li>
+<li>字符串值：[]，中括号中为字符值，程序运行的时候可以修改它们，因此可以有这种代码</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var addr = &quot;;</span><br><span class="line">for (i = 0;i&lt;4;i++)&#123;</span><br><span class="line">	addr+= customer[&quot;address&quot;+i] + &apos;\n&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码读取customer对象的address0、address1、address2和address3的值，并将它们连接起来。</p>
+<h2 id="属性的继承"><a href="#属性的继承" class="headerlink" title="属性的继承"></a>属性的继承</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123;&#125;</span><br><span class="line">o.x = 1;</span><br><span class="line"></span><br><span class="line">var p = inherit(o)</span><br><span class="line">p.y = 2;</span><br><span class="line"></span><br><span class="line">var q = inherit(p)</span><br><span class="line">q.z = 3;</span><br><span class="line"></span><br><span class="line">var s = q.tostring();</span><br><span class="line">q.x+q.y // =&gt; 3</span><br></pre></td></tr></table></figure>
+<ul>
+<li>p继承o、q继承p，底层的拥有上层的属性，如果属性同名，底层优先使用自己的值</li>
+<li>一般在查询属性的时候才能体会到继承的存在，设置属性的时候则和继承无关</li>
+</ul>
+<h2 id="属性访问出错了"><a href="#属性访问出错了" class="headerlink" title="属性访问出错了"></a>属性访问出错了</h2><ul>
+<li>查询一个不存在的属性不会报错，查询不存在的对象会报错</li>
+<li>给只读属性赋值会报错</li>
+<li>如果o是不可扩展的，也没使用setter方法，那么o不可定义新属性</li>
+</ul>
+<h2 id="删除属性"><a href="#删除属性" class="headerlink" title="删除属性"></a>删除属性</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">delete book.author;</span><br><span class="line">delete book[&quot;main title&quot;];</span><br></pre></td></tr></table></figure>
+<ul>
+<li>delete 只是断开断开属性和对象的联系，而不会操作这些属性中的属性</li>
+<li><p>例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;p:&#123;x:1&#125;&#125;;</span><br><span class="line">b = a.p;</span><br><span class="line">delete a.p; //只是断开a与p的联系，但b与p还是有联系，不严谨的代码容易导致内存泄露</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>delete 返回ture或false，delete不能删除那些可配置性为false 的属性</p>
+</li>
+<li>在严格模式下，需要用this指定对象以及属性，才能删除全局对象的属性</li>
+</ul>
+<h2 id="检测属性"><a href="#检测属性" class="headerlink" title="检测属性"></a>检测属性</h2><blockquote>
+<p>我们经常会检测集合中成员的关系，判断某个属性是否在某个对象单中，可以通过for-in运算符，hasOwnpreperty()和propertyIsEnumerable()来完成这个工作</p>
+</blockquote>
+<ul>
+<li>in运算符：左侧是属性，右侧是对象，如果存在返回true</li>
+<li>hasOwnpreperty()方法：检测给定的名字是否是对象的自有属性，对于继承的属性会返回false</li>
+<li>propertyIsEnumerable()：hasOwnpreperty()的增强版，是自有属性且这个属性可枚举才返回True</li>
+</ul>
+<hr>
+<p>✅ ：Todo 的部分</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-reward-image.png" alt="wittyfans WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/编程/" rel="tag"># 编程</a>
+          
+            <a href="/tags/JS/" rel="tag"># JS</a>
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/coding/JavaScript学习笔记——错误集.html" rel="next" title="JavaScript学习笔记——错误集">
+                <i class="fa fa-chevron-left"></i> JavaScript学习笔记——错误集
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/coding/正则表达式学习.html" rel="prev" title="正则表达式学习">
+                正则表达式学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="wittyfans" />
+          <p class="site-author-name" itemprop="name">wittyfans</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">56</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">71</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wittyfans" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://music.163.com/#/user/event?id=5842815" target="_blank" title="Netease Music">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Netease Music
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.instagram.com/wittyfans/" target="_blank" title="Instagram">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Instagram
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/wittyfans" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#函数-🔂"><span class="nav-number">1.</span> <span class="nav-text">函数 🔂</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法链"><span class="nav-number">1.1.</span> <span class="nav-text">方法链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数调用"><span class="nav-number">1.2.</span> <span class="nav-text">构造函数调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#间接调用"><span class="nav-number">1.3.</span> <span class="nav-text">间接调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实参与形参"><span class="nav-number">1.4.</span> <span class="nav-text">实参与形参</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实参对象（ES5中被移除）"><span class="nav-number">1.5.</span> <span class="nav-text">实参对象（ES5中被移除）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型转换"><span class="nav-number">1.6.</span> <span class="nav-text">类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作为值的函数"><span class="nav-number">1.7.</span> <span class="nav-text">作为值的函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义函数属性"><span class="nav-number">1.8.</span> <span class="nav-text">自定义函数属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作为命名空间的函数"><span class="nav-number">1.9.</span> <span class="nav-text">作为命名空间的函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">1.10.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数属性、方法和构造函数"><span class="nav-number">1.11.</span> <span class="nav-text">函数属性、方法和构造函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#length属性"><span class="nav-number">1.11.1.</span> <span class="nav-text">length属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prototype属性"><span class="nav-number">1.11.2.</span> <span class="nav-text">prototype属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#✅-call-方法和apply-方法"><span class="nav-number">1.11.3.</span> <span class="nav-text">✅ call()方法和apply()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#✅-bind-方法"><span class="nav-number">1.11.4.</span> <span class="nav-text">✅ bind()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#toString-方法"><span class="nav-number">1.11.5.</span> <span class="nav-text">toString()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Function-构造函数"><span class="nav-number">1.11.6.</span> <span class="nav-text">Function()构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#✅-可调用对象"><span class="nav-number">1.11.7.</span> <span class="nav-text">✅ 可调用对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数式编程"><span class="nav-number">1.12.</span> <span class="nav-text">函数式编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用函数处理数组"><span class="nav-number">1.12.1.</span> <span class="nav-text">使用函数处理数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#✅-高阶函数"><span class="nav-number">1.12.2.</span> <span class="nav-text">✅ 高阶函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#✅-不完全函数"><span class="nav-number">1.12.3.</span> <span class="nav-text">✅ 不完全函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#✅-记忆"><span class="nav-number">1.12.4.</span> <span class="nav-text">✅ 记忆</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象📦"><span class="nav-number">2.</span> <span class="nav-text">对象📦</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三个属性"><span class="nav-number">2.1.</span> <span class="nav-text">三个属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的序列化"><span class="nav-number">2.2.</span> <span class="nav-text">对象的序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建对象"><span class="nav-number">2.3.</span> <span class="nav-text">创建对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性的使用与设置"><span class="nav-number">2.4.</span> <span class="nav-text">属性的使用与设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性的继承"><span class="nav-number">2.5.</span> <span class="nav-text">属性的继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性访问出错了"><span class="nav-number">2.6.</span> <span class="nav-text">属性访问出错了</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除属性"><span class="nav-number">2.7.</span> <span class="nav-text">删除属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检测属性"><span class="nav-number">2.8.</span> <span class="nav-text">检测属性</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wittyfans</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("7sScl0n1AlEtVDaUHuXzxPqc-gzGzoHsz", "qKXpoqGbK1sdFYMiik7Evuan");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
