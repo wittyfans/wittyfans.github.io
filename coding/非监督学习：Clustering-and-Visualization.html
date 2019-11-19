@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python,data analysis,data science,sklearn," />
+  <meta name="keywords" content="python,data analysis,sklearn,data science," />
 
 
 
@@ -86,13 +86,13 @@
 
 
 
-<meta name="description" content="非监督学习的特点是，我们根据现有的数据去发掘存在数据中的一些模式,比如根据用户的购买记录，(clustering) 定义用户画像,根据数据的模式来压缩数据（dimension reduction.相比较监督学习，如对癌症良性（benign）与恶性（cancerous）的分类，在这个例子中，我们发现的模式是: guided,或者说是: supervised，这一过程依赖我们标记过的数据，而非监督">
-<meta name="keywords" content="python,data analysis,data science,sklearn">
+<meta name="description" content="非监督学习：即根据现有的数据去发掘存在数据中的一些模式,比如根据用户的购买记录，(clustering) 定义用户画像, 或根据数据的模式来压缩数据（dimension reduction.">
+<meta name="keywords" content="python,data analysis,sklearn,data science">
 <meta property="og:type" content="article">
 <meta property="og:title" content="非监督学习：Clustering and Visualization">
 <meta property="og:url" content="http://wittyfans.com/coding/非监督学习：Clustering-and-Visualization.html">
 <meta property="og:site_name" content="wittyfans">
-<meta property="og:description" content="非监督学习的特点是，我们根据现有的数据去发掘存在数据中的一些模式,比如根据用户的购买记录，(clustering) 定义用户画像,根据数据的模式来压缩数据（dimension reduction.相比较监督学习，如对癌症良性（benign）与恶性（cancerous）的分类，在这个例子中，我们发现的模式是: guided,或者说是: supervised，这一过程依赖我们标记过的数据，而非监督">
+<meta property="og:description" content="非监督学习：即根据现有的数据去发掘存在数据中的一些模式,比如根据用户的购买记录，(clustering) 定义用户画像, 或根据数据的模式来压缩数据（dimension reduction.">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2019/11/19/GIND7pRkxahrXBu.png">
 <meta property="og:image" content="https://i.loli.net/2019/11/19/9ALwWz1bRlOBCor.png">
@@ -104,10 +104,10 @@
 <meta property="og:image" content="https://i.loli.net/2019/11/19/FoWTypesfNmHgtI.png">
 <meta property="og:image" content="https://i.loli.net/2019/11/19/kj4BNZbtY1l7Qzx.png">
 <meta property="og:image" content="https://i.loli.net/2019/11/19/ONSqKFLUwQ7EDBJ.png">
-<meta property="og:updated_time" content="2019-11-19T15:07:36.249Z">
+<meta property="og:updated_time" content="2019-11-19T15:11:07.639Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="非监督学习：Clustering and Visualization">
-<meta name="twitter:description" content="非监督学习的特点是，我们根据现有的数据去发掘存在数据中的一些模式,比如根据用户的购买记录，(clustering) 定义用户画像,根据数据的模式来压缩数据（dimension reduction.相比较监督学习，如对癌症良性（benign）与恶性（cancerous）的分类，在这个例子中，我们发现的模式是: guided,或者说是: supervised，这一过程依赖我们标记过的数据，而非监督">
+<meta name="twitter:description" content="非监督学习：即根据现有的数据去发掘存在数据中的一些模式,比如根据用户的购买记录，(clustering) 定义用户画像, 或根据数据的模式来压缩数据（dimension reduction.">
 <meta name="twitter:image" content="https://i.loli.net/2019/11/19/GIND7pRkxahrXBu.png">
 
 
@@ -382,13 +382,12 @@
       
         <p><img src="https://i.loli.net/2019/11/19/GIND7pRkxahrXBu.png" alt=""></p>
 <blockquote>
-<p>非监督学习的特点是，我们根据现有的数据去发掘存在数据中的一些模式,比如根据用户的购买记录，(<em>clustering</em>) 定义用户画像,根据数据的模式来压缩数据（<em>dimension reduction</em>.<br>相比较监督学习，如对癌症良性（<em>benign</em>）与恶性（<em>cancerous</em>）的分类，在这个例子中，我们发现的模式是: <em>guided</em>,或者说是: <em>supervised</em>，这一过程依赖我们标记过的数据，而非监督学习不需要我们使用标记过的数据去发现这些模式，我们不需要去guide the machine。</p>
+<p>非监督学习：即根据现有的数据去发掘存在数据中的一些模式,比如根据用户的购买记录，(<em>clustering</em>) 定义用户画像, 或根据数据的模式来压缩数据（<em>dimension reduction</em>.</p>
 </blockquote>
 <a id="more"></a>
 <h1 id="非监督学习"><a href="#非监督学习" class="headerlink" title="非监督学习"></a>非监督学习</h1><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
-<h2 id="非监督学习介绍"><a href="#非监督学习介绍" class="headerlink" title="非监督学习介绍"></a>非监督学习介绍</h2><p>非监督学习的特点是，我们根据现有的数据去发掘存在数据中的一些模式,比如根据用户的购买记录，(<em>clustering</em>) 定义用户画像,根据数据的模式来压缩数据（<em>dimension reduction</em>）.</p>
-<p>相比较监督学习，如对癌症良性（<em>benign</em>）与恶性（<em>cancerous</em>）的分类，在这个例子中，我们发现的模式是: <em>guided</em>,或者说是: <em>supervised</em>，这一过程依赖我们标记过的数据，而非监督学习不需要我们使用标记过的数据去发现这些模式，我们不需要去guide the machine。</p>
+<h2 id="非监督学习介绍"><a href="#非监督学习介绍" class="headerlink" title="非监督学习介绍"></a>非监督学习介绍</h2><p>相比较监督学习，如对癌症良性（<em>benign</em>）与恶性（<em>cancerous</em>）的分类，在这个例子中，我们发现的模式是: <em>guided</em>,或者说是: <em>supervised</em>，这一过程依赖我们标记过的数据，而非监督学习不需要我们使用标记过的数据去发现这些模式，我们不需要去guide the machine。</p>
 <h1 id="聚类与数据探索"><a href="#聚类与数据探索" class="headerlink" title="聚类与数据探索"></a>聚类与数据探索</h1><h2 id="iris-数据集"><a href="#iris-数据集" class="headerlink" title="iris 数据集"></a>iris 数据集</h2><p>iris数据集包括了三种植物，它们有四种衡量方式：</p>
 <ul>
 <li>petal width</li>
@@ -536,9 +535,9 @@
           
             <a href="/tags/data-analysis/" rel="tag"># data analysis</a>
           
-            <a href="/tags/data-science/" rel="tag"># data science</a>
-          
             <a href="/tags/sklearn/" rel="tag"># sklearn</a>
+          
+            <a href="/tags/data-science/" rel="tag"># data science</a>
           
         </div>
       
