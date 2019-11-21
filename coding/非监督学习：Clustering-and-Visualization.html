@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="python,data analysis,sklearn,data science," />
+  <meta name="keywords" content="python,data analysis,data science,sklearn," />
 
 
 
@@ -87,7 +87,7 @@
 
 
 <meta name="description" content="非监督学习：即根据现有的数据去发掘存在数据中的一些模式,比如根据用户的购买记录，(clustering) 定义用户画像, 或根据数据的模式来压缩数据（dimension reduction.">
-<meta name="keywords" content="python,data analysis,sklearn,data science">
+<meta name="keywords" content="python,data analysis,data science,sklearn">
 <meta property="og:type" content="article">
 <meta property="og:title" content="非监督学习：Clustering and Visualization">
 <meta property="og:url" content="http://wittyfans.com/coding/非监督学习：Clustering-and-Visualization.html">
@@ -104,7 +104,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/11/19/FoWTypesfNmHgtI.png">
 <meta property="og:image" content="https://i.loli.net/2019/11/19/kj4BNZbtY1l7Qzx.png">
 <meta property="og:image" content="https://i.loli.net/2019/11/19/ONSqKFLUwQ7EDBJ.png">
-<meta property="og:updated_time" content="2019-11-19T15:11:07.639Z">
+<meta property="og:updated_time" content="2019-11-20T03:14:45.440Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="非监督学习：Clustering and Visualization">
 <meta name="twitter:description" content="非监督学习：即根据现有的数据去发掘存在数据中的一些模式,比如根据用户的购买记录，(clustering) 定义用户画像, 或根据数据的模式来压缩数据（dimension reduction.">
@@ -419,20 +419,19 @@
 <p><img src="https://i.loli.net/2019/11/19/9ALwWz1bRlOBCor.png" alt=""></p>
 <p>我们会把数据集中的第一列作为 x,第二列作为 y，使用数组的切片分别将 x,y 部分的值赋给xs,ys.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xs = points[:,0]</span><br><span class="line">ys = points[:1]</span><br></pre></td></tr></table></figure>
-<p>有了数据之后，我们就可以对模型进行初始户与训练了，我们初始化Kmeans实例，并将数据整个传给它进行训练，训练之后我们用新准备的数据new_points来预测它的性能。</p>
+<p>有了数据之后，我们就可以对模型进行初始化与训练了，我们初始化Kmeans实例，并将数据整个传给它进行训练，训练之后我们用新准备的数据new_points来预测它的性能。</p>
 <p>model预测后的结果保存在labels中，这是对new_points数据的预测，labels的数据只有一列，保存着分类的情况，它跟我们的数组new_points对应的。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># Import KMeans</span><br><span class="line">from sklearn.cluster import KMeans</span><br><span class="line"></span><br><span class="line"># Create a KMeans instance with 3 clusters: model</span><br><span class="line">model = KMeans(n_clusters=3)</span><br><span class="line"></span><br><span class="line"># Fit model to points</span><br><span class="line">model.fit(points)</span><br><span class="line"></span><br><span class="line"># Determine the cluster labels of new_points: labels</span><br><span class="line">labels = model.predict(new_points)</span><br><span class="line"></span><br><span class="line"># Print cluster labels of new_points</span><br><span class="line">print(labels)</span><br></pre></td></tr></table></figure>
 <p>因为预测的数据跟原始数据是对应的，所以我们以数据中的第一列作为x，第二列作为y，绘制scatter图，然后指定scatter的颜色参数c为labels，这样就可以在数据可视化的时候将不同聚类的数据分开表示。</p>
 <p><strong>聚类的中心：centroids</strong></p>
-<p>聚类不同的数据集，它们都有自己的中心点，这个中心点可以直接通过模型的属性 <code>model.cluster_centers_</code> 找到。</p>
-<p>我们的模型找到了几个聚类，cluster_centers_就有几组数据，下面是3个<code>n_clusters</code>的例子:</p>
+<p>不同的聚类，它们都有自己的中心点，这个中心点可以直接通过模型的属性 <code>model.cluster_centers_</code> 找到。我们的模型找到了几个聚类，cluster_centers_就有几组数据，下面是3个<code>n_clusters</code>的例子:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array([[-1.57568905, -0.22531944],</span><br><span class="line">       [ 0.18034887, -0.81701955],</span><br><span class="line">       [ 1.01378685,  0.98288627]])</span><br></pre></td></tr></table></figure>
 <p>我们将聚类后的数据与centroids都绘出来的效果：</p>
 <p><img src="https://i.loli.net/2019/11/19/Q4gzo9pkG7vr1PI.png" alt=""></p>
 <h2 id="选择-n-clusters（inertia）"><a href="#选择-n-clusters（inertia）" class="headerlink" title="选择 n_clusters（inertia）"></a>选择 n_clusters（inertia）</h2><p>如何选择n_clusters,一个好的聚合器，需要尽可能的使不同聚类的数量少，同时聚类中的数据集与centroids的距离最近。</p>
 <p>聚类器有一个参数专门来描述这种关系，即 <em>‌inertia_</em>， 我们可以对同一个数据变化不同的n_clusters来查看它的inertia_的变化:</p>
 <p><img src="https://i.loli.net/2019/11/19/IPUG5LMecSDAxoy.png" alt=""></p>
-<p>在这里例子中，可以看到k从1-3一直是极具下降的，随后开始变得平缓，我们一般选择图像从急剧下降到变的平缓之间的这个值，这个例子中，3是不错的选择。</p>
+<p>在这里例子中，可以看到k从1-3一直是急剧下降的，随后开始变得平缓，我们一般选择图像从急剧下降到变的平缓之间的这个值，这个例子中，3是不错的选择。</p>
 <h2 id="缩放数据与pipline"><a href="#缩放数据与pipline" class="headerlink" title="缩放数据与pipline"></a>缩放数据与pipline</h2><p>我们有一组这样的数据:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[242.0, 23.2, 25.4, 30.0, 38.4, 13.4]</span><br></pre></td></tr></table></figure>
 <p>每一列是features，对数据集进行聚类，但是发现效果并不理想，原因是这些列之间的方差很大，我们需要将其标准化到同一个维度，如0，1或者-1，1,这个步骤叫 <em>‌Scaling</em>。</p>
@@ -472,7 +471,7 @@
 <p><img src="https://i.loli.net/2019/11/19/Ns8USVibcFehlxw.png" alt="not normalized"></p>
 <p><img src="https://i.loli.net/2019/11/19/QtBcrdTgPMA6U73.png" alt="normalized"></p>
 <h2 id="intermediate-clustering"><a href="#intermediate-clustering" class="headerlink" title="intermediate clustering"></a>intermediate clustering</h2><p>dendrogram的图是有高度的，它的高度值描述的是两个features之间的距离，chevron与exxon的距离是它们两者merge的时候那个柱子的高度，也就是这两者之间的距离，在这个层面，它们之间的距离是最短的。</p>
-<p>而看整个图像的话，图像最高的部分发生的合并，则说明它们之间的距离是最长的。</p>
+<p>而看整个图像的话，图像最高的部分发生的合并，则说明它们之间的距离是最远的。</p>
 <p>当我们在计算层次聚类信息的时候，linkage方法中有一个method，我们把它指定为 <em>complete</em>,它的意思是我们不会限定 features之间的距离，我需要计算所有features之间的距离，不管他们多远；如果我在这里作出限制，比如15，那么两个features之间距离超过15的部分我就忽略了。</p>
 <p>怎么从一堆数据集中，根据 features之间的距离 来筛选数据呢？我们需要 fcluster 方法。</p>
 <p>我们看看设定高度为 15 的情况: </p>
@@ -480,11 +479,16 @@
 <p><img src="https://i.loli.net/2019/11/19/FoWTypesfNmHgtI.png" alt=""></p>
 <p>下面是fcluster方法使用示例,筛选高度为6以内的数据：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># Perform the necessary imports</span><br><span class="line">import pandas as pd</span><br><span class="line">from scipy.cluster.hierarchy import fcluster</span><br><span class="line"></span><br><span class="line"># Use fcluster to extract labels: labels</span><br><span class="line">labels = fcluster(mergings,6,criterion=&apos;distance&apos;)</span><br><span class="line"></span><br><span class="line"># Create a DataFrame with labels and varieties as columns: df</span><br><span class="line">df = pd.DataFrame(&#123;&apos;labels&apos;: labels, &apos;varieties&apos;: varieties&#125;)</span><br><span class="line"></span><br><span class="line"># Create crosstab: ct</span><br><span class="line">ct = pd.crosstab(df[&apos;labels&apos;],df[&apos;varieties&apos;])</span><br><span class="line"></span><br><span class="line"># Display ct</span><br><span class="line">print(ct)</span><br></pre></td></tr></table></figure>
-<h1 id="t-SNE"><a href="#t-SNE" class="headerlink" title="t-SNE"></a>t-SNE</h1><p>t-sne算法的原理就是把高维度的数据转化成2维或者3维的，所以它是一种用于降维的机器学习方法。当我们想要对高维数据进行分类，又不清楚这个数据集有没有很好的可分性（即同类之间间隔小，异类之间间隔大），可以通过t-SNE投影到2维或者3维的空间中观察一下。如果在低维空间中具有可分性，则数据是可分的；如果在高维空间中不具有可分性，可能是数据不可分，也可能仅仅是因为不能投影到低维空间。</p>
-<p>t-sne中有两个地方值得注意的，一个是fit_transform方法，它的作用是将X投影到一个嵌入空间并返回转换结果，另一个是learning_rate,它是学习率，建议取值为10.0-1000.0。</p>
+<h1 id="t-SNE"><a href="#t-SNE" class="headerlink" title="t-SNE"></a>t-SNE</h1><p>t-sne算法的原理就是把高维度的数据转化成2维或者3维的，所以它是一种用于降维的机器学习方法。当我们想要对高维数据进行分类，又不清楚这个数据集有没有很好的可分性（即同类之间间隔小，异类之间间隔大），可以通过t-SNE投影到2维或者3维的空间中观察一下。</p>
+<ul>
+<li>SNE构建一个高维对象之间的概率分布，使得相似的对象有更高的概率被选择，而不相似的对象有较低的概率被选择。</li>
+<li>SNE在低维空间里在构建这些点的概率分布，使得这两个概率分布之间尽可能的相似。</li>
+</ul>
+<p>我们看到t-SNE模型是非监督的降维，他跟kmeans等不同，他不能通过训练得到一些东西之后再用于其它数据（比如kmeans可以通过训练得到k个点，再用于其它数据集，而t-SNE只能单独的对数据做操作，也就是说他只有fit_transform，而没有fit操作）</p>
 <blockquote>
-<p>参考 <a href="https://blog.csdn.net/hustqb/article/details/78144384" target="_blank" rel="noopener">数据降维与可视化——t-SNE</a></p>
+<p>参考 <a href="https://blog.csdn.net/hustqb/article/details/78144384" target="_blank" rel="noopener">数据降维与可视化——t-SNE</a> 以及 <a href="http://www.datakit.cn/blog/2017/02/05/t_sne_full.html" target="_blank" rel="noopener">t-SNE完整笔记</a></p>
 </blockquote>
+<p>t-sne中有两个地方值得注意的，一个是fit_transform方法，它的作用是将X投影到一个嵌入空间并返回转换结果，另一个是learning_rate,它是学习率，建议取值为10.0-1000.0。</p>
 <p>t-sne生成的数据是不一样的，尽管你绘图的代码是一样的。</p>
 <p><strong>TSNE对于谷物数据的可视化</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># Import TSNE</span><br><span class="line">from sklearn.manifold import TSNE</span><br><span class="line"></span><br><span class="line"># Create a TSNE instance: model</span><br><span class="line">model = TSNE(learning_rate=200)</span><br><span class="line"></span><br><span class="line"># Apply fit_transform to samples: tsne_features</span><br><span class="line">tsne_features = model.fit_transform(samples)</span><br><span class="line"></span><br><span class="line"># Select the 0th feature: xs</span><br><span class="line">xs = tsne_features[:,0]</span><br><span class="line"></span><br><span class="line"># Select the 1st feature: ys</span><br><span class="line">ys = tsne_features[:,1]</span><br><span class="line"></span><br><span class="line"># Scatter plot, coloring by variety_numbers</span><br><span class="line">plt.scatter(xs,ys,c=variety_numbers)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
@@ -535,9 +539,9 @@
           
             <a href="/tags/data-analysis/" rel="tag"># data analysis</a>
           
-            <a href="/tags/sklearn/" rel="tag"># sklearn</a>
-          
             <a href="/tags/data-science/" rel="tag"># data science</a>
+          
+            <a href="/tags/sklearn/" rel="tag"># sklearn</a>
           
         </div>
       
@@ -555,6 +559,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/coding/非监督学习：PCA-and-NMF.html" rel="prev" title="非监督学习：PCA and NMF">
+                非监督学习：PCA and NMF <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -622,7 +630,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">59</span>
+              <span class="site-state-item-count">60</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

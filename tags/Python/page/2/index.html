@@ -88,7 +88,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="wittyfans">
-<meta property="og:url" content="http://wittyfans.com/tags/Pandas/index.html">
+<meta property="og:url" content="http://wittyfans.com/tags/python/page/2/index.html">
 <meta property="og:site_name" content="wittyfans">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://wittyfans.com/tags/Pandas/"/>
+  <link rel="canonical" href="http://wittyfans.com/tags/python/page/2/"/>
 
 
 
 
 
-  <title> 标签: Pandas | wittyfans </title>
+  <title> 标签: python | wittyfans </title>
   <script type="text/javascript" src="/js/src/love.js"></script>
 </head>
 
@@ -251,7 +251,7 @@
   <div id="posts" class="posts-collapse">
     <div class="collection-title">
       <h2 >
-        Pandas
+        python
         <small>标签</small>
       </h2>
     </div>
@@ -264,9 +264,9 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/coding/利用Pandas分析美国交警开放的搜查数据.html" itemprop="url">
+            <a class="post-title-link" href="/coding/Auto-assign-ticket-with-Jira-python-api.html" itemprop="url">
               
-                <span itemprop="name">利用Pandas分析美国交警开放的搜查数据</span>
+                <span itemprop="name">Auto assign ticket with Jira python api</span>
               
             </a>
         
@@ -274,9 +274,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2019-01-12T14:23:30+08:00"
-              content="2019-01-12" >
-          01-12
+              datetime="2018-10-05T22:40:07+08:00"
+              content="2018-10-05" >
+          10-05
         </time>
       </div>
 
@@ -288,6 +288,10 @@
   </div>
 
   
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/tags/python/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/tags/python/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
@@ -621,56 +625,6 @@
               },
               error: function(counter, error) {
                 console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
-
-  
-
-  
-
-
-</body>
-</html>
-e: ' + error.message);
               }
             });
           } else {
