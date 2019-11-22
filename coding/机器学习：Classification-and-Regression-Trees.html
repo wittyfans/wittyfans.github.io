@@ -1,0 +1,964 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python,data analysis,sklearn," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="wittyfans" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="机器学习决策树的第一部分，分类与回归树（CART）的原理（多图)。">
+<meta name="keywords" content="python,data analysis,sklearn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习：Classification and Regression Trees">
+<meta property="og:url" content="http://wittyfans.com/coding/机器学习：Classification-and-Regression-Trees.html">
+<meta property="og:site_name" content="wittyfans">
+<meta property="og:description" content="机器学习决策树的第一部分，分类与回归树（CART）的原理（多图)。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/11/22/poSKWwveBCuU16n.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/22/xqRKiL3Qa2Cr4UI.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/22/XrWPkLu2aAMoGfT.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/22/cFErmQLRdjSGANk.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/22/bNtKIPiq3QS7uXF.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/22/VosX56SFIqnPd1k.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/22/R8wpJ6X7HPgmrlI.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/22/ujM8EtbcvxDTmK5.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/22/oKLqZMGXEfDTxd2.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/22/c29ySGZYRu3rdpT.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/22/LqWxzZajrP4QnDC.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/22/Rg865Yih9Xo3BDE.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/22/poSKWwveBCuU16n.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/22/6cGaSCwIEmQPXsq.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/22/EP5aXncFzWkSysY.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/22/XP1On7DCsAFzxya.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/22/CJgeWPEai8zuvdt.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/22/fDPcg3Ts2WjLrAR.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/22/pfD1JGA5UICPlhb.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/22/Nowl8QfDPbpWRZO.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/22/UJevq6O9CKyR1wk.png">
+<meta property="og:updated_time" content="2019-11-22T08:11:11.679Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习：Classification and Regression Trees">
+<meta name="twitter:description" content="机器学习决策树的第一部分，分类与回归树（CART）的原理（多图)。">
+<meta name="twitter:image" content="https://i.loli.net/2019/11/22/poSKWwveBCuU16n.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wittyfans.com/coding/机器学习：Classification-and-Regression-Trees.html"/>
+
+
+
+
+
+  <title> 机器学习：Classification and Regression Trees | wittyfans </title>
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">wittyfans</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">学则不固,知则不惑</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/机器学习：Classification-and-Regression-Trees.html">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="wittyfans">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="wittyfans">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="wittyfans" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                机器学习：Classification and Regression Trees
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-22T16:06:42+08:00">
+                2019-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/coding/" itemprop="url" rel="index">
+                    <span itemprop="name">coding</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/coding/机器学习：Classification-and-Regression-Trees.html" class="leancloud_visitors" data-flag-title="机器学习：Classification and Regression Trees">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+               <span>℃</span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://i.loli.net/2019/11/22/poSKWwveBCuU16n.png" alt=""></p>
+<blockquote>
+<p>机器学习决策树的第一部分，分类与回归树（CART）的原理（多图)。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>为什么使用决策树呢，主要有两个原因，一是决策树通常模仿人类的思维，因此它很容易理解数据并做出一些很好的解释。二是决策树可以让你看到数据的逻辑。</p>
+<p>我们看一个金融机构决定是否投资一家公司决策树：</p>
+<p><img src="https://i.loli.net/2019/11/22/xqRKiL3Qa2Cr4UI.png" alt=""></p>
+<p>从决策树的组成来看，它是由一系列节点（nodes）的继承关系组成的，节点可以看作是对问题做出回答，也可以是问题的答案。这些问题有些依据数据的分类，如你是否吸烟，有的是数据本身你一天吸几根，（数值型），决策树中主要有三类节点：</p>
+<ol>
+<li>Root, root节点没有父节点，有两个子节点</li>
+<li>Internal root, 一个父节点，两个子节点</li>
+<li>Leaf, 一个父节点，没有子节点</li>
+</ol>
+<p>每一个internal root代表一个“test” on an attribute，即在这个节点根据这个属性做出的判断，每一个分支则代表了判断的输出，每一个leaf代表了一个class label，即最后的决定。</p>
+<p>下面是一些决策树中的常见名词：</p>
+<ol>
+<li>Root Node: It represents entire population or sample and this further gets divided into two or more homogeneous sets.</li>
+<li>Splitting: It is a process of dividing a node into two or more sub-nodes.</li>
+<li>Decision Node: When a sub-node splits into further sub-nodes, then it is called decision node.</li>
+<li>Leaf/ Terminal Node: Nodes do not split is called Leaf or Terminal node.</li>
+<li>Pruning: When we remove sub-nodes of a decision node, this process is called pruning. You can say opposite process of splitting.</li>
+<li>Branch / Sub-Tree: A sub section of entire tree is called branch or sub-tree.</li>
+<li>Parent and Child Node: A node, which is divided into sub-nodes is called parent node of sub-nodes whereas sub-nodes are the child of parent node.</li>
+</ol>
+<h1 id="决策树如何学习"><a href="#决策树如何学习" class="headerlink" title="决策树如何学习"></a>决策树如何学习</h1><p>要建立决策树，就得对数据进行分类，第一个节点即根节点的分类范围是最大的，它把所有的问题分成两类。</p>
+<p>如何找到这个分类呢？这取决于那些最能对数据集进行分类的属性，怎么确定哪些分类最能对数据进行分类呢？</p>
+<p>看下面一个心脏病的例子，我们把每一个分类的都单独拿出来，计算分别统计它相对结果的预测量，如下图：</p>
+<p><img src="https://i.loli.net/2019/11/22/XrWPkLu2aAMoGfT.png" alt=""></p>
+<p>有没有心脏病是我们的leaf，也就是结果输出，而胸痛是feature。我们统计胸痛的值与现有的心脏病的值的对应关系，如果胸痛，是否是心脏病？如果胸不痛，是否是心脏病？这样我们就得到四列数据，结束对胸痛这个feature的统计后，继续对Good Blood进行同样的操作。</p>
+<p><img src="https://i.loli.net/2019/11/22/cFErmQLRdjSGANk.png" alt=""></p>
+<p>可以看到这个结果中，不管是胸痛，还是血液情况，都没办法在yes与no后就准确预测心脏病，所以上面的这些数据都是impurity的，那我们如何衡量这种impurity的程度呢？</p>
+<p>有很多衡量 impurity 的方法，其中一种叫做Gini, 下面是Gini的计算方式：</p>
+<p><img src="https://i.loli.net/2019/11/22/bNtKIPiq3QS7uXF.png" alt=""></p>
+<p>同样的方法计算右边的节点:</p>
+<p><img src="https://i.loli.net/2019/11/22/VosX56SFIqnPd1k.png" alt=""></p>
+<p>但是左右两边的患者数量是不一样的，一个是144,一个是159:</p>
+<p><img src="https://i.loli.net/2019/11/22/R8wpJ6X7HPgmrlI.png" alt=""></p>
+<p>我们需要对左右节点都平均一下再相加：</p>
+<p><img src="https://i.loli.net/2019/11/22/ujM8EtbcvxDTmK5.png" alt=""></p>
+<p>再把所有的feature都算一遍，</p>
+<p><img src="https://i.loli.net/2019/11/22/oKLqZMGXEfDTxd2.png" alt=""></p>
+<p>我们选择gini数最低的那个一，作为root node</p>
+<p><img src="https://i.loli.net/2019/11/22/c29ySGZYRu3rdpT.png" alt=""><br><img src="https://i.loli.net/2019/11/22/LqWxzZajrP4QnDC.png" alt=""></p>
+<p>root node确定了之后，我们还需要确定后续的节点使用哪个feature，这个步骤和前面确定root node是一样的：</p>
+<p><img src="https://i.loli.net/2019/11/22/Rg865Yih9Xo3BDE.png" alt=""></p>
+<p>进一步往下面确定子节点的时候，我们发现，在动脉阻塞(blocked)的两个子节点下， 没有发生动脉阻塞这个节点中，只有13个患有心脏病，也就是说89%的患者都没有心脏病！</p>
+<p><img src="https://i.loli.net/2019/11/22/poSKWwveBCuU16n.png" alt=""></p>
+<p>我们来算一下这个节点的gini值与进一步按照胸痛往下面细分后的gini值：</p>
+<p><img src="https://i.loli.net/2019/11/22/6cGaSCwIEmQPXsq.png" alt=""></p>
+<p>可以看到按照胸痛细分后的gini值为0.29，而不细分的值则为0.2，所以对于这个节点来说，就没有必要再往下面细分节点了，所以我们就不处理 <code>13/102</code> 这个节点了，它也就成了我们说的 leaf 节点。</p>
+<p>将剩下的部分以及右边的子节点补上，我们的决策树就建好了:</p>
+<p><img src="https://i.loli.net/2019/11/22/EP5aXncFzWkSysY.png" alt=""></p>
+<p>不过还有一个问题，我们前面都是基于yes or no的问题，那如果遇到数值型的数据怎么办？</p>
+<p>首先，我们将数值数据从小到大排列：</p>
+<p><img src="https://i.loli.net/2019/11/22/XP1On7DCsAFzxya.png" alt=""></p>
+<p>两两取数值中间的平均值，计算gini值：</p>
+<p><img src="https://i.loli.net/2019/11/22/CJgeWPEai8zuvdt.png" alt=""></p>
+<p><img src="https://i.loli.net/2019/11/22/fDPcg3Ts2WjLrAR.png" alt=""></p>
+<p><img src="https://i.loli.net/2019/11/22/pfD1JGA5UICPlhb.png" alt=""></p>
+<p>重复计算所有其他的gini值，最后选出最小的那个。</p>
+<p><img src="https://i.loli.net/2019/11/22/Nowl8QfDPbpWRZO.png" alt=""></p>
+<p>这就是数值型数据的计算了。不过还有一些数据它是选择型的，如颜色的选择，对于颜色的选择，我们可以把选择分开来计算，如下图：</p>
+<p><img src="https://i.loli.net/2019/11/22/UJevq6O9CKyR1wk.png" alt=""></p>
+<blockquote>
+<p>关于决策数的<a href="https://www.youtube.com/watch?v=7VeUPuFGJHk" target="_blank" rel="noopener">视频</a></p>
+</blockquote>
+<p>上面的这个gini值，我们又叫做IG(Information Gain)值，我们知道，如果IG值为0，或者我们发现该node分割后gini值更高，我们就不继续分割，该node就叫做leaf。如果我们固定了一颗数的深度，那么当分割node的时候，超过了规定的深度，我们也会停止分割子节点。</p>
+<p>另外，拆分内部节点总是涉及最大化信息增益！</p>
+<h1 id="使用决策树"><a href="#使用决策树" class="headerlink" title="使用决策树"></a>使用决策树</h1><p>决策树可以解决classfication问题，也可以解决regression问题，我们先讨论分类树。</p>
+<p>训练决策树：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># Import DecisionTreeClassifier from sklearn.tree</span><br><span class="line">from sklearn.tree import DecisionTreeClassifier</span><br><span class="line"></span><br><span class="line"># Instantiate a DecisionTreeClassifier &apos;dt&apos; with a maximum depth of 6</span><br><span class="line">dt = DecisionTreeClassifier(max_depth=6,random_state=SEED)</span><br><span class="line"></span><br><span class="line"># Fit dt to the training set</span><br><span class="line">dt.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line"># Predict test set labels</span><br><span class="line">y_pred = dt.predict(X_test)</span><br><span class="line">print(y_pred[0:5])</span><br></pre></td></tr></table></figure>
+<p>决策树评分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Import accuracy_score</span><br><span class="line">from sklearn.metrics import accuracy_score</span><br><span class="line"></span><br><span class="line"># Predict test set labels</span><br><span class="line">y_pred = dt.predict(X_test)</span><br><span class="line"></span><br><span class="line"># Compute test set accuracy  </span><br><span class="line">acc = accuracy_score(y_pred, y_test)</span><br><span class="line">print(&quot;Test set accuracy: &#123;:.2f&#125;&quot;.format(acc))</span><br></pre></td></tr></table></figure>
+<p>逻辑回归与分类树:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># Import LogisticRegression from sklearn.linear_model</span><br><span class="line">from sklearn.linear_model import  LogisticRegression</span><br><span class="line"></span><br><span class="line"># Instatiate logreg</span><br><span class="line">logreg = LogisticRegression(random_state=1)</span><br><span class="line"></span><br><span class="line"># Fit logreg to the training set</span><br><span class="line">logreg.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line"># Define a list called clfs containing the two classifiers logreg and dt</span><br><span class="line">clfs = [logreg, dt]</span><br><span class="line"></span><br><span class="line"># Review the decision regions of the two classifiers</span><br><span class="line">plot_labeled_decision_regions(X_test, y_test, clfs)</span><br></pre></td></tr></table></figure>
+<h2 id="分类树"><a href="#分类树" class="headerlink" title="分类树"></a>分类树</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># Import DecisionTreeClassifier from sklearn.tree</span><br><span class="line">from sklearn.tree import DecisionTreeClassifier</span><br><span class="line"></span><br><span class="line"># Instantiate dt_entropy, set &apos;entropy&apos; as the information criterion</span><br><span class="line">dt_entropy = DecisionTreeClassifier(max_depth=8, criterion=&apos;entropy&apos;, random_state=1)</span><br><span class="line"></span><br><span class="line"># Fit dt_entropy to the training set</span><br><span class="line">dt_entropy.fit(X_train, y_train)</span><br><span class="line"></span><br><span class="line"># Import accuracy_score from sklearn.metrics</span><br><span class="line">from sklearn.metrics import accuracy_score</span><br><span class="line"></span><br><span class="line"># Use dt_entropy to predict test set labels</span><br><span class="line">y_pred = dt_entropy.predict(X_test)</span><br><span class="line"></span><br><span class="line"># Evaluate accuracy_entropy</span><br><span class="line">accuracy_entropy = accuracy_score(y_test, y_pred)</span><br><span class="line"></span><br><span class="line"># Print accuracy_entropy</span><br><span class="line">print(&apos;Accuracy achieved by using entropy: &apos;, accuracy_entropy)</span><br><span class="line"></span><br><span class="line"># Print accuracy_gini</span><br><span class="line">print(&apos;Accuracy achieved by using the gini index: &apos;, accuracy_gini)</span><br></pre></td></tr></table></figure>
+<h2 id="回归树"><a href="#回归树" class="headerlink" title="回归树"></a>回归树</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># Import DecisionTreeRegressor from sklearn.tree</span><br><span class="line">from sklearn.tree import DecisionTreeRegressor</span><br><span class="line"></span><br><span class="line"># Instantiate dt</span><br><span class="line">dt = DecisionTreeRegressor(max_depth=8,</span><br><span class="line">             min_samples_leaf=0.13,</span><br><span class="line">            random_state=3)</span><br><span class="line"></span><br><span class="line"># Fit dt to the training set</span><br><span class="line">dt.fit(X_train, y_train)</span><br></pre></td></tr></table></figure>
+<h3 id="衡量回归树"><a href="#衡量回归树" class="headerlink" title="衡量回归树"></a>衡量回归树</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># Import mean_squared_error from sklearn.metrics as MSE</span><br><span class="line">from sklearn.metrics import mean_squared_error as MSE</span><br><span class="line"></span><br><span class="line"># Compute y_pred</span><br><span class="line">y_pred = dt.predict(X_test)</span><br><span class="line"></span><br><span class="line"># Compute mse_dt</span><br><span class="line">mse_dt = MSE(y_test, y_pred)</span><br><span class="line"></span><br><span class="line"># Compute rmse_dt</span><br><span class="line">rmse_dt = mse_dt**(1/2)</span><br><span class="line"></span><br><span class="line"># Print rmse_dt</span><br><span class="line">print(&quot;Test set RMSE of dt: &#123;:.2f&#125;&quot;.format(rmse_dt))</span><br></pre></td></tr></table></figure>
+<h2 id="Linear-regression-vs-regression-tree"><a href="#Linear-regression-vs-regression-tree" class="headerlink" title="Linear regression vs regression tree"></a>Linear regression vs regression tree</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># Predict test set labels </span><br><span class="line">y_pred_lr = lr.predict(X_test)</span><br><span class="line"></span><br><span class="line"># Compute mse_lr</span><br><span class="line">mse_lr = MSE(y_test, y_pred_lr)</span><br><span class="line"></span><br><span class="line"># Compute rmse_lr</span><br><span class="line">rmse_lr = mse_lr**(1/2)</span><br><span class="line"></span><br><span class="line"># Print rmse_lr</span><br><span class="line">print(&apos;Linear Regression test set RMSE: &#123;:.2f&#125;&apos;.format(rmse_lr))</span><br><span class="line"></span><br><span class="line"># Print rmse_dt</span><br><span class="line">print(&apos;Regression Tree test set RMSE: &#123;:.2f&#125;&apos;.format(rmse_dt))</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-reward-image.png" alt="wittyfans WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/data-analysis/" rel="tag"># data analysis</a>
+          
+            <a href="/tags/sklearn/" rel="tag"># sklearn</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/coding/非监督学习：PCA-and-NMF.html" rel="next" title="非监督学习：PCA and NMF">
+                <i class="fa fa-chevron-left"></i> 非监督学习：PCA and NMF
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="wittyfans" />
+          <p class="site-author-name" itemprop="name">wittyfans</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">61</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">72</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wittyfans" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://music.163.com/#/user/event?id=5842815" target="_blank" title="Netease Music">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Netease Music
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.instagram.com/wittyfans/" target="_blank" title="Instagram">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Instagram
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/wittyfans" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#决策树如何学习"><span class="nav-number">2.</span> <span class="nav-text">决策树如何学习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用决策树"><span class="nav-number">3.</span> <span class="nav-text">使用决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分类树"><span class="nav-number">3.1.</span> <span class="nav-text">分类树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回归树"><span class="nav-number">3.2.</span> <span class="nav-text">回归树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#衡量回归树"><span class="nav-number">3.2.1.</span> <span class="nav-text">衡量回归树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linear-regression-vs-regression-tree"><span class="nav-number">3.3.</span> <span class="nav-text">Linear regression vs regression tree</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wittyfans</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("7sScl0n1AlEtVDaUHuXzxPqc-gzGzoHsz", "qKXpoqGbK1sdFYMiik7Evuan");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
