@@ -1,0 +1,975 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python,data analysis,nexworkX," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="wittyfans" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="今天我们学习神经网络与nexworkX.">
+<meta name="keywords" content="python,data analysis,nexworkX">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python神经网络分析基础">
+<meta property="og:url" content="http://wittyfans.com/coding/Python神经网络分析基础.html">
+<meta property="og:site_name" content="wittyfans">
+<meta property="og:description" content="今天我们学习神经网络与nexworkX.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/12/04/b8mhdtkcqeSiwEg.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/01/dlXxE2yc73U8Lez.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/02/d78ojGXvCaFiJTE.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/02/5VGJYM3B8kzFA2q.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/02/iPw4r5xAB6lYds8.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/02/qe7yQNREpa5KzhT.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/04/JzZorRNK7sd95X1.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/04/JqXiLphy4bBcFaZ.png">
+<meta property="og:updated_time" content="2019-12-04T08:37:19.708Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python神经网络分析基础">
+<meta name="twitter:description" content="今天我们学习神经网络与nexworkX.">
+<meta name="twitter:image" content="https://i.loli.net/2019/12/04/b8mhdtkcqeSiwEg.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wittyfans.com/coding/Python神经网络分析基础.html"/>
+
+
+
+
+
+  <title> Python神经网络分析基础 | wittyfans </title>
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">wittyfans</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">学则不固,知则不惑</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/Python神经网络分析基础.html">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="wittyfans">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="wittyfans">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="wittyfans" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Python神经网络分析基础
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-04T16:30:41+08:00">
+                2019-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/coding/" itemprop="url" rel="index">
+                    <span itemprop="name">coding</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/coding/Python神经网络分析基础.html" class="leancloud_visitors" data-flag-title="Python神经网络分析基础">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+               <span>℃</span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://i.loli.net/2019/12/04/b8mhdtkcqeSiwEg.png" alt=""></p>
+<blockquote>
+<p>今天我们学习神经网络与nexworkX.</p>
+</blockquote>
+<a id="more"></a>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<h1 id="网络基础"><a href="#网络基础" class="headerlink" title="网络基础"></a>网络基础</h1><p>什么是神经网络呢？我们可以想象它是我们的社交网络，或者是我们的高铁运输网络，神经网络对于模拟 <em>实体之间的关系</em> 非常有用，通过这种模拟，你可以了解到，在整个网络中，哪一个实体（或者说节点node）是比较重要的,各个实体之间的联系，实体之间的距离怎么走最短。</p>
+<p>对于网络 <em>graph</em>，是由节点与关系组成的，节点叫做 <em>node</em>,关系叫做 <em>edge</em>.</p>
+<p>网络中的<em>node</em>与<em>edge</em>都可以有自己的属性。来看下面这张社交关系的图：</p>
+<p><img src="https://i.loli.net/2019/12/01/dlXxE2yc73U8Lez.png" alt=""></p>
+<p>图中Hugo和Eric是朋友，他们各自都有各自的属性</p>
+<ul>
+<li>id</li>
+<li>age</li>
+</ul>
+<p>他们是朋友，所以关系edge即 Friendship，关系也有属性，标注了他们第一次成为朋友的时间。</p>
+<h1 id="NetworkX基础"><a href="#NetworkX基础" class="headerlink" title="NetworkX基础"></a>NetworkX基础</h1><p>在python中，我们如何表示网络与网络节点之间的关系呢？在python中，我们使用networkX这个包。下面建立一个网络的基本代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import networkx as nx</span><br><span class="line">G = nx.Graph()</span><br></pre></td></tr></table></figure>
+<p>G即为一个网络，可以通过 <code>‌G.add_nodes_from([1, 2, 3])</code>往其中添加节点，节点添加进去以后，就可以使用<code>G.nodes()</code>来查看节点，此处会返回这个网络的所有节点。</p>
+<p>那关系又要怎么定义呢？我们可以直接使用G.add_edge(1, 2) 方法将两个实体连接起来，这会在节点1与2之间创建关系。</p>
+<p>前面提到了，我们的节点可以有属性，给节点的属性赋值很简单，直接赋值即可：<code>G.node[1][&#39;label&#39;] = &#39;blue&#39;</code>.</p>
+<p>如果你想知道网络的节点有哪些属性，通过<code>G.nodes(data=True)</code>即可查看：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Out: [(1, &#123;&apos;label&apos;: &apos;blue&apos;&#125;), (2, &#123;&#125;), (3, &#123;&#125;)]</span><br></pre></td></tr></table></figure>
+<h1 id="图的类型"><a href="#图的类型" class="headerlink" title="图的类型"></a>图的类型</h1><p>图的类型简单就是说节点之间的关系，举例来说，Facebook是undirected graphs,当一个人与另一个人成为朋友之后，这两个人自动就连接到了一起，在这种关系中，两个节点知识连接到了一起，没有方向性。undirected graphs类型的图在networkx中的类型就是graph，当你用<code>type</code>命令检测它的类型时,会显示<code>networkx.classes.graph.Graph</code>.</p>
+<p>另外第一种是Directed grarphs,这种图里的节点就好像twitter中的用户之间的关系，比如一个用户也许关注了一个人，但是另外一个人可能却没有关注它，这时候两者的关系就是单向的关系，这两个node之间的关系我们会用一个箭头表示，这种类型的图在networkx中用<code>networkx.classes.graph.Digraph</code>表示。</p>
+<p>两个节点之间的关系也会有多条edge存在的情况,比如两个站点之间所有的路线，这种图叫做MutilDIGraph。</p>
+<p>对于两个两个节点之间，如果存在多个edge，这会导致计算量变得很大，这时候我们会将它们之间edge的管家信息保存成edge的属性，方便计算，比如将3条edge合并成1条，同时指定这条edge的metadata为3.</p>
+<p>需要注意，在我们的车站的例子中，还有一种情况是我们的起点与终点是同一个站，这种特殊的情况叫做self-loops.</p>
+<h1 id="绘制图"><a href="#绘制图" class="headerlink" title="绘制图"></a>绘制图</h1><p>我们使用 nxviz 这个包来绘制接下来介绍的三种图，Matrix、arc和Circos图，强烈推荐你安装，你可以通过pip<br><code>pip install nxviz</code> 或者conda命令<code>conda install -c conda-forge nxviz</code>安装，<a href="https://pypi.org/project/nxviz/" target="_blank" rel="noopener">更多</a>关于nxviz的资料.</p>
+<h2 id="Matrix-plots"><a href="#Matrix-plots" class="headerlink" title="Matrix plots"></a>Matrix plots</h2><p>Matrix plots图是一种用矩阵方格来表示节点之间关系的图，左边是Matrix图，右边是我们的节点关系。</p>
+<p><img src="https://i.loli.net/2019/12/02/d78ojGXvCaFiJTE.png" alt=""></p>
+<ul>
+<li>A-A是白的，表示它与它自己没有联系</li>
+<li>A-B是黑色的，表示A指向B之间存在联系</li>
+<li>B-A是白色的，表示B指向A无联系</li>
+</ul>
+<p>每个节点都对应一列与一行，两个节点之间的边由值1表示。但是，这样做仅保留了weight元数据（edge上的属性）；</p>
+<p>下面是使用nxviz绘制graph对象T的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># Import nxviz</span><br><span class="line">import nxviz as nv</span><br><span class="line"></span><br><span class="line"># Create the MatrixPlot object: m</span><br><span class="line">m = nv.MatrixPlot(T)</span><br><span class="line"></span><br><span class="line"># Draw m to the screen</span><br><span class="line">m.draw()</span><br><span class="line"></span><br><span class="line"># Display the plot</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"># Convert T to a matrix format: A</span><br><span class="line">A = nx.to_numpy_matrix(T)</span><br><span class="line"></span><br><span class="line"># Convert A back to the NetworkX form as a directed graph: T_conv</span><br><span class="line">T_conv = nx.from_numpy_matrix(A, create_using=nx.DiGraph())</span><br><span class="line"></span><br><span class="line"># Check that the `category` metadata field is lost from each node</span><br><span class="line">for n, d in T_conv.nodes(data=True):</span><br><span class="line">    assert &apos;category&apos; not in d.keys()</span><br></pre></td></tr></table></figure>
+<p>图像如下：</p>
+<p><img src="https://i.loli.net/2019/12/02/5VGJYM3B8kzFA2q.png" alt="Matrix plots with nxviz"></p>
+<h2 id="Circos-plots"><a href="#Circos-plots" class="headerlink" title="Circos plots"></a>Circos plots</h2><p>Circos plots是一种围绕着圆心绘制的图，看起来非常美观。</p>
+<p><img src="https://i.loli.net/2019/12/02/iPw4r5xAB6lYds8.png" alt=""></p>
+<p>绘制上图的代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># Import necessary modules</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from nxviz import CircosPlot</span><br><span class="line"></span><br><span class="line"># Create the CircosPlot object: c</span><br><span class="line">c = CircosPlot(T)</span><br><span class="line"></span><br><span class="line"># Draw c to the screen</span><br><span class="line">c.draw()</span><br><span class="line"></span><br><span class="line"># Display the plot</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h2 id="Arc-plots"><a href="#Arc-plots" class="headerlink" title="Arc plots"></a>Arc plots</h2><p>Arc plots即弧形图，它就好像把Circos plots展开成一条线，正因如此它需要我们指定排序。</p>
+<p><img src="https://i.loli.net/2019/12/02/qe7yQNREpa5KzhT.png" alt=""></p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># Import necessary modules</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">from nxviz import ArcPlot</span><br><span class="line"></span><br><span class="line"># Create the un-customized ArcPlot object: a</span><br><span class="line">a = ArcPlot(T)</span><br><span class="line"></span><br><span class="line"># Draw a to the screen</span><br><span class="line">a.draw()</span><br><span class="line"></span><br><span class="line"># Display the plot</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"># Create the customized ArcPlot object: a2</span><br><span class="line">a2 = ArcPlot(T,node_order=&apos;category&apos;,node_color=&apos;category&apos;)</span><br><span class="line"></span><br><span class="line"># Draw a2 to the screen</span><br><span class="line">a2.draw()</span><br><span class="line"></span><br><span class="line"># Display the plot</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><code>node_order=&#39;keyX&#39;</code> 与 <code>node_color=&#39;keyX&#39;</code> 即指定这个图的排序方式与颜色区分参考选项。</p>
+<h1 id="重要的节点"><a href="#重要的节点" class="headerlink" title="重要的节点"></a>重要的节点</h1><p>如果我们需要分析图，我们就需要对图的节点有所了解，对于一张图来说，其中有重要的节点，也有不那么重要的节点，比如对于地铁来说，那些市中心的换乘站比其他线路的终点站要重要，接下来我们介绍几个与节点有关的概念。</p>
+<h2 id="Degree-Centrality"><a href="#Degree-Centrality" class="headerlink" title="Degree Centrality"></a>Degree Centrality</h2><p>Degree即一个node拥有多少个邻居，Degree Centrality即根据图中节点邻居的个数来给每个节点打分，如果一个节点连接的邻居更多，那它就更重要，分数也更高，Degree Centrality的定义为:</p>
+<p>$$\frac{Neighbors\ I\ Have}{Neighbors\ I\ Could\ Possible\ Have}$$</p>
+<p>这里的 <em>Neighbors I could possible have</em> 就是所有的节点，如果我们的讨论氛围允许self-loops存在，则它也包括我们自己，如果不允许，则只算所有除我之外的节点。</p>
+<p>在networkx中，你可以使用 <code>G.neighbors(node_name)</code> 来查看一个节点拥有多少个邻居，如果你传进一个没有的节点，networkx则会抛出一个错误。</p>
+<p>当我们有了所有节点的邻居数，就可以根据它来计算每个节点在图中的重要性，你可以使用 <em>nx.degree_centrality(G)</em> 来查看所有节点的Degree Centrality分数，注意这里分数的计算中，不包含self-loops的情况。</p>
+<p>我们定义一个函数，它会找到我们网络中邻居数最高的节点,有了它我们就可以很方便的处理一些问题，如找到Twitter用户中，那些最有影响力的用户：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"># Define find_nodes_with_highest_deg_cent()</span><br><span class="line">def find_nodes_with_highest_deg_cent(G):</span><br><span class="line"></span><br><span class="line">    # Compute the degree centrality of G: deg_cent</span><br><span class="line">    deg_cent = nx.degree_centrality(G)</span><br><span class="line"></span><br><span class="line">    # Compute the maximum degree centrality: max_dc</span><br><span class="line">    max_dc = max(list(deg_cent.values()))</span><br><span class="line"></span><br><span class="line">    nodes = set()</span><br><span class="line"></span><br><span class="line">    # Iterate over the degree centrality dictionary</span><br><span class="line">    for k, v in deg_cent.items():</span><br><span class="line"></span><br><span class="line">        # Check if the current value has the maximum degree centrality</span><br><span class="line">        if v == max_dc:</span><br><span class="line"></span><br><span class="line">            # Add the current node to the set of nodes</span><br><span class="line">            nodes.add(k)</span><br><span class="line"></span><br><span class="line">    return nodes</span><br><span class="line"></span><br><span class="line"># Find the node(s) that has the highest degree centrality in T: top_dc</span><br><span class="line">top_dc = find_nodes_with_highest_deg_cent(T)</span><br><span class="line">print(top_dc)</span><br><span class="line"></span><br><span class="line"># Write the assertion statement</span><br><span class="line">for node in top_dc:</span><br><span class="line">    assert nx.degree_centrality(T)[node] == max(nx.degree_centrality(T).values())</span><br></pre></td></tr></table></figure>
+<h2 id="Path-finding"><a href="#Path-finding" class="headerlink" title="Path finding"></a>Path finding</h2><p>path finding有很多的应用范围，比如两个车站之间最短路线的寻找，消息、病毒的传播，我们知道两个节点之间有很多种路线可以选择，那么要如何找到最短的这条路线呢？</p>
+<p>一种解决方案是，使用Bread-first search算法，它的原理如下图：</p>
+<p>我们从黄色的节点开始，第一次找黄色节点的邻居，并检查目标节点是否在当前节点的邻居中，如果不存在就继续搜寻下一层节点，找到为止。</p>
+<p>我们首先定一个寻找节点之间路径的算法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># Define path_exists()</span><br><span class="line">def path_exists(G, node1, node2):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    This function checks whether a path exists between two nodes (node1, node2) in graph G.</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    visited_nodes = set()</span><br><span class="line"></span><br><span class="line">    # Initialize the queue of nodes to visit with the first node: queue</span><br><span class="line">    queue = [node1]</span><br><span class="line"></span><br><span class="line">    # Iterate over the nodes in the queue</span><br><span class="line">    for node in queue:</span><br><span class="line"></span><br><span class="line">        # Get neighbors of the node</span><br><span class="line">        neighbors = G.neighbors(node)</span><br><span class="line"></span><br><span class="line">        # Check to see if the destination node is in the set of neighbors</span><br><span class="line">        if node2 in neighbors:</span><br><span class="line">            print(&apos;Path exists between nodes &#123;0&#125; and &#123;1&#125;&apos;.format(node1, node2))</span><br><span class="line">            return True</span><br><span class="line">            break</span><br></pre></td></tr></table></figure>
+<p>这个算法会确定两个节点之间是否存在路径，仔细查看上面的代码，如果两个节点直接存在路径，该函数就返回true，如果不存在呢？不存在我们则需要对剩下的节点进一步的搜寻，让我们把剩下的代码补全：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">def path_exists(G, node1, node2):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    This function checks whether a path exists between two nodes (node1, node2) in graph G.</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    visited_nodes = set()</span><br><span class="line">    queue = [node1]</span><br><span class="line"></span><br><span class="line">    for node in queue:</span><br><span class="line">        neighbors = G.neighbors(node)</span><br><span class="line">        if node2 in neighbors:</span><br><span class="line">            print(&apos;Path exists between nodes &#123;0&#125; and &#123;1&#125;&apos;.format(node1, node2))</span><br><span class="line">            return True</span><br><span class="line">          </span><br><span class="line">        else:</span><br><span class="line">            # Add current node to visited nodes</span><br><span class="line">            visited_nodes.add(node)</span><br><span class="line"></span><br><span class="line">            # Add neighbors of current node that have not yet been visited</span><br><span class="line">            queue.extend([n for n in neighbors if n not in visited_nodes])</span><br></pre></td></tr></table></figure>
+<p>如果函数中的queue已经空了，也就是找完了了都没找到路径，那我们也要返回结果：即这两个节点之间没有路径存在：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">def path_exists(G, node1, node2):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    This function checks whether a path exists between two nodes (node1, node2) in graph G.</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    visited_nodes = set()</span><br><span class="line">    queue = [node1]</span><br><span class="line"></span><br><span class="line">    for node in queue:</span><br><span class="line">        neighbors = G.neighbors(node)</span><br><span class="line">        if node2 in neighbors:</span><br><span class="line">            print(&apos;Path exists between nodes &#123;0&#125; and &#123;1&#125;&apos;.format(node1, node2))</span><br><span class="line">            return True</span><br><span class="line">            break</span><br><span class="line"></span><br><span class="line">        else:</span><br><span class="line">            visited_nodes.add(node)</span><br><span class="line">            queue.extend([n for n in neighbors if n not in visited_nodes])</span><br><span class="line"></span><br><span class="line">        # Check to see if the final element of the queue has been reached</span><br><span class="line">        if node == queue[-1]:</span><br><span class="line">            print(&apos;Path does not exist between nodes &#123;0&#125; and &#123;1&#125;&apos;.format(node1, node2))</span><br><span class="line"></span><br><span class="line">            # Place the appropriate return statement</span><br><span class="line">            return False</span><br></pre></td></tr></table></figure>
+<h2 id="Betweenness-centrality"><a href="#Betweenness-centrality" class="headerlink" title="Betweenness centrality"></a>Betweenness centrality</h2><p>Betweenness centrality这个概念与最短路径息息相关，上面我们已经定义了如何找到最短路径的算法，那么对于我们图中所有的节点对（两个节点），都有它们的最短路径，这些最短路径通过的节点中，哪些节点的通过数是最高的，则它的重要性就更高，这就是Betweenness centrality的意思，它的定义为：</p>
+<p>$$\frac{num.\ shortest\ paths\ through\ node}{all\ possible\ shortest\ paths}$$</p>
+<p>Betweenness centrality对于找到两个群体之间联系必须通过的那些实体很有帮助，比如那些帮助两个党派之间的联系的，充当桥梁作用的人，互联网中两个地区之间的网络流量交流，确定那些很重要的节点。</p>
+<p>Betweenness centrality可以直接通过nx的方法计算得到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bet_cen = nx.betweenness_centrality(T)</span><br></pre></td></tr></table></figure>
+<h1 id="Communities-amp-cliques"><a href="#Communities-amp-cliques" class="headerlink" title="Communities &amp; cliques"></a>Communities &amp; cliques</h1><p>cliques即我们所说的小团体、小集团，事实上这个说法就来源于我们的社交生活，在我们所说的小团体中，我们认识其他所有人，而cliques也是这样，每个一个节点都与其他的节点都有连接。</p>
+<p>举例，一个最简单的cliques就是一个三角形，在Facebook的社交网络中，如果a认识b，b认识c，如果c也认识a，那么这就是一个三角形，但是如果不认识，我们就可以推荐他们认识，如何找到这些缺了一条联系就可以组成三角形的关系呢？</p>
+<p>我们定义一个函数，它接受两个参数，G：一个网络，n一个节点，这个函数会确定n节点在G网络中，是否存在<strong>三角关系</strong>,即: node <code>n</code> in graph <code>G</code> is in a triangle relationship or not.</p>
+<p>在我们的算法中，我们根据传入的网络，找到n的所有邻居，然后遍历其所有邻居对，如果其中有某一对存在edge关系，那么这就组成了一个三角关系（因为这两者已经是n的邻居，而这两者之间又有关系）</p>
+<p>算法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from itertools import combinations</span><br><span class="line"></span><br><span class="line"># Define is_in_triangle()</span><br><span class="line">def is_in_triangle(G, n):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    Checks whether a node `n` in graph `G` is in a triangle relationship or not.</span><br><span class="line"></span><br><span class="line">    Returns a boolean.</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    in_triangle = False</span><br><span class="line"></span><br><span class="line">    # Iterate over all possible triangle relationship combinations</span><br><span class="line">    for n1, n2 in combinations(G.neighbors(n),2):</span><br><span class="line"></span><br><span class="line">        # Check if an edge exists between n1 and n2</span><br><span class="line">        if G.has_edge(n1,n2):</span><br><span class="line">            in_triangle = True</span><br><span class="line">            break</span><br><span class="line">    return in_triangle</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>combinations是一个遍历工具，用于组合节点的所有邻居对。</p>
+</blockquote>
+<p>我们修改一下，找出所有的三角关系:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">from itertools import combinations</span><br><span class="line"></span><br><span class="line"># Write a function that identifies all nodes in a triangle relationship with a given node.</span><br><span class="line">def nodes_in_triangle(G, n):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    Returns the nodes in a graph `G` that are involved in a triangle relationship with the node `n`.</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    triangle_nodes = set([n])</span><br><span class="line"></span><br><span class="line">    # Iterate over all possible triangle relationship combinations</span><br><span class="line">    for n1, n2 in combinations(G.neighbors(n),2):</span><br><span class="line"></span><br><span class="line">        # Check if n1 and n2 have an edge between them</span><br><span class="line">        if G.has_edge(n1,n2):</span><br><span class="line"></span><br><span class="line">            # Add n1 to triangle_nodes</span><br><span class="line">            triangle_nodes.add(n1)</span><br><span class="line"></span><br><span class="line">            # Add n2 to triangle_nodes</span><br><span class="line">            triangle_nodes.add(n2)</span><br><span class="line"></span><br><span class="line">    return triangle_nodes</span><br><span class="line"></span><br><span class="line"># Write the assertion statement</span><br><span class="line">assert len(nodes_in_triangle(T, 1)) == 35</span><br></pre></td></tr></table></figure>
+<p>如果你想要做一个好友推荐系统，那么你可能需要找出那些open triangle关系，即我们刚才提到的，a认识b，b认识c，而a并不认识c，让我们写一个找这种open triangle关系的函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">from itertools import combinations</span><br><span class="line"></span><br><span class="line"># Define node_in_open_triangle()</span><br><span class="line">def node_in_open_triangle(G, n):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    Checks whether pairs of neighbors of node `n` in graph `G` are in an &apos;open triangle&apos; relationship with node `n`.</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    in_open_triangle = False</span><br><span class="line"></span><br><span class="line">    # Iterate over all possible triangle relationship combinations</span><br><span class="line">    for n1, n2 in combinations(G.neighbors(n),2):</span><br><span class="line"></span><br><span class="line">        # Check if n1 and n2 do NOT have an edge between them</span><br><span class="line">        if not G.has_edge(n1,n2):</span><br><span class="line"></span><br><span class="line">            in_open_triangle = True</span><br><span class="line"></span><br><span class="line">            break</span><br><span class="line"></span><br><span class="line">    return True</span><br></pre></td></tr></table></figure>
+<p>我们可以利用这个函数来查看一个图中，有多少个open triangle:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># Compute the number of open triangles in T</span><br><span class="line">num_open_triangles = 0</span><br><span class="line"></span><br><span class="line"># Iterate over all the nodes in T</span><br><span class="line">for n in T.nodes():</span><br><span class="line"></span><br><span class="line">    # Check if the current node is in an open triangle</span><br><span class="line">    if node_in_open_triangle(T,n):</span><br><span class="line"></span><br><span class="line">        # Increment num_open_triangles</span><br><span class="line">        num_open_triangles += 1</span><br><span class="line"></span><br><span class="line">print(num_open_triangles)</span><br></pre></td></tr></table></figure>
+<h2 id="Maximal-cliques"><a href="#Maximal-cliques" class="headerlink" title="Maximal cliques"></a>Maximal cliques</h2><p>我们已经有了cliques的概念，maximal cliques的意思是，在一个团体中，我们增加一个node，如果整个图像中的节点还是彼此互相连接着的，那么这个cliques还是一个cliques，但如果我们增加node后，整个图像的节点不再是彼此连接着，那增加前的图像就是我们的maximal cliques.</p>
+<p>nexworkx提供了一个<code>find_cliques</code>方法来寻找所有的cliques与Maximal cliques。</p>
+<p>下面是对<code>find_cliques</code>方法的一个实践，我们定义了一个函数用来寻找一个图中拥有size数的max_cliques的个数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># Define maximal_cliques()</span><br><span class="line">def maximal_cliques(G, size):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    Finds all maximal cliques in graph `G` that are of size `size`.</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    mcs = []</span><br><span class="line">    for clique in nx.find_cliques(G):</span><br><span class="line">        if len(clique) == size:</span><br><span class="line">            mcs.append(clique)</span><br><span class="line">    return mcs</span><br><span class="line"></span><br><span class="line"># Check that there are 33 maximal cliques of size 3 in the graph T</span><br><span class="line">assert len(maximal_cliques(T, 3)) == 33</span><br></pre></td></tr></table></figure>
+<h2 id="Subgraphs"><a href="#Subgraphs" class="headerlink" title="Subgraphs"></a>Subgraphs</h2><p>Subgraphs即子图的意思，对于一个图，我们需要对一些感兴趣的信息突出展示，这时候就需要用到子图。</p>
+<p>下面是绘制子图的一个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 导入包</span><br><span class="line">In [1]: import networkx as nx</span><br><span class="line"># 创建图</span><br><span class="line">In [2]: G = nx.erdos_renyi_graph(n=20, p=0.2)</span><br><span class="line"># 查看节点</span><br><span class="line">In [3]: G.nodes()</span><br><span class="line">Out[3]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,</span><br><span class="line">17, 18, 19]</span><br><span class="line"></span><br><span class="line"># 将上面图中的节点8复制给nodes</span><br><span class="line">In [4]: nodes = G.neighbors(8)</span><br><span class="line">In [5]: nodes</span><br><span class="line">Out[5]: [2, 3, 4, 10]</span><br><span class="line">In [6]: nodes.append(8)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 将子图添加到G</span><br><span class="line">In [7]: G_eight = G.subgraph(nodes)</span><br><span class="line"></span><br><span class="line"># 查看G_eight的edges</span><br><span class="line">In [8]: G_eight.edges()</span><br><span class="line">Out[8]: [(8, 2), (8, 3), (8, 4), (8, 10), (2, 10)]</span><br><span class="line">In [9]: G_eight</span><br><span class="line">Out[9]: &lt;networkx.classes.graph.Graph at 0x10cae39e8&gt;</span><br><span class="line">In [10]: G</span><br><span class="line">Out[10]: &lt;networkx.classes.graph.Graph at 0x10cad1f60&gt;</span><br></pre></td></tr></table></figure>
+<p>效果:</p>
+<p><img src="https://i.loli.net/2019/12/04/JzZorRNK7sd95X1.png" alt=""></p>
+<p>因为绘制子图的操作经常要用到，我们可以写一个函数来简化这个步骤，这个函数接受一个图与节点数组（即感兴趣的节点）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># Define get_nodes_and_nbrs()</span><br><span class="line">def get_nodes_and_nbrs(G, nodes_of_interest):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    Returns a subgraph of the graph `G` with only the `nodes_of_interest` and their neighbors.</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    nodes_to_draw = []</span><br><span class="line"></span><br><span class="line">    # Iterate over the nodes of interest</span><br><span class="line">    for n in nodes_of_interest:</span><br><span class="line"></span><br><span class="line">        # Append the nodes of interest to nodes_to_draw</span><br><span class="line">        nodes_to_draw.append(n)</span><br><span class="line"></span><br><span class="line">        # Iterate over all the neighbors of node n</span><br><span class="line">        for nbr in G.neighbors(n):</span><br><span class="line"></span><br><span class="line">            # Append the neighbors of n to nodes_to_draw</span><br><span class="line">            nodes_to_draw.append(nbr)</span><br><span class="line"></span><br><span class="line">    return G.subgraph(nodes_to_draw)</span><br></pre></td></tr></table></figure>
+<p>测试一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">nodes_of_interest = [29, 38, 42]</span><br><span class="line"></span><br><span class="line"># Extract the subgraph with the nodes of interest: T_draw</span><br><span class="line">T_draw = get_nodes_and_nbrs(T,nodes_of_interest)</span><br><span class="line"></span><br><span class="line"># Draw the subgraph to the screen</span><br><span class="line">nx.draw(T_draw)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2019/12/04/JqXiLphy4bBcFaZ.png" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-reward-image.png" alt="wittyfans WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/data-analysis/" rel="tag"># data analysis</a>
+          
+            <a href="/tags/nexworkX/" rel="tag"># nexworkX</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/coding/机器学习：泛化误差与随机森林.html" rel="next" title="机器学习：泛化误差与随机森林">
+                <i class="fa fa-chevron-left"></i> 机器学习：泛化误差与随机森林
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="wittyfans" />
+          <p class="site-author-name" itemprop="name">wittyfans</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">63</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">73</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wittyfans" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://music.163.com/#/user/event?id=5842815" target="_blank" title="Netease Music">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Netease Music
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.instagram.com/wittyfans/" target="_blank" title="Instagram">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Instagram
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/wittyfans" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络基础"><span class="nav-number">1.</span> <span class="nav-text">网络基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NetworkX基础"><span class="nav-number">2.</span> <span class="nav-text">NetworkX基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图的类型"><span class="nav-number">3.</span> <span class="nav-text">图的类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绘制图"><span class="nav-number">4.</span> <span class="nav-text">绘制图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Matrix-plots"><span class="nav-number">4.1.</span> <span class="nav-text">Matrix plots</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Circos-plots"><span class="nav-number">4.2.</span> <span class="nav-text">Circos plots</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Arc-plots"><span class="nav-number">4.3.</span> <span class="nav-text">Arc plots</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重要的节点"><span class="nav-number">5.</span> <span class="nav-text">重要的节点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Degree-Centrality"><span class="nav-number">5.1.</span> <span class="nav-text">Degree Centrality</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Path-finding"><span class="nav-number">5.2.</span> <span class="nav-text">Path finding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Betweenness-centrality"><span class="nav-number">5.3.</span> <span class="nav-text">Betweenness centrality</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Communities-amp-cliques"><span class="nav-number">6.</span> <span class="nav-text">Communities &amp; cliques</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Maximal-cliques"><span class="nav-number">6.1.</span> <span class="nav-text">Maximal cliques</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Subgraphs"><span class="nav-number">6.2.</span> <span class="nav-text">Subgraphs</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wittyfans</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("7sScl0n1AlEtVDaUHuXzxPqc-gzGzoHsz", "qKXpoqGbK1sdFYMiik7Evuan");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
