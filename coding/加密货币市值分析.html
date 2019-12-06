@@ -95,13 +95,12 @@
 <meta property="og:description" content="自从08年比特币发布以来，数以百计类似的基于区块链技术的产品层出不穷。我们称这些为加密货币，时至今日，某些加密货币已经大幅上涨，某些在未来可能也极具上涨空间。实际上，在2017年12月6日，比特币的市值超过2000亿美元。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2019/12/06/UD9XlmW3fxoSIa5.png">
-<meta property="og:image" content="https://i.loli.net/2019/12/06/UD9XlmW3fxoSIa5.png">
 <meta property="og:image" content="https://i.loli.net/2019/12/06/XFakbKp1f4ML5ul.png">
 <meta property="og:image" content="https://i.loli.net/2019/12/06/QJCehqgOsF6EdZT.png">
 <meta property="og:image" content="https://i.loli.net/2019/12/06/6JMto7jFVD5gknu.png">
 <meta property="og:image" content="https://i.loli.net/2019/12/06/tyx5TMCD8J3Hszh.png">
 <meta property="og:image" content="https://i.loli.net/2019/12/06/arEDO1QFAGVwqCB.png">
-<meta property="og:updated_time" content="2019-12-06T07:23:04.569Z">
+<meta property="og:updated_time" content="2019-12-06T07:24:21.209Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="加密货币市值分析">
 <meta name="twitter:description" content="自从08年比特币发布以来，数以百计类似的基于区块链技术的产品层出不穷。我们称这些为加密货币，时至今日，某些加密货币已经大幅上涨，某些在未来可能也极具上涨空间。实际上，在2017年12月6日，比特币的市值超过2000亿美元。">
@@ -383,8 +382,7 @@
 </blockquote>
 <a id="more"></a>
 <p>加密货币市值分析</p>
-<h1 id="席卷全球的加密货币"><a href="#席卷全球的加密货币" class="headerlink" title="席卷全球的加密货币"></a>席卷全球的加密货币</h1><p><img src="https://i.loli.net/2019/12/06/UD9XlmW3fxoSIa5.png" alt=""></p>
-<p>让我们来研究研究加密货币，第一个任务，我们将从coinmarketcap API加载当前数据，并将其显示在输出中。</p>
+<h1 id="席卷全球的加密货币"><a href="#席卷全球的加密货币" class="headerlink" title="席卷全球的加密货币"></a>席卷全球的加密货币</h1><p>让我们来研究研究加密货币，第一个任务，我们将从coinmarketcap API加载当前数据，并将其显示在输出中。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># Importing pandas</span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line"># Importing matplotlib and setting aesthetics for plotting later.</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">%matplotlib inline</span><br><span class="line">%config InlineBackend.figure_format = &apos;svg&apos; </span><br><span class="line">plt.style.use(&apos;fivethirtyeight&apos;)</span><br><span class="line"></span><br><span class="line"># Reading in current data from coinmarketcap.com</span><br><span class="line">current = pd.read_json(&quot;https://api.coinmarketcap.com/v1/ticker/&quot;)</span><br><span class="line"></span><br><span class="line"># Printing out the first few lines</span><br><span class="line">print(current.head())</span><br></pre></td></tr></table></figure>
 <p>从api返回的结果只包含了100条数据，像这种开放的api基本上都是只提供试用，如果想要更多更全的数据一般需要付费，这里我们使用一份我从网站里下载的csv数据，包括了17年6月的数据，这个数据集保存在本地，叫做<code>datasets/coinmarketcap_06122017.csv.</code></p>
 <h1 id="加载数据"><a href="#加载数据" class="headerlink" title="加载数据"></a>加载数据</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Reading datasets/coinmarketcap_06122017.csv into pandas</span><br><span class="line">dec6 = pd.read_csv(&apos;datasets/coinmarketcap_06122017.csv&apos;)</span><br><span class="line"></span><br><span class="line"># Selecting the &apos;id&apos; and the &apos;market_cap_usd&apos; columns</span><br><span class="line">market_cap_raw = dec6[[&apos;id&apos;,&apos;market_cap_usd&apos;]]</span><br><span class="line"></span><br><span class="line"># Counting the number of values</span><br><span class="line">market_cap_raw.count()</span><br></pre></td></tr></table></figure>
