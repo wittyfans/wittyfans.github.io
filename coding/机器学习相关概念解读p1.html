@@ -1,0 +1,1031 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="machine learning," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="wittyfans" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="今天开始准备对机器学习相关概念做个总结，part1会包括以下概念：Cross Validation、Confusion Matrix、Sensitivity 与 Specificity、Bias 与 Variance、ROC 与 AUC、Odds Ratios 与 Log(Odds Ratios)。">
+<meta name="keywords" content="machine learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习相关概念解读p1">
+<meta property="og:url" content="http://wittyfans.com/coding/机器学习相关概念解读p1.html">
+<meta property="og:site_name" content="wittyfans">
+<meta property="og:description" content="今天开始准备对机器学习相关概念做个总结，part1会包括以下概念：Cross Validation、Confusion Matrix、Sensitivity 与 Specificity、Bias 与 Variance、ROC 与 AUC、Odds Ratios 与 Log(Odds Ratios)。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/12/26/bH8Ep7IUjYXOziB.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/26/xqAwCLeT2GObjB9.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/26/Hg4LjJTUpye7GlZ.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/24/yndGs7EN8UCvbVz.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/24/eKaHMGr3tw8nDUb.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/26/FxOVkEmXPRdB1qH.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/26/EV8fWqBlXdxHChQ.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/26/bHhlMj8qpY29TIQ.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/26/H8aXwTIn37Bo2Pq.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/26/84bWv12kqtLTAfh.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/26/CLuoHWsUnjSIDXh.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/26/Zc2hEtBXgyvbxJ5.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/26/HcPiQa9w38V6XN7.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/26/184lbpAgnfQ5G6i.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/26/kNMRjqLJuyDtrBb.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/27/jVYtvS4xTFE3qQh.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/27/joR8bKSrmVMJ5IC.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/27/3PNanWbGdTUR41K.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/27/fPx6QpAHoB2XqUm.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/27/8IqkjMU4FnhRtim.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/27/1G5jS2O9QcAPiUT.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/27/nOaAb3Tz8hjfcLZ.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/27/TcK1jJfu8sClVew.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/27/YyrmfONXWc9Ub45.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/27/aDWEdetqAZnKoTy.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/27/hbskK9xymApwYTF.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/25/QnURimjxBKEIMXt.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/25/A6cUjIDus1orLbv.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/25/nl5tHL3TOx26FXE.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/25/7YJxzFTvLpuE4Ij.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/25/lAECMGIj62ZOW8k.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/27/sPfknqYcBOL7INl.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/27/W5op2s8JqCfcawF.png">
+<meta property="og:updated_time" content="2019-12-27T08:38:25.146Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习相关概念解读p1">
+<meta name="twitter:description" content="今天开始准备对机器学习相关概念做个总结，part1会包括以下概念：Cross Validation、Confusion Matrix、Sensitivity 与 Specificity、Bias 与 Variance、ROC 与 AUC、Odds Ratios 与 Log(Odds Ratios)。">
+<meta name="twitter:image" content="https://i.loli.net/2019/12/26/bH8Ep7IUjYXOziB.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://wittyfans.com/coding/机器学习相关概念解读p1.html"/>
+
+
+
+
+
+  <title> 机器学习相关概念解读p1 | wittyfans </title>
+  <script type="text/javascript" src="/js/src/love.js"></script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">wittyfans</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">学则不固,知则不惑</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://wittyfans.com/coding/机器学习相关概念解读p1.html">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="wittyfans">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="wittyfans">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="wittyfans" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                机器学习相关概念解读p1
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-27T16:30:13+08:00">
+                2019-12-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/coding/" itemprop="url" rel="index">
+                    <span itemprop="name">coding</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+             <span id="/coding/机器学习相关概念解读p1.html" class="leancloud_visitors" data-flag-title="机器学习相关概念解读p1">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+               <span>℃</span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>今天开始准备对机器学习相关概念做个总结，part1会包括以下概念：Cross Validation、Confusion Matrix、Sensitivity 与 Specificity、Bias 与 Variance、ROC 与 AUC、Odds Ratios 与 Log(Odds Ratios)。</p>
+</blockquote>
+<a id="more"></a>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
+<h1 id="Cross-Validation"><a href="#Cross-Validation" class="headerlink" title="Cross Validation"></a>Cross Validation</h1><p>假设你需要根据肩膀痛、血液状况、动脉阻塞、体重与否来预测患者有没有心脏病，输出的结果为是与否。<br>当你对数据进行训练的时候，你需要指定使用的机器学习模型，常用的比如：</p>
+<ul>
+<li>LR</li>
+<li>KNN</li>
+<li>SVM</li>
+</ul>
+<p>但你怎么知道选择哪一种模型呢？Cross Validation 可以让我们大概知道哪些模型会fit比较好，哪些模型在实际应用的时候表现会更好。</p>
+<p>当训练模型的时候，需要将数据切割成训练组与测试组。如果你把所有的数据都拿去训练，那你就没有了测试数据，因为你的模型必须用它没有见过的数据来做测试。</p>
+<p>通常我们使用数据中的前面百分之75的数据作为训练数据</p>
+<p><img src="https://i.loli.net/2019/12/26/bH8Ep7IUjYXOziB.png" alt=""></p>
+<p>后面的部分作为测试数据</p>
+<p><img src="https://i.loli.net/2019/12/26/xqAwCLeT2GObjB9.png" alt=""></p>
+<p>但是你怎么知道按照75:25的划分是最好的呢？如果我们使用前面百分之25的数据测试呢？或者是取中间的25%测试，其余的作为训练数据？</p>
+<p>担心选择哪一段数据作为训练和测试数据，我们用Cross Validation，它会逐一将所有的数据都测试一遍，然后汇总结果。这样每一组数据都作为测试数据参与过模型训练，也参与过模型的检测。逐一测试后，再汇总所有结果，我们就可以选择最适合数据的模型。</p>
+<p><img src="https://i.loli.net/2019/12/26/Hg4LjJTUpye7GlZ.png" alt=""></p>
+<p>在这，如果你把数据分成4份，就叫4-Fold Cross Validation, 5份就叫5fold，以此类推。</p>
+<h1 id="Confusion-Matrix"><a href="#Confusion-Matrix" class="headerlink" title="Confusion Matrix"></a>Confusion Matrix</h1><p>Confusion Matrix这个概念告诉我们，机器学习的算法预测的结果中，正确了多少、错了多少以及正确的分布在哪里，错的又分布在哪里。</p>
+<p><img src="https://i.loli.net/2019/12/24/yndGs7EN8UCvbVz.png" alt=""></p>
+<p>比如这个例子中，我们想要根据肩膀痛、血液状况、动脉阻塞、体重与否来预测患者有没有心脏病，输出的结果为是与否。</p>
+<p>我们可以使用逻辑回归、knn、随机森林等模型来预测，或者你也可以使用任何其他的模型，但是我们如何来衡量这个模型的好坏呢？</p>
+<p>首先将数据切分成训练组与测试组，在对上述模型进行训练之后，我们可以拿模型来对测试组的数据进行测试，然后将预测的结果与实际的结果进行对比，根据下面的表填入结果：</p>
+<p><img src="https://i.loli.net/2019/12/24/eKaHMGr3tw8nDUb.png" alt=""></p>
+<p>通过这个表，就可以知道你的模型预测的结果分布如何，对于每一个模型我们都可以绘制此表用来对比模型的性能。</p>
+<h1 id="Sensitivity-与-Specificity"><a href="#Sensitivity-与-Specificity" class="headerlink" title="Sensitivity 与 Specificity"></a>Sensitivity 与 Specificity</h1><p><img src="https://i.loli.net/2019/12/26/FxOVkEmXPRdB1qH.png" alt=""></p>
+<p>在你理解了Confusion Matrix之后，我们再来讨论Sensitivity 与 Specificity.</p>
+<p>这里的Sensitivity，也可以理解为我们在sklearn课程中提及到的<em>Recall</em>，它等于 tp/(tp+fn)，即所有有心脏病的人中，多少预测对了；</p>
+<p>这是Sensitivity的计算:<br><img src="https://i.loli.net/2019/12/26/EV8fWqBlXdxHChQ.png" alt=""></p>
+<p>而Specificity，等于 tn/(tn+fp)，即所有真实没有心脏病的人中，多少预测对了。<br>这是Specificity的计算：<br><img src="https://i.loli.net/2019/12/26/bHhlMj8qpY29TIQ.png" alt=""></p>
+<p>我们可以对不同的模型（如LR与随机森林）计算它们的Sensitivity 和 Specificity做比较。</p>
+<p><img src="https://i.loli.net/2019/12/26/H8aXwTIn37Bo2Pq.png" alt=""></p>
+<p>可以看到随机森林的sensitivity分数比较高，这意味着它对于区分positives的结果比较擅长，也就是预测哪些病人有心脏病。</p>
+<p><img src="https://i.loli.net/2019/12/26/84bWv12kqtLTAfh.png" alt=""></p>
+<p>而LR则在预测哪些病人没有心脏病方面比较擅长。</p>
+<p>如果对你来说，更重要的是找出那些人有心脏病，那么你应该使用随机森林，如果你更看重那些人没有心脏病，那么应该使用LR.</p>
+<p>如果你的Confusion Matrix是三行三列，那么计算方式就不一样了，不过也没那么复杂，注意好对应关系就好了：</p>
+<p><img src="https://i.loli.net/2019/12/26/CLuoHWsUnjSIDXh.png" alt=""></p>
+<p><img src="https://i.loli.net/2019/12/26/Zc2hEtBXgyvbxJ5.png" alt=""></p>
+<p>更多请参考<a href="https://www.youtube.com/watch?v=vP06aMoz4v8&amp;list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF&amp;index=4" target="_blank" rel="noopener">油管视频</a>.</p>
+<h1 id="Bias-与-Variance"><a href="#Bias-与-Variance" class="headerlink" title="Bias 与 Variance"></a>Bias 与 Variance</h1><p>你有一组老鼠的长度与体重数据，可以想象，老鼠的重量与长度是正比的，但它长到一定长度后，重量不会一直增长。我们使用LR训练一批老鼠数据，得到下面的图像:</p>
+<p><img src="https://i.loli.net/2019/12/26/HcPiQa9w38V6XN7.png" alt=""></p>
+<p>LR无法完全与训练数据重合，这就叫做bias，你的模型也可能完美的穿过这些测试数据，这样它的模型bias就为0.</p>
+<p><img src="https://i.loli.net/2019/12/26/184lbpAgnfQ5G6i.png" alt=""></p>
+<p>当我们用最小二乘法来衡量模型对测试数据的fit程度时，曲线模型无疑是最好的，但是基础，我们训练模型是用来做预测的，<strong>一个好的模型不是fit得好不好，而是预测的好不好。</strong></p>
+<p><img src="https://i.loli.net/2019/12/26/kNMRjqLJuyDtrBb.png" alt=""></p>
+<p>同样当我们用最小二乘法来测试预测结果时，LR直线模型却更好，这是因为曲线模型的Variance太高了。</p>
+<p>bias高，可以理解为反应慢，但很稳。而Variance高，则意味反应很灵敏，发挥可能有时候很好，有时候很差。</p>
+<p>直线的Variance比较低，因为对于不同的数据集的预测结果，算出来的最小二乘法之和比较低。</p>
+<p>另外一种机器学习的描述方式，虽然我们的曲线模型对与训练数据fit的非常完美，但是在测试数据中却不理想，我们说这个模型overfit了。</p>
+<p>理想的模型是variance和bias都比较低，能准确的反映数据的分布关系，以及做出稳定的预测。</p>
+<p>要找到这个值，需要我们对模型做出调整，通常有三种方法：</p>
+<ol>
+<li>regularization</li>
+<li>boosting</li>
+<li>bagging</li>
+</ol>
+<p>后续我们再来介绍这些概念。</p>
+<h1 id="ROC-与-AUC"><a href="#ROC-与-AUC" class="headerlink" title="ROC 与 AUC"></a>ROC 与 AUC</h1><h1 id="ROC"><a href="#ROC" class="headerlink" title="ROC"></a>ROC</h1><p>还是这组老鼠的数据，根据它们的体总来判定它是否是肥胖症，蓝色的点是判断为肥胖症的老鼠，红色的则没有肥胖症，其中有一个红点很特殊，它看起来体重很高但是没有肥胖（这肯定是只肌肉鼠），同时数据中也有一些不是很重但患有肥胖症的，这是因为它很短小，却很胖。</p>
+<p><img src="https://i.loli.net/2019/12/27/jVYtvS4xTFE3qQh.png" alt=""></p>
+<p>我们用LR fit这组数据，会得到这样的一个曲线，在LR中，y轴是我们的概率，值域为0-1，当你的LR模型绘制出来了的时候，给我一个老鼠的体重，我大概就可以判断它是不是有肥胖症，但是这需要一个threshold（临界值）作为判断点，比如在这里我们取概率为0.5对应的体重值。</p>
+<p><img src="https://i.loli.net/2019/12/27/joR8bKSrmVMJ5IC.png" alt=""></p>
+<p>当你将这个threshold定位0.5，我们就可以用test数据统计confusion matrax,并计算Sensitivity 与 Specificity,如果你觉得threshold设为0.5不太合适，你可以将其设为0.6，然后再计算Sensitivity 与 Specificity对比看看。</p>
+<p>这个threshold可以不断的做出调整，以适应（fit）我们的数据。</p>
+<p>比如，我们设置为它为0.1。</p>
+<p><img src="https://i.loli.net/2019/12/27/3PNanWbGdTUR41K.png" alt=""></p>
+<p>在这种情况下，所有0.1以上的都被标记成肥胖，增加了对肥胖预测的准确率，但会有一些非肥胖症的老鼠被预测称肥胖症。</p>
+<p>你也可以设为0.9，所有0.9以下的老鼠都标记成非肥胖，这样会增加那些对非肥胖症预测的准确率，但会有一些肥胖的老鼠也被预测称非肥胖。</p>
+<p><img src="https://i.loli.net/2019/12/27/fPx6QpAHoB2XqUm.png" alt=""></p>
+<p>threshold可能是这其中的任何一个点，我们到底选哪个比较好呢？</p>
+<p>这时候我们就可以使用ROC图像了，ROC图中x轴为 Specificity,y轴为Sensitivity，我们开始画图，第一步我们假设所有的老鼠都有肥胖症：</p>
+<p><img src="https://i.loli.net/2019/12/27/8IqkjMU4FnhRtim.png" alt=""></p>
+<p>对于Sensitivity，我们计算后为1，它是所有真实肥胖症老鼠中有多少预测对了。这意味着所有的老鼠都标记为肥胖症，也就是说所有真实患有肥胖症的老鼠都预测成功了。</p>
+<p>对于Specificity，计算后也为1，它是所有真实没有肥胖症的老鼠中，多少预测对了。这意味着所有不是肥胖症的老鼠都被标记为肥胖症了。</p>
+<p>我们可以将这个点与0连线，在这条线上，Sensitivity和Specificity相等，这意味着我们对测试数据预测正确的值与预测错误的比例相等（那还不如靠猜）。</p>
+<p><img src="https://i.loli.net/2019/12/27/1G5jS2O9QcAPiUT.png" alt=""></p>
+<p>现在我们把threshold设为0.3，我们得到sensitivity为1，specificity为0.75.</p>
+<p><img src="https://i.loli.net/2019/12/27/nOaAb3Tz8hjfcLZ.png" alt=""></p>
+<p>它的sensitivity&gt;specificity,所以在图上它出现在绿虚线的左边，所以threshold为0.3比之前的值要好。</p>
+<p>我们继续增加threshold</p>
+<p><img src="https://i.loli.net/2019/12/27/TcK1jJfu8sClVew.png" alt=""></p>
+<p>这个结果又要好一点，我们一直继续，直到我们把所有的老鼠都预测为非肥胖症，将所有的点连起来，这就是我们的ROC曲线了。</p>
+<ul>
+<li>y轴为：真实数据中，肥胖的预测正确了多少。</li>
+<li>x轴为：真实数据中，非肥胖的预测正确了多少。</li>
+<li>x轴也可能为：预测数据中，肥胖的预测正确了多少。</li>
+</ul>
+<p><img src="https://i.loli.net/2019/12/27/YyrmfONXWc9Ub45.png" alt=""></p>
+<p>这个图中越靠近左上的点，结果越好。同时我们可以根据我们可以接受多大的错误率，来选择threshold,</p>
+<p><img src="https://i.loli.net/2019/12/27/aDWEdetqAZnKoTy.png" alt=""></p>
+<h2 id="AUC"><a href="#AUC" class="headerlink" title="AUC"></a>AUC</h2><p>AUC就是ROC下面的曲线，如果我们通过更换模型，让曲线下方的面积变大了，那么新模型就比原来的模型更好。</p>
+<p><img src="https://i.loli.net/2019/12/27/hbskK9xymApwYTF.png" alt=""></p>
+<p>如果图中蓝色部分是随机森林模型生成的AUC，红色部分是LR生成的，那么你应该选择LR作为你的模型。</p>
+<p>注：有时候人们会用precision代替specificity, 即precision=True Positive / True Positive + False positive</p>
+<p>对比它们的定义：</p>
+<p>specificity： 所有有肥胖症的老鼠中，预测正确了多少。<br>precision：所有预测为肥胖症的老鼠中，预测正确了多少。</p>
+<h1 id="Odds-与-Probability"><a href="#Odds-与-Probability" class="headerlink" title="Odds 与 Probability"></a>Odds 与 Probability</h1><p>odds是你想要的结果除以你不想要的结果，而Probability是你想要的结果除以所有的结果。如在比赛中，你赢了5次，输了3次，那odds就是5/3,而概率测试5/8.</p>
+<p><img src="https://i.loli.net/2019/12/25/QnURimjxBKEIMXt.png" alt=""></p>
+<p>odds是可以通过概率来计算得出的，它的公式是：</p>
+<p>$$\frac{p}{1-p}$$</p>
+<p>我们可以思考一下odds的取值范围，如果有一场比赛，因为我的实力很差，10次比赛输了8次，那么我的odds就是2/8,如果更糟，0/10，也就是0。</p>
+<p>可见odds的值域中，最低值是0，从1-0是你所有输掉比赛的情况，而从1到无穷大则是你赢了比赛的情况，因为你赢了一万场输一场的情况也是有可能的，它的odds值为10000/1=10000。</p>
+<p>把odds的值放到数轴上看，你会发现这样的一条线：</p>
+<p><img src="https://i.loli.net/2019/12/25/A6cUjIDus1orLbv.png" alt=""></p>
+<p>但这里存在一个小问题，比如对于1:6和6:1，我输了6场和赢了6场，这两个结果看起来是对成的，得到的值画在数轴上却是不对称的。</p>
+<p><img src="https://i.loli.net/2019/12/25/nl5tHL3TOx26FXE.png" alt=""></p>
+<p>而使用log函数则可以解决这个问题：</p>
+<p><img src="https://i.loli.net/2019/12/25/7YJxzFTvLpuE4Ij.png" alt=""></p>
+<h1 id="Odds-Ratios-与-Log-Odds-Ratios"><a href="#Odds-Ratios-与-Log-Odds-Ratios" class="headerlink" title="Odds Ratios 与 Log(Odds Ratios)"></a>Odds Ratios 与 Log(Odds Ratios)</h1><p>odds本质上是ratio，但odds≠odds ratio,我们说odds ratio,指的是odds之间的运算，也就是两个不同结果之间odds值的运算。</p>
+<p>odds ratio算出来的值可能在0-1之间，也可能在1到无穷大之间，如果我们需要让odds ratio值数轴上显示，对它取对数会比较好。</p>
+<p>我们来举个例子，下面是癌症与基因突变的一组数据：</p>
+<p><img src="https://i.loli.net/2019/12/25/lAECMGIj62ZOW8k.png" alt=""></p>
+<p>这是什么意思呢？ odds ratio和log(ratio)说明了两个事物（这里是癌症与基因突变）之间的关系。</p>
+<p>odds ratio值越大，基因突变这个变量对于预测癌症就越好用，越小，则说明这个变量不适合用来预测癌症。</p>
+<p>然而要证明相关，还需要证明它们之间存在统计显著性，主要有三种方法：</p>
+<ul>
+<li>Fisher’s Exact Test</li>
+<li>Chi-Square Test</li>
+<li>The Wald Test</li>
+</ul>
+<p>有人比较喜欢用Fisher’s Exact Test和Chi-Square Test计算P-Value,有人比较喜欢用The Wald Test计算P-Value和置信区间。</p>
+<p>假设有如下表：</p>
+<p><img src="https://i.loli.net/2019/12/27/sPfknqYcBOL7INl.png" alt=""></p>
+<h2 id="Fisher’s-Exact-Test"><a href="#Fisher’s-Exact-Test" class="headerlink" title="Fisher’s Exact Test"></a>Fisher’s Exact Test</h2><blockquote>
+<p>参考:<a href="https://youtu.be/udyAvvaMjfM" target="_blank" rel="noopener">Fisher’s Exact Test</a></p>
+</blockquote>
+<h2 id="Chi-Square-Test"><a href="#Chi-Square-Test" class="headerlink" title="Chi-Square Test"></a>Chi-Square Test</h2><p>这是一种先假设癌症与基因变异之间没有关系的方法。<br>首先算出正常人患癌症的概率为：29/356 = 0.08.</p>
+<p>有基因突变的为140人，如果按照正常人患癌症的概率，那么有基因突变的人中应该是 140*0.08=11.2 人有癌症，剩下 140-11.2=128.8 人无癌症。</p>
+<p>同样的对于没有基因突变的人，患癌症的人为 216*0.08 = 17.3, 剩下 216-17.3 = 198.7人无癌症。</p>
+<p>最后对比两个表，就可以算出p-vlue，如果你不知道具体如何算，可以参考别的文章。</p>
+<p><img src="https://i.loli.net/2019/12/27/W5op2s8JqCfcawF.png" alt=""></p>
+<h2 id="The-Wald-Test"><a href="#The-Wald-Test" class="headerlink" title="The Wald Test"></a>The Wald Test</h2><blockquote>
+<p>todo.</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechat-reward-image.png" alt="wittyfans WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/coding/加密货币市值分析.html" rel="next" title="加密货币市值分析">
+                <i class="fa fa-chevron-left"></i> 加密货币市值分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="wittyfans" />
+          <p class="site-author-name" itemprop="name">wittyfans</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">73</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wittyfans" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://music.163.com/#/user/event?id=5842815" target="_blank" title="Netease Music">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Netease Music
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.instagram.com/wittyfans/" target="_blank" title="Instagram">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Instagram
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/wittyfans" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Cross-Validation"><span class="nav-number">1.</span> <span class="nav-text">Cross Validation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Confusion-Matrix"><span class="nav-number">2.</span> <span class="nav-text">Confusion Matrix</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Sensitivity-与-Specificity"><span class="nav-number">3.</span> <span class="nav-text">Sensitivity 与 Specificity</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bias-与-Variance"><span class="nav-number">4.</span> <span class="nav-text">Bias 与 Variance</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ROC-与-AUC"><span class="nav-number">5.</span> <span class="nav-text">ROC 与 AUC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ROC"><span class="nav-number">6.</span> <span class="nav-text">ROC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#AUC"><span class="nav-number">6.1.</span> <span class="nav-text">AUC</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Odds-与-Probability"><span class="nav-number">7.</span> <span class="nav-text">Odds 与 Probability</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Odds-Ratios-与-Log-Odds-Ratios"><span class="nav-number">8.</span> <span class="nav-text">Odds Ratios 与 Log(Odds Ratios)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Fisher’s-Exact-Test"><span class="nav-number">8.1.</span> <span class="nav-text">Fisher’s Exact Test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chi-Square-Test"><span class="nav-number">8.2.</span> <span class="nav-text">Chi-Square Test</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Wald-Test"><span class="nav-number">8.3.</span> <span class="nav-text">The Wald Test</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wittyfans</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("7sScl0n1AlEtVDaUHuXzxPqc-gzGzoHsz", "qKXpoqGbK1sdFYMiik7Evuan");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
