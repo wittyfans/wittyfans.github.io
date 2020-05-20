@@ -88,7 +88,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="wittyfans">
-<meta property="og:url" content="http://wittyfans.com/tags/bigdata/index.html">
+<meta property="og:url" content="http://wittyfans.com/tags/BigData/index.html">
 <meta property="og:site_name" content="wittyfans">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://wittyfans.com/tags/bigdata/"/>
+  <link rel="canonical" href="http://wittyfans.com/tags/BigData/"/>
 
 
 
 
 
-  <title> 标签: bigdata | wittyfans </title>
+  <title> 标签: BigData | wittyfans </title>
   <script type="text/javascript" src="/js/src/love.js"></script>
 </head>
 
@@ -251,7 +251,7 @@
   <div id="posts" class="posts-collapse">
     <div class="collection-title">
       <h2 >
-        bigdata
+        BigData
         <small>标签</small>
       </h2>
     </div>
@@ -264,9 +264,9 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/coding/Pandas-统计工作数据.html" itemprop="url">
+            <a class="post-title-link" href="/coding/kafka分布式集群部署.html" itemprop="url">
               
-                <span itemprop="name">Pandas 统计工作数据</span>
+                <span itemprop="name">kafka分布式集群部署</span>
               
             </a>
         
@@ -274,9 +274,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2019-03-28T20:19:18+08:00"
-              content="2019-03-28" >
-          03-28
+              datetime="2018-06-08T11:13:19+08:00"
+              content="2018-06-08" >
+          06-08
         </time>
       </div>
 
@@ -292,37 +292,9 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/coding/用Python做数据可视化.html" itemprop="url">
+            <a class="post-title-link" href="/coding/初探HBase.html" itemprop="url">
               
-                <span itemprop="name">用Python做数据可视化</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-01-16T20:24:41+08:00"
-              content="2019-01-16" >
-          01-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/coding/Hadoop2-x-HA架构学习与配置.html" itemprop="url">
-              
-                <span itemprop="name">Hadoop2.x HA架构学习与配置</span>
+                <span itemprop="name">初探HBase</span>
               
             </a>
         
@@ -330,65 +302,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-29T22:57:17+08:00"
-              content="2018-05-29" >
-          05-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/coding/Zookeeper安装、配置、启动.html" itemprop="url">
-              
-                <span itemprop="name">Zookeeper安装、配置、启动</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-28T22:18:59+08:00"
-              content="2018-05-28" >
-          05-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/coding/运行Hadoop-WordCount-出错.html" itemprop="url">
-              
-                <span itemprop="name">运行Hadoop WordCount 出错</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-22T12:48:36+08:00"
-              content="2018-05-22" >
-          05-22
+              datetime="2018-06-03T16:38:26+08:00"
+              content="2018-06-03" >
+          06-03
         </time>
       </div>
 
@@ -540,7 +456,7 @@
         <div class="copyright" >
   
   &copy;  2016 - 
-  <span itemprop="copyrightYear">2019</span>
+  <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -715,6 +631,74 @@
 
     function addCount(Counter) {
       var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
+sitors = $(".leancloud_visitors");
       var url = $visitors.attr('id').trim();
       var title = $visitors.attr('data-flag-title').trim();
       var query = new AV.Query(Counter);
