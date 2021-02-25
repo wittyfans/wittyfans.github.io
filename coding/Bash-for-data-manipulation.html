@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Scott Zhang">
 <meta property="og:description" content="Bash is a Unix shell and command language, it survived and thrived for almost 50 years because it lets people do complex things with just a few keystrokes. Sometimes called “the universal glue of pro">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2021-02-25T15:30:29.977Z">
+<meta property="og:updated_time" content="2021-02-25T15:40:09.359Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bash for data manipulation">
 <meta name="twitter:description" content="Bash is a Unix shell and command language, it survived and thrived for almost 50 years because it lets people do complex things with just a few keystrokes. Sometimes called “the universal glue of pro">
@@ -403,18 +403,14 @@
 </ul>
 <p>amin,atime: access min and access day; cmin,ctime: change min and change day; mmin,mtime: modify;</p>
 <h2 id="by-size"><a href="#by-size" class="headerlink" title="by size"></a>by size</h2><ul>
-<li><p>find . -size +5m, k,g is work too</p>
-</li>
-<li><p>ls -lah ./folders, info about sub folder and files,including size</p>
-</li>
+<li>find . -size +5m, k,g is work too</li>
+<li>ls -lah ./folders, info about sub folder and files,including size</li>
 <li>find . -empty</li>
 </ul>
 <h2 id="by-permission"><a href="#by-permission" class="headerlink" title="by permission"></a>by permission</h2><ul>
 <li>find. -perm 777, read, write, and excute</li>
 <li>find folder -exec chown coreschafer:www-data {} +</li>
-</ul>
-<p>find folder, will return all folder, -exec will run the command in that results, {} palceholder, + end of the command.</p>
-<ul>
+<li>find folder, will return all folder, -exec will run the command in that results, {} palceholder, + end of the command.</li>
 <li>find folder -type f -exec chmod 664 {} +</li>
 <li>find folder -perm 664</li>
 <li>find . -type f -name “*.jpg”</li>
@@ -450,39 +446,21 @@
 <h1 id="cURL"><a href="#cURL" class="headerlink" title="cURL"></a>cURL</h1><h2 id="Requests"><a href="#Requests" class="headerlink" title="Requests"></a>Requests</h2><ul>
 <li>curl url</li>
 <li>curl <a href="http://localhost:5000" target="_blank" rel="noopener">http://localhost:5000</a></li>
-<li>curl http:<a href="http://www.wittyfans.com/json_file" target="_blank" rel="noopener">www.wittyfans.com/json_file</a><ul>
+<li>curl http:<a href="http://www.wittyfans.com/json_file" target="_blank" rel="noopener">www.wittyfans.com/json_file</a></li>
 <li>curl -i http:<a href="http://www.wittyfans.com/json_file" target="_blank" rel="noopener">www.wittyfans.com/json_file</a>, details info about the get</li>
-</ul>
-</li>
-<li>curl http:<a href="http://www.wittyfans.com/method" target="_blank" rel="noopener">www.wittyfans.com/method</a><ul>
+<li>curl http:<a href="http://www.wittyfans.com/method" target="_blank" rel="noopener">www.wittyfans.com/method</a></li>
 <li>curl -d “first=name&amp;last=lastname” http:<a href="http://www.wittyfans.com/method" target="_blank" rel="noopener">www.wittyfans.com/method</a>, d for data, Post request</li>
 <li>curl -X PUT -d “first=name&amp;last=lastname” http:<a href="http://www.wittyfans.com/method" target="_blank" rel="noopener">www.wittyfans.com/method</a>, d for data, Pust request</li>
 <li>curl -X DELETE http:<a href="http://www.wittyfans.com/method" target="_blank" rel="noopener">www.wittyfans.com/method</a>, delete request</li>
 </ul>
-</li>
-</ul>
-<h2 id="Verify"><a href="#Verify" class="headerlink" title="Verify"></a>Verify</h2><blockquote>
-<p>could not verify your access ?</p>
-</blockquote>
-<ul>
-<li>curl -u username:password <a href="http://wittyfans.com">http://wittyfans.com</a>, Auth</li>
-</ul>
-<h2 id="Download"><a href="#Download" class="headerlink" title="Download"></a>Download</h2><blockquote>
-<p>Download file</p>
-</blockquote>
-<ul>
+<h2 id="Verify"><a href="#Verify" class="headerlink" title="Verify"></a>Verify</h2><p>Could not verify your access ?</p>
+<p><code>curl -u username:password http://wittyfans.com, Auth</code></p>
+<h2 id="Download"><a href="#Download" class="headerlink" title="Download"></a>Download</h2><ul>
 <li>curl <a href="http://wittyfans.com/folder">http://wittyfans.com/folder</a>, return binary file , error</li>
-<li>curl -o filename.jpg <a href="http://wittyfans.com/folder">http://wittyfans.com/folder</a>, sucess</li>
+<li>curl -o filename.jpg <a href="http://wittyfans.com/folder">http://wittyfans.com/folder</a> , sucess</li>
+<li>curl -o file_name.json http:/.api.wittyfans.com , Saving large json file</li>
 </ul>
-<blockquote>
-<p>Saving large json file</p>
-</blockquote>
-<ul>
-<li>curl -o file_name.json http:/.api.wittyfans.com</li>
-</ul>
-<h1 id="rsync"><a href="#rsync" class="headerlink" title="rsync"></a>rsync</h1><h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><blockquote>
-<p>aviable in Mac, debian-based linux need to install</p>
-</blockquote>
+<h1 id="rsync"><a href="#rsync" class="headerlink" title="rsync"></a>rsync</h1><h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><p>aviable in Mac, debian-based linux need to install</p>
 <ul>
 <li>apt-get install rsync</li>
 <li>yum install rsync</li>
@@ -493,10 +471,8 @@
 <li>rsync -r folder1 backup/, sync folder, not content in it</li>
 </ul>
 <h2 id="Check-chage-before-run"><a href="#Check-chage-before-run" class="headerlink" title="Check chage before run"></a>Check chage before run</h2><ul>
-<li>rsync -a –dry-run folder1/* backup/, check before the command run, now view showed<ul>
+<li>rsync -a –dry-run folder1/* backup/, check before the command run, now view showed</li>
 <li>rsync -av –dry-run folder1/* backup/, auto view</li>
-</ul>
-</li>
 </ul>
 <h2 id="Source-folder-has-new-file"><a href="#Source-folder-has-new-file" class="headerlink" title="Source_folder has new file"></a>Source_folder has new file</h2><ul>
 <li>rsync -av –delete –dry-run original/ backup/, check, be careful !</li>
@@ -571,7 +547,7 @@
 <p><code>history | tail -n 3</code>, Show most recent 3 commands</p>
 <p><code>$@</code>, pass filenames to scripts. <code>tail -q -n +2 $@ | wc -l</code></p>
 <h2 id="Downloading-data"><a href="#Downloading-data" class="headerlink" title="Downloading data"></a>Downloading data</h2><blockquote>
-<p> how to download data files from web servers via the command line</p>
+<p>how to download data files from web servers via the command line</p>
 </blockquote>
 <p><code>curl</code>, Client for URLs.  <code>man curl</code> , check curl installation.</p>
 <ul>
@@ -592,29 +568,42 @@
 </blockquote>
 <p><code>pip install csvk</code> for install, <a href="https://csvkit.readthedocs.io/en/latest/tutorial.html" target="_blank" rel="noopener">Doc</a></p>
 <h3 id="in2csv"><a href="#in2csv" class="headerlink" title="in2csv"></a>in2csv</h3><ul>
-<li><p><code>in2csv -h</code>, converting files to csv.</p>
-</li>
-<li><p><code>in2csv SpotifyData.xlsx &gt; SpotifyData.csv</code></p>
-</li>
-<li><p><code>in2csv SpotifyData.xlsx --sheet &quot;Worksheet1_Popularity&quot; &gt; Spotify_Popularity.csv</code>, Only converting a sheet</p>
-</li>
+<li><code>in2csv -h</code>, converting files to csv.</li>
+<li><code>in2csv SpotifyData.xlsx &gt; SpotifyData.csv</code></li>
+<li><code>in2csv SpotifyData.xlsx --sheet &quot;Worksheet1_Popularity&quot; &gt; Spotify_Popularity.csv</code>, Only converting a sheet</li>
 </ul>
-<h3 id="csvlook"><a href="#csvlook" class="headerlink" title="csvlook"></a>csvlook</h3><p><code>csvlook -h</code>, data preview on the command line.</p>
-<p><code>csvlook SpotifyData.csv</code></p>
-<h3 id="csvsort"><a href="#csvsort" class="headerlink" title="csvsort"></a>csvsort</h3><p><code>csvsort -c 2 Spotify_Popularity.csv | csvlook</code></p>
-<h3 id="csvstat"><a href="#csvstat" class="headerlink" title="csvstat"></a>csvstat</h3><p><code>csvstat Spotify_Popularity.csv</code>, summary statistics</p>
-<h3 id="csvcut"><a href="#csvcut" class="headerlink" title="csvcut"></a>csvcut</h3><p><code>csvcut -n Spotify_MusicAttributes.csv</code>, Print a list of column headers in data file</p>
-<p><code>csvcut -c 1,3,5 Spotify_MusicAttributes.csv</code>, Print the first column, by position</p>
-<p><code>csvcut -c &quot;track_id&quot;,&quot;duration_ms&quot;,&quot;loudness&quot; Spotify_MusicAttributes.csv</code>, Print the track id, song duration, and loudness, by name </p>
-<h3 id="csvgrep"><a href="#csvgrep" class="headerlink" title="csvgrep"></a>csvgrep</h3><p><code>csvgrep -c &quot;danceability&quot; -m 0.812 Spotify_MusicAttributes.csv</code>, filter row danceability by value 0.812, column name must with “”.</p>
-<h3 id="csvstack"><a href="#csvstack" class="headerlink" title="csvstack"></a>csvstack</h3><p><code>csvstack</code>, merge files. </p>
-<p><code>csvstack Spotify_Rank6.csv Spotify_Rank7.csv &gt; Spotify.csv</code>, merge two files to one</p>
-<p><code>csvstack -g &quot;Rank6&quot;,&quot;Rank7&quot; \ Spotify_Rank6.csv Spotify_Rank7.csv &gt; Spotify_Al</code>, merge two files to one and add a source column.</p>
-<h3 id="chain-commands"><a href="#chain-commands" class="headerlink" title="chain commands"></a>chain commands</h3><p><code>;</code>, links commands together and runs sequentially</p>
-<p><code>&amp;&amp;</code>, links commands together, but only runs the 2nd command if the 1st succeeds</p>
-<p><code>&gt;</code>, using outputs from the 1st command</p>
-<p><code>|</code>, using outputs form the 1st as input to the 2nd</p>
-<h3 id="sql2csv"><a href="#sql2csv" class="headerlink" title="sql2csv"></a>sql2csv</h3><p><code>sql2csv -v</code> or <code>sql2csv --verbose</code>,  printing more tracebacks and logs </p>
+<h3 id="csvlook"><a href="#csvlook" class="headerlink" title="csvlook"></a>csvlook</h3><ul>
+<li><code>csvlook -h</code>, data preview on the command line.</li>
+<li><code>csvlook SpotifyData.csv</code></li>
+</ul>
+<h3 id="csvsort"><a href="#csvsort" class="headerlink" title="csvsort"></a>csvsort</h3><ul>
+<li><code>csvsort -c 2 Spotify_Popularity.csv | csvlook</code></li>
+</ul>
+<h3 id="csvstat"><a href="#csvstat" class="headerlink" title="csvstat"></a>csvstat</h3><ul>
+<li><code>csvstat Spotify_Popularity.csv</code>, summary statistics</li>
+</ul>
+<h3 id="csvcut"><a href="#csvcut" class="headerlink" title="csvcut"></a>csvcut</h3><ul>
+<li><code>csvcut -n Spotify_MusicAttributes.csv</code>, Print a list of column headers in data file</li>
+<li><code>csvcut -c 1,3,5 Spotify_MusicAttributes.csv</code>, Print the first column, by position</li>
+<li><code>csvcut -c &quot;track_id&quot;,&quot;duration_ms&quot;,&quot;loudness&quot; Spotify_MusicAttributes.csv</code>, Print the track id, song duration, and loudness, by name </li>
+</ul>
+<h3 id="csvgrep"><a href="#csvgrep" class="headerlink" title="csvgrep"></a>csvgrep</h3><ul>
+<li><code>csvgrep -c &quot;danceability&quot; -m 0.812 Spotify_MusicAttributes.csv</code>, filter row danceability by value 0.812, column name must with “”.</li>
+</ul>
+<h3 id="csvstack"><a href="#csvstack" class="headerlink" title="csvstack"></a>csvstack</h3><ul>
+<li><code>csvstack</code>, merge files. </li>
+<li><code>csvstack Spotify_Rank6.csv Spotify_Rank7.csv &gt; Spotify.csv</code>, merge two files to one</li>
+<li><code>csvstack -g &quot;Rank6&quot;,&quot;Rank7&quot; \ Spotify_Rank6.csv Spotify_Rank7.csv &gt; Spotify_Al</code>, merge two files to one and add a source column.</li>
+</ul>
+<h3 id="chain-commands"><a href="#chain-commands" class="headerlink" title="chain commands"></a>chain commands</h3><ul>
+<li><code>;</code>, links commands together and runs sequentially</li>
+<li><code>&amp;&amp;</code>, links commands together, but only runs the 2nd command if the 1st succeeds</li>
+<li><code>&gt;</code>, using outputs from the 1st command</li>
+<li><code>|</code>, using outputs form the 1st as input to the 2nd</li>
+</ul>
+<h3 id="sql2csv"><a href="#sql2csv" class="headerlink" title="sql2csv"></a>sql2csv</h3><ul>
+<li><code>sql2csv -v</code> or <code>sql2csv --verbose</code>,  printing more tracebacks and logs </li>
+</ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Pull the entire Spotify_Popularity table and print in log</span></span><br><span class="line">sql2csv --db <span class="string">"sqlite:///SpotifyDatabase.db"</span> \</span><br><span class="line">        --query <span class="string">"SELECT * FROM Spotify_Popularity"</span></span><br></pre></td></tr></table></figure>
 <h3 id="csvsql"><a href="#csvsql" class="headerlink" title="csvsql"></a>csvsql</h3><p>Manipulating data using SQL syntax (Small to medium files only) :</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Reformat the output using csvlook </span></span><br><span class="line">csvsql --query <span class="string">"SELECT * FROM Spotify_MusicAttributes ORDER BY duration_ms LIMIT 1"</span> \</span><br><span class="line">	Spotify_MusicAttributes.csv | csvlook</span><br></pre></td></tr></table></figure>
@@ -626,15 +615,12 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Store SQL for querying from SQLite database </span></span><br><span class="line">sqlquery_pull=<span class="string">"SELECT * FROM SpotifyMostRecentData"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Apply SQL to save table as local file </span></span><br><span class="line">sql2csv --db <span class="string">"sqlite:///SpotifyDatabase.db"</span> --query <span class="string">"<span class="variable">$sqlquery_pull</span>"</span> &gt; SpotifyMostRecentData.csv</span><br><span class="line"></span><br><span class="line"><span class="comment"># Store SQL for UNION of the two local CSV files</span></span><br><span class="line">sqlquery_union=<span class="string">"SELECT * FROM SpotifyMostRecentData UNION ALL SELECT * FROM Spotify201812"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Apply SQL to union the two local CSV files and save as local file</span></span><br><span class="line">csvsql 	--query <span class="string">"<span class="variable">$sqlquery_union</span>"</span> SpotifyMostRecentData.csv Spotify201812.csv &gt; UnionedSpotifyData.csv</span><br><span class="line"></span><br><span class="line"><span class="comment"># Push UnionedSpotifyData.csv to database as a new table</span></span><br><span class="line">csvsql --db <span class="string">"sqlite:///SpotifyDatabase.db"</span> --insert UnionedSpotifyData.csv</span><br></pre></td></tr></table></figure>
 <h1 id="Bash-Script"><a href="#Bash-Script" class="headerlink" title="Bash Script"></a>Bash Script</h1><h2 id="Stream-editor"><a href="#Stream-editor" class="headerlink" title="Stream editor"></a>Stream editor</h2><p><code>sed</code>: stream editor.</p>
 <p><code>cat soccer_scores.csv | sed &#39;s/Cherno/Cherno City/g&#39; &gt; soccer_scores_edited.csv</code> : replace word <code>Cherno</code> to  <code>herno City</code> then save it to a new file, for more, check <a href="https://coolshell.cn/articles/9104.html" target="_blank" rel="noopener">this</a>.</p>
-<h2 id="Argument"><a href="#Argument" class="headerlink" title="Argument"></a>Argument</h2><p> <code>$1</code> or <code>$2</code> in bash script file, receive ARGV in bash scripts. <code>$@</code> , <code>$*</code> means get ARGV list, <code>$#</code> means get ARGV length. <code>cat hire_data/*.csv | grep &quot;$1&quot; &gt; &quot;$1&quot;.csv</code>: take in a city (an argument) as a variable, filter all the files by this city and output to a new CSV with the city name.</p>
+<h2 id="Argument"><a href="#Argument" class="headerlink" title="Argument"></a>Argument</h2><p><code>$1</code> or <code>$2</code> in bash script file, receive ARGV in bash scripts. <code>$@</code> , <code>$*</code> means get ARGV list, <code>$#</code> means get ARGV length. <code>cat hire_data/*.csv | grep &quot;$1&quot; &gt; &quot;$1&quot;.csv</code>: take in a city (an argument) as a variable, filter all the files by this city and output to a new CSV with the city name.</p>
 <h2 id="Quotes"><a href="#Quotes" class="headerlink" title="Quotes"></a>Quotes</h2><p>Single,double,backticks. </p>
 <ul>
-<li><p>Single quotes (‘sometext’) = Shell interprets what is between literally</p>
-</li>
-<li><p>Double quotes (“sometext”) = Shell interpret literally except using $ and backticks</p>
-</li>
-<li><p>Backticks (`sometext`) = Shell runs the command and captures STDOUT back into a variable</p>
-</li>
+<li>Single quotes (‘sometext’) = Shell interprets what is between literally</li>
+<li>Double quotes (“sometext”) = Shell interpret literally except using $ and backticks</li>
+<li>Backticks (`sometext`) = Shell runs the command and captures STDOUT back into a variable</li>
 </ul>
 <h2 id="Numeric-variables"><a href="#Numeric-variables" class="headerlink" title="Numeric variables"></a>Numeric variables</h2><p>In bash, Type <code>&gt;&gt;&gt; 1 + 5</code> will get error. instead, you need type <code>expr 1 + 5</code>.  <code>expr</code>  is utility program just like <code>cat</code> and <code>grep</code>. but <code>expr</code> cannot natively handle decimal places. <code>expr 1 + 2.5</code> will get <code>not a decimal nuber error</code>.</p>
 <p>Introduce <code>bc</code> (basic calculator), a useful command-line program. using <code>bc</code> without opening the calculator:</p>
@@ -681,13 +667,9 @@
 <p>set your editor to nano, default vim</p>
 </blockquote>
 <ul>
-<li><p>export EDITOR=/user/bin/nano</p>
-</li>
-<li><p>crontab -e, open editor</p>
-<ul>
+<li>export EDITOR=/user/bin/nano</li>
+<li>crontab -e, open editor</li>
 <li>press i to input</li>
-</ul>
-</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Algorhythm for schuel you task with time</span><br><span class="line"></span><br><span class="line"># ┌───────────── minute (0 - 59)</span><br><span class="line"># │ ┌───────────── hour (0 - 23)</span><br><span class="line"># │ │ ┌───────────── day of month (1 - 31)</span><br><span class="line"># │ │ │ ┌───────────── month (1 - 12)</span><br><span class="line"># │ │ │ │ ┌───────────── day of week (0 - 6) (Sunday to Saturday;</span><br><span class="line"># │ │ │ │ │                                       7 is also Sunday on some systems)</span><br><span class="line"># │ │ │ │ │</span><br><span class="line"># │ │ │ │ │</span><br><span class="line"># * * * * *  command_to_execute</span><br></pre></td></tr></table></figure>
 
