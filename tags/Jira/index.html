@@ -88,7 +88,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Scott Zhang">
-<meta property="og:url" content="http://wittyfans.com/tags/jira/index.html">
+<meta property="og:url" content="http://wittyfans.com/tags/Jira/index.html">
 <meta property="og:site_name" content="Scott Zhang">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://wittyfans.com/tags/jira/"/>
+  <link rel="canonical" href="http://wittyfans.com/tags/Jira/"/>
 
 
 
 
 
-  <title> 标签: jira | Scott Zhang </title>
+  <title> 标签: Jira | Scott Zhang </title>
   <script type="text/javascript" src="/js/src/love.js"></script>
 </head>
 
@@ -251,7 +251,7 @@
   <div id="posts" class="posts-collapse">
     <div class="collection-title">
       <h2 >
-        jira
+        Jira
         <small>标签</small>
       </h2>
     </div>
@@ -264,37 +264,9 @@
 
       <h1 class="post-title">
         
-            <a class="post-title-link" href="/coding/机器学习：处理jira工单的分类问题.html" itemprop="url">
+            <a class="post-title-link" href="/coding/Groovy-Jira-笔记.html" itemprop="url">
               
-                <span itemprop="name">机器学习：处理jira工单的分类问题</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-11-18T20:10:20+08:00"
-              content="2019-11-18" >
-          11-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/coding/Auto-assign-ticket-with-Jira-python-api.html" itemprop="url">
-              
-                <span itemprop="name">Auto assign ticket with Jira python api</span>
+                <span itemprop="name">Groovy Jira 笔记</span>
               
             </a>
         
@@ -302,7 +274,7 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-05T22:40:07+08:00"
+              datetime="2018-10-05T21:56:12+08:00"
               content="2018-10-05" >
           10-05
         </time>
@@ -354,7 +326,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -371,7 +343,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">74</span>
+                <span class="site-state-item-count">75</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -664,6 +636,41 @@
             newcounter.set("time", 1);
             newcounter.save(null, {
               success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
+newcounter) {
                 var $element = $(document.getElementById(url));
                 $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
               },
